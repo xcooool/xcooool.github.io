@@ -2928,7 +2928,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #47691d;
+  background: #8edb21;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2994,9 +2994,6 @@ body {
 }
 .posts-expand .post-meta-container {
   color: #800;
-}
-.sidebar {
-  opacity: 0.85;
 }
 .main-inner {
   opacity: 0.9;
