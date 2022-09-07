@@ -1820,6 +1820,8 @@ header.header {
   visibility: hidden;
 }
 .posts-collapse .post-content {
+  margin: 10px;
+  padding: 10px;
   margin-bottom: 35px;
   margin-left: 35px;
   position: relative;
@@ -2062,7 +2064,7 @@ header.header {
   width: 100%;
 }
 .posts-expand .post-gallery {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 .posts-collapse .post-gallery {
   margin: 15px 0;
@@ -2926,7 +2928,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #fff;
+  background: #47691d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2951,4 +2953,60 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+body {
+  background: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.main-inner > .sub-menu,
+.main-inner > .post-block,
+.main-inner > .tabs-comment,
+.main-inner > .comments,
+.main-inner > .pagination {
+  background: #fff;
+}
+.post-content {
+  margin: 15px;
+  padding: 10px;
+}
+.post-body {
+  text-align: justify;
+  padding: 10px;
+}
+.main-inner {
+  width: 900px;
+}
+.post-block:first-of-type {
+  padding-top: 40px;
+  height: auto;
+}
+.posts-expand .post-block:not(:first-of-type) {
+  margin-top: 30px;
+}
+body {
+  color: #000;
+}
+.posts-expand .post-title-link {
+  color: #000;
+}
+.posts-expand .post-meta-container {
+  color: #800;
+}
+.sidebar {
+  opacity: 0.85;
+}
+.main-inner {
+  opacity: 0.9;
+}
+p#div-border-top-purple {
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-top-width: 5px;
+  border-radius: 3px;
+  border-top-color: #9954bb;
 }
