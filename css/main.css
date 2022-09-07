@@ -2922,7 +2922,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #8bd6ff;
+  background: #a41bab;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2965,14 +2965,6 @@ body {
 .post-content {
   margin: 15px;
   padding: 10px;
-}
-.post-body {
-  text-align: justify;
-  padding: 10px;
-}
-.post-block:first-of-type {
-  padding-top: 40px;
-  height: auto;
 }
 .posts-expand .post-block:not(:first-of-type) {
   margin-top: 30px;
