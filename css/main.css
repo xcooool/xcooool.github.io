@@ -1820,8 +1820,6 @@ header.header {
   visibility: hidden;
 }
 .posts-collapse .post-content {
-  margin: 10px;
-  padding: 10px;
   margin-bottom: 35px;
   margin-left: 35px;
   position: relative;
@@ -2931,7 +2929,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #265e1b;
+  background: #c22493;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);

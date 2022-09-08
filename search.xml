@@ -6,12 +6,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>second</title>
-    <url>/2022/09/07/second/</url>
-    <content><![CDATA[<p>strange</p>
-]]></content>
-  </entry>
-  <entry>
     <title>myfirst</title>
     <url>/2022/09/06/myfirst/</url>
     <content><![CDATA[<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -25,5 +19,11 @@
       <tags>
         <tag>test</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>second</title>
+    <url>/2022/09/07/second/</url>
+    <content><![CDATA[<p>strange</p>
+]]></content>
   </entry>
 </search>
