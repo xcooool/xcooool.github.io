@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>myfirst</title>
-    <url>/2022/09/06/myfirst/</url>
-    <content><![CDATA[<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="image"><a href="#image" class="headerlink" title="image"></a>image</h3><img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
-
-
-
-<p><strong>This is my first blog !😋</strong></p>
-]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>知识蒸馏</title>
     <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
     <content><![CDATA[<h1 id="Distillation知识蒸馏"><a href="#Distillation知识蒸馏" class="headerlink" title="Distillation知识蒸馏"></a>Distillation知识蒸馏</h1><p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
@@ -79,6 +64,21 @@
 ]]></content>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirst</title>
+    <url>/2022/09/06/myfirst/</url>
+    <content><![CDATA[<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="image"><a href="#image" class="headerlink" title="image"></a>image</h3><img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
+
+
+
+<p><strong>This is my first blog !😋</strong></p>
+]]></content>
+      <tags>
+        <tag>test</tag>
       </tags>
   </entry>
 </search>
