@@ -68,6 +68,12 @@ y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
 <img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
 <p>可见二者几乎完全重合。</p>
 ]]></content>
+      <categories>
+        <category>math</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>知识蒸馏</title>
