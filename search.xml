@@ -65,7 +65,7 @@ y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
 <p>解析解和数值解由于十分相似，在画图时不容易分辨，于是我将数值解的步长设置为0.2，解析解的步长为0.02时，其结果为：</p>
 <img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
 <p>当解析解与数值解的步长相等，均为0.02时，结果如下图：</p>
-<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
+<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_h2ZS9n8oNb.png" class>
 <p>可见二者几乎完全重合。</p>
 ]]></content>
       <categories>
