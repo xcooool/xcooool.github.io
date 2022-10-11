@@ -6,8 +6,8 @@
     <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov
 Logic Network视频</a></p>
 <h3 id="相关术语">相关术语：</h3>
-<p>Grouding：replace the variables in the predicates with all possible
-constant（其实就是将x替换为所有可能的取值）</p>
+<p><strong>Grouding：</strong>replace the variables in the predicates
+with all possible constant（其实就是将x替换为所有可能的取值）</p>
 <p><strong>Formula：</strong> 一些逻辑推论</p>
 <p><strong>World：</strong> 满足所有定义的逻辑推论的结果</p>
 <p>我们要做的就是在给定一些Evidence的情况下，推导出剩余满足逻辑推论的一组结果。</p>
@@ -25,7 +25,7 @@ False，现实世界的逻辑推论是soft的，要复杂得多。</p>
 Modal</strong>相结合？</h3>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_F4s3ZULisE.png" class>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_9S7Rt6yRNs.png" class>
-<p>结合方式：</p>
+<p><strong>结合方式：</strong></p>
 <p>每个预测都当作一个Node，每个formula都当作一个factor，最后所有f概率之和相加等于这个U的score。</p>
 <h3 id="learning">Learning</h3>
 <p>通过SGD求得<code>P(U)</code> 的极值。</p>
