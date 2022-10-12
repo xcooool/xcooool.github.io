@@ -118,44 +118,6 @@ x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么
       </tags>
   </entry>
   <entry>
-    <title>Markov Logic Network-1</title>
-    <url>/2022/10/11/Markov-Logic-Network1/</url>
-    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov
-Logic Network视频</a></p>
-<h3 id="相关术语">相关术语：</h3>
-<p><strong>Grouding：</strong>replace the variables in the predicates
-with all possible constant（其实就是将x替换为所有可能的取值）</p>
-<p><strong>Formula：</strong> 一些逻辑推论</p>
-<p><strong>World：</strong> 满足所有定义的逻辑推论的结果</p>
-<p>我们要做的就是在给定一些Evidence的情况下，推导出剩余满足逻辑推论的一组结果。</p>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_2CRtdKa1-U.png" class>
-<p>但是上述情况每一个formula的结果是只有True Or
-False，现实世界的逻辑推论是soft的，要复杂得多。</p>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_-uADwLSDWr.png" class>
-<h3 id="概率论角度">概率论角度：</h3>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_ZsFAprCvoK.png" class>
-<p>上图的意思是给定一个世界U，通过公式计算这个U有多少合乎逻辑。那么，由于这个世界是通过若干个formula组成的，所以对每个formula而言，通过count其为true的次数再乘以其对应的weight就能够算出这个U合乎这个formula(i)的程度了，最后求和就能算出这个世界U合乎所有逻辑的程度。</p>
-<p>最后通过计算每个U出现的概率求得最可能出现的这个U。 </p>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_qrFDuXAyTx.png" class>
-<p>上图将所有的U都列了出来，计算其每个U出现的概率，发现Bob喜欢做研究的概率为百分之七十.</p>
-<h3 id="如何将上述的问题和上一节的graphical-modal相结合"><strong>如何将上述的问题和上一节的Graphical
-Modal</strong>相结合？</h3>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_F4s3ZULisE.png" class>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_9S7Rt6yRNs.png" class>
-<p><strong>结合方式：</strong></p>
-<p>每个预测都当作一个Node，每个formula都当作一个factor，最后所有f概率之和相加等于这个U的score。</p>
-<h3 id="learning">Learning</h3>
-<p>通过SGD求得<code>P(U)</code> 的极值。</p>
-<img data-src="/2022/10/11/Markov-Logic-Network1/image_QCHugx4Ph2.png" class>
-]]></content>
-      <categories>
-        <category>Markov Logic Network</category>
-      </categories>
-      <tags>
-        <tag>Graph Modal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Graph Modal and Gibbs Sampling</title>
     <url>/2022/10/10/graph-modal/</url>
     <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
@@ -217,6 +179,44 @@ chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
 chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
 chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
 的最大值对应的z即可。</p>
+]]></content>
+      <categories>
+        <category>Markov Logic Network</category>
+      </categories>
+      <tags>
+        <tag>Graph Modal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markov Logic Network-1</title>
+    <url>/2022/10/11/Markov-Logic-Network1/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov
+Logic Network视频</a></p>
+<h3 id="相关术语">相关术语：</h3>
+<p><strong>Grouding：</strong>replace the variables in the predicates
+with all possible constant（其实就是将x替换为所有可能的取值）</p>
+<p><strong>Formula：</strong> 一些逻辑推论</p>
+<p><strong>World：</strong> 满足所有定义的逻辑推论的结果</p>
+<p>我们要做的就是在给定一些Evidence的情况下，推导出剩余满足逻辑推论的一组结果。</p>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_2CRtdKa1-U.png" class>
+<p>但是上述情况每一个formula的结果是只有True Or
+False，现实世界的逻辑推论是soft的，要复杂得多。</p>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_-uADwLSDWr.png" class>
+<h3 id="概率论角度">概率论角度：</h3>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_ZsFAprCvoK.png" class>
+<p>上图的意思是给定一个世界U，通过公式计算这个U有多少合乎逻辑。那么，由于这个世界是通过若干个formula组成的，所以对每个formula而言，通过count其为true的次数再乘以其对应的weight就能够算出这个U合乎这个formula(i)的程度了，最后求和就能算出这个世界U合乎所有逻辑的程度。</p>
+<p>最后通过计算每个U出现的概率求得最可能出现的这个U。 </p>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_qrFDuXAyTx.png" class>
+<p>上图将所有的U都列了出来，计算其每个U出现的概率，发现Bob喜欢做研究的概率为百分之七十.</p>
+<h3 id="如何将上述的问题和上一节的graphical-modal相结合"><strong>如何将上述的问题和上一节的Graphical
+Modal</strong>相结合？</h3>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_F4s3ZULisE.png" class>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_9S7Rt6yRNs.png" class>
+<p><strong>结合方式：</strong></p>
+<p>每个预测都当作一个Node，每个formula都当作一个factor，最后所有f概率之和相加等于这个U的score。</p>
+<h3 id="learning">Learning</h3>
+<p>通过SGD求得<code>P(U)</code> 的极值。</p>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_QCHugx4Ph2.png" class>
 ]]></content>
       <categories>
         <category>Markov Logic Network</category>
