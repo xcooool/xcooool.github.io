@@ -118,6 +118,64 @@ x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么
       </tags>
   </entry>
   <entry>
+    <title>SVM</title>
+    <url>/2022/10/13/SVM/</url>
+    <content><![CDATA[<h3 id="类条件概率密度参数位置形式难以确定">类条件概率密度参数位置，形式难以确定</h3>
+<h4 id="最优分类面-将两类正确分开error为0且使得两侧空白区域最大margin最大这样可以更加鲁棒"><strong>最优分类面：</strong>
+将两类正确分开（error为0），且使得两侧空白区域最大（margin最大），这样可以更加鲁棒。</h4>
+<h4 id="线性支持向量机">线性支持向量机：</h4>
+<p>是一个二分类模型，适合于中小型数据样本、非线性、高维分类问题</p>
+<img data-src="/2022/10/13/SVM/image_B4evXu73AA.png" class>
+<p>在说SVM之前先引入<strong>函数间隔和几何间隔</strong>两个概念：</p>
+<hr>
+<h3 id="函数间隔"><strong>函数间隔：</strong></h3>
+<p><span class="math display">\[
+\^γ=y(w^Tx+b)=yf(x)
+\]</span></p>
+<p>函数间隔实际上是<strong>类别标签乘上f(x）</strong>，可见该值永远是非负的。仔细想来，如果这个样本点不在超平面上，离得越远，f(x）的绝对值越大，而这个<strong>y标签</strong>，如果只有<span class="math inline">\({-1,1}\)</span>中选择的话，其实相当于求f(x)的绝对值.</p>
+<p>但是函数间隔存在一个问题是：成比例改变<span class="math inline">\(w，b\)</span>，虽然超平面没变，但是函数间隔确成倍增加.</p>
+<h3 id="几何间隔">几何间隔：</h3>
+<img data-src="/2022/10/13/SVM/image_LEij8iO51d.png" class>
+<p>首先<span class="math inline">\(w\)</span>是超平面的法向量，则有</p>
+<p><span class="math display">\[
+x=x_0+γ\frac{w}{||w||}
+\]</span></p>
+<p>由于<span class="math inline">\(x_0\)</span>在超平面上，所以<span class="math inline">\(f(x_0)=0\)</span>；</p>
+<p>联立上述两式</p>
+<p><span class="math display">\[
+f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||
+\]</span></p>
+<p><span class="math inline">\(w^Tw = ||w||^2\)</span></p>
+<p>于是有<span class="math inline">\(γ=\frac{f(x)}{||w||}\)</span>，则有，<span class="math inline">\(\~γ=yγ=\frac{\^γ}{||w||}\)</span>，可见几何间隔就是函数间隔除以w的范数。</p>
+<hr>
+<p>于是问题转换为<span class="math inline">\(max(||w||^{-1})\)</span></p>
+<img data-src="/2022/10/13/SVM/image_E8hrSyDj9M.png" class>
+<hr>
+<h3 id="凸优化和拉格朗日对偶">凸优化和拉格朗日对偶</h3>
+<img data-src="/2022/10/13/SVM/image_c62oYTZzXU.png" class>
+<ul>
+<li><p><strong>凸集</strong>：集合中的任意两点连线上的点也在该集合中，则成为凸集（凸集∩凸集=凸集；凸集∪凸集不一定是凸集）</p></li>
+<li><p><strong>凸优化</strong>：目标函数是凸函数，变量所属集合是凸集。<strong>对于凸优化问题来说，局部最优化解就是全局最优解</strong>。常见的凸优化问题有线性规划、半正定规划。要求<span class="math inline">\(f(x)\)</span>是凸函数，<span class="math inline">\(g_i(x)\)</span>是凸函数，同时<span class="math inline">\(h_i(x)\)</span>是仿射函数（指的是线性函数，形式为<span class="math inline">\(f(x)=ax+b\)</span>）</p></li>
+</ul>
+<p>对于一般的优化问题，对f,g,h都没有要求。</p>
+<p><a href="https://www.cnblogs.com/dreamvibe/p/4349886.html">参考文章1</a></p>
+<p>里面还有关于对偶函数、核函数（主要用于解救额线性不可分的情况）、解决线性不可分的讲述，十分详细.</p>
+<p>SVM对应的对偶问题最终可以写成：</p>
+<img data-src="/2022/10/13/SVM/image_-Q4IGPHqZT.png" class>
+<hr>
+<h3 id="kkt条件">KKT条件</h3>
+<p>KKT主要用于处理非线性优化问题，是确定极值点的<strong>充要条件</strong>。</p>
+<img data-src="/2022/10/13/SVM/image_Q9AIPgjGnB.png" class>
+<p><a href="https://www.bilibili.com/read/cv10510092">参考文章2</a></p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>SVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Graph Modal and Gibbs Sampling</title>
     <url>/2022/10/10/graph-modal/</url>
     <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
