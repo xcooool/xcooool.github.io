@@ -2936,7 +2936,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #5dffff;
+  background: #ffba91;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -3006,4 +3006,12 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
+}
+code {
+  padding: 2px 4px;
+  overflow-wrap: break-word;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  font-size: 18px;
 }
