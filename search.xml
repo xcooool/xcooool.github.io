@@ -363,66 +363,6 @@ chain的稳定分布 <strong>（条件是所有条件概率都不为零）</stro
       </tags>
   </entry>
   <entry>
-    <title>知识蒸馏</title>
-    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
-    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
-<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
-<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
-<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
-就是解析。</p>
-<p><strong>先介绍几个函数：</strong></p>
-<ol type="1">
-<li><p><strong>softmax</strong></p>
-<p>输出非负，0~1之间的概率分布</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可见t会使得概率分布更加平滑</p></li>
-<li><p><strong>log_softmax</strong></p>
-<p>输出全为负数</p></li>
-<li><p><strong>NLLLoss</strong></p>
-<p>输入：log_softmax(output),target</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
-<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
-的得分中也可以看出第三类得分最高。</p></li>
-<li><p><strong>CE交叉熵</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
-<p>其中<code>qk</code>
-是神经网络认为第k类的概率，并且是经过softmax的了。</p>
-<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
-<hr>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
-<p>可以发现CE可以一步到位。</p></li>
-</ol>
-<p><strong>softmax + nllloss = ce</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
-<p>上图：t = 1；下图：t = 10；</p>
-<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
-<p><strong>训练Teacher-Student网络</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
-<p><strong>说明：</strong></p>
-<p><code>p</code> 是标准答案</p>
-<p><code>q</code> 是学生的答案</p>
-<p><code>q'</code> 是老师的带有解析的答案</p>
-<p><code>q''</code>
-是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
-<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
-因为p是<code>one-hot</code> 的</p>
-<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
-<p>最后minimize两个Loss之和</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
-<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
-loss</strong></p>
-<p><strong>结果：</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
-<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
-不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常微分方程和差分方程</title>
     <url>/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="第四章-常微分方程和差分方程">第四章-常微分方程和差分方程</h1>
@@ -482,6 +422,183 @@ y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库-第四,五章作业</title>
+    <url>/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h2 id="第四章作业">第四章作业</h2>
+<h3 id="什么是数据库安全性"><strong>1.
+什么是数据库安全性？</strong></h3>
+<p>数据库的安全性是指保护数据库以防止不合法使用所造成的数据泄露、更改或破坏。</p>
+<h3 id="试述实现数据库安全性控制的常用方法和技术"><strong>2.
+试述实现数据库安全性控制的常用方法和技术。</strong></h3>
+<p>数据库的安全性控制主要包括用户身份鉴别、多层存取控制、审计、视图和数据加密等安全技术.</p>
+<ul>
+<li>用户身份鉴别
+<ul>
+<li>静态口令鉴别</li>
+<li>动态口令鉴别</li>
+<li>生物特征鉴别</li>
+<li>智能卡鉴别</li>
+</ul></li>
+<li>存取控制
+<ul>
+<li>定义用户权限</li>
+<li>合法权限检查</li>
+</ul></li>
+</ul>
+<h3 id="什么是数据库中的自主存取控制和强制存取控制方法"><strong>3.
+什么是数据库中的自主存取控制和强制存取控制方法。</strong></h3>
+<p><strong>自主存取控制：</strong>用户对于不同的数据库对象有不同的存取权限，不同的用户对同一对象也有不用的权限，而且用户还可以将其拥有的存取权限转授给其他用户。因此自主存取十分灵活。</p>
+<p>主要通过SQL的GRANT和REVOKE与来实现。用户权限由数据库对象和操作类型组成。定义存取权限被称为授权。</p>
+<p><strong>强制存储控制：</strong>每一个数据库对象被标有一定的密级，每一个用户也被授予某一个级别的许可证。对于任意一个对象，只有具有合法证的用户才可以存取。强制存取比较严格。</p>
+<p>强制存取控制是对数据本身进行密级标记，无论
+数据如何复制，标记与数据是一个不可分的整体，只有符合密级标记要求的用户才可以操纵数据，从而提供了更高级别的安全性。</p>
+<h3 id="试述角色和用户组的定义和作用">4.试述角色和用户组的定义和作用。</h3>
+<p><strong>角色的定义：</strong>数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。</p>
+<p><strong>角色作用：</strong>数据库角色是<strong>一组权限的集合</strong>。使用角色来管理数据库权限可以简化授权的过程，使自主授权的执行更加灵活。</p>
+<p><strong>用户组的定义</strong>：用户组是一组具有相同特性用户的集合。在授权或收回权限时，可以以用户组为单位进行。</p>
+<p><strong>用户组的作用：</strong>数据库用户组由于特性相同，因为在授权和收回权限的时候能够整体进行，效率更高。</p>
+<hr>
+<h2 id="第五章作业">第五章作业</h2>
+<h3 id="什么是数据库的完整性">1.什么是数据库的完整性</h3>
+<p>数据库的完整性是指数据的<strong>正确性</strong>和<strong>相容性</strong>。</p>
+<p><strong>正确性</strong>是指数据应具有合法的类型，包括数据类型的正确和数据范围没有溢出等等。</p>
+<p><strong>相容性</strong>是指表示同一个事实的两个数据应该相同，并且符合逻辑。</p>
+<h3 id="什么是数据库的完整性约束条件">2.
+什么是数据库的完整性约束条件</h3>
+<p>​
+完整性约束条件也称为完整性规则，是数据库中的数据必须满足的语义约束条件。它表达了给定的数据模型中数据及其联系所具有的制约和依存规则，用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效和相容。</p>
+<p>​
+主要包括关系模型的<strong>实体完整性、参照完整性</strong>和<strong>用户定义完整性</strong>。</p>
+<h3 id="rdbms的完整性控制机制应具有哪些功能">3.
+RDBMS的完整性控制机制应具有哪些功能</h3>
+<ul>
+<li>定义功能：提供定义完整性约束条件的机制。</li>
+<li>检查功能，检查用户发出的操作请求是否违背了完整性约束条件。</li>
+<li>违约处理，如果发现用户的操作请求使数据违背于完整性约束条件i则采取一定的动作来保证数据的完整性。</li>
+</ul>
+<h3 id="数据库在实现参照完整性时需要考虑哪些方面">4.数据库在实现参照完整性时需要考虑哪些方面？</h3>
+<p>参照完整性往往会有一些不一致事情的发生，例如：</p>
+<p>（1）表中增加一个元组，由于该元组对应的外码的数值在表中找不到，则会引发冲突。</p>
+<p>（2）修改外码值，会对原本是这些外码值的元组造成影响。</p>
+<p>（3）删除元组，导致另一个表中的某些属性的外码在该表中找不到元组。</p>
+<p>等等。</p>
+<p>所以要采取的策略主要有：</p>
+<p>（1）拒绝执行（NOT ACTION）</p>
+<p>（2）级联执行（CASCADE）</p>
+<p>当遇到不一致的情况，就把所有不一致的情况删除。</p>
+<p>（3）设置为空值</p>
+<p>当删除或者修改参照表中的一个元组造成不一致的时候，就将不一致的元组的属性设置为空值。</p>
+<hr>
+<h2 id="实验">实验</h2>
+<h4 id="第一题">第一题</h4>
+<p>（1）创建用户王明，并授予他对学生表的SELECT权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456p&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015155443150.png" class>
+<p>（2）授予用户王明对学生表的INSERT和DELETE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（3）授予用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（4）授予用户王明创建表的权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（5）授予用户王明对学生表的所有权限，并具有转授给他人的权力</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure>
+<p>（6）撤销用户王明对学生表的INSERT和DELETE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（7）撤销用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（8）撤销用户王明创建表的权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（9）使得用户王明只能查看每个班级的最高分、最低分、平均分，但不能查看每个学生所选课程的具体成绩。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(`成绩`),<span class="built_in">MIN</span>(`成绩`),<span class="built_in">AVG</span>(`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `选课表`</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> `班级`</span><br><span class="line"><span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="第二题">第二题</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#创建一个用于成绩定档的函数</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> log_bin_trust_function_creators<span class="operator">=</span><span class="literal">TRUE</span>;#不添加这一行会报错</span><br><span class="line"></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">FUNCTION</span> IF <span class="keyword">EXISTS</span> gradeLevel$$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> gradeLevel(grade <span class="type">int</span>) <span class="keyword">RETURNS</span> <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> str <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	IF (grade <span class="operator">&lt;</span> <span class="number">60</span>)  <span class="keyword">THEN</span> </span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">70</span> ) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">80</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;中等&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">90</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;良好&#x27;</span>;</span><br><span class="line">	<span class="keyword">ELSE</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line">	<span class="keyword">END</span> IF;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line"><span class="keyword">END</span> $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> `学生表`.`学号`,`学生表`.`姓名`,`课程表`.`课程名`,`选课表`.`成绩`,gradeLevel(`选课表`.`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `学生表`,`选课表`,`课程表`</span><br><span class="line"><span class="keyword">WHERE</span> `学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号`;</span><br></pre></td></tr></table></figure>
+<p>结果如图：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015173133384.png" class>
+<h3 id="第三题">第三题</h3>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个存储过程<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> </span><br><span class="line"><span class="keyword">PROCEDURE</span> getGrade(<span class="keyword">IN</span> course <span class="type">VARCHAR</span>(<span class="number">255</span>))</span><br><span class="line">	<span class="comment">-- 存储过程体</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="comment">-- 把SQL中查询的结果通过INTO赋给变量 INTO SNO INTO sname INTO grade </span></span><br><span class="line">		<span class="keyword">SELECT</span> `学生表`.`学号`  ,`学生表`.`姓名`  ,`选课表`.`成绩` </span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">		`学生表`,`选课表`,`课程表`</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">		`学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号` <span class="keyword">AND</span> `课程表`.`课程名`<span class="operator">=</span> course;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> getGrade;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CALL</span> getGrade(<span class="string">&#x27;数据库&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>结果如下所示：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015191444849.png" class>
+<h3 id="第三题-1">第三题</h3>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>创建一张教授的表<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `教授`(</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">		`money` <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">		<span class="keyword">PRIMARY</span> KEY(`name`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `教授` <span class="keyword">VALUES</span>(<span class="string">&#x27;professor&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 教授;</span><br><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个触发器<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">#注意：要对<span class="keyword">new</span>的数据进行修改和赋值，必须是BEFORE</span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> IF <span class="keyword">EXISTS</span> AgeIncrease;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> AgeIncrease </span><br><span class="line">BEFORE <span class="keyword">UPDATE</span>  <span class="keyword">ON</span> `教授`</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 	DECLARE sum int;</span></span><br><span class="line">	if new.`money` <span class="operator">&lt;</span> old.`money` <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">set</span> new.`money`<span class="operator">=</span>old.`money`;</span><br><span class="line">	<span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
+<p>当把教授的工资设置为2000时，</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `教授`</span><br><span class="line"><span class="keyword">SET</span> `money`<span class="operator">=</span><span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> `教授`.`name`<span class="operator">=</span><span class="string">&#x27;professor&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202401871.png" class>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202413947.png" class>
+<p>设置成功。</p>
+<p>如果此时把教授的工资重新改为1000，则会显示：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202621973.png" class>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202634218.png" class>
+<p>可见不起效果，工资只增不减。</p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>知识蒸馏</title>
+    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
+    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
+<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
+<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
+<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
+就是解析。</p>
+<p><strong>先介绍几个函数：</strong></p>
+<ol type="1">
+<li><p><strong>softmax</strong></p>
+<p>输出非负，0~1之间的概率分布</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可见t会使得概率分布更加平滑</p></li>
+<li><p><strong>log_softmax</strong></p>
+<p>输出全为负数</p></li>
+<li><p><strong>NLLLoss</strong></p>
+<p>输入：log_softmax(output),target</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
+<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
+的得分中也可以看出第三类得分最高。</p></li>
+<li><p><strong>CE交叉熵</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
+<p>其中<code>qk</code>
+是神经网络认为第k类的概率，并且是经过softmax的了。</p>
+<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
+<hr>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
+<p>可以发现CE可以一步到位。</p></li>
+</ol>
+<p><strong>softmax + nllloss = ce</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
+<p>上图：t = 1；下图：t = 10；</p>
+<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
+<p><strong>训练Teacher-Student网络</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
+<p><strong>说明：</strong></p>
+<p><code>p</code> 是标准答案</p>
+<p><code>q</code> 是学生的答案</p>
+<p><code>q'</code> 是老师的带有解析的答案</p>
+<p><code>q''</code>
+是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
+<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
+因为p是<code>one-hot</code> 的</p>
+<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
+<p>最后minimize两个Loss之和</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
+<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
+loss</strong></p>
+<p><strong>结果：</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
+<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
+不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
       </tags>
   </entry>
 </search>
