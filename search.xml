@@ -631,6 +631,25 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||
       </tags>
   </entry>
   <entry>
+    <title>Visual arithmetic</title>
+    <url>/2022/10/30/Visual-arithmetic/</url>
+    <content><![CDATA[<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_02.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_03.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_04.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_05.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_06.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_07.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_08.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_09.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_10.jpg" class>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>NLP</tag>
+        <tag>KG</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Algorithm-DP</title>
     <url>/2022/10/17/algorithm-dp/</url>
     <content><![CDATA[<h1 id="背包问题">0-1背包问题</h1>
@@ -1227,6 +1246,7 @@ loss</strong></p>
 ]]></content>
       <tags>
         <tag>AI</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
 </search>
