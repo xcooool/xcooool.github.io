@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -197,6 +197,162 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/13/maven-vue-springboot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xco.jpg">
+      <meta itemprop="name" content="XcooL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XcooL">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XcooL">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/13/maven-vue-springboot/" class="post-title-link" itemprop="url">maven+vue+springboot</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-13 11:49:28" itemprop="dateModified" datetime="2022-11-13T11:49:28+08:00">2022-11-13</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="运行maven-vue-springboot项目">运行maven + vue +
+springboot项目</h1>
+<h2 id="运行步骤-后端篇">运行步骤-后端篇</h2>
+<ol type="1">
+<li><p>在pol.xml文件中 右键 点击
+<code>Add as a maven project</code></p></li>
+<li><p>添加database</p></li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_q8ZVhWlIzS.png" class>
+<ol type="1">
+<li>输入用户名和密码 ，test connection</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_S6VsysrENC.png" class>
+<ol type="1">
+<li>新建数据库vuesbag</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_a9QffP5Fhm.png" class>
+<ol type="1">
+<li>选择新建的数据库</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_pZfnsaP8xG.png" class>
+<ol type="1">
+<li>执行sql文件 初始化数据库</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_DRf5TIi1j0.png" class>
+<ol type="1">
+<li>点击Run mysql.sql之后选择新建的数据库</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_GO21sA6yY8.png" class>
+<ol type="1">
+<li>run完之后会发现数据库已被初始化，生成了很多表</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_dNV8LYgDof.png" class>
+<ol type="1">
+<li>修改src/main/resources/application.yml文件</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_GBrbU3cZDA.png" class>
+<p>如图：</p>
+<img data-src="/2022/11/13/maven-vue-springboot/image_ZgGqwRGpEN.png" class>
+<ol type="1">
+<li>右上角运行启动类</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_lZkUoTpZTh.png" class>
+<ol type="1">
+<li>运行之后发现报错：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sun</span> <span class="title class_">Nov</span> <span class="number">13</span> <span class="number">11</span>:<span class="number">25</span>:<span class="number">54</span> <span class="variable constant_">CST</span> <span class="number">2022</span> <span class="attr">WARN</span>: <span class="title class_">Establishing</span> <span class="variable constant_">SSL</span> connection without server<span class="string">&#x27;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&#x27;</span>t set. <span class="title class_">For</span> compliance <span class="keyword">with</span> existing applications not using <span class="variable constant_">SSL</span> the verifyServerCertificate property is set to <span class="string">&#x27;false&#x27;</span>. <span class="title class_">You</span> need either to explicitly disable <span class="variable constant_">SSL</span> by setting useSSL=<span class="literal">false</span>, or set useSSL=<span class="literal">true</span> and provide truststore <span class="keyword">for</span> server certificate verification.</span><br><span class="line"><span class="number">2022</span>-<span class="number">11</span>-<span class="number">13</span> <span class="number">11</span>:<span class="number">25</span>:<span class="number">55.010</span> <span class="variable constant_">ERROR</span> <span class="number">17660</span> --- [eate-<span class="number">1886236609</span>] com.<span class="property">alibaba</span>.<span class="property">druid</span>.<span class="property">pool</span>.<span class="property">DruidDataSource</span>   : create connection <span class="title class_">SQLException</span>, <span class="attr">url</span>: <span class="attr">jdbc</span>:<span class="attr">mysql</span>:<span class="comment">//localhost:3306/vuesbag?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8, errorCode 0, state 08S01</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img data-src="/2022/11/13/maven-vue-springboot/image_aAz86gRUhW.png" class>
+<p><strong>解决方法：在url最后加上</strong></p>
+<ol type="1">
+<li>最后后端成功运行</li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_vRSLjlcB5r.png" class>
+<h2 id="运行步骤-前端篇">运行步骤-前端篇</h2>
+<ol type="1">
+<li>进入前端文件夹<code>npm install</code></li>
+</ol>
+<img data-src="/2022/11/13/maven-vue-springboot/image_NEY98EzA5E.png" class>
+<h3 id="报错1">报错1</h3>
+<p><code>Error: Can‘t find Python executable “python“, you can set the PYTHON env variable</code></p>
+<p>cmd<strong>管理员运行</strong></p>
+<p><code>npm install --global --production windows-build-tools</code></p>
+<hr>
+<img data-src="/2022/11/13/maven-vue-springboot/image_gPXNdMXij-.png" class>
+<h3 id="报错2">报错2</h3>
+<p>npm run dev之后报错按照这个install一下就行</p>
+<img data-src="/2022/11/13/maven-vue-springboot/image_MvI7LDIIIt.png" class>
+<h3 id="报错3">报错3</h3>
+<p>Error: Cannot find module 'node-sass'</p>
+<p><code>cnpm install node-sass@latest</code></p>
+<h3 id="ps">ps</h3>
+<p>最后如果<code>npm run dev</code>还报错，则再<code>npm install</code>一下就好了。</p>
+<hr>
+<h2 id="运行成功截图">运行成功截图</h2>
+<img data-src="/2022/11/13/maven-vue-springboot/image_vBrB6gi_kB.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -243,7 +399,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>611</span>
+      <span>619</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -341,7 +497,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>519</span>
+      <span>541</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -528,7 +684,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -813,7 +969,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>39</span>
+      <span>43</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -911,7 +1067,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>971</span>
+      <span>992</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1044,106 +1200,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/10/17/algorithm-dp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xco.jpg">
-      <meta itemprop="name" content="XcooL">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XcooL">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XcooL">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/17/algorithm-dp/" class="post-title-link" itemprop="url">Algorithm-DP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-17 20:55:00" itemprop="dateModified" datetime="2022-10-17T20:55:00+08:00">2022-10-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>讲述了0-1背包问题，最短子序列、最短字串、区间dp等</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/17/algorithm-dp/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
@@ -1166,13 +1224,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">43k</span>
+    <span title="站点总字数">44k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:11</span>
+    <span title="站点阅读时长">1:13</span>
   </span>
 
 </div>
