@@ -150,6 +150,115 @@ n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量
       </tags>
   </entry>
   <entry>
+    <title>Compiler-建立符号表&amp;错误处理-3</title>
+    <url>/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/</url>
+    <content><![CDATA[<h1 id="建立符号表和错误处理">建立符号表和错误处理</h1>
+<h3 id="类图">类图：</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_krPvZ6NiKE.png" class>
+<p><strong>说明：</strong></p>
+<ol type="1">
+<li><p>Compiler是程序的入口</p></li>
+<li><p>Morpho是词法分析器（ReadFile读入testfile.txt文件）</p></li>
+<li><p>SyntaxParser是语法分析器</p></li>
+<li><p>SymbolTable 是符号表类</p></li>
+<li><p>RParam 是函数实参表类</p></li>
+<li><p>Error 是错误处理类</p></li>
+<li><p>Node 是递归下降树构建的结点类</p></li>
+<li><p>Symbol 是符号类</p></li>
+<li><p>Token 是词牌类</p></li>
+<li><p>Tag 是First集类</p></li>
+</ol>
+<h3 id="符号表类">符号表类</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_Od3GLVPUlM.png" class>
+<p><strong>什么时候要创建符号表？</strong></p>
+<ol type="1">
+<li><p><code>CompUnit</code>时创建一个rootTable，其prev上层符号表为
+<code>null</code> </p></li>
+<li><p><code>FuncDef</code> 函数定义时</p></li>
+<li><p><code>MainFuncDef</code> 进入主函数int main时</p></li>
+<li><p><code>Block</code> 扫描到<code>&#123;</code>
+，且当前符号表的<code>defend</code>为<code>false</code>时</p></li>
+</ol>
+<p><strong>说明：</strong></p>
+<ol type="1">
+<li><p><code>table</code>类型为<code>HashMap</code>。<code>key</code>存储<code>Symbol</code>的<code>name</code>，<code>value</code>存储对应的<code>Symbol</code>
+</p></li>
+<li><p><code>prev</code> 类型为<code>SymbolTable</code>
+，上一层的符号表</p></li>
+<li><p><code>isFunc</code>
+用于判别此符号表是否为函数定义创建的表</p></li>
+<li><p><code>position</code>
+用于记录当前符号表在上一层符号表的环境位置，其值为这个符号表创建时，当前符号表<code>curTable</code>
+中<code>table</code>的size()</p>
+<p>（后面发现似乎并不需要这个属性，因为在错误处理的时候是递归过程中进行的）</p></li>
+<li><p><code>existReturn</code>
+用于判别当前符号表是函数时，是否存在<code>return</code> 语句。</p></li>
+<li><p><code>defend</code>
+只有在函数定义创建符号表的时候设为<code>true</code>
+，当进入函数定义的<code>Block</code>中时，不必再创建一个符号表了，因为在扫描到函数名称的时候就创建过了，之后设置为<code>false</code>
+意味着当前函数符号表已经进入到过其本身的<code>Block</code>中了</p></li>
+<li><p><code>funcName</code> 和<code>funcType</code>
+用于记录当前符号表(函数定义)的函数名称和函数类型.</p></li>
+</ol>
+<h3 id="符号类">符号类</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_fHo_eToku4.png" class>
+<p><strong>什么时候加入符号？</strong></p>
+<ol type="1">
+<li><p><code>ConstDef</code> 常量定义</p></li>
+<li><p><code>VarDef</code> 变量定义</p></li>
+<li><p><code>FuncDef</code>
+函数定义，加入到当前符号表中，一般是<code>rootTable</code></p></li>
+<li><p><code>FuncFParam</code> 函数形参，加入到当前函数符号表中</p></li>
+</ol>
+<p><strong>什么时候查询符号？</strong></p>
+<ol type="1">
+<li><p><code>Stmt</code> 中扫描到<code>LVal</code>
+时，是否改变常量</p></li>
+<li><p><code>LVal</code>
+中查询符号（普通变量，一维数组，二维数组）的维度；</p></li>
+<li><p><code>UnaryExp</code> 中查询符号（函数调用）的维度</p></li>
+</ol>
+<blockquote>
+<p>上述2/3查询的维度最终加入当前函数的实参列表中，用于错误处理，判断函数调用实参个数和类型(维度)是否匹配</p>
+</blockquote>
+<h1 id="错误处理">错误处理</h1>
+<ol type="1">
+<li><p>b类错误名字重定义：</p>
+<p>🧐下面这种也算错误？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>e类错误：</strong> 函数中f(RParam) a[Exp] 所以说</p>
+<p>所以存在a(LVal加入当前函数)[Exp→LVal(<del><strong>加入当前函数</strong></del>)]</p>
+<p>因此在解读LVal时不应该盲目地将当前的LVal加入当前的函数实参paramMap中，例如
+</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">f(a[<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">f(a(<span class="number">0</span>)[(<span class="number">1</span>)b(<span class="number">0</span>)[(<span class="number">1</span>)<span class="number">1</span>(<span class="number">0</span>)](-<span class="number">1</span>)](-<span class="number">2</span>)[(-<span class="number">1</span>)i(<span class="number">0</span>)](-<span class="number">1</span>)); </span><br><span class="line">f(a[f(a[i])][<span class="number">0</span>]); <span class="comment">//内层函数调用类型出错</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>那是不是也意味着会有</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">const <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">a[f(n)];</span><br></pre></td></tr></table></figure>
+<p>但是这种没要求检测类型不匹配的问题；要求检测函数类型不匹配。</p>
+<p><strong>解决方法：</strong><del><strong>每当进入'['中，就会有widthreal++，说明在[]内时widthreal不为0，则只有当widthreal为零的时候才加入curParam的map中</strong></del><strong>。</strong></p>
+<p>上述解决方法不行，如果将widthReal设置成全局的，则嵌套调用时上一层的widthReal会丢失，所以想到的解决办法是，每当<strong>调用</strong>LVal的时候，就新建一个存储其...</p>
+<p>其实发现第一种解决方法也是可行的？：</p>
+<p><del><strong>每次扫描到LVal的IDENFR就设置为0,扫描到[就++,扫描到]就减一，但是如果inArray
+= 0 时扫描到]不要减一了，要保证其永远大于等于0，因为a[b[1]]此处inArray =
+-1当a[b[1]][此处inArray为零，不正确了i]</strong></del></p>
+<p>总结：很简单的思路，当前curParam不等于null，<code>[</code>时inArray加一，<code>]</code>时inArray减一，只有当
+<code>inArray = 0</code>
+时加入当前的curParam的实参列表中即可.(inArray为全局变量.)</p>
+<p>上面的还是<strong>不对</strong>....例如
+<code>f(a[1][sum(a[0])])</code>
+在sum函数中的a[0]就加入不到sum的实参列表中了，所以在RParam中加一个私有参数inArray，而不是全局！</p>
+<p><strong>测试用例：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">h</span><span class="params">()</span>&#123;;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">int</span> v[<span class="number">3</span>], i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>])]))  &#123;&#125;; <span class="comment">//e错误</span></span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>][<span class="number">1</span>])]))  &#123;&#125;; <span class="comment">//正确</span></span><br><span class="line">  f(h());<span class="comment">//e错误</span></span><br><span class="line">  f(a[i]);<span class="comment">//e错误</span></span><br><span class="line">  f(a[i][i+<span class="number">1</span>]);<span class="comment">//正确</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>注意在构造测试用例的时候：Decl和FuncDef是先后顺序。</p></li>
+<li><p>对最终输出排序输出用TreeMap</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">TreeMap</span> <span class="variable">sotrdMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(errMap);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>对于循环嵌套，多个while需要判断是否是错误的。</p></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Compiler</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Compiler-语法分析-2</title>
     <url>/2022/10/16/Chapter2-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h1 id="chapter2-语法分析">Chapter2-语法分析</h1>
@@ -426,113 +535,54 @@ remove ctrl+空格 add shortcut alt+/</p></li>
       </categories>
   </entry>
   <entry>
-    <title>Compiler-建立符号表&amp;错误处理-3</title>
-    <url>/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/</url>
-    <content><![CDATA[<h1 id="建立符号表和错误处理">建立符号表和错误处理</h1>
-<h3 id="类图">类图：</h3>
-<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_krPvZ6NiKE.png" class>
-<p><strong>说明：</strong></p>
+    <title>LBPH</title>
+    <url>/2022/10/18/LBPH/</url>
+    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
+<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
+<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
+<h4 id="计算lbp编码">计算LBP编码</h4>
+<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
+<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
+<h4 id="均匀化降维">均匀化降维</h4>
+<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
+<p>具体实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
+<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
+<h4 id="特征矩阵">特征矩阵</h4>
+<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
+<h4 id="直方图">直方图</h4>
+<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
+<h4 id="特征向量">特征向量</h4>
+<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
+<h4 id="人脸识别">人脸识别</h4>
+<ul>
+<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
+<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
+</ul>
+<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
+<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
+<h4 id="结果">结果</h4>
+<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
+<h3 id="难点与改进">难点与改进</h3>
+<h4 id="难点">难点</h4>
 <ol type="1">
-<li><p>Compiler是程序的入口</p></li>
-<li><p>Morpho是词法分析器（ReadFile读入testfile.txt文件）</p></li>
-<li><p>SyntaxParser是语法分析器</p></li>
-<li><p>SymbolTable 是符号表类</p></li>
-<li><p>RParam 是函数实参表类</p></li>
-<li><p>Error 是错误处理类</p></li>
-<li><p>Node 是递归下降树构建的结点类</p></li>
-<li><p>Symbol 是符号类</p></li>
-<li><p>Token 是词牌类</p></li>
-<li><p>Tag 是First集类</p></li>
+<li>光照问题</li>
+<li>表情姿态问题</li>
+<li>遮挡问题</li>
+<li>年龄变化</li>
 </ol>
-<h3 id="符号表类">符号表类</h3>
-<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_Od3GLVPUlM.png" class>
-<p><strong>什么时候要创建符号表？</strong></p>
+<h4 id="改进与尝试">改进与尝试</h4>
 <ol type="1">
-<li><p><code>CompUnit</code>时创建一个rootTable，其prev上层符号表为
-<code>null</code> </p></li>
-<li><p><code>FuncDef</code> 函数定义时</p></li>
-<li><p><code>MainFuncDef</code> 进入主函数int main时</p></li>
-<li><p><code>Block</code> 扫描到<code>&#123;</code>
-，且当前符号表的<code>defend</code>为<code>false</code>时</p></li>
-</ol>
-<p><strong>说明：</strong></p>
-<ol type="1">
-<li><p><code>table</code>类型为<code>HashMap</code>。<code>key</code>存储<code>Symbol</code>的<code>name</code>，<code>value</code>存储对应的<code>Symbol</code>
-</p></li>
-<li><p><code>prev</code> 类型为<code>SymbolTable</code>
-，上一层的符号表</p></li>
-<li><p><code>isFunc</code>
-用于判别此符号表是否为函数定义创建的表</p></li>
-<li><p><code>position</code>
-用于记录当前符号表在上一层符号表的环境位置，其值为这个符号表创建时，当前符号表<code>curTable</code>
-中<code>table</code>的size()</p>
-<p>（后面发现似乎并不需要这个属性，因为在错误处理的时候是递归过程中进行的）</p></li>
-<li><p><code>existReturn</code>
-用于判别当前符号表是函数时，是否存在<code>return</code> 语句。</p></li>
-<li><p><code>defend</code>
-只有在函数定义创建符号表的时候设为<code>true</code>
-，当进入函数定义的<code>Block</code>中时，不必再创建一个符号表了，因为在扫描到函数名称的时候就创建过了，之后设置为<code>false</code>
-意味着当前函数符号表已经进入到过其本身的<code>Block</code>中了</p></li>
-<li><p><code>funcName</code> 和<code>funcType</code>
-用于记录当前符号表(函数定义)的函数名称和函数类型.</p></li>
-</ol>
-<h3 id="符号类">符号类</h3>
-<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_fHo_eToku4.png" class>
-<p><strong>什么时候加入符号？</strong></p>
-<ol type="1">
-<li><p><code>ConstDef</code> 常量定义</p></li>
-<li><p><code>VarDef</code> 变量定义</p></li>
-<li><p><code>FuncDef</code>
-函数定义，加入到当前符号表中，一般是<code>rootTable</code></p></li>
-<li><p><code>FuncFParam</code> 函数形参，加入到当前函数符号表中</p></li>
-</ol>
-<p><strong>什么时候查询符号？</strong></p>
-<ol type="1">
-<li><p><code>Stmt</code> 中扫描到<code>LVal</code>
-时，是否改变常量</p></li>
-<li><p><code>LVal</code>
-中查询符号（普通变量，一维数组，二维数组）的维度；</p></li>
-<li><p><code>UnaryExp</code> 中查询符号（函数调用）的维度</p></li>
-</ol>
-<blockquote>
-<p>上述2/3查询的维度最终加入当前函数的实参列表中，用于错误处理，判断函数调用实参个数和类型(维度)是否匹配</p>
-</blockquote>
-<h1 id="错误处理">错误处理</h1>
-<ol type="1">
-<li><p>b类错误名字重定义：</p>
-<p>🧐下面这种也算错误？</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>e类错误：</strong> 函数中f(RParam) a[Exp] 所以说</p>
-<p>所以存在a(LVal加入当前函数)[Exp→LVal(<del><strong>加入当前函数</strong></del>)]</p>
-<p>因此在解读LVal时不应该盲目地将当前的LVal加入当前的函数实参paramMap中，例如
-</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">f(a[<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">f(a(<span class="number">0</span>)[(<span class="number">1</span>)b(<span class="number">0</span>)[(<span class="number">1</span>)<span class="number">1</span>(<span class="number">0</span>)](-<span class="number">1</span>)](-<span class="number">2</span>)[(-<span class="number">1</span>)i(<span class="number">0</span>)](-<span class="number">1</span>)); </span><br><span class="line">f(a[f(a[i])][<span class="number">0</span>]); <span class="comment">//内层函数调用类型出错</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>那是不是也意味着会有</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">const <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">a[f(n)];</span><br></pre></td></tr></table></figure>
-<p>但是这种没要求检测类型不匹配的问题；要求检测函数类型不匹配。</p>
-<p><strong>解决方法：</strong><del><strong>每当进入'['中，就会有widthreal++，说明在[]内时widthreal不为0，则只有当widthreal为零的时候才加入curParam的map中</strong></del><strong>。</strong></p>
-<p>上述解决方法不行，如果将widthReal设置成全局的，则嵌套调用时上一层的widthReal会丢失，所以想到的解决办法是，每当<strong>调用</strong>LVal的时候，就新建一个存储其...</p>
-<p>其实发现第一种解决方法也是可行的？：</p>
-<p><del><strong>每次扫描到LVal的IDENFR就设置为0,扫描到[就++,扫描到]就减一，但是如果inArray
-= 0 时扫描到]不要减一了，要保证其永远大于等于0，因为a[b[1]]此处inArray =
--1当a[b[1]][此处inArray为零，不正确了i]</strong></del></p>
-<p>总结：很简单的思路，当前curParam不等于null，<code>[</code>时inArray加一，<code>]</code>时inArray减一，只有当
-<code>inArray = 0</code>
-时加入当前的curParam的实参列表中即可.(inArray为全局变量.)</p>
-<p>上面的还是<strong>不对</strong>....例如
-<code>f(a[1][sum(a[0])])</code>
-在sum函数中的a[0]就加入不到sum的实参列表中了，所以在RParam中加一个私有参数inArray，而不是全局！</p>
-<p><strong>测试用例：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">h</span><span class="params">()</span>&#123;;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">int</span> v[<span class="number">3</span>], i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>])]))  &#123;&#125;; <span class="comment">//e错误</span></span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>][<span class="number">1</span>])]))  &#123;&#125;; <span class="comment">//正确</span></span><br><span class="line">  f(h());<span class="comment">//e错误</span></span><br><span class="line">  f(a[i]);<span class="comment">//e错误</span></span><br><span class="line">  f(a[i][i+<span class="number">1</span>]);<span class="comment">//正确</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>注意在构造测试用例的时候：Decl和FuncDef是先后顺序。</p></li>
-<li><p>对最终输出排序输出用TreeMap</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">TreeMap</span> <span class="variable">sotrdMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(errMap);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>对于循环嵌套，多个while需要判断是否是错误的。</p></li>
+<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
+<li>尝试深度学习等卷积神经网络特征提取</li>
+<li>尝试SVM等其他分类算法</li>
+<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>Compiler</category>
-      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>Face_recognition</tag>
+      </tags>
   </entry>
   <entry>
     <title>Markov Logic Network-2</title>
@@ -649,56 +699,6 @@ x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么
       </categories>
       <tags>
         <tag>Graph Modal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LBPH</title>
-    <url>/2022/10/18/LBPH/</url>
-    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
-<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
-<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
-<h4 id="计算lbp编码">计算LBP编码</h4>
-<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
-<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
-<h4 id="均匀化降维">均匀化降维</h4>
-<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
-<p>具体实现代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
-<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
-<h4 id="特征矩阵">特征矩阵</h4>
-<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
-<h4 id="直方图">直方图</h4>
-<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
-<h4 id="特征向量">特征向量</h4>
-<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
-<h4 id="人脸识别">人脸识别</h4>
-<ul>
-<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
-<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
-</ul>
-<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
-<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
-<h4 id="结果">结果</h4>
-<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
-<h3 id="难点与改进">难点与改进</h3>
-<h4 id="难点">难点</h4>
-<ol type="1">
-<li>光照问题</li>
-<li>表情姿态问题</li>
-<li>遮挡问题</li>
-<li>年龄变化</li>
-</ol>
-<h4 id="改进与尝试">改进与尝试</h4>
-<ol type="1">
-<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
-<li>尝试深度学习等卷积神经网络特征提取</li>
-<li>尝试SVM等其他分类算法</li>
-<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>Face_recognition</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,76 +1047,6 @@ D[i,j]=min_{i \leq k &lt; j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}
       </tags>
   </entry>
   <entry>
-    <title>Graph Modal and Gibbs Sampling</title>
-    <url>/2022/10/10/graph-modal/</url>
-    <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
-Gibbs Sampling </h1>
-<h2 id="graphical-modal">Graphical Modal</h2>
-<h3 id="相关术语">相关术语</h3>
-<p><strong>Clique: 连通子图</strong></p>
-<p><strong>Maximum Clique:最大连通子图</strong></p>
-<h3 id="mrf">MRF</h3>
-<p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
-<p><strong>MRF→Factor Graph</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
-<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
-<h2 id="training"><strong>Training</strong></h2>
-<img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
-<p><strong>如何将函数f描述为线性的？</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
-<p>如果y是连续的...</p>
-<p>这些函数f可以通过structured SVM求得。</p>
-<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
-<hr>
-<h2 id="gibbs-sampling">Gibbs Sampling</h2>
-<h2 id="inference">Inference</h2>
-<img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
-<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
-<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
-<p>由于已经得到<code>P(y|x)</code>
-的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code>
-成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code>
-是一个概率分布（横轴是x，纵轴是一组y）</p>
-<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
-<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
-<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code>
-几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code>
-是未知的，其他是已知的，通过剩余的y来计算概率。</p>
-<p> 接下去手算一个Gibbs Sampling:</p>
-<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
-<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
-<p><strong>注意：</strong> Random
-sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
-<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
-<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
-<p>通过迭代计算结果为：</p>
-<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
-<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong>
-所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
-<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
-<hr>
-<h3 id="markov-chain解释可以通过gibbs-sampling来替代pyx">Markov
-chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
-<img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
-<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
-<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
-<p>😭终于讲到markov了...</p>
-<p>如果任意一个<code>P(s|s')</code>
-不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
-<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
-<p>可见<span class="math inline">\(z^1,z^2,...,z^T\)</span>组成一个<strong>Markov
-chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
-chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
-的最大值对应的z即可。</p>
-]]></content>
-      <categories>
-        <category>Markov Logic Network</category>
-      </categories>
-      <tags>
-        <tag>Graph Modal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Compiler-词法分析-1</title>
     <url>/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h3 id="具体要求">具体要求</h3>
@@ -1270,16 +1200,73 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
-    <title>myfirst</title>
-    <url>/2022/09/06/myfirst/</url>
-    <content><![CDATA[<h3 id="test">test</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="image">image</h3>
-<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
-<p><strong>This is my first blog !😋</strong></p>
+    <title>Graph Modal and Gibbs Sampling</title>
+    <url>/2022/10/10/graph-modal/</url>
+    <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
+Gibbs Sampling </h1>
+<h2 id="graphical-modal">Graphical Modal</h2>
+<h3 id="相关术语">相关术语</h3>
+<p><strong>Clique: 连通子图</strong></p>
+<p><strong>Maximum Clique:最大连通子图</strong></p>
+<h3 id="mrf">MRF</h3>
+<p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
+<p><strong>MRF→Factor Graph</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
+<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
+<h2 id="training"><strong>Training</strong></h2>
+<img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
+<p><strong>如何将函数f描述为线性的？</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
+<p>如果y是连续的...</p>
+<p>这些函数f可以通过structured SVM求得。</p>
+<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
+<hr>
+<h2 id="gibbs-sampling">Gibbs Sampling</h2>
+<h2 id="inference">Inference</h2>
+<img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
+<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
+<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
+<p>由于已经得到<code>P(y|x)</code>
+的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code>
+成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code>
+是一个概率分布（横轴是x，纵轴是一组y）</p>
+<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
+<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
+<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code>
+几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code>
+是未知的，其他是已知的，通过剩余的y来计算概率。</p>
+<p> 接下去手算一个Gibbs Sampling:</p>
+<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
+<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
+<p><strong>注意：</strong> Random
+sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
+<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
+<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
+<p>通过迭代计算结果为：</p>
+<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
+<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong>
+所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
+<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
+<hr>
+<h3 id="markov-chain解释可以通过gibbs-sampling来替代pyx">Markov
+chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
+<img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
+<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
+<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
+<p>😭终于讲到markov了...</p>
+<p>如果任意一个<code>P(s|s')</code>
+不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
+<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
+<p>可见<span class="math inline">\(z^1,z^2,...,z^T\)</span>组成一个<strong>Markov
+chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
+chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
+的最大值对应的z即可。</p>
 ]]></content>
+      <categories>
+        <category>Markov Logic Network</category>
+      </categories>
       <tags>
-        <tag>test</tag>
+        <tag>Graph Modal</tag>
       </tags>
   </entry>
   <entry>
@@ -1307,6 +1294,43 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
+    <title>myfirst</title>
+    <url>/2022/09/06/myfirst/</url>
+    <content><![CDATA[<h3 id="test">test</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="image">image</h3>
+<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
+<p><strong>This is my first blog !😋</strong></p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue-day1</title>
+    <url>/2022/11/08/vue-day1/</url>
+    <content><![CDATA[<h1 id="day1">Day1</h1>
+<h4 id="实现todolist">实现TodoList</h4>
+<p>（虽然早在半年前都做过一遍了，很长时间也没用忘得差不多了，于是再重新系统地学一遍）</p>
+<p>1.写vue不要忘记加setup：<code>&lt;script setup&gt;</code></p>
+<p>2.<code>v-for="(item,index) in list"</code>
+其中的item和index的位置不能写错</p>
+<p>3.v-bind和v-model的区别：v-bind是单向绑定，v-model是双向绑定。</p>
+<p>4.原本用的是var变量，但是为了<strong>实时渲染，</strong>
+用的是<code>const list = ref([])</code></p>
+<p>5.删除数组中的某处索引<code>splice(index,i)</code>表示从index开始的i个数删掉</p>
+<p>6.可以发现计算属性和函数可以实现完全一样的功能。但是计算属性基于依赖的存储属性的值变化而重新计算，结果会被缓存，但是函数是每次都会都会重新执行。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed &#125; <span class="keyword">from</span> <span class="string">&#x27;@vue/reactivity&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> list = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> content0 = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> newTodo = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;content:&quot;</span>+newTodo.<span class="property">value</span>)</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">push</span>(newTodo.<span class="property">value</span>)</span><br><span class="line">    count.<span class="property">value</span>++;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list after:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeTodo</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;index:&quot;</span>+index);</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">splice</span>(index,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//其实就相当于computed:&#123;&#125;里的计算属性</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">type</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">return</span> count.<span class="property">value</span> &gt; <span class="number">10</span> ? <span class="number">2</span> : <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>TodoList<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;newTodo&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;input..&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;addTodo&quot;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;item&#125;&#125;<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;removeTodo(index)&quot;</span>&gt;</span>remove<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;type()&#125;&#125;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>同时安装mysql8和mysql5x</title>
     <url>/2022/11/12/%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5x/</url>
     <content><![CDATA[<h3 id="同时安装mysql8和mysql5">同时安装MYSQL8和MYSQL5</h3>
@@ -1331,27 +1355,176 @@ springboot项目</h1>
 ]]></content>
   </entry>
   <entry>
-    <title>vue-day1</title>
-    <url>/2022/11/08/vue-day1/</url>
-    <content><![CDATA[<h1 id="day1">Day1</h1>
-<h4 id="实现todolist">实现TodoList</h4>
-<p>（虽然早在半年前都做过一遍了，很长时间也没用忘得差不多了，于是再重新系统地学一遍）</p>
-<p>1.写vue不要忘记加setup：<code>&lt;script setup&gt;</code></p>
-<p>2.<code>v-for="(item,index) in list"</code>
-其中的item和index的位置不能写错</p>
-<p>3.v-bind和v-model的区别：v-bind是单向绑定，v-model是双向绑定。</p>
-<p>4.原本用的是var变量，但是为了<strong>实时渲染，</strong>
-用的是<code>const list = ref([])</code></p>
-<p>5.删除数组中的某处索引<code>splice(index,i)</code>表示从index开始的i个数删掉</p>
-<p>6.可以发现计算属性和函数可以实现完全一样的功能。但是计算属性基于依赖的存储属性的值变化而重新计算，结果会被缓存，但是函数是每次都会都会重新执行。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed &#125; <span class="keyword">from</span> <span class="string">&#x27;@vue/reactivity&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> list = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> content0 = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> newTodo = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;content:&quot;</span>+newTodo.<span class="property">value</span>)</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">push</span>(newTodo.<span class="property">value</span>)</span><br><span class="line">    count.<span class="property">value</span>++;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list after:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeTodo</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;index:&quot;</span>+index);</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">splice</span>(index,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//其实就相当于computed:&#123;&#125;里的计算属性</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">type</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">return</span> count.<span class="property">value</span> &gt; <span class="number">10</span> ? <span class="number">2</span> : <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>TodoList<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;newTodo&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;input..&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;addTodo&quot;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;item&#125;&#125;<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;removeTodo(index)&quot;</span>&gt;</span>remove<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;type()&#125;&#125;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+    <title>知识蒸馏</title>
+    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
+    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
+<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
+<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
+<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
+就是解析。</p>
+<p><strong>先介绍几个函数：</strong></p>
+<ol type="1">
+<li><p><strong>softmax</strong></p>
+<p>输出非负，0~1之间的概率分布</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可见t会使得概率分布更加平滑</p></li>
+<li><p><strong>log_softmax</strong></p>
+<p>输出全为负数</p></li>
+<li><p><strong>NLLLoss</strong></p>
+<p>输入：log_softmax(output),target</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
+<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
+的得分中也可以看出第三类得分最高。</p></li>
+<li><p><strong>CE交叉熵</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
+<p>其中<code>qk</code>
+是神经网络认为第k类的概率，并且是经过softmax的了。</p>
+<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
+<hr>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
+<p>可以发现CE可以一步到位。</p></li>
+</ol>
+<p><strong>softmax + nllloss = ce</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
+<p>上图：t = 1；下图：t = 10；</p>
+<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
+<p><strong>训练Teacher-Student网络</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
+<p><strong>说明：</strong></p>
+<p><code>p</code> 是标准答案</p>
+<p><code>q</code> 是学生的答案</p>
+<p><code>q'</code> 是老师的带有解析的答案</p>
+<p><code>q''</code>
+是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
+<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
+因为p是<code>one-hot</code> 的</p>
+<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
+<p>最后minimize两个Loss之和</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
+<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
+loss</strong></p>
+<p><strong>结果：</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
+<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
+不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>非线性拟合</title>
+    <url>/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<h3 id="第一小题">（1）第一小题</h3>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/811a2ca30ddc50855736dfc987a8d78.png" class>
+<h3 id="主要思路">主要思路：</h3>
+<ol type="1">
+<li>先按规定生成数据，并随机选取采样的点【设置随机种子，具有可比性】；</li>
+<li>对其分别用curve_fit和leastsq进行拟合。</li>
+<li>并对不同的h噪声于N采用点的数量多次拟合，得出结论。</li>
+</ol>
+<p><strong>结论：</strong>
+采样点过少拟合的误差很大，选取适当的采样点以及噪声。</p>
+<h4 id="初始化值的影响针对leastsq拟合">初始化值的影响（针对leastsq拟合）</h4>
+<ol type="1">
+<li>迭代次数会受到影响，有些时候回出现找不到最优解的情况，即Runtime
+error。</li>
+<li>若全为零，则无法收敛。【不清楚具体原因】</li>
+</ol>
+<p><strong>PS</strong>：结果中拟合得到的六个数分别对应：w1,w2,a1,a2,b1,b2.</p>
+<hr>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_xrO0vWpXC8.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [<span class="number">2.14069954</span> <span class="number">0.09444333</span> <span class="number">0.80681967</span> <span class="number">2.54152869</span> <span class="number">1.4323823</span>  <span class="number">0.19961187</span>]</span><br><span class="line">rmseTrain: <span class="number">0.26232178776291626</span></span><br><span class="line">rmseTest: <span class="number">0.18205567968308098</span></span><br><span class="line">leastsq拟合: [-<span class="number">3.87720452</span> -<span class="number">1.86011704</span>  <span class="number">1.11854247</span>  <span class="number">1.16788575</span> -<span class="number">1.04915769</span>  <span class="number">0.79268749</span>]</span><br><span class="line">rmseTrain: <span class="number">0.26429049990284564</span></span><br><span class="line">rmseTest: <span class="number">0.18608879973399017</span></span><br></pre></td></tr></table></figure>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_TujqvE5XI3.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [ <span class="number">0.2408062</span>   <span class="number">2.91612327</span>  <span class="number">1.23109954</span> -<span class="number">0.03553431</span>  <span class="number">0.45438827</span>  <span class="number">2.25150756</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2761896128805953</span></span><br><span class="line">rmseTest: <span class="number">0.17399649531553602</span></span><br><span class="line">leastsq拟合: [ -<span class="number">2.17240752</span>  <span class="number">10.4348742</span>    <span class="number">0.87428228</span> -<span class="number">30.76492902</span>  -<span class="number">1.42103926</span></span><br><span class="line">  -<span class="number">0.97720794</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27848961091065344</span></span><br><span class="line">rmseTest: <span class="number">0.1737385154786153</span></span><br></pre></td></tr></table></figure>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_mFEWpstNXJ.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [-<span class="number">0.32623604</span>  <span class="number">2.15315625</span>  <span class="number">1.41562053</span>  <span class="number">1.12582623</span>  <span class="number">0.50731064</span>  <span class="number">1.0224723</span> ]</span><br><span class="line">rmseTrain: <span class="number">0.282580308684162</span></span><br><span class="line">rmseTest: <span class="number">0.31526037040858185</span></span><br><span class="line">leastsq拟合: [ -<span class="number">69.65799634</span>   -<span class="number">2.95866311</span> -<span class="number">109.80769737</span>    <span class="number">0.86341004</span>  <span class="number">168.29283316</span></span><br><span class="line">   -<span class="number">1.53932051</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2830336972922693</span></span><br><span class="line">rmseTest: <span class="number">0.3147838987502938</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="第二小题">(2)第二小题</h3>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/4324816e032e055e860d3f8ffe882aa.png" class>
+<p>和第一小题相似的思路，进行求解。此题我用的都是leastsq进行求解。</p>
+<p><strong>结论：</strong>
+当超参数K在超过20以后，过拟合的风险很大，在很多次情况下都出现了最后发散的情况，且通过分析结果可以发现最优解常常出现在K=15左右。</p>
+<p><strong>PS</strong>：结果中拟合得到的矩阵分别对应K个参数。最终求总体最优解K的时候，K遍历了1~30.。</p>
+<p>【h=0.3,N=100】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_mUY5BGuJFy.png" class>
+<p>K = 15的时候其对应的参数值为（在所有的图中最优）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">7.90943650e-01</span> -<span class="number">6.07790255e+00</span>  <span class="number">3.40089032e+01</span> -<span class="number">8.23686304e+01</span></span><br><span class="line">  <span class="number">1.05477246e+02</span> -<span class="number">7.23628142e+01</span>  <span class="number">1.95321072e+01</span>  <span class="number">5.57225184e+00</span></span><br><span class="line"> -<span class="number">4.12774052e+00</span> -<span class="number">1.00151354e+00</span>  <span class="number">1.66736526e+00</span> -<span class="number">6.90740502e-01</span></span><br><span class="line">  <span class="number">1.45205493e-01</span> -<span class="number">1.59276567e-02</span>  <span class="number">7.27046559e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2542274166735575</span></span><br><span class="line">rmseTest: <span class="number">0.3192894171457426</span></span><br></pre></td></tr></table></figure>
+<p>总体最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.2528564533183719</span>,K=<span class="number">19</span></span><br></pre></td></tr></table></figure>
+<p>【h=0.3,N=300】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_ashXYEC0CV.png" class>
+<p>K = 10的时候最优:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">5.12963557e-01</span>  <span class="number">1.40887396e+00</span> -<span class="number">1.10781790e+01</span>  <span class="number">3.22315658e+01</span></span><br><span class="line"> -<span class="number">4.44401511e+01</span>  <span class="number">3.33253262e+01</span> -<span class="number">1.44297097e+01</span>  <span class="number">3.60636603e+00</span></span><br><span class="line"> -<span class="number">4.83266327e-01</span>  <span class="number">2.68884577e-02</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27528636920045013</span></span><br><span class="line">rmseTest: <span class="number">0.25770065713597756</span></span><br></pre></td></tr></table></figure>
+<p>总体最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.2812570739349669</span>,K=<span class="number">13</span></span><br></pre></td></tr></table></figure>
+<p>【h=0.1,N=100】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_kqrDWVsxEb.png" class>
+<p>K = 15的时候最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">6.60552408e-01</span> -<span class="number">4.02527344e+00</span>  <span class="number">2.30410493e+01</span> -<span class="number">5.46928875e+01</span></span><br><span class="line">  <span class="number">6.69070375e+01</span> -<span class="number">4.29674450e+01</span>  <span class="number">1.15661941e+01</span>  <span class="number">3.10549348e-01</span></span><br><span class="line">  <span class="number">1.28865085e+00</span> -<span class="number">2.74964237e+00</span>  <span class="number">1.70011749e+00</span> -<span class="number">5.49201917e-01</span></span><br><span class="line">  <span class="number">1.01626117e-01</span> -<span class="number">1.02609900e-02</span>  <span class="number">4.40780742e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.07841776983416013</span></span><br><span class="line">rmseTest: <span class="number">0.06016607491515813</span></span><br></pre></td></tr></table></figure>
+<p>总体最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.07898375450702452</span>,K=<span class="number">13</span></span><br></pre></td></tr></table></figure>
+<p>【h=0.1,N=300】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_q663F7QS-M.png" class>
+<p>K=15的时候最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">3.96417862e-01</span>  <span class="number">1.27325013e+00</span> -<span class="number">4.73253349e+00</span>  <span class="number">8.70217397e+00</span></span><br><span class="line"> -<span class="number">2.30403125e+00</span> -<span class="number">1.52860038e+01</span>  <span class="number">2.54845292e+01</span> -<span class="number">1.89155325e+01</span></span><br><span class="line">  <span class="number">6.98733737e+00</span> -<span class="number">5.94285184e-01</span> -<span class="number">5.72936217e-01</span>  <span class="number">2.64631449e-01</span></span><br><span class="line"> -<span class="number">5.28312267e-02</span>  <span class="number">5.26214966e-03</span> -<span class="number">2.11610332e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27732017692692773</span></span><br><span class="line">rmseTest: <span class="number">0.30649315630282625</span></span><br></pre></td></tr></table></figure>
+<p>总体最优：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: RMSE=<span class="number">0.09689352955521495</span>,K=<span class="number">15</span></span><br></pre></td></tr></table></figure>
+<h3 id="第三小题">(3)第三小题</h3>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/ed0579b360fb1f1f6de5d862a6d94b7.png" class>
+<p>这题需要注意的是其参数的个数总共应该有<strong>K
+*(M+1)+2</strong>个，所以在初始化参数矩阵的时候需要设置成对应的维数，且第<code>t[K*(M+1)], t[K*(M+1)+1]</code>分别对应的是<code>ai,bi</code>.</p>
+<p>此题遍历了K（1~5），M（1~5）。在拟合过程中，往往已经到达maxfev了还没有得到最优解，所以将maxfev设置成5000，但是到后面内存会炸...
+...因此图也就只画了最优解：</p>
+<p>【h=0.2,N=100】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_dtfB764PkE.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.17873822672400802</span>,K=<span class="number">4</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">5.23038785e+01</span>  <span class="number">1.18052581e+02</span>  <span class="number">5.45720103e+01</span>  <span class="number">6.73970159e+01</span></span><br><span class="line"> -<span class="number">1.97437971e+02</span> -<span class="number">1.42252056e+02</span> -<span class="number">5.82180336e+01</span> -<span class="number">4.27695564e+01</span></span><br><span class="line">  <span class="number">9.18709021e+01</span> -<span class="number">1.74421852e+02</span>  <span class="number">8.30403724e+01</span> -<span class="number">3.78627087e+01</span></span><br><span class="line">  <span class="number">2.28423291e+02</span>  <span class="number">4.96400605e+01</span>  <span class="number">5.97721900e+02</span>  <span class="number">1.00678402e+02</span></span><br><span class="line">  <span class="number">1.23770905e+01</span> -<span class="number">4.21183888e+02</span> -<span class="number">3.21158789e+01</span> -<span class="number">2.94345001e+02</span></span><br><span class="line"> -<span class="number">2.27769369e+00</span> -<span class="number">1.29106345e+00</span> -<span class="number">8.45080274e-02</span> -<span class="number">2.97361883e-01</span></span><br><span class="line">  <span class="number">4.17302005e-01</span>]</span><br></pre></td></tr></table></figure>
+<p>【h=0.2,N=300】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_4zj_j1qf9h.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.18118763840270755</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [ <span class="number">1.06746926</span> -<span class="number">0.23354976</span>  <span class="number">2.17369779</span> -<span class="number">2.09387451</span>  <span class="number">0.84513304</span>  <span class="number">0.33436772</span></span><br><span class="line">  <span class="number">0.87670918</span> -<span class="number">0.6949209</span>   <span class="number">0.5154138</span>  -<span class="number">1.11487105</span>]</span><br></pre></td></tr></table></figure>
+<p>【h=0.2,N=1000】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_rnAgHWl7jh.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.19286880337431161</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [ -<span class="number">8.09035471</span>  -<span class="number">9.53448948</span> -<span class="number">29.17412061</span>  <span class="number">21.14867643</span> -<span class="number">16.45334841</span></span><br><span class="line">  -<span class="number">2.31546224</span>  -<span class="number">1.34575906</span>   <span class="number">0.21633296</span>  -<span class="number">1.31420103</span>  -<span class="number">0.24180187</span></span><br></pre></td></tr></table></figure>
+<p>【h=0.5，N=100】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_2o_kgBQkW_.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.43966680795335106</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">2.67613022e+02</span>  <span class="number">4.41099471e+02</span> -<span class="number">5.74683063e+02</span>  <span class="number">1.02026656e+03</span></span><br><span class="line"> -<span class="number">5.72899644e+02</span> -<span class="number">7.29986181e+00</span> -<span class="number">7.36054845e-01</span>  <span class="number">1.39984394e+00</span></span><br><span class="line"> -<span class="number">7.81911683e-01</span> -<span class="number">4.37508983e-01</span>]</span><br></pre></td></tr></table></figure>
+<p>【h=0.5,N=300】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_Hj-adgh5qc.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.4681035667876177</span>,K=<span class="number">2</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [<span class="number">299.78797515</span>  <span class="number">28.87566283</span> -<span class="number">49.79908816</span>   <span class="number">8.91462082</span>  -<span class="number">1.8215882</span></span><br><span class="line"> <span class="number">298.53012447</span>  <span class="number">27.46238369</span> -<span class="number">81.20025633</span>   <span class="number">9.62740177</span>   <span class="number">2.38413704</span></span><br><span class="line">  <span class="number">39.09115188</span>  <span class="number">15.30831486</span>   <span class="number">1.46089238</span>   <span class="number">0.5924728</span>    <span class="number">1.19783084</span>]</span><br></pre></td></tr></table></figure>
+<p>【h=0.5,N=1000】</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_xsQq7RS6za.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.489592101202918</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">7.69013200e+03</span> -<span class="number">1.79048782e+05</span>  <span class="number">2.63642290e+05</span> -<span class="number">2.51621936e+05</span></span><br><span class="line">  <span class="number">4.04690946e+04</span> -<span class="number">1.03663719e+01</span> -<span class="number">2.47965800e+00</span>  <span class="number">2.16332958e-01</span></span><br><span class="line"> -<span class="number">1.31420103e+00</span> -<span class="number">2.41801865e-01</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>结论：</strong>
+当采样点高到1000个的时候，拟合曲线极其平滑，且K与M大多分别取在1和4附近，能得到最优解。噪声越高，也会使得RMSE变高，精度下降。</p>
+<hr>
+<h3 id="第四小题">（4）第四小题</h3>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/7914af659a59fd93567170c1764c20d.png" class>
+<p>噪声和采样点数的影响与前三小题类似。</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_IsiU7-mIoB.png" class>
+<p>curve_fit拟合对应的分别为a,b,c.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [<span class="number">0.38197691</span> <span class="number">0.60783395</span> <span class="number">0.26275028</span>]</span><br><span class="line">rmseTrain: <span class="number">0.20056951038840645</span></span><br><span class="line">rmseTest: <span class="number">0.20317551977817713</span></span><br></pre></td></tr></table></figure>
+<p>若将b设置成10000，则有</p>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_zu_dAcPMlW.png" class>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [-<span class="number">0.01377563</span>  <span class="number">0.36384608</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2993405343270346</span></span><br><span class="line">rmseTest: <span class="number">0.29352661180630557</span></span><br></pre></td></tr></table></figure>
+<p>由结果知：a = -0.01377563,c =
+0.36384608.且RMSE在测试集和训练集上均<strong>增加</strong>。</p>
+<hr>
+<h3 id="第五小题">(5)第五小题</h3>
+<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/de62783470ea9d93554412c0db0483e.png" class>
+<p>对于（2）-（4）的三种模型，选取验证集上RMSE最小的，计算对应模型在测试集上的RMSE：</p>
+<p>设置的h=0.3,N=500</p>
+<p>结果如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">-------Model1------</span><br><span class="line">rmseTrain: <span class="number">0.290052586241592</span></span><br><span class="line">rmseCheck: <span class="number">0.27685893060069033</span></span><br><span class="line">rmseTest: <span class="number">0.29482945312589964</span></span><br><span class="line">-------Model2------</span><br><span class="line">rmseTrain: <span class="number">0.5209075125582714</span></span><br><span class="line">rmseCheck: <span class="number">0.509217190063768</span></span><br><span class="line">rmseTest: <span class="number">0.5711414271483303</span></span><br><span class="line">-------Model3------</span><br><span class="line">rmseTrain: <span class="number">0.2961863452096645</span></span><br><span class="line">rmseCheck: <span class="number">0.2863578974670555</span></span><br><span class="line">rmseTest: <span class="number">0.3048874158254555</span></span><br></pre></td></tr></table></figure>
+<p>可见第二小题对应的模型比第四小题的模型略胜一筹，第三小题的模型相对误差较大。</p>
 ]]></content>
       <categories>
-        <category>vue</category>
+        <category>math</category>
       </categories>
       <tags>
-        <tag>vue</tag>
-        <tag>js</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1531,179 +1704,6 @@ y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>非线性拟合</title>
-    <url>/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</url>
-    <content><![CDATA[<h3 id="第一小题">（1）第一小题</h3>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/811a2ca30ddc50855736dfc987a8d78.png" class>
-<h3 id="主要思路">主要思路：</h3>
-<ol type="1">
-<li>先按规定生成数据，并随机选取采样的点【设置随机种子，具有可比性】；</li>
-<li>对其分别用curve_fit和leastsq进行拟合。</li>
-<li>并对不同的h噪声于N采用点的数量多次拟合，得出结论。</li>
-</ol>
-<p><strong>结论：</strong>
-采样点过少拟合的误差很大，选取适当的采样点以及噪声。</p>
-<h4 id="初始化值的影响针对leastsq拟合">初始化值的影响（针对leastsq拟合）</h4>
-<ol type="1">
-<li>迭代次数会受到影响，有些时候回出现找不到最优解的情况，即Runtime
-error。</li>
-<li>若全为零，则无法收敛。【不清楚具体原因】</li>
-</ol>
-<p><strong>PS</strong>：结果中拟合得到的六个数分别对应：w1,w2,a1,a2,b1,b2.</p>
-<hr>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_xrO0vWpXC8.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [<span class="number">2.14069954</span> <span class="number">0.09444333</span> <span class="number">0.80681967</span> <span class="number">2.54152869</span> <span class="number">1.4323823</span>  <span class="number">0.19961187</span>]</span><br><span class="line">rmseTrain: <span class="number">0.26232178776291626</span></span><br><span class="line">rmseTest: <span class="number">0.18205567968308098</span></span><br><span class="line">leastsq拟合: [-<span class="number">3.87720452</span> -<span class="number">1.86011704</span>  <span class="number">1.11854247</span>  <span class="number">1.16788575</span> -<span class="number">1.04915769</span>  <span class="number">0.79268749</span>]</span><br><span class="line">rmseTrain: <span class="number">0.26429049990284564</span></span><br><span class="line">rmseTest: <span class="number">0.18608879973399017</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_TujqvE5XI3.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [ <span class="number">0.2408062</span>   <span class="number">2.91612327</span>  <span class="number">1.23109954</span> -<span class="number">0.03553431</span>  <span class="number">0.45438827</span>  <span class="number">2.25150756</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2761896128805953</span></span><br><span class="line">rmseTest: <span class="number">0.17399649531553602</span></span><br><span class="line">leastsq拟合: [ -<span class="number">2.17240752</span>  <span class="number">10.4348742</span>    <span class="number">0.87428228</span> -<span class="number">30.76492902</span>  -<span class="number">1.42103926</span></span><br><span class="line">  -<span class="number">0.97720794</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27848961091065344</span></span><br><span class="line">rmseTest: <span class="number">0.1737385154786153</span></span><br></pre></td></tr></table></figure>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_mFEWpstNXJ.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [-<span class="number">0.32623604</span>  <span class="number">2.15315625</span>  <span class="number">1.41562053</span>  <span class="number">1.12582623</span>  <span class="number">0.50731064</span>  <span class="number">1.0224723</span> ]</span><br><span class="line">rmseTrain: <span class="number">0.282580308684162</span></span><br><span class="line">rmseTest: <span class="number">0.31526037040858185</span></span><br><span class="line">leastsq拟合: [ -<span class="number">69.65799634</span>   -<span class="number">2.95866311</span> -<span class="number">109.80769737</span>    <span class="number">0.86341004</span>  <span class="number">168.29283316</span></span><br><span class="line">   -<span class="number">1.53932051</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2830336972922693</span></span><br><span class="line">rmseTest: <span class="number">0.3147838987502938</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="第二小题">(2)第二小题</h3>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/4324816e032e055e860d3f8ffe882aa.png" class>
-<p>和第一小题相似的思路，进行求解。此题我用的都是leastsq进行求解。</p>
-<p><strong>结论：</strong>
-当超参数K在超过20以后，过拟合的风险很大，在很多次情况下都出现了最后发散的情况，且通过分析结果可以发现最优解常常出现在K=15左右。</p>
-<p><strong>PS</strong>：结果中拟合得到的矩阵分别对应K个参数。最终求总体最优解K的时候，K遍历了1~30.。</p>
-<p>【h=0.3,N=100】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_mUY5BGuJFy.png" class>
-<p>K = 15的时候其对应的参数值为（在所有的图中最优）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">7.90943650e-01</span> -<span class="number">6.07790255e+00</span>  <span class="number">3.40089032e+01</span> -<span class="number">8.23686304e+01</span></span><br><span class="line">  <span class="number">1.05477246e+02</span> -<span class="number">7.23628142e+01</span>  <span class="number">1.95321072e+01</span>  <span class="number">5.57225184e+00</span></span><br><span class="line"> -<span class="number">4.12774052e+00</span> -<span class="number">1.00151354e+00</span>  <span class="number">1.66736526e+00</span> -<span class="number">6.90740502e-01</span></span><br><span class="line">  <span class="number">1.45205493e-01</span> -<span class="number">1.59276567e-02</span>  <span class="number">7.27046559e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2542274166735575</span></span><br><span class="line">rmseTest: <span class="number">0.3192894171457426</span></span><br></pre></td></tr></table></figure>
-<p>总体最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.2528564533183719</span>,K=<span class="number">19</span></span><br></pre></td></tr></table></figure>
-<p>【h=0.3,N=300】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_ashXYEC0CV.png" class>
-<p>K = 10的时候最优:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">5.12963557e-01</span>  <span class="number">1.40887396e+00</span> -<span class="number">1.10781790e+01</span>  <span class="number">3.22315658e+01</span></span><br><span class="line"> -<span class="number">4.44401511e+01</span>  <span class="number">3.33253262e+01</span> -<span class="number">1.44297097e+01</span>  <span class="number">3.60636603e+00</span></span><br><span class="line"> -<span class="number">4.83266327e-01</span>  <span class="number">2.68884577e-02</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27528636920045013</span></span><br><span class="line">rmseTest: <span class="number">0.25770065713597756</span></span><br></pre></td></tr></table></figure>
-<p>总体最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.2812570739349669</span>,K=<span class="number">13</span></span><br></pre></td></tr></table></figure>
-<p>【h=0.1,N=100】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_kqrDWVsxEb.png" class>
-<p>K = 15的时候最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">6.60552408e-01</span> -<span class="number">4.02527344e+00</span>  <span class="number">2.30410493e+01</span> -<span class="number">5.46928875e+01</span></span><br><span class="line">  <span class="number">6.69070375e+01</span> -<span class="number">4.29674450e+01</span>  <span class="number">1.15661941e+01</span>  <span class="number">3.10549348e-01</span></span><br><span class="line">  <span class="number">1.28865085e+00</span> -<span class="number">2.74964237e+00</span>  <span class="number">1.70011749e+00</span> -<span class="number">5.49201917e-01</span></span><br><span class="line">  <span class="number">1.01626117e-01</span> -<span class="number">1.02609900e-02</span>  <span class="number">4.40780742e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.07841776983416013</span></span><br><span class="line">rmseTest: <span class="number">0.06016607491515813</span></span><br></pre></td></tr></table></figure>
-<p>总体最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: trainRMSE=<span class="number">0.07898375450702452</span>,K=<span class="number">13</span></span><br></pre></td></tr></table></figure>
-<p>【h=0.1,N=300】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_q663F7QS-M.png" class>
-<p>K=15的时候最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">leastsq拟合: [ <span class="number">3.96417862e-01</span>  <span class="number">1.27325013e+00</span> -<span class="number">4.73253349e+00</span>  <span class="number">8.70217397e+00</span></span><br><span class="line"> -<span class="number">2.30403125e+00</span> -<span class="number">1.52860038e+01</span>  <span class="number">2.54845292e+01</span> -<span class="number">1.89155325e+01</span></span><br><span class="line">  <span class="number">6.98733737e+00</span> -<span class="number">5.94285184e-01</span> -<span class="number">5.72936217e-01</span>  <span class="number">2.64631449e-01</span></span><br><span class="line"> -<span class="number">5.28312267e-02</span>  <span class="number">5.26214966e-03</span> -<span class="number">2.11610332e-04</span>]</span><br><span class="line">rmseTrain: <span class="number">0.27732017692692773</span></span><br><span class="line">rmseTest: <span class="number">0.30649315630282625</span></span><br></pre></td></tr></table></figure>
-<p>总体最优：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result: RMSE=<span class="number">0.09689352955521495</span>,K=<span class="number">15</span></span><br></pre></td></tr></table></figure>
-<h3 id="第三小题">(3)第三小题</h3>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/ed0579b360fb1f1f6de5d862a6d94b7.png" class>
-<p>这题需要注意的是其参数的个数总共应该有<strong>K
-*(M+1)+2</strong>个，所以在初始化参数矩阵的时候需要设置成对应的维数，且第<code>t[K*(M+1)], t[K*(M+1)+1]</code>分别对应的是<code>ai,bi</code>.</p>
-<p>此题遍历了K（1~5），M（1~5）。在拟合过程中，往往已经到达maxfev了还没有得到最优解，所以将maxfev设置成5000，但是到后面内存会炸...
-...因此图也就只画了最优解：</p>
-<p>【h=0.2,N=100】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_dtfB764PkE.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.17873822672400802</span>,K=<span class="number">4</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">5.23038785e+01</span>  <span class="number">1.18052581e+02</span>  <span class="number">5.45720103e+01</span>  <span class="number">6.73970159e+01</span></span><br><span class="line"> -<span class="number">1.97437971e+02</span> -<span class="number">1.42252056e+02</span> -<span class="number">5.82180336e+01</span> -<span class="number">4.27695564e+01</span></span><br><span class="line">  <span class="number">9.18709021e+01</span> -<span class="number">1.74421852e+02</span>  <span class="number">8.30403724e+01</span> -<span class="number">3.78627087e+01</span></span><br><span class="line">  <span class="number">2.28423291e+02</span>  <span class="number">4.96400605e+01</span>  <span class="number">5.97721900e+02</span>  <span class="number">1.00678402e+02</span></span><br><span class="line">  <span class="number">1.23770905e+01</span> -<span class="number">4.21183888e+02</span> -<span class="number">3.21158789e+01</span> -<span class="number">2.94345001e+02</span></span><br><span class="line"> -<span class="number">2.27769369e+00</span> -<span class="number">1.29106345e+00</span> -<span class="number">8.45080274e-02</span> -<span class="number">2.97361883e-01</span></span><br><span class="line">  <span class="number">4.17302005e-01</span>]</span><br></pre></td></tr></table></figure>
-<p>【h=0.2,N=300】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_4zj_j1qf9h.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.18118763840270755</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [ <span class="number">1.06746926</span> -<span class="number">0.23354976</span>  <span class="number">2.17369779</span> -<span class="number">2.09387451</span>  <span class="number">0.84513304</span>  <span class="number">0.33436772</span></span><br><span class="line">  <span class="number">0.87670918</span> -<span class="number">0.6949209</span>   <span class="number">0.5154138</span>  -<span class="number">1.11487105</span>]</span><br></pre></td></tr></table></figure>
-<p>【h=0.2,N=1000】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_rnAgHWl7jh.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.19286880337431161</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [ -<span class="number">8.09035471</span>  -<span class="number">9.53448948</span> -<span class="number">29.17412061</span>  <span class="number">21.14867643</span> -<span class="number">16.45334841</span></span><br><span class="line">  -<span class="number">2.31546224</span>  -<span class="number">1.34575906</span>   <span class="number">0.21633296</span>  -<span class="number">1.31420103</span>  -<span class="number">0.24180187</span></span><br></pre></td></tr></table></figure>
-<p>【h=0.5，N=100】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_2o_kgBQkW_.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.43966680795335106</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">2.67613022e+02</span>  <span class="number">4.41099471e+02</span> -<span class="number">5.74683063e+02</span>  <span class="number">1.02026656e+03</span></span><br><span class="line"> -<span class="number">5.72899644e+02</span> -<span class="number">7.29986181e+00</span> -<span class="number">7.36054845e-01</span>  <span class="number">1.39984394e+00</span></span><br><span class="line"> -<span class="number">7.81911683e-01</span> -<span class="number">4.37508983e-01</span>]</span><br></pre></td></tr></table></figure>
-<p>【h=0.5,N=300】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_Hj-adgh5qc.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.4681035667876177</span>,K=<span class="number">2</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [<span class="number">299.78797515</span>  <span class="number">28.87566283</span> -<span class="number">49.79908816</span>   <span class="number">8.91462082</span>  -<span class="number">1.8215882</span></span><br><span class="line"> <span class="number">298.53012447</span>  <span class="number">27.46238369</span> -<span class="number">81.20025633</span>   <span class="number">9.62740177</span>   <span class="number">2.38413704</span></span><br><span class="line">  <span class="number">39.09115188</span>  <span class="number">15.30831486</span>   <span class="number">1.46089238</span>   <span class="number">0.5924728</span>    <span class="number">1.19783084</span>]</span><br></pre></td></tr></table></figure>
-<p>【h=0.5,N=1000】</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_xsQq7RS6za.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optimal result:<span class="number">0.489592101202918</span>,K=<span class="number">1</span>,M=<span class="number">4</span></span><br><span class="line">拟合参数为(wij,ai,bi): [-<span class="number">7.69013200e+03</span> -<span class="number">1.79048782e+05</span>  <span class="number">2.63642290e+05</span> -<span class="number">2.51621936e+05</span></span><br><span class="line">  <span class="number">4.04690946e+04</span> -<span class="number">1.03663719e+01</span> -<span class="number">2.47965800e+00</span>  <span class="number">2.16332958e-01</span></span><br><span class="line"> -<span class="number">1.31420103e+00</span> -<span class="number">2.41801865e-01</span>]</span><br></pre></td></tr></table></figure>
-<p><strong>结论：</strong>
-当采样点高到1000个的时候，拟合曲线极其平滑，且K与M大多分别取在1和4附近，能得到最优解。噪声越高，也会使得RMSE变高，精度下降。</p>
-<hr>
-<h3 id="第四小题">（4）第四小题</h3>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/7914af659a59fd93567170c1764c20d.png" class>
-<p>噪声和采样点数的影响与前三小题类似。</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_IsiU7-mIoB.png" class>
-<p>curve_fit拟合对应的分别为a,b,c.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [<span class="number">0.38197691</span> <span class="number">0.60783395</span> <span class="number">0.26275028</span>]</span><br><span class="line">rmseTrain: <span class="number">0.20056951038840645</span></span><br><span class="line">rmseTest: <span class="number">0.20317551977817713</span></span><br></pre></td></tr></table></figure>
-<p>若将b设置成10000，则有</p>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/image_zu_dAcPMlW.png" class>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">curve_fit拟合: [-<span class="number">0.01377563</span>  <span class="number">0.36384608</span>]</span><br><span class="line">rmseTrain: <span class="number">0.2993405343270346</span></span><br><span class="line">rmseTest: <span class="number">0.29352661180630557</span></span><br></pre></td></tr></table></figure>
-<p>由结果知：a = -0.01377563,c =
-0.36384608.且RMSE在测试集和训练集上均<strong>增加</strong>。</p>
-<hr>
-<h3 id="第五小题">(5)第五小题</h3>
-<img data-src="/2022/11/15/%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/de62783470ea9d93554412c0db0483e.png" class>
-<p>对于（2）-（4）的三种模型，选取验证集上RMSE最小的，计算对应模型在测试集上的RMSE：</p>
-<p>设置的h=0.3,N=500</p>
-<p>结果如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">-------Model1------</span><br><span class="line">rmseTrain: <span class="number">0.290052586241592</span></span><br><span class="line">rmseCheck: <span class="number">0.27685893060069033</span></span><br><span class="line">rmseTest: <span class="number">0.29482945312589964</span></span><br><span class="line">-------Model2------</span><br><span class="line">rmseTrain: <span class="number">0.5209075125582714</span></span><br><span class="line">rmseCheck: <span class="number">0.509217190063768</span></span><br><span class="line">rmseTest: <span class="number">0.5711414271483303</span></span><br><span class="line">-------Model3------</span><br><span class="line">rmseTrain: <span class="number">0.2961863452096645</span></span><br><span class="line">rmseCheck: <span class="number">0.2863578974670555</span></span><br><span class="line">rmseTest: <span class="number">0.3048874158254555</span></span><br></pre></td></tr></table></figure>
-<p>可见第二小题对应的模型比第四小题的模型略胜一筹，第三小题的模型相对误差较大。</p>
-]]></content>
-      <categories>
-        <category>math</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>知识蒸馏</title>
-    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
-    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
-<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
-<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
-<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
-就是解析。</p>
-<p><strong>先介绍几个函数：</strong></p>
-<ol type="1">
-<li><p><strong>softmax</strong></p>
-<p>输出非负，0~1之间的概率分布</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可见t会使得概率分布更加平滑</p></li>
-<li><p><strong>log_softmax</strong></p>
-<p>输出全为负数</p></li>
-<li><p><strong>NLLLoss</strong></p>
-<p>输入：log_softmax(output),target</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
-<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
-的得分中也可以看出第三类得分最高。</p></li>
-<li><p><strong>CE交叉熵</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
-<p>其中<code>qk</code>
-是神经网络认为第k类的概率，并且是经过softmax的了。</p>
-<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
-<hr>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
-<p>可以发现CE可以一步到位。</p></li>
-</ol>
-<p><strong>softmax + nllloss = ce</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
-<p>上图：t = 1；下图：t = 10；</p>
-<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
-<p><strong>训练Teacher-Student网络</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
-<p><strong>说明：</strong></p>
-<p><code>p</code> 是标准答案</p>
-<p><code>q</code> 是学生的答案</p>
-<p><code>q'</code> 是老师的带有解析的答案</p>
-<p><code>q''</code>
-是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
-<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
-因为p是<code>one-hot</code> 的</p>
-<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
-<p>最后minimize两个Loss之和</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
-<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
-loss</strong></p>
-<p><strong>结果：</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
-<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
-不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
