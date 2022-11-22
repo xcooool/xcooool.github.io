@@ -26,6 +26,130 @@
       </tags>
   </entry>
   <entry>
+    <title>BP神经网络</title>
+    <url>/2022/10/19/BP/</url>
+    <content><![CDATA[<h2 id="感知机perceptron">感知机Perceptron</h2>
+<p>由两层神经元组成，输入层接收信号传递给输出层，输出层是M-P神经元，称为阈值逻辑单元。实际上就是阶跃函数或者是Sigmoid函数。</p>
+<h4 id="特点">特点：</h4>
+<ol type="1">
+<li><p>仅仅只有输入层和输出层</p></li>
+<li><p>不能解决非线性可分问题（例如最简单的异或问题）</p></li>
+</ol>
+<h2 id="多层功能神经元">多层功能神经元</h2>
+<p>是解决非线性可分问题的一种方法，称为<strong>多层前馈神经网络.</strong></p>
+<p><em>前馈：并不意味着网络中的信号不能后传，而是值网络拓扑结构上不存在</em><strong><em>环或回路</em></strong></p>
+<h3 id="误差逆传播算法backpropagation">误差逆传播算法（BackPropagation）</h3>
+<img data-src="/2022/10/19/BP/49ec32e3a35af24588d39b2b71a081b_UxO2iSMpR6.jpg" class>
+<p>给定一个训练集，输入有<code>d</code>维，输出有<code>l</code>维，对于训练样例<span class="math inline">\((x_k,y_k)\)</span>，其神经网络的输出为<span class="math inline">\(\hat{y}_k=(\hat{y}^k_1...\hat{y}^k_l)\)</span>，则</p>
+<p><span class="math display">\[
+\hat{y}^{k}_{j}=f(\beta_j-\theta_j)
+\]</span></p>
+<p>则网络在<span class="math inline">\((x_k,y_k)\)</span>上的均方误差为</p>
+<p><span class="math display">\[
+\frac{1}{2} \sum_{j=1}^{l}\left(\hat{y}_{j}^{k}-y_{j}^{k}\right)^{2}
+\]</span></p>
+<p>BP是一个基于梯度下降的迭代算法，接下来以<span class="math inline">\(w_{hj}\)</span>为权重进行推导：</p>
+<img data-src="/2022/10/19/BP/b391f62d45e41ea566aea6f61ba27cb_x8BeMzxDDX.jpg" class>
+<h4 id="特点-1">特点：</h4>
+<ol type="1">
+<li><p>在输入层和输出层之间包含隐层。</p></li>
+<li><p>标准BP每次更新只针对一个样例，所以参数更新非常频繁，相对而言，累计误差逆传递参数更新频率要低得多</p></li>
+<li><p>BP网络由于表达能力很强，所以经常会<strong>过拟合</strong>，即训练集误差持续降低，而测试集误差持续上升。</p></li>
+</ol>
+<h4 id="如何缓和过拟合">如何缓和过拟合？</h4>
+<ol type="1">
+<li><p>早停：训练集误差降低，但是测试机误差升高就停止训练</p></li>
+<li><p>正则化：在误差目标函数中增加一个用于描述网络复杂度的参数$
+$，例如将目标函数变为</p></li>
+</ol>
+<p><span class="math display">\[
+E=\lambda \frac{1}{m}\sum E_k+(1-\lambda)\sum w^2_i
+\]</span></p>
+<p>这样使得训练过程中偏好较小的连接权和阈值。</p>
+<h3 id="全局最小和局部最小">全局最小和局部最小</h3>
+<p><strong>如何跳出局部最小，到达全局最小？</strong></p>
+<ol type="1">
+<li><p>不同参数进行初始化</p></li>
+<li><p>模拟退火，接收次优解</p></li>
+<li><p>随机梯度下降</p></li>
+</ol>
+<h3 id="其他神经网络">其他神经网络</h3>
+<h4 id="rbf网络">RBF网络</h4>
+<p>单隐层前馈神经网络，先使用<strong>径向基函数</strong>作为激活函数将输入变成线性可分的，然后通过线性的输出层实现预测和分类。</p>
+<p><span class="math display">\[
+f(x,c_i)=e^{-\beta_i||x-c_i||^2}
+\]</span></p>
+<p>但是径向基函数中的中心<span class="math inline">\(c_i\)</span>需要用随机采样、聚类等方式实现；<span class="math inline">\(w_i\)</span>需要BP算法来确定.</p>
+<h4 id="art网络">ART网络</h4>
+<p>胜者通吃的原则</p>
+<p>除了上面还有级联相关网络、Elman网路、Boltzmann机等，具体可以查阅《机器学习》这本书</p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>BP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贪心算法</title>
+    <url>/2022/11/09/Greedy-Algorithm/</url>
+    <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
+<h2 id="部分背包问题">部分背包问题</h2>
+<p><strong>输入：</strong>
+n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
+<p><strong>输出：</strong> 求解一个解决方案。<span class="math inline">\(S=\{x_i|0 \leq x_i \leq n \}\)</span>，如果<span class="math inline">\(x_i\)</span>只能选0或者1，则变成了完全背包问题。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_APjPlE8xfR.png" class>
+<p><strong>最高性价比优先</strong></p>
+<p>证明贪心策略是最优解，方法：替换法（假设另外存在一个最优解）</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_oRBRScSpDx.png" class>
+<p>时间复杂度：<span class="math inline">\(O(nlogn)\)</span></p>
+<hr>
+<h2 id="最优前缀编码问题">最优前缀编码问题</h2>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_mjuaF95KcS.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_k_DKNolvPS.png" class>
+<h2 id="活动选择问题1">活动选择问题1</h2>
+<p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_gtgIT3Wd-7.png" class>
+<p><strong>策略：</strong></p>
+<ol type="1">
+<li><p><strong>最短活动</strong>优先</p></li>
+<li><p><strong>最早开始</strong>活动优先</p></li>
+<li><p><strong>最早结束</strong>活动优先</p></li>
+</ol>
+<p>提出贪心策略→证明贪心算法就是最优解</p>
+<p>如何证明？<strong>举反例</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_WunvnoB7IM.png" class>
+<p><strong>正确算法：最早活动优先</strong></p>
+<p>如何证明这是最优解？替换算法</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_WQR3nKQJKM.png" class>
+<p>时间复杂度为<span class="math inline">\(O(nlogn)\)</span>，仍旧为排序算法时间复杂度。</p>
+<h2 id="活动选择问题2">活动选择问题2</h2>
+<p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
+<h4 id="问题定义">问题定义</h4>
+<p>n个活动组成的集合<span class="math inline">\(S=\{a_1,a_2,...a_n\}\)</span>,每个活动有开始时间<span class="math inline">\(s_i\)</span>和结束时间<span class="math inline">\(f_i\)</span>和权重<span class="math inline">\(w_i\)</span>。找到一个活动的子集，使得<span class="math inline">\(max\sum w_i\)</span>，同时保证活动不能冲突。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_dfx6vuUSTy.png" class>
+<p>存在<strong>重叠子问题</strong>，使用<strong>动态规划</strong>求解。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_k1GKkxPi4V.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_apSln0_h52.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_dZb4khxonI.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_4y4dNIwGwP.png" class>
+<p><strong>伪代码：</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_BZG0j_Xhw1.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_s53HT29Iq5.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_Y10aQNR_Tt.png" class>
+<p>选择活动rec[i]=1，否则为0.</p>
+<p><strong>时间复杂度：</strong><span class="math inline">\(O(nlogn)\)</span>（二分查找排序时间复杂度）</p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>greedy algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Compiler-语法分析-2</title>
     <url>/2022/10/16/Chapter2-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h1 id="chapter2-语法分析">Chapter2-语法分析</h1>
@@ -411,180 +535,6 @@ remove ctrl+空格 add shortcut alt+/</p></li>
       </categories>
   </entry>
   <entry>
-    <title>BP神经网络</title>
-    <url>/2022/10/19/BP/</url>
-    <content><![CDATA[<h2 id="感知机perceptron">感知机Perceptron</h2>
-<p>由两层神经元组成，输入层接收信号传递给输出层，输出层是M-P神经元，称为阈值逻辑单元。实际上就是阶跃函数或者是Sigmoid函数。</p>
-<h4 id="特点">特点：</h4>
-<ol type="1">
-<li><p>仅仅只有输入层和输出层</p></li>
-<li><p>不能解决非线性可分问题（例如最简单的异或问题）</p></li>
-</ol>
-<h2 id="多层功能神经元">多层功能神经元</h2>
-<p>是解决非线性可分问题的一种方法，称为<strong>多层前馈神经网络.</strong></p>
-<p><em>前馈：并不意味着网络中的信号不能后传，而是值网络拓扑结构上不存在</em><strong><em>环或回路</em></strong></p>
-<h3 id="误差逆传播算法backpropagation">误差逆传播算法（BackPropagation）</h3>
-<img data-src="/2022/10/19/BP/49ec32e3a35af24588d39b2b71a081b_UxO2iSMpR6.jpg" class>
-<p>给定一个训练集，输入有<code>d</code>维，输出有<code>l</code>维，对于训练样例<span class="math inline">\((x_k,y_k)\)</span>，其神经网络的输出为<span class="math inline">\(\hat{y}_k=(\hat{y}^k_1...\hat{y}^k_l)\)</span>，则</p>
-<p><span class="math display">\[
-\hat{y}^{k}_{j}=f(\beta_j-\theta_j)
-\]</span></p>
-<p>则网络在<span class="math inline">\((x_k,y_k)\)</span>上的均方误差为</p>
-<p><span class="math display">\[
-\frac{1}{2} \sum_{j=1}^{l}\left(\hat{y}_{j}^{k}-y_{j}^{k}\right)^{2}
-\]</span></p>
-<p>BP是一个基于梯度下降的迭代算法，接下来以<span class="math inline">\(w_{hj}\)</span>为权重进行推导：</p>
-<img data-src="/2022/10/19/BP/b391f62d45e41ea566aea6f61ba27cb_x8BeMzxDDX.jpg" class>
-<h4 id="特点-1">特点：</h4>
-<ol type="1">
-<li><p>在输入层和输出层之间包含隐层。</p></li>
-<li><p>标准BP每次更新只针对一个样例，所以参数更新非常频繁，相对而言，累计误差逆传递参数更新频率要低得多</p></li>
-<li><p>BP网络由于表达能力很强，所以经常会<strong>过拟合</strong>，即训练集误差持续降低，而测试集误差持续上升。</p></li>
-</ol>
-<h4 id="如何缓和过拟合">如何缓和过拟合？</h4>
-<ol type="1">
-<li><p>早停：训练集误差降低，但是测试机误差升高就停止训练</p></li>
-<li><p>正则化：在误差目标函数中增加一个用于描述网络复杂度的参数$
-$，例如将目标函数变为</p></li>
-</ol>
-<p><span class="math display">\[
-E=\lambda \frac{1}{m}\sum E_k+(1-\lambda)\sum w^2_i
-\]</span></p>
-<p>这样使得训练过程中偏好较小的连接权和阈值。</p>
-<h3 id="全局最小和局部最小">全局最小和局部最小</h3>
-<p><strong>如何跳出局部最小，到达全局最小？</strong></p>
-<ol type="1">
-<li><p>不同参数进行初始化</p></li>
-<li><p>模拟退火，接收次优解</p></li>
-<li><p>随机梯度下降</p></li>
-</ol>
-<h3 id="其他神经网络">其他神经网络</h3>
-<h4 id="rbf网络">RBF网络</h4>
-<p>单隐层前馈神经网络，先使用<strong>径向基函数</strong>作为激活函数将输入变成线性可分的，然后通过线性的输出层实现预测和分类。</p>
-<p><span class="math display">\[
-f(x,c_i)=e^{-\beta_i||x-c_i||^2}
-\]</span></p>
-<p>但是径向基函数中的中心<span class="math inline">\(c_i\)</span>需要用随机采样、聚类等方式实现；<span class="math inline">\(w_i\)</span>需要BP算法来确定.</p>
-<h4 id="art网络">ART网络</h4>
-<p>胜者通吃的原则</p>
-<p>除了上面还有级联相关网络、Elman网路、Boltzmann机等，具体可以查阅《机器学习》这本书</p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>BP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>贪心算法</title>
-    <url>/2022/11/09/Greedy-Algorithm/</url>
-    <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
-<h2 id="部分背包问题">部分背包问题</h2>
-<p><strong>输入：</strong>
-n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
-<p><strong>输出：</strong> 求解一个解决方案。<span class="math inline">\(S=\{x_i|0 \leq x_i \leq n \}\)</span>，如果<span class="math inline">\(x_i\)</span>只能选0或者1，则变成了完全背包问题。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_APjPlE8xfR.png" class>
-<p><strong>最高性价比优先</strong></p>
-<p>证明贪心策略是最优解，方法：替换法（假设另外存在一个最优解）</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_oRBRScSpDx.png" class>
-<p>时间复杂度：<span class="math inline">\(O(nlogn)\)</span></p>
-<hr>
-<h2 id="最优前缀编码问题">最优前缀编码问题</h2>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_mjuaF95KcS.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_k_DKNolvPS.png" class>
-<h2 id="活动选择问题1">活动选择问题1</h2>
-<p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_gtgIT3Wd-7.png" class>
-<p><strong>策略：</strong></p>
-<ol type="1">
-<li><p><strong>最短活动</strong>优先</p></li>
-<li><p><strong>最早开始</strong>活动优先</p></li>
-<li><p><strong>最早结束</strong>活动优先</p></li>
-</ol>
-<p>提出贪心策略→证明贪心算法就是最优解</p>
-<p>如何证明？<strong>举反例</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_WunvnoB7IM.png" class>
-<p><strong>正确算法：最早活动优先</strong></p>
-<p>如何证明这是最优解？替换算法</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_WQR3nKQJKM.png" class>
-<p>时间复杂度为<span class="math inline">\(O(nlogn)\)</span>，仍旧为排序算法时间复杂度。</p>
-<h2 id="活动选择问题2">活动选择问题2</h2>
-<p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
-<h4 id="问题定义">问题定义</h4>
-<p>n个活动组成的集合<span class="math inline">\(S=\{a_1,a_2,...a_n\}\)</span>,每个活动有开始时间<span class="math inline">\(s_i\)</span>和结束时间<span class="math inline">\(f_i\)</span>和权重<span class="math inline">\(w_i\)</span>。找到一个活动的子集，使得<span class="math inline">\(max\sum w_i\)</span>，同时保证活动不能冲突。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_dfx6vuUSTy.png" class>
-<p>存在<strong>重叠子问题</strong>，使用<strong>动态规划</strong>求解。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_k1GKkxPi4V.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_apSln0_h52.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_dZb4khxonI.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_4y4dNIwGwP.png" class>
-<p><strong>伪代码：</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_BZG0j_Xhw1.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_s53HT29Iq5.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_Y10aQNR_Tt.png" class>
-<p>选择活动rec[i]=1，否则为0.</p>
-<p><strong>时间复杂度：</strong><span class="math inline">\(O(nlogn)\)</span>（二分查找排序时间复杂度）</p>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>greedy algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LBPH</title>
-    <url>/2022/10/18/LBPH/</url>
-    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
-<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
-<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
-<h4 id="计算lbp编码">计算LBP编码</h4>
-<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
-<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
-<h4 id="均匀化降维">均匀化降维</h4>
-<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
-<p>具体实现代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
-<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
-<h4 id="特征矩阵">特征矩阵</h4>
-<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
-<h4 id="直方图">直方图</h4>
-<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
-<h4 id="特征向量">特征向量</h4>
-<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
-<h4 id="人脸识别">人脸识别</h4>
-<ul>
-<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
-<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
-</ul>
-<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
-<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
-<h4 id="结果">结果</h4>
-<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
-<h3 id="难点与改进">难点与改进</h3>
-<h4 id="难点">难点</h4>
-<ol type="1">
-<li>光照问题</li>
-<li>表情姿态问题</li>
-<li>遮挡问题</li>
-<li>年龄变化</li>
-</ol>
-<h4 id="改进与尝试">改进与尝试</h4>
-<ol type="1">
-<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
-<li>尝试深度学习等卷积神经网络特征提取</li>
-<li>尝试SVM等其他分类算法</li>
-<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>Face_recognition</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markov Logic Network-2</title>
     <url>/2022/10/12/Markov-Logic-Network-2/</url>
     <content><![CDATA[<p><strong>Markov logic networks 论文（Mach Learn 2006）</strong></p>
@@ -702,6 +652,56 @@ x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么
       </tags>
   </entry>
   <entry>
+    <title>LBPH</title>
+    <url>/2022/10/18/LBPH/</url>
+    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
+<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
+<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
+<h4 id="计算lbp编码">计算LBP编码</h4>
+<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
+<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
+<h4 id="均匀化降维">均匀化降维</h4>
+<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
+<p>具体实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
+<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
+<h4 id="特征矩阵">特征矩阵</h4>
+<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
+<h4 id="直方图">直方图</h4>
+<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
+<h4 id="特征向量">特征向量</h4>
+<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
+<h4 id="人脸识别">人脸识别</h4>
+<ul>
+<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
+<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
+</ul>
+<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
+<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
+<h4 id="结果">结果</h4>
+<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
+<h3 id="难点与改进">难点与改进</h3>
+<h4 id="难点">难点</h4>
+<ol type="1">
+<li>光照问题</li>
+<li>表情姿态问题</li>
+<li>遮挡问题</li>
+<li>年龄变化</li>
+</ol>
+<h4 id="改进与尝试">改进与尝试</h4>
+<ol type="1">
+<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
+<li>尝试深度学习等卷积神经网络特征提取</li>
+<li>尝试SVM等其他分类算法</li>
+<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>Face_recognition</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markov Logic Network-1</title>
     <url>/2022/10/11/Markov-Logic-Network1/</url>
     <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov
@@ -814,6 +814,25 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||
         <tag>AI</tag>
         <tag>NLP</tag>
         <tag>KG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm-hw-3</title>
+    <url>/2022/11/22/algorithmHw-3/</url>
+    <content><![CDATA[<img data-src="/2022/11/22/algorithmHw-3/1.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/2.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/3.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/4.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/5.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/6.jpg" class>
+<img data-src="/2022/11/22/algorithmHw-3/7.jpg" class>
+<p>如有错误请指出！</p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>greedy search</tag>
       </tags>
   </entry>
   <entry>
@@ -1028,72 +1047,6 @@ D[i,j]=min_{i \leq k &lt; j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}
       </tags>
   </entry>
   <entry>
-    <title>Compiler-词法分析-1</title>
-    <url>/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h3 id="具体要求">具体要求</h3>
-<p>对输入的<code>testfile.txt</code>
-文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_gCe5-FREvU.png" class>
-<p>输入输出要求具体如下所示：</p>
-<p><strong>输入：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> CONSTTK <span class="type">const</span></span><br><span class="line"><span class="number">1</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">1</span> IDENFR a</span><br><span class="line"><span class="number">1</span> ASSIGN =</span><br><span class="line"><span class="number">1</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">1</span> SEMICN ;</span><br><span class="line"><span class="number">2</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">2</span> MAINTK main</span><br><span class="line"><span class="number">2</span> LPARENT (</span><br><span class="line"><span class="number">2</span> RPARENT )</span><br><span class="line"><span class="number">2</span> LBRACE &#123;</span><br><span class="line"><span class="number">3</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">3</span> IDENFR f</span><br><span class="line"><span class="number">3</span> ASSIGN =</span><br><span class="line"><span class="number">3</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">3</span> SEMICN ;</span><br><span class="line"><span class="number">4</span> RETURNTK <span class="keyword">return</span></span><br><span class="line"><span class="number">4</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">4</span> SEMICN ;</span><br><span class="line"><span class="number">5</span> RBRACE &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>其中第一列为行号，第二列为类别码，第三列为token.</p>
-<h3 id="实现方法">实现方法</h3>
-<p>通过有限自动机DFA实现对输入序列进行处理：</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_kFjhbTCHr4.png" class>
-<h3 id="具体实现">具体实现</h3>
-<p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code>
-程序进入<code>Morpho</code> 类中，最后<code>Morpho</code>
-能够输出对应的行号、类别码、token.</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_C8uyeszCzM.png" class>
-<h4 id="morpho词法分析类">Morpho词法分析类：</h4>
-<ul>
-<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code>
-：存储类别码</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code>
-：存储token</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code>
-：存储每个token对应的行号</p></li>
-<li><p><code>lexer</code>：输出token的总数量</p></li>
-</ul>
-<p>（实际上是通过<code>lexer</code>同时维护上述三个hashmap，同增同减）</p>
-<ul>
-<li><p><code>int status</code> ：当前状态</p></li>
-<li><p><code>String cache</code>：缓存器</p></li>
-<li><p><code>pointer</code>：指针，用于扫描当前行</p></li>
-<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p></li>
-</ul>
-<p>以上就是对这个类的属性的解释。</p>
-<p>其中<code>PREDOUBLECHAR</code>指的是识别到<code>&amp;&amp;</code>和<code>||</code>的第一个字符时的状态。</p>
-<p><strong>方法：</strong></p>
-<ul>
-<li><code>work</code> ：用于分析主程序</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">work</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123; <span class="comment">//分析总程序</span></span><br><span class="line">        readFile();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, String&gt; entry : lineRawMap.entrySet()) &#123;</span><br><span class="line">            <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (status == SINGLECOMMENTS) &#123;</span><br><span class="line">                <span class="built_in">this</span>.status = INITIAL; <span class="comment">//指的是上一行的状态是单行注释，换行后单行注释失效，状态重回INITIAL</span></span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(status == MULTICOMMENTS) &#123; </span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>; <span class="comment">//指的是上一行的状态是多行注释，换行后多行注释依然有效，状态不变，但清空cache</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//用于将上一行末尾的未经激发的token通过加一个空字符串转换掉</span></span><br><span class="line">            <span class="keyword">if</span>(cache.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                transferStatus(entry.getKey() - <span class="number">1</span>,<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                status = INITIAL;</span><br><span class="line">                <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//扫描当前行，并进行状态转换</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="built_in">this</span>.pointer &lt; entry.getValue().length()) &#123;</span><br><span class="line">                transferStatus(entry.getKey(), entry.getValue().charAt(<span class="built_in">this</span>.pointer));</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(status != INITIAL) &#123;</span><br><span class="line">            transferStatus(lineRawMap.size(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        File f=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line">        f.createNewFile();</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(f);</span><br><span class="line">        <span class="type">PrintStream</span> <span class="variable">printStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(fileOutputStream);</span><br><span class="line">        System.setOut(printStream);</span><br><span class="line">        ArrayList&lt;Token&gt; tokens = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; typeMap.size();i ++) &#123;</span><br><span class="line">            System.out.println(lineMap.get(i)+<span class="string">&quot; &quot;</span>+typeMap.get(i) + <span class="string">&quot; &quot;</span> + wordMap.get(i));</span><br><span class="line">            <span class="type">Token</span> <span class="variable">token</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Token</span>(typeMap.get(i),wordMap.get(i),lineMap.get(i));</span><br><span class="line">            tokens.add(token);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>transferStatus</code>：用于状态转移</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">public <span class="type">void</span> <span class="title function_">transferStatus</span><span class="params">(Integer line, Character ch)</span> &#123; <span class="comment">//状态转移</span></span><br><span class="line">        <span class="keyword">if</span> (this.status == INITIAL) &#123;</span><br><span class="line">            <span class="comment">//输入&#x27; &#x27;用于重置当前状态</span></span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27; &#x27;</span>) this.status = INITIAL; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span>) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (SingleCharMap.containsKey(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(PreDoubleCharMap.contains(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = PREDOUBLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == IDENT) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span> || isDigit(ch)) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (reservedIdent.containsKey(cache)) &#123;</span><br><span class="line">                    <span class="comment">//保留字</span></span><br><span class="line">                    putAll(reservedIdent.get(cache), cache, line);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//标识符</span></span><br><span class="line">                    putAll(<span class="string">&quot;IDENFR&quot;</span>, cache, line);</span><br><span class="line">                &#125;</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == INTCONST) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;INTCON&quot;</span>, cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == FORMATSTRING) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch != <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;STRCON&quot;</span>, cache+ch, line);</span><br><span class="line">                clear();</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECHAR) &#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&gt;= &lt;= != ==</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache+ch).equals(<span class="string">&quot;//&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache + ch).equals(<span class="string">&quot;/*&quot;</span>)) &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(SingleCharMap.get(cache), cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == PREDOUBLECHAR)&#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&amp;&amp; ||</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECOMMENTS) &#123;</span><br><span class="line">            cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == MULTICOMMENTS) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cache.length() &gt;= <span class="number">1</span> &amp;&amp; cache.charAt(cache.length() - <span class="number">1</span>) == <span class="string">&#x27;*&#x27;</span> &amp;&amp; ch == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            this.status = INITIAL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.status = INITIAL;</span><br><span class="line">    <span class="built_in">this</span>.pointer--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putAll</span><span class="params">(String type, String word, Integer line)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.typeMap.put(lexer, type);</span><br><span class="line">    <span class="built_in">this</span>.wordMap.put(lexer, word);</span><br><span class="line">    <span class="built_in">this</span>.lineMap.put(lexer, line);</span><br><span class="line">    lexer++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意<code>clear()</code>函数<strong>出现在每次状态转换完</strong>，因为是当前字符使得当前状态结束，所以<code>pointer</code>应该回退一格，使得当前状态重新变为<code>INITIAL</code>准备好了之后，再<strong>重新处理这个字符</strong>。</p>
-<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>"</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
-<p><strong>总结一下：</strong>
-就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
-<h3 id="注意细节">注意细节</h3>
-<p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code>
-状态时，如果ch+cache在<code>DoubleCharMap</code>
-中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>
-</p>
-]]></content>
-      <categories>
-        <category>Compiler</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Graph Modal and Gibbs Sampling</title>
     <url>/2022/10/10/graph-modal/</url>
     <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
@@ -1164,6 +1117,72 @@ chain的稳定分布 <strong>（条件是所有条件概率都不为零）</stro
       </tags>
   </entry>
   <entry>
+    <title>Compiler-词法分析-1</title>
+    <url>/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h3 id="具体要求">具体要求</h3>
+<p>对输入的<code>testfile.txt</code>
+文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_gCe5-FREvU.png" class>
+<p>输入输出要求具体如下所示：</p>
+<p><strong>输入：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> CONSTTK <span class="type">const</span></span><br><span class="line"><span class="number">1</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">1</span> IDENFR a</span><br><span class="line"><span class="number">1</span> ASSIGN =</span><br><span class="line"><span class="number">1</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">1</span> SEMICN ;</span><br><span class="line"><span class="number">2</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">2</span> MAINTK main</span><br><span class="line"><span class="number">2</span> LPARENT (</span><br><span class="line"><span class="number">2</span> RPARENT )</span><br><span class="line"><span class="number">2</span> LBRACE &#123;</span><br><span class="line"><span class="number">3</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">3</span> IDENFR f</span><br><span class="line"><span class="number">3</span> ASSIGN =</span><br><span class="line"><span class="number">3</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">3</span> SEMICN ;</span><br><span class="line"><span class="number">4</span> RETURNTK <span class="keyword">return</span></span><br><span class="line"><span class="number">4</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">4</span> SEMICN ;</span><br><span class="line"><span class="number">5</span> RBRACE &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中第一列为行号，第二列为类别码，第三列为token.</p>
+<h3 id="实现方法">实现方法</h3>
+<p>通过有限自动机DFA实现对输入序列进行处理：</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_kFjhbTCHr4.png" class>
+<h3 id="具体实现">具体实现</h3>
+<p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code>
+程序进入<code>Morpho</code> 类中，最后<code>Morpho</code>
+能够输出对应的行号、类别码、token.</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_C8uyeszCzM.png" class>
+<h4 id="morpho词法分析类">Morpho词法分析类：</h4>
+<ul>
+<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code>
+：存储类别码</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code>
+：存储token</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code>
+：存储每个token对应的行号</p></li>
+<li><p><code>lexer</code>：输出token的总数量</p></li>
+</ul>
+<p>（实际上是通过<code>lexer</code>同时维护上述三个hashmap，同增同减）</p>
+<ul>
+<li><p><code>int status</code> ：当前状态</p></li>
+<li><p><code>String cache</code>：缓存器</p></li>
+<li><p><code>pointer</code>：指针，用于扫描当前行</p></li>
+<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p></li>
+</ul>
+<p>以上就是对这个类的属性的解释。</p>
+<p>其中<code>PREDOUBLECHAR</code>指的是识别到<code>&amp;&amp;</code>和<code>||</code>的第一个字符时的状态。</p>
+<p><strong>方法：</strong></p>
+<ul>
+<li><code>work</code> ：用于分析主程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">work</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123; <span class="comment">//分析总程序</span></span><br><span class="line">        readFile();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, String&gt; entry : lineRawMap.entrySet()) &#123;</span><br><span class="line">            <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (status == SINGLECOMMENTS) &#123;</span><br><span class="line">                <span class="built_in">this</span>.status = INITIAL; <span class="comment">//指的是上一行的状态是单行注释，换行后单行注释失效，状态重回INITIAL</span></span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(status == MULTICOMMENTS) &#123; </span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>; <span class="comment">//指的是上一行的状态是多行注释，换行后多行注释依然有效，状态不变，但清空cache</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//用于将上一行末尾的未经激发的token通过加一个空字符串转换掉</span></span><br><span class="line">            <span class="keyword">if</span>(cache.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                transferStatus(entry.getKey() - <span class="number">1</span>,<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                status = INITIAL;</span><br><span class="line">                <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//扫描当前行，并进行状态转换</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="built_in">this</span>.pointer &lt; entry.getValue().length()) &#123;</span><br><span class="line">                transferStatus(entry.getKey(), entry.getValue().charAt(<span class="built_in">this</span>.pointer));</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(status != INITIAL) &#123;</span><br><span class="line">            transferStatus(lineRawMap.size(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        File f=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line">        f.createNewFile();</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(f);</span><br><span class="line">        <span class="type">PrintStream</span> <span class="variable">printStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(fileOutputStream);</span><br><span class="line">        System.setOut(printStream);</span><br><span class="line">        ArrayList&lt;Token&gt; tokens = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; typeMap.size();i ++) &#123;</span><br><span class="line">            System.out.println(lineMap.get(i)+<span class="string">&quot; &quot;</span>+typeMap.get(i) + <span class="string">&quot; &quot;</span> + wordMap.get(i));</span><br><span class="line">            <span class="type">Token</span> <span class="variable">token</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Token</span>(typeMap.get(i),wordMap.get(i),lineMap.get(i));</span><br><span class="line">            tokens.add(token);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>transferStatus</code>：用于状态转移</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">public <span class="type">void</span> <span class="title function_">transferStatus</span><span class="params">(Integer line, Character ch)</span> &#123; <span class="comment">//状态转移</span></span><br><span class="line">        <span class="keyword">if</span> (this.status == INITIAL) &#123;</span><br><span class="line">            <span class="comment">//输入&#x27; &#x27;用于重置当前状态</span></span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27; &#x27;</span>) this.status = INITIAL; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span>) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (SingleCharMap.containsKey(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(PreDoubleCharMap.contains(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = PREDOUBLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == IDENT) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span> || isDigit(ch)) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (reservedIdent.containsKey(cache)) &#123;</span><br><span class="line">                    <span class="comment">//保留字</span></span><br><span class="line">                    putAll(reservedIdent.get(cache), cache, line);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//标识符</span></span><br><span class="line">                    putAll(<span class="string">&quot;IDENFR&quot;</span>, cache, line);</span><br><span class="line">                &#125;</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == INTCONST) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;INTCON&quot;</span>, cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == FORMATSTRING) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch != <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;STRCON&quot;</span>, cache+ch, line);</span><br><span class="line">                clear();</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECHAR) &#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&gt;= &lt;= != ==</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache+ch).equals(<span class="string">&quot;//&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache + ch).equals(<span class="string">&quot;/*&quot;</span>)) &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(SingleCharMap.get(cache), cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == PREDOUBLECHAR)&#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&amp;&amp; ||</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECOMMENTS) &#123;</span><br><span class="line">            cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == MULTICOMMENTS) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cache.length() &gt;= <span class="number">1</span> &amp;&amp; cache.charAt(cache.length() - <span class="number">1</span>) == <span class="string">&#x27;*&#x27;</span> &amp;&amp; ch == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            this.status = INITIAL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.status = INITIAL;</span><br><span class="line">    <span class="built_in">this</span>.pointer--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putAll</span><span class="params">(String type, String word, Integer line)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.typeMap.put(lexer, type);</span><br><span class="line">    <span class="built_in">this</span>.wordMap.put(lexer, word);</span><br><span class="line">    <span class="built_in">this</span>.lineMap.put(lexer, line);</span><br><span class="line">    lexer++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意<code>clear()</code>函数<strong>出现在每次状态转换完</strong>，因为是当前字符使得当前状态结束，所以<code>pointer</code>应该回退一格，使得当前状态重新变为<code>INITIAL</code>准备好了之后，再<strong>重新处理这个字符</strong>。</p>
+<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>"</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
+<p><strong>总结一下：</strong>
+就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
+<h3 id="注意细节">注意细节</h3>
+<p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code>
+状态时，如果ch+cache在<code>DoubleCharMap</code>
+中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>
+</p>
+]]></content>
+      <categories>
+        <category>Compiler</category>
+      </categories>
+  </entry>
+  <entry>
     <title>maven+vue+springboot</title>
     <url>/2022/11/13/maven-vue-springboot/</url>
     <content><![CDATA[<h1 id="运行maven-vue-springboot项目">运行maven + vue +
@@ -1172,50 +1191,52 @@ springboot项目</h1>
 <ol type="1">
 <li><p>在pol.xml文件中 右键 点击
 <code>Add as a maven project</code></p></li>
+<li><p>配置Maven</p>
+</li>
 <li><p>添加database</p></li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_q8ZVhWlIzS.png" class>
-<ol type="1">
+<ol start="4" type="1">
 <li>输入用户名和密码 ，test connection</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_S6VsysrENC.png" class>
-<ol type="1">
+<ol start="5" type="1">
 <li>新建数据库vuesbag</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_a9QffP5Fhm.png" class>
-<ol type="1">
+<ol start="6" type="1">
 <li>选择新建的数据库</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_pZfnsaP8xG.png" class>
-<ol type="1">
+<ol start="7" type="1">
 <li>执行sql文件 初始化数据库</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_DRf5TIi1j0.png" class>
-<ol type="1">
+<ol start="8" type="1">
 <li>点击Run mysql.sql之后选择新建的数据库</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_GO21sA6yY8.png" class>
-<ol type="1">
+<ol start="9" type="1">
 <li>run完之后会发现数据库已被初始化，生成了很多表</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_dNV8LYgDof.png" class>
-<ol type="1">
+<ol start="10" type="1">
 <li>修改src/main/resources/application.yml文件</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_GBrbU3cZDA.png" class>
 <p>如图：</p>
 <img data-src="/2022/11/13/maven-vue-springboot/image_ZgGqwRGpEN.png" class>
-<ol type="1">
+<ol start="11" type="1">
 <li>右上角运行启动类</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_lZkUoTpZTh.png" class>
-<ol type="1">
+<ol start="12" type="1">
 <li>运行之后发现报错：</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Sun</span> <span class="title class_">Nov</span> <span class="number">13</span> <span class="number">11</span>:<span class="number">25</span>:<span class="number">54</span> <span class="variable constant_">CST</span> <span class="number">2022</span> <span class="attr">WARN</span>: <span class="title class_">Establishing</span> <span class="variable constant_">SSL</span> connection without server<span class="string">&#x27;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&#x27;</span>t set. <span class="title class_">For</span> compliance <span class="keyword">with</span> existing applications not using <span class="variable constant_">SSL</span> the verifyServerCertificate property is set to <span class="string">&#x27;false&#x27;</span>. <span class="title class_">You</span> need either to explicitly disable <span class="variable constant_">SSL</span> by setting useSSL=<span class="literal">false</span>, or set useSSL=<span class="literal">true</span> and provide truststore <span class="keyword">for</span> server certificate verification.</span><br><span class="line"><span class="number">2022</span>-<span class="number">11</span>-<span class="number">13</span> <span class="number">11</span>:<span class="number">25</span>:<span class="number">55.010</span> <span class="variable constant_">ERROR</span> <span class="number">17660</span> --- [eate-<span class="number">1886236609</span>] com.<span class="property">alibaba</span>.<span class="property">druid</span>.<span class="property">pool</span>.<span class="property">DruidDataSource</span>   : create connection <span class="title class_">SQLException</span>, <span class="attr">url</span>: <span class="attr">jdbc</span>:<span class="attr">mysql</span>:<span class="comment">//localhost:3306/vuesbag?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8, errorCode 0, state 08S01</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <img data-src="/2022/11/13/maven-vue-springboot/image_aAz86gRUhW.png" class>
 <p><strong>解决方法：在url最后加上</strong><code>useSSL=false</code></p>
-<ol type="1">
+<ol start="13" type="1">
 <li>最后后端成功运行</li>
 </ol>
 <img data-src="/2022/11/13/maven-vue-springboot/image_vRSLjlcB5r.png" class>
@@ -1249,6 +1270,19 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
+    <title>myfirst</title>
+    <url>/2022/09/06/myfirst/</url>
+    <content><![CDATA[<h3 id="test">test</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="image">image</h3>
+<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
+<p><strong>This is my first blog !😋</strong></p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Multihop KG</title>
     <url>/2022/11/09/multihop/</url>
     <content><![CDATA[<img data-src="/2022/11/09/multihop/%E6%B1%87%E6%8A%A511.9_01.jpg" class>
@@ -1270,43 +1304,6 @@ springboot项目</h1>
       <tags>
         <tag>Graph Modal</tag>
         <tag>MultiHop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue-day1</title>
-    <url>/2022/11/08/vue-day1/</url>
-    <content><![CDATA[<h1 id="day1">Day1</h1>
-<h4 id="实现todolist">实现TodoList</h4>
-<p>（虽然早在半年前都做过一遍了，很长时间也没用忘得差不多了，于是再重新系统地学一遍）</p>
-<p>1.写vue不要忘记加setup：<code>&lt;script setup&gt;</code></p>
-<p>2.<code>v-for="(item,index) in list"</code>
-其中的item和index的位置不能写错</p>
-<p>3.v-bind和v-model的区别：v-bind是单向绑定，v-model是双向绑定。</p>
-<p>4.原本用的是var变量，但是为了<strong>实时渲染，</strong>
-用的是<code>const list = ref([])</code></p>
-<p>5.删除数组中的某处索引<code>splice(index,i)</code>表示从index开始的i个数删掉</p>
-<p>6.可以发现计算属性和函数可以实现完全一样的功能。但是计算属性基于依赖的存储属性的值变化而重新计算，结果会被缓存，但是函数是每次都会都会重新执行。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed &#125; <span class="keyword">from</span> <span class="string">&#x27;@vue/reactivity&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> list = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> content0 = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> newTodo = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;content:&quot;</span>+newTodo.<span class="property">value</span>)</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">push</span>(newTodo.<span class="property">value</span>)</span><br><span class="line">    count.<span class="property">value</span>++;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list after:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeTodo</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;index:&quot;</span>+index);</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">splice</span>(index,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//其实就相当于computed:&#123;&#125;里的计算属性</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">type</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">return</span> count.<span class="property">value</span> &gt; <span class="number">10</span> ? <span class="number">2</span> : <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>TodoList<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;newTodo&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;input..&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;addTodo&quot;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;item&#125;&#125;<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;removeTodo(index)&quot;</span>&gt;</span>remove<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;type()&#125;&#125;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>myfirst</title>
-    <url>/2022/09/06/myfirst/</url>
-    <content><![CDATA[<h3 id="test">test</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="image">image</h3>
-<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
-<p><strong>This is my first blog !😋</strong></p>
-]]></content>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -1334,65 +1331,27 @@ springboot项目</h1>
 ]]></content>
   </entry>
   <entry>
-    <title>常微分方程和差分方程</title>
-    <url>/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="第四章-常微分方程和差分方程">第四章-常微分方程和差分方程</h1>
-<h2 id="习题1">习题1</h2>
-<p><span class="math display">\[
-2x_{n+2}-x_{n+1}-2x_{n}=0
-\]</span></p>
-<p>并且初值为<span class="math inline">\(x_0=-2;x1=0;\)</span></p>
-<p><strong>解法一：</strong></p>
-<p>其对应的特征方程为：</p>
-<p><span class="math display">\[
-2\lambda^2-\lambda-2=0
-\]</span></p>
-<p>求解特征值可以通过一元二次方程的公式求解，也可以通过scipy直接求解。</p>
-<p>求解出的特征值有两个，不是重根，分别为<span class="math inline">\(\lambda_1,\lambda_2\)</span>，则其通解为 <span class="math display">\[
-x_n=C_1\lambda_1^n+C_2\lambda_2^n
-\]</span></p>
-<p>其中C1和C2常量由初始条件求出。</p>
-<p><strong>解法二：</strong></p>
-<p>通过迭代法求出$ x_n $对应的数值解。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过math计算特征方程的根----&quot;</span>)</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = -<span class="number">1</span></span><br><span class="line">c = -<span class="number">2</span></span><br><span class="line">d=b**<span class="number">2</span>-<span class="number">4</span>*a*c</span><br><span class="line"><span class="keyword">if</span> (d&lt;<span class="number">0</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    e = math.sqrt(d)</span><br><span class="line">    x1=((-b+e)/(<span class="number">2</span>*a))<span class="comment">#调用math模块中sqrt开平方函数</span></span><br><span class="line">    x2=((-b-e)/(<span class="number">2</span>*a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;landa1=&quot;</span>,x1,<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;landa2=&quot;</span>,x2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="comment">#solve函数可以直接求解</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过sympy计算特征方程的根和最终结果----&quot;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;t, c1, c2&#x27;</span>)</span><br><span class="line">t0 = sp.solve(<span class="number">2</span>*t**<span class="number">2</span>-t-<span class="number">2</span>)  <span class="comment">#求解特征方程</span></span><br><span class="line">eq1 = c1 + c2 + <span class="number">2</span></span><br><span class="line">eq2 = c1 * t0[<span class="number">0</span>] + c2 *t0[<span class="number">1</span>]</span><br><span class="line">s = sp.solve([eq1, eq2])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;landa1=&#x27;</span>,t0[<span class="number">0</span>],<span class="string">&#x27;\t&#x27;</span>,<span class="string">&#x27;landa2=&#x27;</span>,t0[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c1=&#x27;</span>, s[c1]); <span class="built_in">print</span>(<span class="string">&#x27;c2=&#x27;</span>, s[c2])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i,<span class="string">&quot;]=&quot;</span>,(s[c1]*<span class="built_in">pow</span>(t0[<span class="number">0</span>],i)+s[c2]*<span class="built_in">pow</span>(t0[<span class="number">1</span>],i)).evalf())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;----通过迭代计算x(n)的数值解-----&#x27;</span>)</span><br><span class="line">prev = -<span class="number">2</span>;x = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    temp = x</span><br><span class="line">    x = (x + <span class="number">2</span>*prev)/<span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i+<span class="number">1</span>,<span class="string">&quot;]=&quot;</span>,x)</span><br><span class="line">    prev = temp</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">----通过math计算特征方程的根----</span><br><span class="line">landa1= 1.2807764064044151    landa2= -0.7807764064044151</span><br><span class="line">----通过sympy计算特征方程的根和最终结果----</span><br><span class="line">landa1= 1/4 - sqrt(17)/4    landa2= 1/4 + sqrt(17)/4</span><br><span class="line">c1= -1 - sqrt(17)/17</span><br><span class="line">c2= -1 + sqrt(17)/17</span><br><span class="line">x[ 2 ]= -2.00000000000000</span><br><span class="line">x[ 3 ]= -1.00000000000000</span><br><span class="line">x[ 4 ]= -2.50000000000000</span><br><span class="line">x[ 5 ]= -2.25000000000000</span><br><span class="line">x[ 6 ]= -3.62500000000000</span><br><span class="line">x[ 7 ]= -4.06250000000000</span><br><span class="line">x[ 8 ]= -5.65625000000000</span><br><span class="line">x[ 9 ]= -6.89062500000000</span><br><span class="line">----通过迭代计算x(n)的数值解-----</span><br><span class="line">x[ 2 ]= -2.0</span><br><span class="line">x[ 3 ]= -1.0</span><br><span class="line">x[ 4 ]= -2.5</span><br><span class="line">x[ 5 ]= -2.25</span><br><span class="line">x[ 6 ]= -3.625</span><br><span class="line">x[ 7 ]= -4.0625</span><br><span class="line">x[ 8 ]= -5.65625</span><br><span class="line">x[ 9 ]= -6.890625</span><br><span class="line">x[ 10 ]= -9.1015625</span><br></pre></td></tr></table></figure>
-<p>最终其结果为</p>
-<p><span class="math display">\[
-x_n=(-1-\frac{\sqrt17}{17})*(\frac{1-\sqrt17}{4})^n+(-1+\frac{\sqrt17}{17})*(\frac{1+\sqrt17}{4})^n
-\]</span></p>
-<p>以上结果可以发现<strong>特征方程</strong>的解法和<strong>迭代解法</strong>的完全一致。</p>
-<hr>
-<h2 id="习题2">习题2</h2>
-<p>令<span class="math inline">\(x(t)=[x_1(t),x_2(t)]^T\)</span>其中，<span class="math inline">\(x_1(t)=x,x_2(t)=y\)</span>；则题目描述可以变成</p>
-<p><span class="math display">\[
-\frac{dx}{dt}=Ax,x(0)=[1,0]^T,A=\begin{bmatrix}  %中括号
-      1&amp;-2\\
-      1&amp;2
-    \end{bmatrix}
-\]</span></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> scipy.integrate <span class="keyword">import</span> odeint</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求解析解----------------</span></span><br><span class="line">sp.var(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;x1:3&#x27;</span>, cls=sp.Function) <span class="comment">#定义2个符号函数</span></span><br><span class="line">x = sp.Matrix([x1(t), x2(t)])  <span class="comment">#列向量</span></span><br><span class="line">A = sp.Matrix([[<span class="number">1</span>,-<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">eq = x.diff(t)-A@x</span><br><span class="line">s = sp.dsolve(eq, ics=&#123;x1(<span class="number">0</span>):<span class="number">1</span>, x2(<span class="number">0</span>):<span class="number">0</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解析解为:&quot;</span>,s);</span><br><span class="line">sx = sp.lambdify(t,s[<span class="number">0</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">sy = sp.lambdify(t,s[<span class="number">1</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, family=<span class="string">&#x27;SimHei&#x27;</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;axes&#x27;</span>, unicode_minus=<span class="literal">False</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>)</span><br><span class="line">plt.plot(sx(xx), sy(xx));</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求数值解--------------</span></span><br><span class="line">dx = <span class="keyword">lambda</span> x, t: [x[<span class="number">0</span>]-<span class="number">2</span>*x[<span class="number">1</span>],x[<span class="number">0</span>]+<span class="number">2</span>*x[<span class="number">1</span>]]</span><br><span class="line">t = np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>)</span><br><span class="line">s = odeint(dx, [<span class="number">1</span>,<span class="number">0</span>], t)</span><br><span class="line">plt.plot(s[:,<span class="number">0</span>], s[:,<span class="number">1</span>]);</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=============具体结果为==================&quot;</span>)</span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;t=&quot;</span>,i,<span class="string">&quot;时\n解析解求得:x(t)=&quot;</span>,sx(i),<span class="string">&quot;y(t)=&quot;</span>,sy(i),<span class="string">&quot;\n数值解求得:x(t)=&quot;</span>,s[:,<span class="number">0</span>][k],<span class="string">&quot;y(t)=&quot;</span>,s[:,<span class="number">1</span>][k])</span><br><span class="line">    k=k+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.legend([<span class="string">&#x27;解析解&#x27;</span>,<span class="string">&#x27;数值解&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">D:\anaconda\envs\pytorch\python.exe &quot;D:/pythonMath/Deffrential Equations/homework2.py&quot;</span><br><span class="line">解析解为: [Eq(x1(t), -sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 + exp(3*t/2)*cos(sqrt(7)*t/2)), Eq(x2(t), 2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)]</span><br><span class="line">=============具体结果为==================</span><br><span class="line">t= 0.0 时</span><br><span class="line">解析解求得:x(t)= 1.0 y(t)= 0.0 </span><br><span class="line">数值解求得:x(t)= 1.0 y(t)= 0.0</span><br><span class="line">t= 0.02040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.020189876647608 y(t)= 0.021040007527822792 </span><br><span class="line">数值解求得:x(t)= 1.0201898879194644 y(t)= 0.021039997406066154</span><br><span class="line">t= 0.04081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.0399020205807203 y(t)= 0.043372287285719395 </span><br><span class="line">数值解求得:x(t)= 1.0399020271650798 y(t)= 0.043372277714182235</span><br><span class="line">t= 0.061224489795918366 时</span><br><span class="line">解析解求得:x(t)= 1.0590724075998625 y(t)= 0.0670400680081496 </span><br><span class="line">数值解求得:x(t)= 1.0590724185491094 y(t)= 0.0670400571843811</span><br><span class="line">t= 0.08163265306122448 时</span><br><span class="line">解析解求得:x(t)= 1.0776339017990748 y(t)= 0.09208701367564913 </span><br><span class="line">数值解求得:x(t)= 1.0776339148814231 y(t)= 0.09208700197578465</span><br><span class="line">t= 0.1020408163265306 时</span><br><span class="line">解析解求得:x(t)= 1.0955161744257782 y(t)= 0.11855717598964706 </span><br><span class="line">数值解求得:x(t)= 1.0955161877240351 y(t)= 0.11855716371338518</span><br><span class="line">t= 0.12244897959183673 时</span><br><span class="line">解析解求得:x(t)= 1.1126456231022948 y(t)= 0.14649494318063638 </span><br><span class="line">数值解求得:x(t)= 1.112645634783687 y(t)= 0.14649492887241075</span><br><span class="line">t= 0.14285714285714285 时</span><br><span class="line">解析解求得:x(t)= 1.1289452915706144 y(t)= 0.1759449850061317 </span><br><span class="line">数值解求得:x(t)= 1.1289452961242472 y(t)= 0.17594496400477785</span><br><span class="line">t= 0.16326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.1443347901312997 y(t)= 0.20695219379232827 </span><br><span class="line">数值解求得:x(t)= 1.1443347993093749 y(t)= 0.20695217366966792</span><br><span class="line">t= 0.18367346938775508 时</span><br><span class="line">解析解求得:x(t)= 1.158730216957037 y(t)= 0.23956162137094936 </span><br><span class="line">数值解求得:x(t)= 1.1587302335745913 y(t)= 0.23956160356463208</span><br><span class="line">t= 0.2040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.1720440804712116 y(t)= 0.27381841176044386 </span><br><span class="line">数值解求得:x(t)= 1.1720440993327175 y(t)= 0.2738183930701502</span><br><span class="line">t= 0.22448979591836732 时</span><br><span class="line">解析解求得:x(t)= 1.184185222992092 y(t)= 0.3097677294384818 </span><br><span class="line">数值解求得:x(t)= 1.1841852438829685 y(t)= 0.3097677096764967</span><br><span class="line">t= 0.24489795918367346 时</span><br><span class="line">解析解求得:x(t)= 1.1950587458536985 y(t)= 0.34745468305060684 </span><br><span class="line">数值解求得:x(t)= 1.1950587687745 y(t)= 0.34745466091234584</span><br><span class="line">t= 0.26530612244897955 时</span><br><span class="line">解析解求得:x(t)= 1.204565936225206 y(t)= 0.3869242443979466 </span><br><span class="line">数值解求得:x(t)= 1.2045659608485249 y(t)= 0.38692422094306006</span><br><span class="line">t= 0.2857142857142857 时</span><br><span class="line">解析解求得:x(t)= 1.2126041958618434 y(t)= 0.4282211625450773 </span><br><span class="line">数值解求得:x(t)= 1.2126042225958342 y(t)= 0.42822113693988506</span><br><span class="line">t= 0.3061224489795918 时</span><br><span class="line">解析解求得:x(t)= 1.219066972031623 y(t)= 0.4713898728874819 </span><br><span class="line">数值解求得:x(t)= 1.2190670009195195 y(t)= 0.4713898455557759</span><br><span class="line">t= 0.32653061224489793 时</span><br><span class="line">解析解求得:x(t)= 1.2238436908739307 y(t)= 0.5164744010165694 </span><br><span class="line">数值解求得:x(t)= 1.223843722308065 y(t)= 0.5164743714132232</span><br><span class="line">t= 0.3469387755102041 时</span><br><span class="line">解析解求得:x(t)= 1.2268196934579962 y(t)= 0.5635182612189238 </span><br><span class="line">数值解求得:x(t)= 1.2268197322675731 y(t)= 0.5635182204027751</span><br><span class="line">t= 0.36734693877551017 时</span><br><span class="line">解析解求得:x(t)= 1.227876174821546 y(t)= 0.6125643494453575 </span><br><span class="line">数值解求得:x(t)= 1.227876226781901 y(t)= 0.6125642872253357</span><br><span class="line">t= 0.3877551020408163 时</span><br><span class="line">解析解求得:x(t)= 1.2268901262825176 y(t)= 0.6636548305844675 </span><br><span class="line">数值解求得:x(t)= 1.2268901860909702 y(t)= 0.6636547583015104</span><br><span class="line">t= 0.4081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.223734281329584 y(t)= 0.716831019874726 </span><br><span class="line">数值解求得:x(t)= 1.2237343409840549 y(t)= 0.7168309556017836</span><br><span class="line">t= 0.42857142857142855 时</span><br><span class="line">解析解求得:x(t)= 1.2182770654103952 y(t)= 0.7721332582887461 </span><br><span class="line">数值解求得:x(t)= 1.218277123099709 y(t)= 0.7721332067917788</span><br><span class="line">t= 0.44897959183673464 时</span><br><span class="line">解析解求得:x(t)= 1.2103825499498861 y(t)= 0.8296007817231976 </span><br><span class="line">数值解求得:x(t)= 1.210382610633588 y(t)= 0.8296007294438116</span><br><span class="line">t= 0.4693877551020408 时</span><br><span class="line">解析解求得:x(t)= 1.1999104109447043 y(t)= 0.8892715838279832 </span><br><span class="line">数值解求得:x(t)= 1.1999104771822011 y(t)= 0.8892715275180807</span><br><span class="line">t= 0.4897959183673469 时</span><br><span class="line">解析解求得:x(t)= 1.1867158924938193 y(t)= 0.9511822723087026 </span><br><span class="line">数值解求得:x(t)= 1.1867159642423326 y(t)= 0.9511822134138961</span><br><span class="line">t= 0.5102040816326531 时</span><br><span class="line">解析解求得:x(t)= 1.1706497756396121 y(t)= 1.0153679185371705 </span><br><span class="line">数值解求得:x(t)= 1.170649853490215 y(t)= 1.0153678586747292</span><br><span class="line">t= 0.5306122448979591 时</span><br><span class="line">解析解求得:x(t)= 1.1515583529082627 y(t)= 1.0818619003058079 </span><br><span class="line">数值解求得:x(t)= 1.1515584373707495 y(t)= 1.0818618396133117</span><br><span class="line">t= 0.5510204081632653 时</span><br><span class="line">解析解求得:x(t)= 1.1292834089530053 y(t)= 1.150695737563145 </span><br><span class="line">数值解求得:x(t)= 1.129283497834692 y(t)= 1.1506956759804483</span><br><span class="line">t= 0.5714285714285714 时</span><br><span class="line">解析解求得:x(t)= 1.103662207718833 y(t)= 1.2218989209694522 </span><br><span class="line">数值解求得:x(t)= 1.1036623018061529 y(t)= 1.2218988580689951</span><br><span class="line">t= 0.5918367346938775 时</span><br><span class="line">解析解求得:x(t)= 1.0745274865624315 y(t)= 1.2954987331136845 </span><br><span class="line">数值解求得:x(t)= 1.0745275858196601 y(t)= 1.295498669179269</span><br><span class="line">t= 0.6122448979591836 时</span><br><span class="line">解析解求得:x(t)= 1.0417074577765977 y(t)= 1.3715200622355053 </span><br><span class="line">数值解求得:x(t)= 1.0417075636067084 y(t)= 1.3715199970490806</span><br><span class="line">t= 0.6326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.0050258179840106 y(t)= 1.4499852082991638 </span><br><span class="line">数值解求得:x(t)= 1.005025931367244 y(t)= 1.4499851416835472</span><br><span class="line">t= 0.6530612244897959 时</span><br><span class="line">解析解求得:x(t)= 0.9643017658810773 y(t)= 1.5309136812694661 </span><br><span class="line">数值解求得:x(t)= 0.9643018849986369 y(t)= 1.530913614053574</span><br><span class="line">t= 0.673469387755102 时</span><br><span class="line">解析解求得:x(t)= 0.9193500288285735 y(t)= 1.6143219914440199 </span><br><span class="line">数值解求得:x(t)= 0.9193501552672215 y(t)= 1.614321923290281</span><br><span class="line">t= 0.6938775510204082 时</span><br><span class="line">解析解求得:x(t)= 0.8699808988019734 y(t)= 1.7002234317003653 </span><br><span class="line">数值解求得:x(t)= 0.8699810316861855 y(t)= 1.700223363015467</span><br><span class="line">t= 0.7142857142857142 时</span><br><span class="line">解析解求得:x(t)= 0.8160002782306479 y(t)= 1.7886278515215799 </span><br><span class="line">数值解求得:x(t)= 0.816000418452806 y(t)= 1.7886277822226788</span><br><span class="line">t= 0.7346938775510203 时</span><br><span class="line">解析解求得:x(t)= 0.7572097362715636 y(t)= 1.8795414226694434 </span><br><span class="line">数值解求得:x(t)= 0.7572098846938927 y(t)= 1.8795413527037244</span><br><span class="line">t= 0.7551020408163265 时</span><br><span class="line">解析解求得:x(t)= 0.6934065760796148 y(t)= 1.972966396380324 </span><br><span class="line">数值解求得:x(t)= 0.6934067316386655 y(t)= 1.972966326317898</span><br><span class="line">t= 0.7755102040816326 时</span><br><span class="line">解析解求得:x(t)= 0.6243839136533351 y(t)= 2.0689008519656586 </span><br><span class="line">数值解求得:x(t)= 0.6243840793830152 y(t)= 2.068900781342949</span><br><span class="line">t= 0.7959183673469387 时</span><br><span class="line">解析解求得:x(t)= 0.5499307688513946 y(t)= 2.1673384367061703 </span><br><span class="line">数值解求得:x(t)= 0.5499309446566499 y(t)= 2.167338365754919</span><br><span class="line">t= 0.8163265306122448 时</span><br><span class="line">解析解求得:x(t)= 0.46983216919195314 y(t)= 2.26826809693694 </span><br><span class="line">数值解求得:x(t)= 0.4698323509298826 y(t)= 2.2682680268561617</span><br><span class="line">t= 0.836734693877551 时</span><br><span class="line">解析解求得:x(t)= 0.3838692670636703 y(t)= 2.3716738002290874 </span><br><span class="line">数值解求得:x(t)= 0.3838694532496656 y(t)= 2.3716737318902226</span><br><span class="line">t= 0.8571428571428571 时</span><br><span class="line">解析解求得:x(t)= 0.29181947099377314 y(t)= 2.477534248583156 </span><br><span class="line">数值解求得:x(t)= 0.2918196618123881 y(t)= 2.4775341820833674</span><br><span class="line">t= 0.8775510204081632 时</span><br><span class="line">解析解求得:x(t)= 0.19345659163525064 y(t)= 2.585822582559378 </span><br><span class="line">数值解求得:x(t)= 0.19345678857948362 y(t)= 2.5858225174390705</span><br><span class="line">t= 0.8979591836734693 时</span><br><span class="line">解析解求得:x(t)= 0.08855100315170672 y(t)= 2.6965060762808264 </span><br><span class="line">数值解求得:x(t)= 0.08855120520166707 y(t)= 2.6965060133744223</span><br><span class="line">t= 0.9183673469387754 时</span><br><span class="line">解析解求得:x(t)= -0.02313017930517547 y(t)= 2.8095458232571393 </span><br><span class="line">数值解求得:x(t)= -0.02312997178555415 y(t)= 2.8095457627403286</span><br><span class="line">t= 0.9387755102040816 时</span><br><span class="line">解析解求得:x(t)= -0.14182290531437092 y(t)= 2.924896412988897 </span><br><span class="line">数值解求得:x(t)= -0.1418226909606244 y(t)= 2.9248963546723097</span><br><span class="line">t= 0.9591836734693877 时</span><br><span class="line">解析解求得:x(t)= -0.26776597737325014 y(t)= 3.04250559832613 </span><br><span class="line">数值解求得:x(t)= -0.26776575610194187 y(t)= 3.042505542867204</span><br><span class="line">t= 0.9795918367346939 时</span><br><span class="line">解析解求得:x(t)= -0.40120082081129205 y(t)= 3.1623139535685887 </span><br><span class="line">数值解求得:x(t)= -0.4012005926051197 y(t)= 3.162313901033337</span><br><span class="line">t= 1.0 时</span><br><span class="line">解析解求得:x(t)= -0.5423712346712355 y(t)= 3.2842545233105325 </span><br><span class="line">数值解求得:x(t)= -0.5423709994286192 y(t)= 3.2842544735529384</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>因此其<strong>解析解</strong>为：</p>
-<p><span class="math display">\[
-x(t)=-sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 +
-exp(3*t/2)*cos(sqrt(7)*t/2)
-\]</span></p>
-<p><span class="math display">\[
-y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
-\]</span></p>
-<p>解析解和数值解由于十分相似，在画图时不容易分辨，于是我将数值解的步长设置为0.2，解析解的步长为0.02时，其结果为：</p>
-<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
-<p>当解析解与数值解的步长相等，均为0.02时，结果如下图：</p>
-<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_h2ZS9n8oNb.png" class>
-<p>可见二者几乎完全重合。</p>
+    <title>vue-day1</title>
+    <url>/2022/11/08/vue-day1/</url>
+    <content><![CDATA[<h1 id="day1">Day1</h1>
+<h4 id="实现todolist">实现TodoList</h4>
+<p>（虽然早在半年前都做过一遍了，很长时间也没用忘得差不多了，于是再重新系统地学一遍）</p>
+<p>1.写vue不要忘记加setup：<code>&lt;script setup&gt;</code></p>
+<p>2.<code>v-for="(item,index) in list"</code>
+其中的item和index的位置不能写错</p>
+<p>3.v-bind和v-model的区别：v-bind是单向绑定，v-model是双向绑定。</p>
+<p>4.原本用的是var变量，但是为了<strong>实时渲染，</strong>
+用的是<code>const list = ref([])</code></p>
+<p>5.删除数组中的某处索引<code>splice(index,i)</code>表示从index开始的i个数删掉</p>
+<p>6.可以发现计算属性和函数可以实现完全一样的功能。但是计算属性基于依赖的存储属性的值变化而重新计算，结果会被缓存，但是函数是每次都会都会重新执行。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed &#125; <span class="keyword">from</span> <span class="string">&#x27;@vue/reactivity&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> list = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> content0 = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">const</span> newTodo = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addTodo</span> () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;content:&quot;</span>+newTodo.<span class="property">value</span>)</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">push</span>(newTodo.<span class="property">value</span>)</span><br><span class="line">    count.<span class="property">value</span>++;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;list after:&quot;</span>+list.<span class="property">value</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeTodo</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;index:&quot;</span>+index);</span><br><span class="line">    list.<span class="property">value</span>.<span class="title function_">splice</span>(index,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//其实就相当于computed:&#123;&#125;里的计算属性</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">type</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;count:&quot;</span>+count.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">return</span> count.<span class="property">value</span> &gt; <span class="number">10</span> ? <span class="number">2</span> : <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>TodoList<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;newTodo&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;input..&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;addTodo&quot;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in list&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;item&#125;&#125;<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;removeTodo(index)&quot;</span>&gt;</span>remove<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;type()&#125;&#125;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>math</category>
+        <category>vue</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>vue</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -1513,64 +1472,65 @@ RDBMS的完整性控制机制应具有哪些功能</h3>
       </tags>
   </entry>
   <entry>
-    <title>知识蒸馏</title>
-    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
-    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
-<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
-<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
-<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
-就是解析。</p>
-<p><strong>先介绍几个函数：</strong></p>
-<ol type="1">
-<li><p><strong>softmax</strong></p>
-<p>输出非负，0~1之间的概率分布</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可见t会使得概率分布更加平滑</p></li>
-<li><p><strong>log_softmax</strong></p>
-<p>输出全为负数</p></li>
-<li><p><strong>NLLLoss</strong></p>
-<p>输入：log_softmax(output),target</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
-<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
-的得分中也可以看出第三类得分最高。</p></li>
-<li><p><strong>CE交叉熵</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
-<p>其中<code>qk</code>
-是神经网络认为第k类的概率，并且是经过softmax的了。</p>
-<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
+    <title>常微分方程和差分方程</title>
+    <url>/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="第四章-常微分方程和差分方程">第四章-常微分方程和差分方程</h1>
+<h2 id="习题1">习题1</h2>
+<p><span class="math display">\[
+2x_{n+2}-x_{n+1}-2x_{n}=0
+\]</span></p>
+<p>并且初值为<span class="math inline">\(x_0=-2;x1=0;\)</span></p>
+<p><strong>解法一：</strong></p>
+<p>其对应的特征方程为：</p>
+<p><span class="math display">\[
+2\lambda^2-\lambda-2=0
+\]</span></p>
+<p>求解特征值可以通过一元二次方程的公式求解，也可以通过scipy直接求解。</p>
+<p>求解出的特征值有两个，不是重根，分别为<span class="math inline">\(\lambda_1,\lambda_2\)</span>，则其通解为 <span class="math display">\[
+x_n=C_1\lambda_1^n+C_2\lambda_2^n
+\]</span></p>
+<p>其中C1和C2常量由初始条件求出。</p>
+<p><strong>解法二：</strong></p>
+<p>通过迭代法求出$ x_n $对应的数值解。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过math计算特征方程的根----&quot;</span>)</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = -<span class="number">1</span></span><br><span class="line">c = -<span class="number">2</span></span><br><span class="line">d=b**<span class="number">2</span>-<span class="number">4</span>*a*c</span><br><span class="line"><span class="keyword">if</span> (d&lt;<span class="number">0</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    e = math.sqrt(d)</span><br><span class="line">    x1=((-b+e)/(<span class="number">2</span>*a))<span class="comment">#调用math模块中sqrt开平方函数</span></span><br><span class="line">    x2=((-b-e)/(<span class="number">2</span>*a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;landa1=&quot;</span>,x1,<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;landa2=&quot;</span>,x2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="comment">#solve函数可以直接求解</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过sympy计算特征方程的根和最终结果----&quot;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;t, c1, c2&#x27;</span>)</span><br><span class="line">t0 = sp.solve(<span class="number">2</span>*t**<span class="number">2</span>-t-<span class="number">2</span>)  <span class="comment">#求解特征方程</span></span><br><span class="line">eq1 = c1 + c2 + <span class="number">2</span></span><br><span class="line">eq2 = c1 * t0[<span class="number">0</span>] + c2 *t0[<span class="number">1</span>]</span><br><span class="line">s = sp.solve([eq1, eq2])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;landa1=&#x27;</span>,t0[<span class="number">0</span>],<span class="string">&#x27;\t&#x27;</span>,<span class="string">&#x27;landa2=&#x27;</span>,t0[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c1=&#x27;</span>, s[c1]); <span class="built_in">print</span>(<span class="string">&#x27;c2=&#x27;</span>, s[c2])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i,<span class="string">&quot;]=&quot;</span>,(s[c1]*<span class="built_in">pow</span>(t0[<span class="number">0</span>],i)+s[c2]*<span class="built_in">pow</span>(t0[<span class="number">1</span>],i)).evalf())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;----通过迭代计算x(n)的数值解-----&#x27;</span>)</span><br><span class="line">prev = -<span class="number">2</span>;x = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    temp = x</span><br><span class="line">    x = (x + <span class="number">2</span>*prev)/<span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i+<span class="number">1</span>,<span class="string">&quot;]=&quot;</span>,x)</span><br><span class="line">    prev = temp</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">----通过math计算特征方程的根----</span><br><span class="line">landa1= 1.2807764064044151    landa2= -0.7807764064044151</span><br><span class="line">----通过sympy计算特征方程的根和最终结果----</span><br><span class="line">landa1= 1/4 - sqrt(17)/4    landa2= 1/4 + sqrt(17)/4</span><br><span class="line">c1= -1 - sqrt(17)/17</span><br><span class="line">c2= -1 + sqrt(17)/17</span><br><span class="line">x[ 2 ]= -2.00000000000000</span><br><span class="line">x[ 3 ]= -1.00000000000000</span><br><span class="line">x[ 4 ]= -2.50000000000000</span><br><span class="line">x[ 5 ]= -2.25000000000000</span><br><span class="line">x[ 6 ]= -3.62500000000000</span><br><span class="line">x[ 7 ]= -4.06250000000000</span><br><span class="line">x[ 8 ]= -5.65625000000000</span><br><span class="line">x[ 9 ]= -6.89062500000000</span><br><span class="line">----通过迭代计算x(n)的数值解-----</span><br><span class="line">x[ 2 ]= -2.0</span><br><span class="line">x[ 3 ]= -1.0</span><br><span class="line">x[ 4 ]= -2.5</span><br><span class="line">x[ 5 ]= -2.25</span><br><span class="line">x[ 6 ]= -3.625</span><br><span class="line">x[ 7 ]= -4.0625</span><br><span class="line">x[ 8 ]= -5.65625</span><br><span class="line">x[ 9 ]= -6.890625</span><br><span class="line">x[ 10 ]= -9.1015625</span><br></pre></td></tr></table></figure>
+<p>最终其结果为</p>
+<p><span class="math display">\[
+x_n=(-1-\frac{\sqrt17}{17})*(\frac{1-\sqrt17}{4})^n+(-1+\frac{\sqrt17}{17})*(\frac{1+\sqrt17}{4})^n
+\]</span></p>
+<p>以上结果可以发现<strong>特征方程</strong>的解法和<strong>迭代解法</strong>的完全一致。</p>
 <hr>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
-<p>可以发现CE可以一步到位。</p></li>
-</ol>
-<p><strong>softmax + nllloss = ce</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
-<p>上图：t = 1；下图：t = 10；</p>
-<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
-<p><strong>训练Teacher-Student网络</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
-<p><strong>说明：</strong></p>
-<p><code>p</code> 是标准答案</p>
-<p><code>q</code> 是学生的答案</p>
-<p><code>q'</code> 是老师的带有解析的答案</p>
-<p><code>q''</code>
-是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
-<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
-因为p是<code>one-hot</code> 的</p>
-<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
-<p>最后minimize两个Loss之和</p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
-<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
-loss</strong></p>
-<p><strong>结果：</strong></p>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
-<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
-<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
-不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
+<h2 id="习题2">习题2</h2>
+<p>令<span class="math inline">\(x(t)=[x_1(t),x_2(t)]^T\)</span>其中，<span class="math inline">\(x_1(t)=x,x_2(t)=y\)</span>；则题目描述可以变成</p>
+<p><span class="math display">\[
+\frac{dx}{dt}=Ax,x(0)=[1,0]^T,A=\begin{bmatrix}  %中括号
+      1&amp;-2\\
+      1&amp;2
+    \end{bmatrix}
+\]</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> scipy.integrate <span class="keyword">import</span> odeint</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求解析解----------------</span></span><br><span class="line">sp.var(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;x1:3&#x27;</span>, cls=sp.Function) <span class="comment">#定义2个符号函数</span></span><br><span class="line">x = sp.Matrix([x1(t), x2(t)])  <span class="comment">#列向量</span></span><br><span class="line">A = sp.Matrix([[<span class="number">1</span>,-<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">eq = x.diff(t)-A@x</span><br><span class="line">s = sp.dsolve(eq, ics=&#123;x1(<span class="number">0</span>):<span class="number">1</span>, x2(<span class="number">0</span>):<span class="number">0</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解析解为:&quot;</span>,s);</span><br><span class="line">sx = sp.lambdify(t,s[<span class="number">0</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">sy = sp.lambdify(t,s[<span class="number">1</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, family=<span class="string">&#x27;SimHei&#x27;</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;axes&#x27;</span>, unicode_minus=<span class="literal">False</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>)</span><br><span class="line">plt.plot(sx(xx), sy(xx));</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求数值解--------------</span></span><br><span class="line">dx = <span class="keyword">lambda</span> x, t: [x[<span class="number">0</span>]-<span class="number">2</span>*x[<span class="number">1</span>],x[<span class="number">0</span>]+<span class="number">2</span>*x[<span class="number">1</span>]]</span><br><span class="line">t = np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>)</span><br><span class="line">s = odeint(dx, [<span class="number">1</span>,<span class="number">0</span>], t)</span><br><span class="line">plt.plot(s[:,<span class="number">0</span>], s[:,<span class="number">1</span>]);</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=============具体结果为==================&quot;</span>)</span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;t=&quot;</span>,i,<span class="string">&quot;时\n解析解求得:x(t)=&quot;</span>,sx(i),<span class="string">&quot;y(t)=&quot;</span>,sy(i),<span class="string">&quot;\n数值解求得:x(t)=&quot;</span>,s[:,<span class="number">0</span>][k],<span class="string">&quot;y(t)=&quot;</span>,s[:,<span class="number">1</span>][k])</span><br><span class="line">    k=k+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.legend([<span class="string">&#x27;解析解&#x27;</span>,<span class="string">&#x27;数值解&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">D:\anaconda\envs\pytorch\python.exe &quot;D:/pythonMath/Deffrential Equations/homework2.py&quot;</span><br><span class="line">解析解为: [Eq(x1(t), -sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 + exp(3*t/2)*cos(sqrt(7)*t/2)), Eq(x2(t), 2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)]</span><br><span class="line">=============具体结果为==================</span><br><span class="line">t= 0.0 时</span><br><span class="line">解析解求得:x(t)= 1.0 y(t)= 0.0 </span><br><span class="line">数值解求得:x(t)= 1.0 y(t)= 0.0</span><br><span class="line">t= 0.02040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.020189876647608 y(t)= 0.021040007527822792 </span><br><span class="line">数值解求得:x(t)= 1.0201898879194644 y(t)= 0.021039997406066154</span><br><span class="line">t= 0.04081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.0399020205807203 y(t)= 0.043372287285719395 </span><br><span class="line">数值解求得:x(t)= 1.0399020271650798 y(t)= 0.043372277714182235</span><br><span class="line">t= 0.061224489795918366 时</span><br><span class="line">解析解求得:x(t)= 1.0590724075998625 y(t)= 0.0670400680081496 </span><br><span class="line">数值解求得:x(t)= 1.0590724185491094 y(t)= 0.0670400571843811</span><br><span class="line">t= 0.08163265306122448 时</span><br><span class="line">解析解求得:x(t)= 1.0776339017990748 y(t)= 0.09208701367564913 </span><br><span class="line">数值解求得:x(t)= 1.0776339148814231 y(t)= 0.09208700197578465</span><br><span class="line">t= 0.1020408163265306 时</span><br><span class="line">解析解求得:x(t)= 1.0955161744257782 y(t)= 0.11855717598964706 </span><br><span class="line">数值解求得:x(t)= 1.0955161877240351 y(t)= 0.11855716371338518</span><br><span class="line">t= 0.12244897959183673 时</span><br><span class="line">解析解求得:x(t)= 1.1126456231022948 y(t)= 0.14649494318063638 </span><br><span class="line">数值解求得:x(t)= 1.112645634783687 y(t)= 0.14649492887241075</span><br><span class="line">t= 0.14285714285714285 时</span><br><span class="line">解析解求得:x(t)= 1.1289452915706144 y(t)= 0.1759449850061317 </span><br><span class="line">数值解求得:x(t)= 1.1289452961242472 y(t)= 0.17594496400477785</span><br><span class="line">t= 0.16326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.1443347901312997 y(t)= 0.20695219379232827 </span><br><span class="line">数值解求得:x(t)= 1.1443347993093749 y(t)= 0.20695217366966792</span><br><span class="line">t= 0.18367346938775508 时</span><br><span class="line">解析解求得:x(t)= 1.158730216957037 y(t)= 0.23956162137094936 </span><br><span class="line">数值解求得:x(t)= 1.1587302335745913 y(t)= 0.23956160356463208</span><br><span class="line">t= 0.2040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.1720440804712116 y(t)= 0.27381841176044386 </span><br><span class="line">数值解求得:x(t)= 1.1720440993327175 y(t)= 0.2738183930701502</span><br><span class="line">t= 0.22448979591836732 时</span><br><span class="line">解析解求得:x(t)= 1.184185222992092 y(t)= 0.3097677294384818 </span><br><span class="line">数值解求得:x(t)= 1.1841852438829685 y(t)= 0.3097677096764967</span><br><span class="line">t= 0.24489795918367346 时</span><br><span class="line">解析解求得:x(t)= 1.1950587458536985 y(t)= 0.34745468305060684 </span><br><span class="line">数值解求得:x(t)= 1.1950587687745 y(t)= 0.34745466091234584</span><br><span class="line">t= 0.26530612244897955 时</span><br><span class="line">解析解求得:x(t)= 1.204565936225206 y(t)= 0.3869242443979466 </span><br><span class="line">数值解求得:x(t)= 1.2045659608485249 y(t)= 0.38692422094306006</span><br><span class="line">t= 0.2857142857142857 时</span><br><span class="line">解析解求得:x(t)= 1.2126041958618434 y(t)= 0.4282211625450773 </span><br><span class="line">数值解求得:x(t)= 1.2126042225958342 y(t)= 0.42822113693988506</span><br><span class="line">t= 0.3061224489795918 时</span><br><span class="line">解析解求得:x(t)= 1.219066972031623 y(t)= 0.4713898728874819 </span><br><span class="line">数值解求得:x(t)= 1.2190670009195195 y(t)= 0.4713898455557759</span><br><span class="line">t= 0.32653061224489793 时</span><br><span class="line">解析解求得:x(t)= 1.2238436908739307 y(t)= 0.5164744010165694 </span><br><span class="line">数值解求得:x(t)= 1.223843722308065 y(t)= 0.5164743714132232</span><br><span class="line">t= 0.3469387755102041 时</span><br><span class="line">解析解求得:x(t)= 1.2268196934579962 y(t)= 0.5635182612189238 </span><br><span class="line">数值解求得:x(t)= 1.2268197322675731 y(t)= 0.5635182204027751</span><br><span class="line">t= 0.36734693877551017 时</span><br><span class="line">解析解求得:x(t)= 1.227876174821546 y(t)= 0.6125643494453575 </span><br><span class="line">数值解求得:x(t)= 1.227876226781901 y(t)= 0.6125642872253357</span><br><span class="line">t= 0.3877551020408163 时</span><br><span class="line">解析解求得:x(t)= 1.2268901262825176 y(t)= 0.6636548305844675 </span><br><span class="line">数值解求得:x(t)= 1.2268901860909702 y(t)= 0.6636547583015104</span><br><span class="line">t= 0.4081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.223734281329584 y(t)= 0.716831019874726 </span><br><span class="line">数值解求得:x(t)= 1.2237343409840549 y(t)= 0.7168309556017836</span><br><span class="line">t= 0.42857142857142855 时</span><br><span class="line">解析解求得:x(t)= 1.2182770654103952 y(t)= 0.7721332582887461 </span><br><span class="line">数值解求得:x(t)= 1.218277123099709 y(t)= 0.7721332067917788</span><br><span class="line">t= 0.44897959183673464 时</span><br><span class="line">解析解求得:x(t)= 1.2103825499498861 y(t)= 0.8296007817231976 </span><br><span class="line">数值解求得:x(t)= 1.210382610633588 y(t)= 0.8296007294438116</span><br><span class="line">t= 0.4693877551020408 时</span><br><span class="line">解析解求得:x(t)= 1.1999104109447043 y(t)= 0.8892715838279832 </span><br><span class="line">数值解求得:x(t)= 1.1999104771822011 y(t)= 0.8892715275180807</span><br><span class="line">t= 0.4897959183673469 时</span><br><span class="line">解析解求得:x(t)= 1.1867158924938193 y(t)= 0.9511822723087026 </span><br><span class="line">数值解求得:x(t)= 1.1867159642423326 y(t)= 0.9511822134138961</span><br><span class="line">t= 0.5102040816326531 时</span><br><span class="line">解析解求得:x(t)= 1.1706497756396121 y(t)= 1.0153679185371705 </span><br><span class="line">数值解求得:x(t)= 1.170649853490215 y(t)= 1.0153678586747292</span><br><span class="line">t= 0.5306122448979591 时</span><br><span class="line">解析解求得:x(t)= 1.1515583529082627 y(t)= 1.0818619003058079 </span><br><span class="line">数值解求得:x(t)= 1.1515584373707495 y(t)= 1.0818618396133117</span><br><span class="line">t= 0.5510204081632653 时</span><br><span class="line">解析解求得:x(t)= 1.1292834089530053 y(t)= 1.150695737563145 </span><br><span class="line">数值解求得:x(t)= 1.129283497834692 y(t)= 1.1506956759804483</span><br><span class="line">t= 0.5714285714285714 时</span><br><span class="line">解析解求得:x(t)= 1.103662207718833 y(t)= 1.2218989209694522 </span><br><span class="line">数值解求得:x(t)= 1.1036623018061529 y(t)= 1.2218988580689951</span><br><span class="line">t= 0.5918367346938775 时</span><br><span class="line">解析解求得:x(t)= 1.0745274865624315 y(t)= 1.2954987331136845 </span><br><span class="line">数值解求得:x(t)= 1.0745275858196601 y(t)= 1.295498669179269</span><br><span class="line">t= 0.6122448979591836 时</span><br><span class="line">解析解求得:x(t)= 1.0417074577765977 y(t)= 1.3715200622355053 </span><br><span class="line">数值解求得:x(t)= 1.0417075636067084 y(t)= 1.3715199970490806</span><br><span class="line">t= 0.6326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.0050258179840106 y(t)= 1.4499852082991638 </span><br><span class="line">数值解求得:x(t)= 1.005025931367244 y(t)= 1.4499851416835472</span><br><span class="line">t= 0.6530612244897959 时</span><br><span class="line">解析解求得:x(t)= 0.9643017658810773 y(t)= 1.5309136812694661 </span><br><span class="line">数值解求得:x(t)= 0.9643018849986369 y(t)= 1.530913614053574</span><br><span class="line">t= 0.673469387755102 时</span><br><span class="line">解析解求得:x(t)= 0.9193500288285735 y(t)= 1.6143219914440199 </span><br><span class="line">数值解求得:x(t)= 0.9193501552672215 y(t)= 1.614321923290281</span><br><span class="line">t= 0.6938775510204082 时</span><br><span class="line">解析解求得:x(t)= 0.8699808988019734 y(t)= 1.7002234317003653 </span><br><span class="line">数值解求得:x(t)= 0.8699810316861855 y(t)= 1.700223363015467</span><br><span class="line">t= 0.7142857142857142 时</span><br><span class="line">解析解求得:x(t)= 0.8160002782306479 y(t)= 1.7886278515215799 </span><br><span class="line">数值解求得:x(t)= 0.816000418452806 y(t)= 1.7886277822226788</span><br><span class="line">t= 0.7346938775510203 时</span><br><span class="line">解析解求得:x(t)= 0.7572097362715636 y(t)= 1.8795414226694434 </span><br><span class="line">数值解求得:x(t)= 0.7572098846938927 y(t)= 1.8795413527037244</span><br><span class="line">t= 0.7551020408163265 时</span><br><span class="line">解析解求得:x(t)= 0.6934065760796148 y(t)= 1.972966396380324 </span><br><span class="line">数值解求得:x(t)= 0.6934067316386655 y(t)= 1.972966326317898</span><br><span class="line">t= 0.7755102040816326 时</span><br><span class="line">解析解求得:x(t)= 0.6243839136533351 y(t)= 2.0689008519656586 </span><br><span class="line">数值解求得:x(t)= 0.6243840793830152 y(t)= 2.068900781342949</span><br><span class="line">t= 0.7959183673469387 时</span><br><span class="line">解析解求得:x(t)= 0.5499307688513946 y(t)= 2.1673384367061703 </span><br><span class="line">数值解求得:x(t)= 0.5499309446566499 y(t)= 2.167338365754919</span><br><span class="line">t= 0.8163265306122448 时</span><br><span class="line">解析解求得:x(t)= 0.46983216919195314 y(t)= 2.26826809693694 </span><br><span class="line">数值解求得:x(t)= 0.4698323509298826 y(t)= 2.2682680268561617</span><br><span class="line">t= 0.836734693877551 时</span><br><span class="line">解析解求得:x(t)= 0.3838692670636703 y(t)= 2.3716738002290874 </span><br><span class="line">数值解求得:x(t)= 0.3838694532496656 y(t)= 2.3716737318902226</span><br><span class="line">t= 0.8571428571428571 时</span><br><span class="line">解析解求得:x(t)= 0.29181947099377314 y(t)= 2.477534248583156 </span><br><span class="line">数值解求得:x(t)= 0.2918196618123881 y(t)= 2.4775341820833674</span><br><span class="line">t= 0.8775510204081632 时</span><br><span class="line">解析解求得:x(t)= 0.19345659163525064 y(t)= 2.585822582559378 </span><br><span class="line">数值解求得:x(t)= 0.19345678857948362 y(t)= 2.5858225174390705</span><br><span class="line">t= 0.8979591836734693 时</span><br><span class="line">解析解求得:x(t)= 0.08855100315170672 y(t)= 2.6965060762808264 </span><br><span class="line">数值解求得:x(t)= 0.08855120520166707 y(t)= 2.6965060133744223</span><br><span class="line">t= 0.9183673469387754 时</span><br><span class="line">解析解求得:x(t)= -0.02313017930517547 y(t)= 2.8095458232571393 </span><br><span class="line">数值解求得:x(t)= -0.02312997178555415 y(t)= 2.8095457627403286</span><br><span class="line">t= 0.9387755102040816 时</span><br><span class="line">解析解求得:x(t)= -0.14182290531437092 y(t)= 2.924896412988897 </span><br><span class="line">数值解求得:x(t)= -0.1418226909606244 y(t)= 2.9248963546723097</span><br><span class="line">t= 0.9591836734693877 时</span><br><span class="line">解析解求得:x(t)= -0.26776597737325014 y(t)= 3.04250559832613 </span><br><span class="line">数值解求得:x(t)= -0.26776575610194187 y(t)= 3.042505542867204</span><br><span class="line">t= 0.9795918367346939 时</span><br><span class="line">解析解求得:x(t)= -0.40120082081129205 y(t)= 3.1623139535685887 </span><br><span class="line">数值解求得:x(t)= -0.4012005926051197 y(t)= 3.162313901033337</span><br><span class="line">t= 1.0 时</span><br><span class="line">解析解求得:x(t)= -0.5423712346712355 y(t)= 3.2842545233105325 </span><br><span class="line">数值解求得:x(t)= -0.5423709994286192 y(t)= 3.2842544735529384</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>因此其<strong>解析解</strong>为：</p>
+<p><span class="math display">\[
+x(t)=-sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 +
+exp(3*t/2)*cos(sqrt(7)*t/2)
+\]</span></p>
+<p><span class="math display">\[
+y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
+\]</span></p>
+<p>解析解和数值解由于十分相似，在画图时不容易分辨，于是我将数值解的步长设置为0.2，解析解的步长为0.02时，其结果为：</p>
+<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
+<p>当解析解与数值解的步长相等，均为0.02时，结果如下图：</p>
+<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_h2ZS9n8oNb.png" class>
+<p>可见二者几乎完全重合。</p>
 ]]></content>
+      <categories>
+        <category>math</category>
+      </categories>
       <tags>
-        <tag>AI</tag>
-        <tag>NLP</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1683,6 +1643,67 @@ error。</li>
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>知识蒸馏</title>
+    <url>/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/</url>
+    <content><![CDATA[<h1 id="distillation知识蒸馏">Distillation知识蒸馏</h1>
+<p>知识蒸馏用于模型压缩，用一个已经训练好的模型A去教另一个模型B。又称为老师-学生模型。通常A比B强，B可以突破自我。</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_9K_E_o6iJF.png" class>
+<p>后面的矩阵<code>[0.7,0.29,0.01]</code>说明老师能够交给学生更多的东西：</p>
+<p><code>[1,0,0]</code> 就像标准答案，而 <code>[0.7,0.29,0.01]</code>
+就是解析。</p>
+<p><strong>先介绍几个函数：</strong></p>
+<ol type="1">
+<li><p><strong>softmax</strong></p>
+<p>输出非负，0~1之间的概率分布</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">  x_exp = np.exp(x)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output))</span><br><span class="line"></span><br><span class="line">//增加了t  temperature</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x,t</span>):</span><br><span class="line">  x_exp = np.exp(x/t)</span><br><span class="line">  <span class="keyword">return</span> x_exp / np.<span class="built_in">sum</span>(x_exp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(softmax(output,<span class="number">5</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可见t会使得概率分布更加平滑</p></li>
+<li><p><strong>log_softmax</strong></p>
+<p>输出全为负数</p></li>
+<li><p><strong>NLLLoss</strong></p>
+<p>输入：log_softmax(output),target</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_-klZEH7jQj.png" class>
+<p>从NLLLoss中可以看出第三类最小，其实从 <code>[1.2,2,3]</code>
+的得分中也可以看出第三类得分最高。</p></li>
+<li><p><strong>CE交叉熵</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_5Dx65-Zhw8.png" class>
+<p>其中<code>qk</code>
+是神经网络认为第k类的概率，并且是经过softmax的了。</p>
+<p>确实只有当<code>py=1</code> 的时候，就可以简化为<span class="math inline">\(-log (q_y)\)</span></p>
+<hr>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_XAPGkKp6Ic.png" class>
+<p>可以发现CE可以一步到位。</p></li>
+</ol>
+<p><strong>softmax + nllloss = ce</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_cTAMQZnOq2.png" class>
+<p>上图：t = 1；下图：t = 10；</p>
+<p>可见通过设置相应的temperature将暗部特征都蒸馏出来了.（其实就是将概率分布更加平滑）</p>
+<p><strong>训练Teacher-Student网络</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_7C1hV9J8U8.png" class>
+<p><strong>说明：</strong></p>
+<p><code>p</code> 是标准答案</p>
+<p><code>q</code> 是学生的答案</p>
+<p><code>q'</code> 是老师的带有解析的答案</p>
+<p><code>q''</code>
+是将老师的带有解析的答案经过蒸馏之后的结果（发现了这只猫实际上有点像狗狗）</p>
+<p><code>Loss(p,q)</code> 是<code>Hard Loss</code>
+因为p是<code>one-hot</code> 的</p>
+<p><code>Loss(q,q'')</code> 是 <code>soft Loss</code></p>
+<p>最后minimize两个Loss之和</p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_MMxkqdQ-xb.png" class>
+<p><strong>KLDivLoss计算的是soft loss，cross_entropy计算的是hard
+loss</strong></p>
+<p><strong>结果：</strong></p>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_UHjyK8d6oR.png" class>
+<img data-src="/2022/10/08/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/image_jZYADy5qk8.png" class>
+<p><code>prior</code> 是先验知识，人为地加入。而<code>KD</code>
+不是人为地加入，而是通过一个老师模型来加入一些限制。</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
