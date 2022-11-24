@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -197,6 +197,370 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/24/LSTM-%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E9%A2%84%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xco.jpg">
+      <meta itemprop="name" content="XcooL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XcooL">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XcooL">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/24/LSTM-%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E9%A2%84%E6%B5%8B/" class="post-title-link" itemprop="url">LSTM-文本情感预测</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-24 19:53:24" itemprop="dateModified" datetime="2022-11-24T19:53:24+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="数据预处理">数据预处理</h2>
+<p>去除停用词，分词，最后输出一个矩阵，每一行时经过处理后的单词列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">train_data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding=<span class="string">&#x27;ISO-8859-1&#x27;</span>)</span><br><span class="line">size_train_data = <span class="built_in">len</span>(train_data)</span><br><span class="line">tweet_text = train_data[<span class="string">&#x27;OriginalTweet&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对Tweet进行分句, 同时去除标点符号</span></span><br><span class="line">tweet_sentences = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size_train_data):</span><br><span class="line">    tweet = tweet_text[i]</span><br><span class="line">    tweets = nltk.sent_tokenize(tweet)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(tweets)):</span><br><span class="line">        sentence = tweets[j]</span><br><span class="line">        tweets[j] = re.sub(<span class="string">r&#x27;[^a-zA-Z0-9\s]&#x27;</span>,<span class="string">&#x27;&#x27;</span>,string= sentence)</span><br><span class="line">        tweets[j] = tweets[j].replace(<span class="string">&quot;\r&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    tweet_sentences.append(tweets)</span><br></pre></td></tr></table></figure>
+<h2 id="word2vec模型训练">Word2vec模型训练</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = Word2Vec(text_combine,vector_size = <span class="number">100</span>, window = <span class="number">5</span> , min_count = <span class="number">5</span>, epochs=<span class="number">7</span>, negative=<span class="number">10</span>,sg=<span class="number">1</span>)</span><br><span class="line">model.save(<span class="string">&#x27;./models/Word2vec_v4&#x27;</span>)  <span class="comment"># 保存模型</span></span><br></pre></td></tr></table></figure>
+<h2 id="构建词典">构建词典</h2>
+<p>句子的向量表示：sentence =
+[word_index1,word_index2,....,word_indexn]</p>
+<p>注意是用索引组成的列表表示，而不是直接用word embedding表示。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> gensim.corpora <span class="keyword">import</span> Dictionary</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> Word2Vec</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;CUDA_DEVICE_ORDER&quot;</span>]=<span class="string">&quot;0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_dictionaries</span>(<span class="params">model=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    创建词语字典，返回word2vec模型中词语的索引、词向量</span></span><br><span class="line"><span class="string">    :param model:</span></span><br><span class="line"><span class="string">    :return: index, wordvec</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    gensim_dict = Dictionary()</span><br><span class="line">    <span class="comment"># doc2bow:</span></span><br><span class="line">    <span class="comment"># Bag-of-words model : BoW</span></span><br><span class="line">    <span class="comment"># 忽略文本的语法和语序,仅仅看作若干个词的集合,词是无序的.</span></span><br><span class="line">    <span class="comment"># 每个句子都可以用BoW来表示 假设又m个词:</span></span><br><span class="line">    <span class="comment"># 每个句子可以表示成:</span></span><br><span class="line">    <span class="comment"># [n1,...nm]</span></span><br><span class="line">    <span class="comment"># ni表示索引为i的词出现的次数</span></span><br><span class="line">    gensim_dict.doc2bow(model.wv.key_to_index.keys(),allow_update=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    w2index = &#123;v : k + <span class="number">1</span> <span class="keyword">for</span> k,v <span class="keyword">in</span> gensim_dict.items()&#125;</span><br><span class="line">    <span class="comment"># print(w2index)</span></span><br><span class="line">    w2vec = &#123;word : model.wv.get_vector(word) <span class="keyword">for</span> word <span class="keyword">in</span> w2index.keys()&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> w2index,w2vec</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">model = Word2Vec.load(<span class="string">&#x27;./models/Word2vec_v4&#x27;</span>)</span><br><span class="line">index_dict , word_vectors  = create_dictionaries(model)</span><br><span class="line"></span><br><span class="line">output = <span class="built_in">open</span>(<span class="string">&quot;dictW.pkl&quot;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">pickle.dump(index_dict, output)  <span class="comment"># 索引字典</span></span><br><span class="line">pickle.dump(word_vectors, output)  <span class="comment"># 词向量字典</span></span><br><span class="line">output.close()</span><br></pre></td></tr></table></figure>
+<h2 id="lstm神经网络训练和预测">LSTM神经网络训练和预测</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Embedding, LSTM, Dropout, Dense</span><br><span class="line"><span class="keyword">from</span>  sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.compat.v2 <span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</span><br><span class="line"><span class="comment"># import pylab as plt</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&quot;CUDA_VISIBLE_DEVICES&quot;</span>]=<span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="comment"># import pylab as plt</span></span><br><span class="line">vocab_dim = <span class="number">100</span> <span class="comment"># 向量维度</span></span><br><span class="line">maxlen = <span class="number">70</span> <span class="comment"># 文本保留的最大长度</span></span><br><span class="line">batch_size = <span class="number">32</span> <span class="comment"># 训练过程中 每次传入模型的特征向量</span></span><br><span class="line">n_epoch = <span class="number">4</span> <span class="comment">#迭代次数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开词字典</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;dictW.pkl&quot;</span>,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">index_dict = pickle.load(f) <span class="comment"># key:word value:index</span></span><br><span class="line">word_vectors = pickle.load(f) <span class="comment"># key: word value:vec</span></span><br><span class="line"></span><br><span class="line">n_symbols = <span class="built_in">len</span>(index_dict) + <span class="number">1</span> <span class="comment"># 索引单词的个数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个n_symbols * vocab_dim 的矩阵 用于填充所有的词向量</span></span><br><span class="line">embedding_weights = np.zeros((n_symbols,vocab_dim))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> w,index <span class="keyword">in</span> index_dict.items():</span><br><span class="line">    embedding_weights[index, :] = word_vectors[w]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">text_to_index_array</span>(<span class="params">p_new_dic=<span class="literal">None</span>,p_sen=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># if p_sen != None and p_new_dic != None:</span></span><br><span class="line">        new_sentences = []</span><br><span class="line">        <span class="keyword">for</span> sen <span class="keyword">in</span> p_sen:</span><br><span class="line">            new_sen = []</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> sen:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="comment"># 句子用单词的索引来填充</span></span><br><span class="line">                    new_sen.append(p_new_dic[word])</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="comment"># 未出现在dict中的单词用索引0填充</span></span><br><span class="line">                    new_sen.append(<span class="number">0</span>)</span><br><span class="line">            new_sentences.append(new_sen)</span><br><span class="line">        <span class="keyword">return</span> np.array(new_sentences)</span><br><span class="line">    <span class="comment"># else:</span></span><br><span class="line">    <span class="comment">#     print(&quot;Error p_sen is not a list!&quot;)</span></span><br><span class="line">    <span class="comment">#     return None</span></span><br><span class="line"></span><br><span class="line">train_data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding=<span class="string">&#x27;ISO-8859-1&#x27;</span>)</span><br><span class="line">train_label = train_data[<span class="string">&#x27;Sentiment&#x27;</span>]</span><br><span class="line"></span><br><span class="line">train_label_New = []</span><br><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> train_label:</span><br><span class="line">    labelArray = [<span class="number">0</span>] * <span class="number">5</span></span><br><span class="line">    <span class="keyword">if</span> label == <span class="string">&quot;Positive&quot;</span> :</span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> label == <span class="string">&quot;Negative&quot;</span>:</span><br><span class="line">        index = <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> label == <span class="string">&quot;Neutral&quot;</span> :</span><br><span class="line">        index = <span class="number">2</span></span><br><span class="line">    <span class="keyword">elif</span> label == <span class="string">&quot;Extremely Positive&quot;</span> :</span><br><span class="line">        index = <span class="number">3</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        index = <span class="number">4</span></span><br><span class="line">    labelArray[index] = <span class="number">1</span></span><br><span class="line">    train_label_New.append(labelArray)</span><br><span class="line">train_label = train_label_New</span><br><span class="line"></span><br><span class="line">train_data = np.load(<span class="string">&quot;./sentences.npy&quot;</span>, allow_pickle=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 随机划分训练集和开发集 比例为9:1</span></span><br><span class="line">X_train , X_dev , y_train, y_dev = train_test_split(train_data,train_label,test_size=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(&quot;X_train:&quot;,X_train)</span></span><br><span class="line">X_train_new = text_to_index_array(index_dict,X_train)</span><br><span class="line">X_dev_new = text_to_index_array(index_dict,X_dev)</span><br><span class="line"></span><br><span class="line">X_train_new = keras.preprocessing.sequence.pad_sequences(X_train_new, maxlen=maxlen)</span><br><span class="line">X_dev_new = keras.preprocessing.sequence.pad_sequences(X_dev_new, maxlen=maxlen)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">y_train_new = np.array(y_train)</span><br><span class="line">y_dev_new = np.array(y_dev)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;测试集shape:&quot;</span>,X_train_new.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;开发集shape:&quot;</span>,X_dev_new.shape)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">train_lstm</span>(<span class="params">p_n_symbols, p_embedding_weights, p_X_train, p_y_train, p_X_test, p_y_test, X_test_l</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;创建模型...&#x27;</span>)</span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Embedding(output_dim=vocab_dim,  <span class="comment"># 输出向量维度</span></span><br><span class="line">                        input_dim=p_n_symbols,  <span class="comment"># 输入向量维度</span></span><br><span class="line">                        mask_zero=<span class="literal">True</span>,         <span class="comment"># 使我们填补的0值在后续训练中不产生影响（屏蔽0值）</span></span><br><span class="line">                        weights=[p_embedding_weights],   <span class="comment"># 对数据加权</span></span><br><span class="line">                        input_length=maxlen ))      <span class="comment"># 每个特征的长度</span></span><br><span class="line"></span><br><span class="line">    model.add(LSTM(units=<span class="number">100</span>,</span><br><span class="line">                   activation=<span class="string">&#x27;sigmoid&#x27;</span>,</span><br><span class="line">                   inner_activation=<span class="string">&#x27;hard_sigmoid&#x27;</span>))</span><br><span class="line">    model.add(Dropout(<span class="number">0.5</span>))   <span class="comment"># 每次迭代丢弃50神经元 防止过拟合</span></span><br><span class="line">    model.add(Dense(units=<span class="number">512</span>,</span><br><span class="line">                    activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">    model.add(Dropout(<span class="number">0.5</span>))</span><br><span class="line">    model.add(Dense(units=<span class="number">5</span>,  <span class="comment"># 输出层1个神经元 1代表正面 0代表负面</span></span><br><span class="line">                    activation=<span class="string">&#x27;sigmoid&#x27;</span>))</span><br><span class="line">    model.summary()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;编译模型...&#x27;</span>)</span><br><span class="line">    model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>,</span><br><span class="line">                  optimizer=<span class="string">&#x27;adam&#x27;</span>,</span><br><span class="line">                  metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;训练...&quot;</span>)</span><br><span class="line">    train_history = model.fit(p_X_train, p_y_train, batch_size=batch_size, nb_epoch=n_epoch,</span><br><span class="line">              validation_data=(p_X_test, p_y_test))</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;评估...&quot;</span>)</span><br><span class="line">    score, acc = model.evaluate(p_X_test, p_y_test, batch_size=batch_size)</span><br><span class="line">    label = model.predict(p_X_test)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Test score:&#x27;</span>, score)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Test accuracy:&#x27;</span>, acc)</span><br><span class="line">    <span class="comment"># for (a, b, c) in zip(p_y_test, X_test_l, label):</span></span><br><span class="line">    <span class="comment">#     print(&quot;原文为:&quot;+ &quot;&quot;.join(b))</span></span><br><span class="line">    <span class="comment">#     print(&quot;真实值:&quot;, a)</span></span><br><span class="line">    <span class="comment">#     print(&quot;预测值&quot;, c)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># show_train_history(train_history, &#x27;acc&#x27;, &#x27;val_acc&#x27;)    # 训练集准确率与验证集准确率 折线图</span></span><br><span class="line">    <span class="comment"># show_train_history(train_history, &#x27;loss&#x27;, &#x27;val_loss&#x27;)  # 训练集误差率与验证集误差率 折线图</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;保存模型&quot;&quot;&quot;</span></span><br><span class="line">    model.save(<span class="string">&#x27;./model/emotion_model_LSTM2.h5&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;模型保存成功&quot;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">show_train_history</span>(<span class="params">train_history,train, velidation</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    可视化训练过程 对比</span></span><br><span class="line"><span class="string">    :param train_history:</span></span><br><span class="line"><span class="string">    :param train:</span></span><br><span class="line"><span class="string">    :param velidation:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    plt.plot(train_history.history[train])</span><br><span class="line">    plt.plot(train_history.history[velidation])</span><br><span class="line">    plt.title(<span class="string">&quot;Train History&quot;</span>)   <span class="comment">#标题</span></span><br><span class="line">    plt.xlabel(<span class="string">&#x27;Epoch&#x27;</span>)    <span class="comment">#x轴标题</span></span><br><span class="line">    plt.ylabel(train)  <span class="comment">#y轴标题</span></span><br><span class="line">    plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;test&#x27;</span>], loc=<span class="string">&#x27;upper left&#x27;</span>)  <span class="comment">#图例 左上角</span></span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_max_index</span>(<span class="params">listRe</span>):</span><br><span class="line">    maxProb = <span class="number">0.0</span></span><br><span class="line">    maxProbIndex = <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> re <span class="keyword">in</span> listRe:</span><br><span class="line">        <span class="keyword">if</span> re &gt; maxProb:</span><br><span class="line">            maxProb = re</span><br><span class="line">            maxProbIndex = i</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> maxProbIndex</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">prediction</span>(<span class="params">test_data,raw_test_data</span>):</span><br><span class="line"></span><br><span class="line">    keras.backend.clear_session()</span><br><span class="line">    model = load_model(<span class="string">&#x27;./model/emotion_model_LSTM2.h5&#x27;</span>,)</span><br><span class="line">    label = model.predict(test_data)</span><br><span class="line">    file = <span class="built_in">open</span>(<span class="string">&#x27;./submission.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    <span class="comment"># print(raw_test_data)</span></span><br><span class="line">    <span class="keyword">for</span> re <span class="keyword">in</span> label:</span><br><span class="line">        index = get_max_index(re)</span><br><span class="line">        <span class="comment"># file.writelines(raw_test_data[i])</span></span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">            file.write(<span class="string">&quot;Positive&quot;</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> index == <span class="number">1</span>:</span><br><span class="line">            file.write(<span class="string">&quot;Negative&quot;</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> index == <span class="number">2</span>:</span><br><span class="line">            file.write(<span class="string">&quot;Neutral&quot;</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> index == <span class="number">3</span>:</span><br><span class="line">            file.write(<span class="string">&quot;Extremely Positive&quot;</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            file.write(<span class="string">&quot;Extremely Negative&quot;</span>+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_lstm(n_symbols, embedding_weights, X_train_new, y_train_new, X_dev_new, y_dev_new, X_dev)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line">raw_test_data = np.load(<span class="string">&quot;./test_sentences1.npy&quot;</span>, allow_pickle=<span class="literal">True</span>)</span><br><span class="line">test_data = text_to_index_array(index_dict,raw_test_data)</span><br><span class="line">test_data = keras.preprocessing.sequence.pad_sequences(test_data, maxlen=maxlen)</span><br><span class="line">prediction(test_data,raw_test_data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最后的结果不是太好，只有百分之八十左右的精度，还有很多可以改良的地方。例如数据预处理的时候可以考虑停用词是否要去掉，因为问号等会对语气产生影响。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xco.jpg">
+      <meta itemprop="name" content="XcooL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XcooL">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XcooL">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/" class="post-title-link" itemprop="url">中风预测</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-24 19:54:14" itemprop="dateModified" datetime="2022-11-24T19:54:14+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="个人作业">个人作业</h1>
+<h1 id="数据预处理">数据预处理</h1>
+<h3 id="读入数据">读入数据</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding=<span class="string">&#x27;ISO-8859-1&#x27;</span>)</span><br><span class="line">len_train_data = <span class="built_in">len</span>(train_data)</span><br></pre></td></tr></table></figure>
+<h3 id="数据数字化">数据数字化</h3>
+<p>使得未用数字标识的性别、是否结婚、工作、居住地、是否抽烟用数字表示。</p>
+<p>由于bmi指数有上百条数据为空，所以这里的处理是求取bmi均值，替代空值【原本的处理方式是将bmi为空值的数据丢弃，但是由于标签为1的稀疏性，最后的预测结果很差，所以最后还是将bmi为空值的数据用均值替代】。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(len_train_data):</span><br><span class="line">    entity = train_data.loc[i]</span><br><span class="line">    <span class="keyword">if</span> math.isnan(entity[<span class="string">&#x27;bmi&#x27;</span>]):</span><br><span class="line">        entity[<span class="string">&#x27;bmi&#x27;</span>] = bmiAve</span><br><span class="line">    label_list.append(entity[<span class="string">&#x27;stroke&#x27;</span>])</span><br><span class="line">    <span class="keyword">del</span> entity[<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line">    <span class="keyword">del</span> entity[<span class="string">&#x27;stroke&#x27;</span>]</span><br><span class="line">    <span class="comment"># 替换gender为数字</span></span><br><span class="line">    gender = entity[<span class="string">&quot;gender&quot;</span>]</span><br><span class="line">    <span class="keyword">if</span> dictGender.get(gender) == <span class="literal">None</span>:</span><br><span class="line">        dictGender[gender] = indexGender</span><br><span class="line">        entity[<span class="string">&quot;gender&quot;</span>] = indexGender</span><br><span class="line">        indexGender = indexGender + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        entity[<span class="string">&quot;gender&quot;</span>] = dictGender.get(gender)</span><br><span class="line">    <span class="comment"># 替换marry为数字</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 替换work_type为数字</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 替换residence_type</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 替换smoking_status</span></span><br><span class="line">   ...</span><br><span class="line">    cell = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> entity:</span><br><span class="line">        cell.append(item)</span><br><span class="line">    data_pre.append(cell)</span><br></pre></td></tr></table></figure>
+<p>至此数据预处理部分完成。</p>
+<h1 id="决策回归树模型">决策回归树模型</h1>
+<h2 id="决策回归树手写版">决策回归树【手写版】</h2>
+<p>【代码详见dec_tree.ipynb文件】</p>
+<h3 id="前述"><strong>前述</strong></h3>
+<p>决策树是一种从无次序、无规则的样本数据集推理出决策树表示形式的分类规则。其中有两种结点：决策节点和叶节点。决策节点表示将数据分为两个分支，叶节点表示一个类。训练的过程就是一个在找最佳分割的过程，使得每个集合的纯度越高。</p>
+<p>决策树的度量基本采用的指标有：$ Gini <span class="math inline">\(和\)</span>Entropy$，具体而言：</p>
+<p><span class="math display">\[
+Gini=1-\sum_{j=1}^cp_{j}^2
+\]</span></p>
+<p><span class="math display">\[
+Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
+\]</span></p>
+<p>此处我用$ Entropy <span class="math inline">\(来判断，\)</span>Entropy$越小，数据的纯度就越高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">data_entropy</span>(<span class="params">data</span>):</span><br><span class="line">    n_rows=data.shape[<span class="number">0</span>]</span><br><span class="line">    n_stroke=data[data.stroke==<span class="number">1</span>].shape[<span class="number">0</span>]</span><br><span class="line">    n_healthy=n_rows-n_stroke</span><br><span class="line">    <span class="keyword">return</span> information_entropy([n_stroke, n_healthy])</span><br></pre></td></tr></table></figure>
+<p>最开始我先试着用性别对其进行了一个划分，发现以性别划分得到的纯度已经有<code>0.29030858809013044</code>，但是这显然还是不够的。需要函数得到使其信息熵最小的划分,得到正样本和负样本。由于存在数据不是bool的，例如ave_glucose_level等,所以在遍历这些特征的时候，我将<strong>步长设置成1</strong>进行遍历。</p>
+<h3 id="获得最优划分"><strong>获得最优划分</strong></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_best_feature</span>(<span class="params">data, label</span>):</span><br><span class="line">    X=data.drop(label, axis=<span class="number">1</span>)</span><br><span class="line">    min_entropy=<span class="number">1</span></span><br><span class="line">    col_selected=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    data_positive_found=<span class="literal">None</span></span><br><span class="line">    data_negative_found=<span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> col <span class="keyword">in</span> X.columns:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">float</span>(<span class="built_in">max</span>(data[col])) &gt; <span class="number">1.0</span>:</span><br><span class="line">            <span class="comment"># 连续数据 或者多分类 步长为1</span></span><br><span class="line">            <span class="keyword">for</span> mid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,math.ceil(<span class="built_in">max</span>(data[col])),<span class="number">1</span>):</span><br><span class="line">                data_positive = data[data[col]+<span class="number">0.0</span> &lt;= <span class="built_in">float</span>(mid)]</span><br><span class="line">                data_negative = data[data[col]+<span class="number">0.0</span> &gt; <span class="built_in">float</span>(mid)]</span><br><span class="line">                <span class="keyword">if</span> data_positive.shape[<span class="number">0</span>]==<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> data_negative.shape[<span class="number">0</span>]==<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                entropy = data_entropy2(data_positive, data_negative)</span><br><span class="line">                <span class="keyword">if</span> entropy &lt; min_entropy:</span><br><span class="line">                    min_entropy=entropy</span><br><span class="line">                    col_selected=col</span><br><span class="line">                    data_positive_found=data_positive</span><br><span class="line">                    data_negative_found=data_negative</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ...</span><br><span class="line">    <span class="keyword">return</span> col_selected, min_entropy, data_positive_found, data_negative_found</span><br></pre></td></tr></table></figure>
+<p>最后可以得到每次划分起决定性作用的特征、最小信息熵、正样本和负样本。</p>
+<h3 id="构建决策树">构建决策树</h3>
+<p>这其实是一个递归下降的过程，当到了最大深度（自己设定）的时候，就返回对应的branch，这也是防止过拟合的一种方式。</p>
+<p>每个分支Branch类如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Branch</span>:</span><br><span class="line">    no=<span class="number">0</span> </span><br><span class="line">    depth=<span class="number">1</span> <span class="comment">#深度</span></span><br><span class="line">    column=<span class="string">&#x27;&#x27;</span> <span class="comment"># 划分的feature</span></span><br><span class="line">    entropy=<span class="number">0</span> <span class="comment"># 信息熵</span></span><br><span class="line">    samples=<span class="number">0</span> <span class="comment"># 样本数量</span></span><br><span class="line">    value=[] <span class="comment"># 记录正负样本的个数</span></span><br><span class="line"></span><br><span class="line">    branch_positive=<span class="literal">None</span> <span class="comment">#存储正样本</span></span><br><span class="line">    branch_negative=<span class="literal">None</span> <span class="comment">#存储负样本</span></span><br><span class="line">    no_positive=<span class="number">0</span> <span class="comment"># </span></span><br><span class="line">    no_negative=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>决策树构建：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">decision_tree_inner</span>(<span class="params">data, label, depth, max_depth</span>):</span><br><span class="line">    <span class="keyword">global</span> number</span><br><span class="line">    branch = Branch()</span><br><span class="line">    branch.no=number</span><br><span class="line">    number=number+<span class="number">1</span></span><br><span class="line">    branch.depth=depth</span><br><span class="line">    branch.samples=data.shape[<span class="number">0</span>]</span><br><span class="line">    n_positive=data[data[label]==<span class="number">1</span>].shape[<span class="number">0</span>]</span><br><span class="line">    branch.value=[branch.samples-n_positive,n_positive]</span><br><span class="line">    branch.entropy=information_entropy(branch.value)</span><br><span class="line">    best_feature = find_best_feature(data, label)</span><br><span class="line">    branch.column=best_feature[<span class="number">0</span>]</span><br><span class="line">    new_entropy=best_feature[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> depth==max_depth <span class="keyword">or</span> branch.column==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        branch.no_positive=number</span><br><span class="line">        number=number+<span class="number">1</span></span><br><span class="line">        branch.no_negative=number</span><br><span class="line">        number=number+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> branch</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        data_negative=best_feature[<span class="number">3</span>]</span><br><span class="line">        branch.branch_negative=decision_tree_inner(data_negative, label, depth+<span class="number">1</span>, max_depth=max_depth)</span><br><span class="line">        data_positive=best_feature[<span class="number">2</span>]</span><br><span class="line">        branch.branch_positive=decision_tree_inner(data_positive, label, depth+<span class="number">1</span>, max_depth=max_depth)</span><br><span class="line">        <span class="keyword">return</span> branch</span><br></pre></td></tr></table></figure>
+<p>当决策树的深度设置成了10能够达到一定的分类和预测效果。但是精度不高，于是尝试导包做了一遍。</p>
+<h2 id="决策回归树导包版">决策回归树【导包版】</h2>
+<p>【代码详见tree.ipynb】</p>
+<h3 id="划分数据集">划分数据集</h3>
+<p>此处的训练集和测试集的比例为：1:4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(data_pre, label_list, test_size = <span class="number">0.2</span>, random_state = <span class="number">1234</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="建模和预测">建模和预测</h3>
+<p>为防止过拟合，将树的深度从1遍历到了50，绘制树的深度-preocision的曲线图，发现将书的深度设置成17左右拟合效果最好。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制曲线  查看是否过拟合 找到最优的max_depth</span></span><br><span class="line">depList = []</span><br><span class="line">preList = []</span><br><span class="line"><span class="keyword">for</span> depth <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    clf = clf = DecisionTreeClassifier(criterion = <span class="string">&#x27;gini&#x27;</span></span><br><span class="line">                            , max_depth = depth</span><br><span class="line">                            , random_state = <span class="number">30</span>)</span><br><span class="line">    clf.fit(x_train, y_train) <span class="comment"># 模型训练</span></span><br><span class="line"></span><br><span class="line">    y_pred = clf.predict(x_test) <span class="comment"># 在测试集上做预测</span></span><br><span class="line">    depList.append(depth)</span><br><span class="line">    preList.append(metrics.precision_score(y_test,y_pred))</span><br><span class="line"></span><br><span class="line">clf = DecisionTreeClassifier(criterion = <span class="string">&#x27;gini&#x27;</span></span><br><span class="line">                            , max_depth = <span class="number">20</span></span><br><span class="line">                            , random_state = <span class="number">30</span>)</span><br><span class="line">clf.fit(x_train, y_train) <span class="comment"># 模型训练</span></span><br></pre></td></tr></table></figure>
+<p>如下图所示：</p>
+<img data-src="/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/image_Z_73fGIEeK.png" class>
+<h3 id="决策树的可视化">决策树的可视化</h3>
+<p>【对应附件中的tree01.pdf,tree02.pfd,tree03.pdf】</p>
+<p>当深度设置成3时的决策树：</p>
+<img data-src="/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/image_Vmhcg2osVa.png" class>
+<p>树深度为20的决策树：</p>
+<img data-src="/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/image_LArJd_yWdA.png" class>
+<p>此时的分类效果较好，用其预测可以达到百分之九十的精确度。</p>
+
+<h1 id="lstm神经网络预测模型">LSTM神经网络预测模型</h1>
+<p>【代码详见lstm.py】</p>
+<h3 id="数据过采样">数据过采样</h3>
+<p>由于原始数据中为中风的稀疏性，导致训练出来的神经网络效果很不好，因此为了平衡数据，采用SMOTE算法过采样数据，使得负样本和正样本的比例较为均衡。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;过采样之前训练集中正负样本的比例分布:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(y_train[<span class="string">&#x27;stroke&#x27;</span>].value_counts())</span><br><span class="line"><span class="built_in">print</span>(y_train[<span class="string">&#x27;stroke&#x27;</span>].value_counts()/<span class="built_in">len</span>(y_train))</span><br><span class="line">os = SMOTE(random_state=<span class="number">0</span>,k_neighbors=<span class="number">5</span>)</span><br><span class="line">os_data_X,os_data_y=os.fit_resample(x_train, y_train.values.ravel())</span><br><span class="line">os_data_X = pd.DataFrame(data=os_data_X,columns=columns )</span><br><span class="line">os_data_y= pd.DataFrame(data=os_data_y,columns=[<span class="string">&#x27;stroke&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;-------------------------------------------&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;过采样之后训练集中正负样本的比例分布:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(os_data_y[<span class="string">&#x27;stroke&#x27;</span>].value_counts())</span><br><span class="line"><span class="built_in">print</span>(os_data_y[<span class="string">&#x27;stroke&#x27;</span>].value_counts()/<span class="built_in">len</span>(os_data_y))</span><br></pre></td></tr></table></figure>
+<h3 id="数据归一化">数据归一化</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scaler.fit(x_train)</span><br><span class="line">x_train = scaler.transform(x_train)</span><br><span class="line">x_test = scaler.transform(x_test)</span><br></pre></td></tr></table></figure>
+<h3 id="重设维度">重设维度</h3>
+<p>由于输入到LSTM神经网络中的维度需要三维，所以对训练数据和测试数据进行reshape，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_train = np.array(x_train).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_train = np_utils.to_categorical(y_train)</span><br><span class="line">x_test = np.array(x_test).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_test = np_utils.to_categorical(y_test)</span><br></pre></td></tr></table></figure>
+<h3 id="lstm模型的建立和训练">LSTM模型的建立和训练</h3>
+<p>采用串联的方式拼接各个层，最后采用的激活函数时<span class="math inline">\(softmax\)</span>，损失函数采用$ croossentropy
+<span class="math inline">\(。架构上，我采用了四层LSTM，四层全连接层。并且为了防止过拟合，还采用了\)</span>checkpoint,earlystop,reducelr<span class="math inline">\(三者拼接作为\)</span>callbacks$。</p>
+<p>训练的参数如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size=<span class="number">8</span>,epochs=<span class="number">5</span>,verbose=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="结果">结果</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Test score: <span class="number">0.39172635084231117</span></span><br><span class="line">Test accuracy: <span class="number">0.7883211680282352</span></span><br></pre></td></tr></table></figure>
+<p>在开发集上的<span class="math inline">\(precision\)</span>虽然只有百分之八十不到，但是最后交到评测网站测评时也能达到将近百分之九十，可见过采样对于神经网络的训练能起到很大的作用。</p>
+<h1 id="总结">总结</h1>
+<p>学习了如何手写决策树以及用导包的方式解决分类预测问题，途中遇到了很多困难，包括环境上的搭建、对数据预处理如何更加合理有效、对特殊数据的处理、如何防止决策树的过拟合，以及对于一开始神经网络训练效果很差、如何处理不平衡数据的分类问题等等，但都在最后得到了解决。</p>
+<p>虽然最后效果不是很好，但是确实在这个过程中学习到了很多！继续加油！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/24/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xco.jpg">
+      <meta itemprop="name" content="XcooL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XcooL">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | XcooL">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/24/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">概率统计模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-24 19:36:14" itemprop="dateModified" datetime="2022-11-24T19:36:14+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用最小二乘法等进行拟合</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/24/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -857,291 +1221,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/08/vue-day1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xco.jpg">
-      <meta itemprop="name" content="XcooL">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XcooL">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XcooL">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/08/vue-day1/" class="post-title-link" itemprop="url">vue-day1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-08 21:03:57" itemprop="dateModified" datetime="2022-11-08T21:03:57+08:00">2022-11-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>vue_day1</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/08/vue-day1/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xco.jpg">
-      <meta itemprop="name" content="XcooL">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XcooL">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XcooL">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/" class="post-title-link" itemprop="url">Compiler-建立符号表&错误处理-3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-07 22:44:25" itemprop="dateModified" datetime="2022-11-07T22:44:25+08:00">2022-11-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Compiler/" itemprop="url" rel="index"><span itemprop="name">Compiler</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>编译原理-建立符号表和错误处理</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2022/10/30/Visual-arithmetic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xco.jpg">
-      <meta itemprop="name" content="XcooL">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XcooL">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | XcooL">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/30/Visual-arithmetic/" class="post-title-link" itemprop="url">Visual arithmetic</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-30 22:48:42" itemprop="dateModified" datetime="2022-10-30T22:48:42+08:00">2022-10-30</time>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Visual Arithmetics & KG</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/30/Visual-arithmetic/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1166,13 +1245,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">52k</span>
+    <span title="站点总字数">69k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:27</span>
+    <span title="站点阅读时长">1:55</span>
   </span>
 
 </div>
