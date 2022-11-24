@@ -2936,7 +2936,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #afb4ac;
+  background: #755579;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2975,7 +2975,6 @@ body {
 .main-inner > .comments,
 .main-inner > .pagination {
   background: #fff;
-  border-radius: 5px;
 }
 .post-content {
   margin: 15px;

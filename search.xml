@@ -368,6 +368,114 @@ remove ctrl+空格 add shortcut alt+/</p></li>
       </categories>
   </entry>
   <entry>
+    <title>贪心算法</title>
+    <url>/2022/11/09/Greedy-Algorithm/</url>
+    <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
+<h2 id="部分背包问题">部分背包问题</h2>
+<p><strong>输入：</strong>
+n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
+<p><strong>输出：</strong> 求解一个解决方案。<span class="math inline">\(S=\{x_i|0 \leq x_i \leq n \}\)</span>，如果<span class="math inline">\(x_i\)</span>只能选0或者1，则变成了完全背包问题。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_APjPlE8xfR.png" class>
+<p><strong>最高性价比优先</strong></p>
+<p>证明贪心策略是最优解，方法：替换法（假设另外存在一个最优解）</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_oRBRScSpDx.png" class>
+<p>时间复杂度：<span class="math inline">\(O(nlogn)\)</span></p>
+<hr>
+<h2 id="最优前缀编码问题">最优前缀编码问题</h2>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_mjuaF95KcS.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_k_DKNolvPS.png" class>
+<h2 id="活动选择问题1">活动选择问题1</h2>
+<p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_gtgIT3Wd-7.png" class>
+<p><strong>策略：</strong></p>
+<ol type="1">
+<li><p><strong>最短活动</strong>优先</p></li>
+<li><p><strong>最早开始</strong>活动优先</p></li>
+<li><p><strong>最早结束</strong>活动优先</p></li>
+</ol>
+<p>提出贪心策略→证明贪心算法就是最优解</p>
+<p>如何证明？<strong>举反例</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_WunvnoB7IM.png" class>
+<p><strong>正确算法：最早活动优先</strong></p>
+<p>如何证明这是最优解？替换算法</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_WQR3nKQJKM.png" class>
+<p>时间复杂度为<span class="math inline">\(O(nlogn)\)</span>，仍旧为排序算法时间复杂度。</p>
+<h2 id="活动选择问题2">活动选择问题2</h2>
+<p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
+<h4 id="问题定义">问题定义</h4>
+<p>n个活动组成的集合<span class="math inline">\(S=\{a_1,a_2,...a_n\}\)</span>,每个活动有开始时间<span class="math inline">\(s_i\)</span>和结束时间<span class="math inline">\(f_i\)</span>和权重<span class="math inline">\(w_i\)</span>。找到一个活动的子集，使得<span class="math inline">\(max\sum w_i\)</span>，同时保证活动不能冲突。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_dfx6vuUSTy.png" class>
+<p>存在<strong>重叠子问题</strong>，使用<strong>动态规划</strong>求解。</p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_k1GKkxPi4V.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_apSln0_h52.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_dZb4khxonI.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_4y4dNIwGwP.png" class>
+<p><strong>伪代码：</strong></p>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_BZG0j_Xhw1.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_s53HT29Iq5.png" class>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_Y10aQNR_Tt.png" class>
+<p>选择活动rec[i]=1，否则为0.</p>
+<p><strong>时间复杂度：</strong><span class="math inline">\(O(nlogn)\)</span>（二分查找排序时间复杂度）</p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>greedy algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LBPH</title>
+    <url>/2022/10/18/LBPH/</url>
+    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
+<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
+<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
+<h4 id="计算lbp编码">计算LBP编码</h4>
+<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
+<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
+<h4 id="均匀化降维">均匀化降维</h4>
+<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
+<p>具体实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
+<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
+<h4 id="特征矩阵">特征矩阵</h4>
+<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
+<h4 id="直方图">直方图</h4>
+<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
+<h4 id="特征向量">特征向量</h4>
+<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
+<h4 id="人脸识别">人脸识别</h4>
+<ul>
+<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
+<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
+</ul>
+<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
+<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
+<h4 id="结果">结果</h4>
+<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
+<h3 id="难点与改进">难点与改进</h3>
+<h4 id="难点">难点</h4>
+<ol type="1">
+<li>光照问题</li>
+<li>表情姿态问题</li>
+<li>遮挡问题</li>
+<li>年龄变化</li>
+</ol>
+<h4 id="改进与尝试">改进与尝试</h4>
+<ol type="1">
+<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
+<li>尝试深度学习等卷积神经网络特征提取</li>
+<li>尝试SVM等其他分类算法</li>
+<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>Face_recognition</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Compiler-建立符号表&amp;错误处理-3</title>
     <url>/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/</url>
     <content><![CDATA[<h1 id="建立符号表和错误处理">建立符号表和错误处理</h1>
@@ -477,118 +585,10 @@ remove ctrl+空格 add shortcut alt+/</p></li>
       </categories>
   </entry>
   <entry>
-    <title>贪心算法</title>
-    <url>/2022/11/09/Greedy-Algorithm/</url>
-    <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
-<h2 id="部分背包问题">部分背包问题</h2>
-<p><strong>输入：</strong>
-n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
-<p><strong>输出：</strong> 求解一个解决方案。<span class="math inline">\(S=\{x_i|0 \leq x_i \leq n \}\)</span>，如果<span class="math inline">\(x_i\)</span>只能选0或者1，则变成了完全背包问题。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_APjPlE8xfR.png" class>
-<p><strong>最高性价比优先</strong></p>
-<p>证明贪心策略是最优解，方法：替换法（假设另外存在一个最优解）</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_oRBRScSpDx.png" class>
-<p>时间复杂度：<span class="math inline">\(O(nlogn)\)</span></p>
-<hr>
-<h2 id="最优前缀编码问题">最优前缀编码问题</h2>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_mjuaF95KcS.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_k_DKNolvPS.png" class>
-<h2 id="活动选择问题1">活动选择问题1</h2>
-<p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_gtgIT3Wd-7.png" class>
-<p><strong>策略：</strong></p>
-<ol type="1">
-<li><p><strong>最短活动</strong>优先</p></li>
-<li><p><strong>最早开始</strong>活动优先</p></li>
-<li><p><strong>最早结束</strong>活动优先</p></li>
-</ol>
-<p>提出贪心策略→证明贪心算法就是最优解</p>
-<p>如何证明？<strong>举反例</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_WunvnoB7IM.png" class>
-<p><strong>正确算法：最早活动优先</strong></p>
-<p>如何证明这是最优解？替换算法</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_WQR3nKQJKM.png" class>
-<p>时间复杂度为<span class="math inline">\(O(nlogn)\)</span>，仍旧为排序算法时间复杂度。</p>
-<h2 id="活动选择问题2">活动选择问题2</h2>
-<p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
-<h4 id="问题定义">问题定义</h4>
-<p>n个活动组成的集合<span class="math inline">\(S=\{a_1,a_2,...a_n\}\)</span>,每个活动有开始时间<span class="math inline">\(s_i\)</span>和结束时间<span class="math inline">\(f_i\)</span>和权重<span class="math inline">\(w_i\)</span>。找到一个活动的子集，使得<span class="math inline">\(max\sum w_i\)</span>，同时保证活动不能冲突。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_dfx6vuUSTy.png" class>
-<p>存在<strong>重叠子问题</strong>，使用<strong>动态规划</strong>求解。</p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_k1GKkxPi4V.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_apSln0_h52.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_dZb4khxonI.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_4y4dNIwGwP.png" class>
-<p><strong>伪代码：</strong></p>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_BZG0j_Xhw1.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_s53HT29Iq5.png" class>
-<img data-src="/2022/11/09/Greedy-Algorithm/image_Y10aQNR_Tt.png" class>
-<p>选择活动rec[i]=1，否则为0.</p>
-<p><strong>时间复杂度：</strong><span class="math inline">\(O(nlogn)\)</span>（二分查找排序时间复杂度）</p>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>greedy algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LBPH</title>
-    <url>/2022/10/18/LBPH/</url>
-    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
-<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
-<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
-<h4 id="计算lbp编码">计算LBP编码</h4>
-<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
-<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
-<h4 id="均匀化降维">均匀化降维</h4>
-<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
-<p>具体实现代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
-<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
-<h4 id="特征矩阵">特征矩阵</h4>
-<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
-<h4 id="直方图">直方图</h4>
-<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
-<h4 id="特征向量">特征向量</h4>
-<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
-<h4 id="人脸识别">人脸识别</h4>
-<ul>
-<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
-<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
-</ul>
-<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
-<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
-<h4 id="结果">结果</h4>
-<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
-<h3 id="难点与改进">难点与改进</h3>
-<h4 id="难点">难点</h4>
-<ol type="1">
-<li>光照问题</li>
-<li>表情姿态问题</li>
-<li>遮挡问题</li>
-<li>年龄变化</li>
-</ol>
-<h4 id="改进与尝试">改进与尝试</h4>
-<ol type="1">
-<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
-<li>尝试深度学习等卷积神经网络特征提取</li>
-<li>尝试SVM等其他分类算法</li>
-<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>Face_recognition</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LSTM-文本情感预测</title>
     <url>/2022/11/24/LSTM-%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E9%A2%84%E6%B5%8B/</url>
     <content><![CDATA[<h2 id="数据预处理">数据预处理</h2>
-<p>去除停用词，分词，最后输出一个矩阵，每一行时经过处理后的单词列表。</p>
+<p>去除了停用词，分词，最后输出一个矩阵，每一行时经过处理后的单词列表。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">train_data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding=<span class="string">&#x27;ISO-8859-1&#x27;</span>)</span><br><span class="line">size_train_data = <span class="built_in">len</span>(train_data)</span><br><span class="line">tweet_text = train_data[<span class="string">&#x27;OriginalTweet&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对Tweet进行分句, 同时去除标点符号</span></span><br><span class="line">tweet_sentences = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size_train_data):</span><br><span class="line">    tweet = tweet_text[i]</span><br><span class="line">    tweets = nltk.sent_tokenize(tweet)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(tweets)):</span><br><span class="line">        sentence = tweets[j]</span><br><span class="line">        tweets[j] = re.sub(<span class="string">r&#x27;[^a-zA-Z0-9\s]&#x27;</span>,<span class="string">&#x27;&#x27;</span>,string= sentence)</span><br><span class="line">        tweets[j] = tweets[j].replace(<span class="string">&quot;\r&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    tweet_sentences.append(tweets)</span><br></pre></td></tr></table></figure>
 <h2 id="word2vec模型训练">Word2vec模型训练</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = Word2Vec(text_combine,vector_size = <span class="number">100</span>, window = <span class="number">5</span> , min_count = <span class="number">5</span>, epochs=<span class="number">7</span>, negative=<span class="number">10</span>,sg=<span class="number">1</span>)</span><br><span class="line">model.save(<span class="string">&#x27;./models/Word2vec_v4&#x27;</span>)  <span class="comment"># 保存模型</span></span><br></pre></td></tr></table></figure>
@@ -1372,14 +1372,14 @@ springboot项目</h1>
 <p>【代码详见dec_tree.ipynb文件】</p>
 <h3 id="前述"><strong>前述</strong></h3>
 <p>决策树是一种从无次序、无规则的样本数据集推理出决策树表示形式的分类规则。其中有两种结点：决策节点和叶节点。决策节点表示将数据分为两个分支，叶节点表示一个类。训练的过程就是一个在找最佳分割的过程，使得每个集合的纯度越高。</p>
-<p>决策树的度量基本采用的指标有：$ Gini <span class="math inline">\(和\)</span>Entropy$，具体而言：</p>
+<p>决策树的度量基本采用的指标有：$Gini <span class="math inline">\(和\)</span>Entropy$，具体而言：</p>
 <p><span class="math display">\[
 Gini=1-\sum_{j=1}^cp_{j}^2
 \]</span></p>
 <p><span class="math display">\[
 Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 \]</span></p>
-<p>此处我用$ Entropy <span class="math inline">\(来判断，\)</span>Entropy$越小，数据的纯度就越高。</p>
+<p>此处我用<span class="math inline">\(Entropy\)</span>来判断，<span class="math inline">\(Entropy\)</span>越小，数据的纯度就越高。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">data_entropy</span>(<span class="params">data</span>):</span><br><span class="line">    n_rows=data.shape[<span class="number">0</span>]</span><br><span class="line">    n_stroke=data[data.stroke==<span class="number">1</span>].shape[<span class="number">0</span>]</span><br><span class="line">    n_healthy=n_rows-n_stroke</span><br><span class="line">    <span class="keyword">return</span> information_entropy([n_stroke, n_healthy])</span><br></pre></td></tr></table></figure>
 <p>最开始我先试着用性别对其进行了一个划分，发现以性别划分得到的纯度已经有<code>0.29030858809013044</code>，但是这显然还是不够的。需要函数得到使其信息熵最小的划分,得到正样本和负样本。由于存在数据不是bool的，例如ave_glucose_level等,所以在遍历这些特征的时候，我将<strong>步长设置成1</strong>进行遍历。</p>
 <h3 id="获得最优划分"><strong>获得最优划分</strong></h3>
@@ -1421,8 +1421,7 @@ Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 <p>由于输入到LSTM神经网络中的维度需要三维，所以对训练数据和测试数据进行reshape，如下所示：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_train = np.array(x_train).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_train = np_utils.to_categorical(y_train)</span><br><span class="line">x_test = np.array(x_test).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_test = np_utils.to_categorical(y_test)</span><br></pre></td></tr></table></figure>
 <h3 id="lstm模型的建立和训练">LSTM模型的建立和训练</h3>
-<p>采用串联的方式拼接各个层，最后采用的激活函数时<span class="math inline">\(softmax\)</span>，损失函数采用$ croossentropy
-<span class="math inline">\(。架构上，我采用了四层LSTM，四层全连接层。并且为了防止过拟合，还采用了\)</span>checkpoint,earlystop,reducelr<span class="math inline">\(三者拼接作为\)</span>callbacks$。</p>
+<p>采用串联的方式拼接各个层，最后采用的激活函数时<span class="math inline">\(softmax\)</span>，损失函数采用<span class="math inline">\(croossentropy\)</span>。架构上，我采用了四层LSTM，四层全连接层。并且为了防止过拟合，还采用了<span class="math inline">\(checkpoint,earlystop,reducelr\)</span>三者拼接作为<span class="math inline">\(callbacks\)</span>。</p>
 <p>训练的参数如下所示：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">batch_size=<span class="number">8</span>,epochs=<span class="number">5</span>,verbose=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <h3 id="结果">结果</h3>

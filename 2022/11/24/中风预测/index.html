@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://xcooool.github.io/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/image_Vmhcg2osVa.png">
 <meta property="og:image" content="http://xcooool.github.io/2022/11/24/%E4%B8%AD%E9%A3%8E%E9%A2%84%E6%B5%8B/image_LArJd_yWdA.png">
 <meta property="article:published_time" content="2022-11-24T11:36:37.000Z">
-<meta property="article:modified_time" content="2022-11-24T12:22:43.319Z">
+<meta property="article:modified_time" content="2022-11-24T12:36:55.470Z">
 <meta property="article:author" content="XcooL">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Decision Tree">
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-24 20:22:43" itemprop="dateModified" datetime="2022-11-24T20:22:43+08:00">2022-11-24</time>
+      <time title="修改时间：2022-11-24 20:36:55" itemprop="dateModified" datetime="2022-11-24T20:36:55+08:00">2022-11-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -305,14 +305,14 @@
 <p>【代码详见dec_tree.ipynb文件】</p>
 <h3 id="前述"><strong>前述</strong></h3>
 <p>决策树是一种从无次序、无规则的样本数据集推理出决策树表示形式的分类规则。其中有两种结点：决策节点和叶节点。决策节点表示将数据分为两个分支，叶节点表示一个类。训练的过程就是一个在找最佳分割的过程，使得每个集合的纯度越高。</p>
-<p>决策树的度量基本采用的指标有：$ Gini <span class="math inline">\(和\)</span>Entropy$，具体而言：</p>
+<p>决策树的度量基本采用的指标有：$Gini <span class="math inline">\(和\)</span>Entropy$，具体而言：</p>
 <p><span class="math display">\[
 Gini=1-\sum_{j=1}^cp_{j}^2
 \]</span></p>
 <p><span class="math display">\[
 Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 \]</span></p>
-<p>此处我用$ Entropy <span class="math inline">\(来判断，\)</span>Entropy$越小，数据的纯度就越高。</p>
+<p>此处我用<span class="math inline">\(Entropy\)</span>来判断，<span class="math inline">\(Entropy\)</span>越小，数据的纯度就越高。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">data_entropy</span>(<span class="params">data</span>):</span><br><span class="line">    n_rows=data.shape[<span class="number">0</span>]</span><br><span class="line">    n_stroke=data[data.stroke==<span class="number">1</span>].shape[<span class="number">0</span>]</span><br><span class="line">    n_healthy=n_rows-n_stroke</span><br><span class="line">    <span class="keyword">return</span> information_entropy([n_stroke, n_healthy])</span><br></pre></td></tr></table></figure>
 <p>最开始我先试着用性别对其进行了一个划分，发现以性别划分得到的纯度已经有<code>0.29030858809013044</code>，但是这显然还是不够的。需要函数得到使其信息熵最小的划分,得到正样本和负样本。由于存在数据不是bool的，例如ave_glucose_level等,所以在遍历这些特征的时候，我将<strong>步长设置成1</strong>进行遍历。</p>
 <h3 id="获得最优划分"><strong>获得最优划分</strong></h3>
@@ -354,8 +354,7 @@ Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 <p>由于输入到LSTM神经网络中的维度需要三维，所以对训练数据和测试数据进行reshape，如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_train = np.array(x_train).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_train = np_utils.to_categorical(y_train)</span><br><span class="line">x_test = np.array(x_test).reshape((-<span class="number">1</span>,<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">y_test = np_utils.to_categorical(y_test)</span><br></pre></td></tr></table></figure>
 <h3 id="lstm模型的建立和训练">LSTM模型的建立和训练</h3>
-<p>采用串联的方式拼接各个层，最后采用的激活函数时<span class="math inline">\(softmax\)</span>，损失函数采用$ croossentropy
-<span class="math inline">\(。架构上，我采用了四层LSTM，四层全连接层。并且为了防止过拟合，还采用了\)</span>checkpoint,earlystop,reducelr<span class="math inline">\(三者拼接作为\)</span>callbacks$。</p>
+<p>采用串联的方式拼接各个层，最后采用的激活函数时<span class="math inline">\(softmax\)</span>，损失函数采用<span class="math inline">\(croossentropy\)</span>。架构上，我采用了四层LSTM，四层全连接层。并且为了防止过拟合，还采用了<span class="math inline">\(checkpoint,earlystop,reducelr\)</span>三者拼接作为<span class="math inline">\(callbacks\)</span>。</p>
 <p>训练的参数如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size=<span class="number">8</span>,epochs=<span class="number">5</span>,verbose=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <h3 id="结果">结果</h3>
