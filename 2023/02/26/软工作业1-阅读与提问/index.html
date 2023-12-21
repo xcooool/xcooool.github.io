@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xcooool.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="软工第一次作业——阅读《构建之法》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软工作业1-阅读与提问">
+<meta property="og:url" content="http://xcooool.github.io/2023/02/26/%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9A1-%E9%98%85%E8%AF%BB%E4%B8%8E%E6%8F%90%E9%97%AE/index.html">
+<meta property="og:site_name" content="XcooL">
+<meta property="og:description" content="软工第一次作业——阅读《构建之法》">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-26T03:47:12.000Z">
+<meta property="article:modified_time" content="2023-02-26T03:49:18.344Z">
+<meta property="article:author" content="XcooL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://xcooool.github.io/2023/02/26/%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9A1-%E9%98%85%E8%AF%BB%E4%B8%8E%E6%8F%90%E9%97%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://xcooool.github.io/2023/02/26/%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9A1-%E9%98%85%E8%AF%BB%E4%B8%8E%E6%8F%90%E9%97%AE/","path":"2023/02/26/软工作业1-阅读与提问/","title":"软工作业1-阅读与提问"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>软工作业1-阅读与提问 | XcooL</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">XcooL</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E9%97%AE"><span class="nav-number">1.</span> <span class="nav-text">提问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%981%E5%A6%82%E6%9E%9C%E9%87%8F%E5%8C%96%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E7%9A%84%E6%95%88%E6%9E%9C%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%AF%94%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E6%9B%B4%E5%85%B7%E6%95%88%E7%8E%87%E7%9A%84%E4%BB%B7%E5%80%BC%E8%A7%82%E5%92%8C%E4%BD%93%E7%B3%BB"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">问题1：如果量化敏捷开发的效果？是否存在比敏捷开发更具效率的价值观和体系？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%982%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95%E4%BB%85%E4%BB%85%E6%98%AF%E6%B5%8B%E8%AF%95%E8%87%B4%E5%91%BD%E6%80%A7bug"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">问题2：为什么&quot;冒烟测试&quot;仅仅是测试致命性bug?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%983wbs%E7%BB%86%E7%B2%92%E5%BA%A6%E6%98%AF%E5%90%A6%E4%BC%9A%E5%9B%A0%E4%B8%BA%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%A7%84%E6%A8%A1%E8%80%8C%E6%94%B9%E5%8F%98"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">问题3：WBS细粒度是否会因为项目的规模而改变?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%984%E5%B0%8F%E5%BC%BA%E5%9C%B0%E7%8B%B1%E7%9A%84%E5%87%BA%E7%8E%B0%E6%98%AF%E5%90%A6%E6%98%AF%E7%94%B1%E4%BA%8E%E6%AF%8F%E6%97%A5%E6%9E%84%E5%BB%BA%E7%9A%84%E8%B4%A8%E9%87%8F%E9%97%A8%E7%A6%81%E8%BF%87%E4%BD%8E"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">问题4：小强地狱的出现是否是由于每日构建的质量门禁过低？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%985%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E7%9A%84%E5%90%88%E9%80%82%E6%97%B6%E6%9C%BA"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">问题5：什么是集成测试的合适时机?</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XcooL"
+      src="/images/xco.jpg">
+  <p class="site-author-name" itemprop="name">XcooL</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://xcooool.github.io/2023/02/26/%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9A1-%E9%98%85%E8%AF%BB%E4%B8%8E%E6%8F%90%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xco.jpg">
+      <meta itemprop="name" content="XcooL">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XcooL">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="软工作业1-阅读与提问 | XcooL">
+      <meta itemprop="description" content="软工第一次作业——阅读《构建之法》">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软工作业1-阅读与提问
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-02-26 11:49:18" itemprop="dateModified" datetime="2023-02-26T11:49:18+08:00">2023-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Program-Project/" itemprop="url" rel="index"><span itemprop="name">Program Project</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">软工第一次作业——阅读《构建之法》</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <table>
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>这个作业属于哪个课程</td>
+<td><a target="_blank" rel="noopener" href="https://bbs.csdn.net/forums/buaa-ase2023">北航软工社区</a></td>
+</tr>
+<tr class="even">
+<td>这个作业的要求在哪里</td>
+<td><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/613531493">作业1要求</a></td>
+</tr>
+<tr class="odd">
+<td>我在这个课程的目标是</td>
+<td>学会结对编程和敏捷开发</td>
+</tr>
+<tr class="even">
+<td>这个作业在哪个具体方面帮助我实现目标</td>
+<td>结对编程和敏捷开发</td>
+</tr>
+</tbody>
+</table>
+<h1 id="提问">提问</h1>
+<h4 id="问题1如果量化敏捷开发的效果是否存在比敏捷开发更具效率的价值观和体系">问题1：如果量化敏捷开发的效果？是否存在比敏捷开发更具效率的价值观和体系？</h4>
+<p>在《构建之法》的第六章中的第115页有：</p>
+<blockquote>
+<p>问：为啥很多研究都证明敏捷很有效果?
+答：大多数被测试、被研究的新东西都很有效果，这是Hawthorne效应。例如你可以测试“给每一个程序员发毛绒玩具，然后测试劳动生产率”,你会发现毛绒玩具能提高劳动生产率!</p>
+</blockquote>
+<p>从上述文字中发现，敏捷能够提高生产率，但是这就是最佳的催化剂了吗？
+虽然敏捷开发在很多情况下能够带给团队很大的效益，但是还是应该因地制宜，不是所有的团队都适用于敏捷开发，所以我认为也不存在一个标准的评价指标和体系，例如还有MSF等团队模型可以考虑其中。所以我觉得不存在普适的，适用于所有情况的最有效的价值观体系。敏捷开发能带来更多的效益是经验告诉我们的，没有科学依据。</p>
+<h4 id="问题2为什么冒烟测试仅仅是测试致命性bug">问题2：为什么"冒烟测试"仅仅是测试致命性bug?</h4>
+<p>在《构建之法》的第十三章中的第244页有：</p>
+<blockquote>
+<p>问：有人提到一种“冒烟测试”,是怎么回事?
+答：事实上这是一种基本验证测试，据说是从硬件设计行业流传过来
+的说法。当年设计电路板的时候，很多情况下，新的电路板一插上电
+源就冒起白烟，烧坏了。如果插上电源后没有冒烟，那就是通过了“冒
+烟测试”,可以进一步测试电路板的功能了。我们正在讨论的BVT也
+是一种冒烟测试。</p>
+</blockquote>
+<p>书中未对“冒烟测试”作详细介绍。
+经过查阅资料,维基百科上对"冒烟测试"的解释如下:</p>
+<blockquote>
+<p>smoke testing is preliminary testing to reveal simple failures
+<strong>severe enough</strong> to, for example, reject a prospective
+software release. Smoke tests are a subset of [test cases] that
+<strong>cover the most important functionality</strong> of a component
+or system, used to aid assessment if main functions of the software
+appear to work correctly.When used to determine if a computer program
+should be subjected to further, more fine-grained testing, a smoke test
+may be called an intake test.Alternately, it is a set of tests run on
+each new build of a product to verify that the build is
+<strong>testable</strong> before the build is released into the hands of
+the test team. In the DevOps paradigm, use of a BVT step is one hallmark
+of the continuous integration maturity stage.</p>
+</blockquote>
+<p>冒烟测试就是在每日立会构建之后，对系统的基本功能进行简单的测,其重点在于
+daily
+build，也就是说冒烟测试是随着每一次构建而产生的,而不是所说的测试阶段。
+除此之外，《构建之法》中还提到了回归测试【在书中的28页】，两者比较来看。
+经过查阅：</p>
+<blockquote>
+<p>冒烟测试测试的是致命性Bug。</p>
+</blockquote>
+<p>冒烟测试和回归测试的区别在于，冒烟测试是找的致命性bug，并且可以节约测试时间成本；但是回归测试就是在对旧代码更改引入的新代码进行测试，看看是否引入新的bug，或者退步。为什么冒烟测试仅仅测试的是致命性bug？虽然此种说法和书中的描述相似，即电路板插上电源是否会冒烟，有没有导致程序跑不动的问题。但是在多轮冒烟测试之后，是否一些小的bug在多轮冒烟测试时未及时检出，导致最后debug时由于bug年代较为久远而导致的效率太低？</p>
+<h4 id="问题3wbs细粒度是否会因为项目的规模而改变">问题3：WBS细粒度是否会因为项目的规模而改变?</h4>
+<p>在《构建之法》的第十三章中的第244页有：</p>
+<blockquote>
+<p>问：所有的文档、工作计划也算在WBS中么?
+答：如果这些文档是可交付给客户的，或者开发团队要掌控制作文档
+的花费(人力),那么文档也可以算在WBS中。如果项目很小，或
+者文档不是很复杂，那么文档工作就可算为项目管理的一部分，而不
+必单列为一个交付件(Deliverable)。</p>
+</blockquote>
+<p>经过查阅：</p>
+<blockquote>
+<p>可见WBS分的细粒度如何,主要取决于项目的大小.但是往往由于某些原因会使得WBS和项目之间没有紧密的联系。</p>
+</blockquote>
+<p>于是产生疑问：为什么WBS的细粒度要根据项目的大小儿改变？不应该是基本两周的时间完成一个叶节点？这意味着WBS的细粒度应当是恒定的？对这个分解还是不太清楚并存疑。于是又查到：</p>
+<blockquote>
+<p>由于WBS不是一个事事巨细的覆盖整个项目的分解结构，所以很多细节都不会体现在WBS中。</p>
+</blockquote>
+<p>《构建之法》第170页:</p>
+<blockquote>
+<p>从结果出发构建WBS，而不是从团队的活动出发.</p>
+</blockquote>
+<p>所以结果导向的WBS分解，我觉得WBS的细粒度应当和需求相关，但是不应该因为需求的改变而改变WBS的细粒度。但是对于实际开发过程中是如何做的还有待考量。WBS体现主要是可交付成果，因此常常会被束之高阁。经过查阅,我还发现WBS可以与其他编码体系配合，体现不同的配置关系，比如WBS和OBS结合,就可以进行指责配置。同时我觉得如何分层分级也是一门技术活，层级多，难管理，层级少，难执行。</p>
+<h4 id="问题4小强地狱的出现是否是由于每日构建的质量门禁过低">问题4：小强地狱的出现是否是由于每日构建的质量门禁过低？</h4>
+<p>在《构建之法》的第240页中对"每日构建"的定义中未提及每日构建的具体事务.
+经过查阅,发现daily
+build就是<strong>把一个软件项目的所有的最新的代码从配置库中取出,然后从头进行编译,链接和运行</strong>。</p>
+<blockquote>
+<p>Daily build一般是每日下班后半夜进行,前提是员工check in
+最新的code到配置库中.所以可以把daily build戏称为nightly
+build.然后在第二天上班时把错误给所属模块负责人并敦促解决.</p>
+</blockquote>
+<p>所以daily
+build是为了减少构建失败的次数,需要尽早发现问题,降低解决问题的成本.同时还可以最小化集成成本.</p>
+<blockquote>
+<p><strong>那么如何有效地进行Daily Build呢?</strong></p>
+<ol type="1">
+<li>进行工具协同:固化流程,实时纠偏</li>
+<li>制定标准:制定质量门禁</li>
+<li>积跬步:在构建后进行冒烟测试</li>
+</ol>
+</blockquote>
+<p>于是产生疑问：如果出现了小强地狱，是否意味着之前的每日构建设置的质量门禁过低？两者是否存在着直接的联系？并且我发现在每日构建之后进行的冒烟测试也仅仅是测试出了致命性的bug，对隐藏的小bug视而不见，是否会导致一直都有百分之十几到二十几的人在小强地狱？我觉得小强地狱的存在不利于团队的发展，所以测试和每日构建之重要不言而喻。</p>
+<h4 id="问题5什么是集成测试的合适时机">问题5：什么是集成测试的合适时机?</h4>
+<p>在<构建之法>的P248中写道:</构建之法></p>
+<blockquote>
+<p>在模块本身稳定之前就提早做集成测试，可能会报告出很多Bug,但是这些由于提早测试而发现的Bug,有点像汽车司机在等待绿灯时不耐烦而拼命地按喇叭—也就是说，有点像噪音。我们还是要等到适当的时机再开始进行集成测试。</p>
+</blockquote>
+<p>可见不是一个新的模块加进去就要进行集成测试.经过查阅之后:</p>
+<blockquote>
+<p>理论上，集成测试在单元测试之后,但是这样做效率太低。
+实际上，单元测试和集成测试同步进行，在单元测试中先测试几个函数的功能，然后再集成测试一下这几个函数的接口。</p>
+</blockquote>
+<p>所以我产生疑问的是实际开发中集成测试是否和单元测试混为一谈，何为同步进行？较频繁地进行集成测试是否会导致效率太低？如何平衡测试和效率的问题？两者应该是互相制约和互相影响的。我觉得我应该会在之后的团队实践中得到答案。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/01/%E5%A4%96%E5%8D%96%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" rel="prev" title="外卖系统实现">
+                  <i class="fa fa-chevron-left"></i> 外卖系统实现
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/04/%E8%BD%AF%E5%B7%A52/" rel="next" title="软工作业2-软件案例分析">
+                  软工作业2-软件案例分析 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XcooL</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">112k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:07</span>
+  </span>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.6/mermaid.min.js","integrity":"sha256-ZfzwelSToHk5YAcr9wbXAmWgyn9Jyq08fSLrLhZE89w="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
