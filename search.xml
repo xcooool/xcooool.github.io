@@ -1067,43 +1067,6 @@ f(x,c_i)=e^{-\beta_i||x-c_i||^2}</script><p>但是径向基函数中的中心$c_
       </tags>
   </entry>
   <entry>
-    <title>Meta Learning</title>
-    <url>/2023/03/18/Meta-Learning/</url>
-    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1w4411872t?p=1&amp;amp;vd_source=271fe543b1f65b00e3d9cee7f5b7d39a&amp;gt">李宏毅老师-Metalearning-Video</a></p>
-<img data-src="/2023/03/18/Meta-Learning/image_Mqr_vzHE0W.png" class>
-<script type="math/tex; mode=display">
-f^{*}=F(D_{train})</script><h3 id="Machine-Learning-VS-Meta-Learning"><a href="#Machine-Learning-VS-Meta-Learning" class="headerlink" title="Machine Learning VS Meta Learning"></a><strong>Machine Learning VS Meta L</strong>earning</h3><p><strong>Machine Learning:</strong> 根据一组照片, 训练一个能够分类这张照片的<code>f</code></p>
-<p><strong>Meta Learning</strong> : 根据一组任务, 训练一个能够处理这组任务的<code>F</code></p>
-<p>如何<code>init</code>以及如何<code>Update</code>都是人工设计, 不是学出来的.</p>
-<p>那么如何让机器学习出如何设计出<code>theta</code>?</p>
-<h3 id="如何评价F的好坏"><a href="#如何评价F的好坏" class="headerlink" title="如何评价F的好坏?"></a><strong>如何评价F的好坏?</strong></h3><p>相当于评价一个老师的好坏, 我们是上帝视角, 我们给老师<code>F</code>分发n个教学任务, 老师接受到任务之后要去教学生这n个任务, 最后我们再把n份任务的试卷<code>Test</code>给学生做, 最后把这个学生在这n份任务上的表现<code>loss</code>求和就可以判断这个老师<code>F</code>的好坏了.</p>
-<h3 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段?"></a>测试阶段?</h3><p>相当于给这个学生分配新的没有被教过的任务, 看看他有没有能力从之前学到的任务中汲取经验, 也能够解决这个新的任务.</p>
-<img data-src="/2023/03/18/Meta-Learning/image_frT4zvt9sy.png" class>
-<p>类似few-shot.</p>
-<p><strong>定义Loss:</strong></p>
-<script type="math/tex; mode=display">
-L(F)=\sum {l^{n}}</script><script type="math/tex; mode=display">
-F^{*}=argmin L(F)</script><p>那么让L最小的F就是F *.</p>
-<h3 id="N-ways-K-shots"><a href="#N-ways-K-shots" class="headerlink" title="N-ways K-shots"></a>N-ways K-shots</h3><p>n个classes, K个examples</p>
-<h3 id="MAML"><a href="#MAML" class="headerlink" title="MAML"></a>MAML</h3><img data-src="/2023/03/18/Meta-Learning/image_VaiHVWRur0.png" class>
-<p>如何minimize L?  Gradient descent!!</p>
-<p>真的太秒了!!!!!&#x20;</p>
-<p>对于MAML中的 <code>φ</code>这个初始值,<strong>也有好坏之分</strong>!!&#x20;</p>
-<img data-src="/2023/03/18/Meta-Learning/image_uysERKDIg5.png" class>
-<h4 id="例如以下两个-φ的初始值"><a href="#例如以下两个-φ的初始值" class="headerlink" title="例如以下两个 φ的初始值:"></a>例如以下两个 <code>φ</code>的初始值:</h4><img data-src="/2023/03/18/Meta-Learning/image_teH34Q59sk.png" class>
-<img data-src="/2023/03/18/Meta-Learning/image_67nCMADDfm.png" class>
-<p>图一的 <code>φ</code>虽然在最开始没有图二的 <code>φ</code>在两个<code>loss</code>上的小/优, 但是经过训练之后, 第一个 <code>φ</code>可以达到的最优解明显好于第二个 <code>φ</code>可以达到的最优解.  因为第二个 <code>φ</code>的<code>loss2</code>只停留在local minimun中.</p>
-<p>所以,MAML find   <code>φ</code> achieving good performance <strong>after training</strong>, 然而 ML find  <code>φ</code> achieving good performance.</p>
-<p><strong>只要UPDATE一次.</strong></p>
-<img data-src="/2023/03/18/Meta-Learning/image_Ee7jtehker.png" class>
-<p><strong>Q:没太懂,这个MAML和Model Pre-training的却比?</strong></p>
-<p>为什么model pretraining 迭代之后会是水平的? 他们的目标是什么?</p>
-]]></content>
-      <tags>
-        <tag>ML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【OpenGL】Create a triangle 1</title>
     <url>/2024/02/02/OpenGL-Create-a-triangle-1/</url>
     <content><![CDATA[<h1 id="Triangle"><a href="#Triangle" class="headerlink" title="Triangle"></a>Triangle</h1><p>/<em>Hello Triangle</em>/<br>// 顶点数组对象：Vertex Array Object, VAO<br>// 顶点缓冲对象：Vertex Buffer Object, VBO<br>// 元素缓冲对象：Element Buffer Object EBO</p>
@@ -1175,6 +1138,43 @@ F^{*}=argmin L(F)</script><p>那么让L最小的F就是F *.</p>
       <tags>
         <tag>OpenGL</tag>
         <tag>CPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Meta Learning</title>
+    <url>/2023/03/18/Meta-Learning/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1w4411872t?p=1&amp;amp;vd_source=271fe543b1f65b00e3d9cee7f5b7d39a&amp;gt">李宏毅老师-Metalearning-Video</a></p>
+<img data-src="/2023/03/18/Meta-Learning/image_Mqr_vzHE0W.png" class>
+<script type="math/tex; mode=display">
+f^{*}=F(D_{train})</script><h3 id="Machine-Learning-VS-Meta-Learning"><a href="#Machine-Learning-VS-Meta-Learning" class="headerlink" title="Machine Learning VS Meta Learning"></a><strong>Machine Learning VS Meta L</strong>earning</h3><p><strong>Machine Learning:</strong> 根据一组照片, 训练一个能够分类这张照片的<code>f</code></p>
+<p><strong>Meta Learning</strong> : 根据一组任务, 训练一个能够处理这组任务的<code>F</code></p>
+<p>如何<code>init</code>以及如何<code>Update</code>都是人工设计, 不是学出来的.</p>
+<p>那么如何让机器学习出如何设计出<code>theta</code>?</p>
+<h3 id="如何评价F的好坏"><a href="#如何评价F的好坏" class="headerlink" title="如何评价F的好坏?"></a><strong>如何评价F的好坏?</strong></h3><p>相当于评价一个老师的好坏, 我们是上帝视角, 我们给老师<code>F</code>分发n个教学任务, 老师接受到任务之后要去教学生这n个任务, 最后我们再把n份任务的试卷<code>Test</code>给学生做, 最后把这个学生在这n份任务上的表现<code>loss</code>求和就可以判断这个老师<code>F</code>的好坏了.</p>
+<h3 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段?"></a>测试阶段?</h3><p>相当于给这个学生分配新的没有被教过的任务, 看看他有没有能力从之前学到的任务中汲取经验, 也能够解决这个新的任务.</p>
+<img data-src="/2023/03/18/Meta-Learning/image_frT4zvt9sy.png" class>
+<p>类似few-shot.</p>
+<p><strong>定义Loss:</strong></p>
+<script type="math/tex; mode=display">
+L(F)=\sum {l^{n}}</script><script type="math/tex; mode=display">
+F^{*}=argmin L(F)</script><p>那么让L最小的F就是F *.</p>
+<h3 id="N-ways-K-shots"><a href="#N-ways-K-shots" class="headerlink" title="N-ways K-shots"></a>N-ways K-shots</h3><p>n个classes, K个examples</p>
+<h3 id="MAML"><a href="#MAML" class="headerlink" title="MAML"></a>MAML</h3><img data-src="/2023/03/18/Meta-Learning/image_VaiHVWRur0.png" class>
+<p>如何minimize L?  Gradient descent!!</p>
+<p>真的太秒了!!!!!&#x20;</p>
+<p>对于MAML中的 <code>φ</code>这个初始值,<strong>也有好坏之分</strong>!!&#x20;</p>
+<img data-src="/2023/03/18/Meta-Learning/image_uysERKDIg5.png" class>
+<h4 id="例如以下两个-φ的初始值"><a href="#例如以下两个-φ的初始值" class="headerlink" title="例如以下两个 φ的初始值:"></a>例如以下两个 <code>φ</code>的初始值:</h4><img data-src="/2023/03/18/Meta-Learning/image_teH34Q59sk.png" class>
+<img data-src="/2023/03/18/Meta-Learning/image_67nCMADDfm.png" class>
+<p>图一的 <code>φ</code>虽然在最开始没有图二的 <code>φ</code>在两个<code>loss</code>上的小/优, 但是经过训练之后, 第一个 <code>φ</code>可以达到的最优解明显好于第二个 <code>φ</code>可以达到的最优解.  因为第二个 <code>φ</code>的<code>loss2</code>只停留在local minimun中.</p>
+<p>所以,MAML find   <code>φ</code> achieving good performance <strong>after training</strong>, 然而 ML find  <code>φ</code> achieving good performance.</p>
+<p><strong>只要UPDATE一次.</strong></p>
+<img data-src="/2023/03/18/Meta-Learning/image_Ee7jtehker.png" class>
+<p><strong>Q:没太懂,这个MAML和Model Pre-training的却比?</strong></p>
+<p>为什么model pretraining 迭代之后会是水平的? 他们的目标是什么?</p>
+]]></content>
+      <tags>
+        <tag>ML</tag>
       </tags>
   </entry>
   <entry>
@@ -1268,15 +1268,6 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||</script><p>
       </tags>
   </entry>
   <entry>
-    <title>Self-knowledge guided retrieval augmentation</title>
-    <url>/2023/12/10/Self-knowledge-guided-retrieval-augmentation/</url>
-    <content><![CDATA[<img data-src="/2023/12/10/Self-knowledge-guided-retrieval-augmentation/1.jpg" class>
-]]></content>
-      <tags>
-        <tag>LLM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>KB based VQA &amp; simVQA</title>
     <url>/2023/03/15/VQA-0/</url>
     <content><![CDATA[<img data-src="/2023/03/15/VQA-0/1.jpg" class>
@@ -1284,6 +1275,15 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||</script><p>
       <tags>
         <tag>AI</tag>
         <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Self-knowledge guided retrieval augmentation</title>
+    <url>/2023/12/10/Self-knowledge-guided-retrieval-augmentation/</url>
+    <content><![CDATA[<img data-src="/2023/12/10/Self-knowledge-guided-retrieval-augmentation/1.jpg" class>
+]]></content>
+      <tags>
+        <tag>LLM</tag>
       </tags>
   </entry>
   <entry>
@@ -1636,6 +1636,55 @@ D[i,j]=min_{i \leq k < j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}</script><p>如果i = 
         <tag>maven</tag>
         <tag>vue</tag>
         <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Graph Modal and Gibbs Sampling</title>
+    <url>/2022/10/10/graph-modal/</url>
+    <content><![CDATA[<h1 id="Structured-Learning-and-Gibbs-Sampling-x20"><a href="#Structured-Learning-and-Gibbs-Sampling-x20" class="headerlink" title="Structured Learning and Gibbs Sampling&#x20;"></a>Structured Learning and Gibbs Sampling&#x20;</h1><h2 id="Graphical-Modal"><a href="#Graphical-Modal" class="headerlink" title="Graphical Modal"></a>Graphical Modal</h2><h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><p><strong>Clique: 连通子图</strong></p>
+<p><strong>Maximum Clique:最大连通子图</strong></p>
+<h3 id="MRF"><a href="#MRF" class="headerlink" title="MRF"></a>MRF</h3><p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
+<p><strong>MRF→Factor Graph</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
+<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
+<h2 id="Training"><a href="#Training" class="headerlink" title="Training"></a><strong>Training</strong></h2><img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
+<p><strong>如何将函数f描述为线性的？</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
+<p>如果y是连续的…</p>
+<p>这些函数f可以通过structured SVM求得。</p>
+<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
+<hr>
+<h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><h2 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h2><img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
+<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
+<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
+<p>由于已经得到<code>P(y|x)</code> 的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code> 成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code> 是一个概率分布（横轴是x，纵轴是一组y）</p>
+<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
+<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
+<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code> 几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code> 是未知的，其他是已知的，通过剩余的y来计算概率。</p>
+<p>&#x20;接下去手算一个Gibbs Sampling:</p>
+<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
+<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
+<p><strong>注意：</strong> Random sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
+<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
+<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
+<p>通过迭代计算结果为：</p>
+<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
+<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong> 所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
+<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
+<hr>
+<h3 id="Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x"><a href="#Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x" class="headerlink" title="Markov chain解释可以通过Gibbs Sampling来替代P(y|x)"></a>Markov chain解释可以通过Gibbs Sampling来替代P(y|x)</h3><img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
+<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
+<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
+<p>😭终于讲到markov了…</p>
+<p>如果任意一个<code>P(s|s&#39;)</code> 不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
+<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
+<p>可见$z^1,z^2,…,z^T$组成一个<strong>Markov chain</strong>，因为每个$z$都只和前一个状态有关。所以只需要算这个Markov chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong> 的最大值对应的z即可。</p>
+]]></content>
+      <categories>
+        <category>Markov Logic Network</category>
+      </categories>
+      <tags>
+        <tag>Graph Modal</tag>
       </tags>
   </entry>
   <entry>
@@ -3782,55 +3831,6 @@ f=max|sx_j+b_j-y_j|</script><figure class="highlight python"><table><tr><td clas
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Graph Modal and Gibbs Sampling</title>
-    <url>/2022/10/10/graph-modal/</url>
-    <content><![CDATA[<h1 id="Structured-Learning-and-Gibbs-Sampling-x20"><a href="#Structured-Learning-and-Gibbs-Sampling-x20" class="headerlink" title="Structured Learning and Gibbs Sampling&#x20;"></a>Structured Learning and Gibbs Sampling&#x20;</h1><h2 id="Graphical-Modal"><a href="#Graphical-Modal" class="headerlink" title="Graphical Modal"></a>Graphical Modal</h2><h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><p><strong>Clique: 连通子图</strong></p>
-<p><strong>Maximum Clique:最大连通子图</strong></p>
-<h3 id="MRF"><a href="#MRF" class="headerlink" title="MRF"></a>MRF</h3><p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
-<p><strong>MRF→Factor Graph</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
-<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
-<h2 id="Training"><a href="#Training" class="headerlink" title="Training"></a><strong>Training</strong></h2><img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
-<p><strong>如何将函数f描述为线性的？</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
-<p>如果y是连续的…</p>
-<p>这些函数f可以通过structured SVM求得。</p>
-<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
-<hr>
-<h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><h2 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h2><img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
-<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
-<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
-<p>由于已经得到<code>P(y|x)</code> 的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code> 成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code> 是一个概率分布（横轴是x，纵轴是一组y）</p>
-<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
-<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
-<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code> 几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code> 是未知的，其他是已知的，通过剩余的y来计算概率。</p>
-<p>&#x20;接下去手算一个Gibbs Sampling:</p>
-<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
-<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
-<p><strong>注意：</strong> Random sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
-<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
-<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
-<p>通过迭代计算结果为：</p>
-<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
-<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong> 所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
-<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
-<hr>
-<h3 id="Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x"><a href="#Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x" class="headerlink" title="Markov chain解释可以通过Gibbs Sampling来替代P(y|x)"></a>Markov chain解释可以通过Gibbs Sampling来替代P(y|x)</h3><img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
-<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
-<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
-<p>😭终于讲到markov了…</p>
-<p>如果任意一个<code>P(s|s&#39;)</code> 不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
-<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
-<p>可见$z^1,z^2,…,z^T$组成一个<strong>Markov chain</strong>，因为每个$z$都只和前一个状态有关。所以只需要算这个Markov chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong> 的最大值对应的z即可。</p>
-]]></content>
-      <categories>
-        <category>Markov Logic Network</category>
-      </categories>
-      <tags>
-        <tag>Graph Modal</tag>
       </tags>
   </entry>
   <entry>
