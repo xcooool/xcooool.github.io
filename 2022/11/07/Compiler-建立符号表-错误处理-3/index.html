@@ -149,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">建立符号表和错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%B1%BB"><span class="nav-number">1.0.2.</span> <span class="nav-text">符号表类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E7%B1%BB"><span class="nav-number">1.0.3.</span> <span class="nav-text">符号类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">错误处理</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">建立符号表和错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9B%BE"><span class="nav-number">1.0.1.</span> <span class="nav-text">类图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%B1%BB"><span class="nav-number">1.0.2.</span> <span class="nav-text">符号表类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E7%B1%BB"><span class="nav-number">1.0.3.</span> <span class="nav-text">符号类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">错误处理</span></a></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -290,112 +290,106 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="建立符号表和错误处理"><a href="#建立符号表和错误处理" class="headerlink" title="建立符号表和错误处理"></a>建立符号表和错误处理</h1><h3 id="类图："><a href="#类图：" class="headerlink" title="类图："></a>类图：</h3><img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_krPvZ6NiKE.png" class>
+        <h1 id="建立符号表和错误处理">建立符号表和错误处理</h1>
+<h3 id="类图">类图：</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_krPvZ6NiKE.png" class>
 <p><strong>说明：</strong></p>
-<ol>
-<li><p>Compiler是程序的入口</p>
-</li>
-<li><p>Morpho是词法分析器（ReadFile读入testfile.txt文件）</p>
-</li>
-<li><p>SyntaxParser是语法分析器</p>
-</li>
-<li><p>SymbolTable 是符号表类</p>
-</li>
-<li><p>RParam 是函数实参表类</p>
-</li>
-<li><p>Error 是错误处理类</p>
-</li>
-<li><p>Node 是递归下降树构建的结点类</p>
-</li>
-<li><p>Symbol 是符号类</p>
-</li>
-<li><p>Token 是词牌类</p>
-</li>
-<li><p>Tag 是First集类</p>
-</li>
+<ol type="1">
+<li><p>Compiler是程序的入口</p></li>
+<li><p>Morpho是词法分析器（ReadFile读入testfile.txt文件）</p></li>
+<li><p>SyntaxParser是语法分析器</p></li>
+<li><p>SymbolTable 是符号表类</p></li>
+<li><p>RParam 是函数实参表类</p></li>
+<li><p>Error 是错误处理类</p></li>
+<li><p>Node 是递归下降树构建的结点类</p></li>
+<li><p>Symbol 是符号类</p></li>
+<li><p>Token 是词牌类</p></li>
+<li><p>Tag 是First集类</p></li>
 </ol>
-<h3 id="符号表类"><a href="#符号表类" class="headerlink" title="符号表类"></a>符号表类</h3><img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_Od3GLVPUlM.png" class>
+<h3 id="符号表类">符号表类</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_Od3GLVPUlM.png" class>
 <p><strong>什么时候要创建符号表？</strong></p>
-<ol>
-<li><p><code>CompUnit</code>时创建一个rootTable，其prev上层符号表为 <code>null</code>&#x20;</p>
-</li>
-<li><p><code>FuncDef</code> 函数定义时</p>
-</li>
-<li><p><code>MainFuncDef</code> 进入主函数int main时</p>
-</li>
-<li><p><code>Block</code> 扫描到<code>&#123;</code> ，且当前符号表的<code>defend</code>为<code>false</code>时</p>
-</li>
+<ol type="1">
+<li><p><code>CompUnit</code>时创建一个rootTable，其prev上层符号表为
+<code>null</code> </p></li>
+<li><p><code>FuncDef</code> 函数定义时</p></li>
+<li><p><code>MainFuncDef</code> 进入主函数int main时</p></li>
+<li><p><code>Block</code> 扫描到<code>&#123;</code>
+，且当前符号表的<code>defend</code>为<code>false</code>时</p></li>
 </ol>
 <p><strong>说明：</strong></p>
-<ol>
-<li><p><code>table</code>类型为<code>HashMap</code>。<code>key</code>存储<code>Symbol</code>的<code>name</code>，<code>value</code>存储对应的<code>Symbol</code>&#x20;</p>
-</li>
-<li><p><code>prev</code> 类型为<code>SymbolTable</code> ，上一层的符号表</p>
-</li>
-<li><p><code>isFunc</code> 用于判别此符号表是否为函数定义创建的表</p>
-</li>
-<li><p><code>position</code> 用于记录当前符号表在上一层符号表的环境位置，其值为这个符号表创建时，当前符号表<code>curTable</code> 中<code>table</code>的size()</p>
-<p>（后面发现似乎并不需要这个属性，因为在错误处理的时候是递归过程中进行的）</p>
-</li>
-<li><p><code>existReturn</code> 用于判别当前符号表是函数时，是否存在<code>return</code> 语句。</p>
-</li>
-<li><p><code>defend</code> 只有在函数定义创建符号表的时候设为<code>true</code> ，当进入函数定义的<code>Block</code>中时，不必再创建一个符号表了，因为在扫描到函数名称的时候就创建过了，之后设置为<code>false</code> 意味着当前函数符号表已经进入到过其本身的<code>Block</code>中了</p>
-</li>
-<li><p><code>funcName</code> 和<code>funcType</code> 用于记录当前符号表(函数定义)的函数名称和函数类型.</p>
-</li>
+<ol type="1">
+<li><p><code>table</code>类型为<code>HashMap</code>。<code>key</code>存储<code>Symbol</code>的<code>name</code>，<code>value</code>存储对应的<code>Symbol</code>
+</p></li>
+<li><p><code>prev</code> 类型为<code>SymbolTable</code>
+，上一层的符号表</p></li>
+<li><p><code>isFunc</code>
+用于判别此符号表是否为函数定义创建的表</p></li>
+<li><p><code>position</code>
+用于记录当前符号表在上一层符号表的环境位置，其值为这个符号表创建时，当前符号表<code>curTable</code>
+中<code>table</code>的size()</p>
+<p>（后面发现似乎并不需要这个属性，因为在错误处理的时候是递归过程中进行的）</p></li>
+<li><p><code>existReturn</code>
+用于判别当前符号表是函数时，是否存在<code>return</code> 语句。</p></li>
+<li><p><code>defend</code>
+只有在函数定义创建符号表的时候设为<code>true</code>
+，当进入函数定义的<code>Block</code>中时，不必再创建一个符号表了，因为在扫描到函数名称的时候就创建过了，之后设置为<code>false</code>
+意味着当前函数符号表已经进入到过其本身的<code>Block</code>中了</p></li>
+<li><p><code>funcName</code> 和<code>funcType</code>
+用于记录当前符号表(函数定义)的函数名称和函数类型.</p></li>
 </ol>
-<h3 id="符号类"><a href="#符号类" class="headerlink" title="符号类"></a>符号类</h3><img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_fHo_eToku4.png" class>
+<h3 id="符号类">符号类</h3>
+<img data-src="/2022/11/07/Compiler-%E5%BB%BA%E7%AB%8B%E7%AC%A6%E5%8F%B7%E8%A1%A8-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-3/image_fHo_eToku4.png" class>
 <p><strong>什么时候加入符号？</strong></p>
-<ol>
-<li><p><code>ConstDef</code> 常量定义</p>
-</li>
-<li><p><code>VarDef</code> 变量定义</p>
-</li>
-<li><p><code>FuncDef</code> 函数定义，加入到当前符号表中，一般是<code>rootTable</code></p>
-</li>
-<li><p><code>FuncFParam</code> 函数形参，加入到当前函数符号表中</p>
-</li>
+<ol type="1">
+<li><p><code>ConstDef</code> 常量定义</p></li>
+<li><p><code>VarDef</code> 变量定义</p></li>
+<li><p><code>FuncDef</code>
+函数定义，加入到当前符号表中，一般是<code>rootTable</code></p></li>
+<li><p><code>FuncFParam</code> 函数形参，加入到当前函数符号表中</p></li>
 </ol>
 <p><strong>什么时候查询符号？</strong></p>
-<ol>
-<li><p><code>Stmt</code> 中扫描到<code>LVal</code> 时，是否改变常量</p>
-</li>
-<li><p><code>LVal</code> 中查询符号（普通变量，一维数组，二维数组）的维度；</p>
-</li>
-<li><p><code>UnaryExp</code> 中查询符号（函数调用）的维度</p>
-</li>
+<ol type="1">
+<li><p><code>Stmt</code> 中扫描到<code>LVal</code>
+时，是否改变常量</p></li>
+<li><p><code>LVal</code>
+中查询符号（普通变量，一维数组，二维数组）的维度；</p></li>
+<li><p><code>UnaryExp</code> 中查询符号（函数调用）的维度</p></li>
 </ol>
 <blockquote>
 <p>上述2/3查询的维度最终加入当前函数的实参列表中，用于错误处理，判断函数调用实参个数和类型(维度)是否匹配</p>
 </blockquote>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><ol>
+<h1 id="错误处理">错误处理</h1>
+<ol type="1">
 <li><p>b类错误名字重定义：</p>
 <p>🧐下面这种也算错误？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>e类错误：</strong> 函数中f(RParam)   a[Exp] 所以说</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> a)</span> &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>e类错误：</strong> 函数中f(RParam) a[Exp] 所以说</p>
 <p>所以存在a(LVal加入当前函数)[Exp→LVal(<del><strong>加入当前函数</strong></del>)]</p>
-<p>因此在解读LVal时不应该盲目地将当前的LVal加入当前的函数实参paramMap中，例如&#x20;</p>
+<p>因此在解读LVal时不应该盲目地将当前的LVal加入当前的函数实参paramMap中，例如
+</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">f(a[<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">f(a(<span class="number">0</span>)[(<span class="number">1</span>)b(<span class="number">0</span>)[(<span class="number">1</span>)<span class="number">1</span>(<span class="number">0</span>)](-<span class="number">1</span>)](-<span class="number">2</span>)[(-<span class="number">1</span>)i(<span class="number">0</span>)](-<span class="number">1</span>)); </span><br><span class="line">f(a[f(a[i])][<span class="number">0</span>]); <span class="comment">//内层函数调用类型出错</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>那是不是也意味着会有</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">a[f(n)];</span><br></pre></td></tr></table></figure>
 <p>但是这种没要求检测类型不匹配的问题；要求检测函数类型不匹配。</p>
-<p><strong>解决方法：</strong><del><strong>每当进入’[‘中，就会有widthreal++，说明在[]内时widthreal不为0，则只有当widthreal为零的时候才加入curParam的map中</strong></del><strong>。</strong></p>
-<p>上述解决方法不行，如果将widthReal设置成全局的，则嵌套调用时上一层的widthReal会丢失，所以想到的解决办法是，每当<strong>调用</strong>LVal的时候，就新建一个存储其…</p>
+<p><strong>解决方法：</strong><del><strong>每当进入'['中，就会有widthreal++，说明在[]内时widthreal不为0，则只有当widthreal为零的时候才加入curParam的map中</strong></del><strong>。</strong></p>
+<p>上述解决方法不行，如果将widthReal设置成全局的，则嵌套调用时上一层的widthReal会丢失，所以想到的解决办法是，每当<strong>调用</strong>LVal的时候，就新建一个存储其...</p>
 <p>其实发现第一种解决方法也是可行的？：</p>
-<p><del><strong>每次扫描到LVal的IDENFR就设置为0,扫描到[就++,扫描到]就减一，但是如果inArray = 0 时扫描到]不要减一了，要保证其永远大于等于0，因为a[b[1]]此处inArray = -1当a[b[1]][此处inArray为零，不正确了i]</strong></del></p>
-<p>总结：很简单的思路，当前curParam不等于null，<code>[</code>时inArray加一，<code>]</code>时inArray减一，只有当 <code>inArray = 0</code> 时加入当前的curParam的实参列表中即可.(inArray为全局变量.)</p>
-<p>上面的还是<strong>不对</strong>….例如 <code>f(a[1][sum(a[0])])</code> 在sum函数中的a[0]就加入不到sum的实参列表中了，所以在RParam中加一个私有参数inArray，而不是全局！</p>
+<p><del><strong>每次扫描到LVal的IDENFR就设置为0,扫描到[就++,扫描到]就减一，但是如果inArray
+= 0 时扫描到]不要减一了，要保证其永远大于等于0，因为a[b[1]]此处inArray =
+-1当a[b[1]][此处inArray为零，不正确了i]</strong></del></p>
+<p>总结：很简单的思路，当前curParam不等于null，<code>[</code>时inArray加一，<code>]</code>时inArray减一，只有当
+<code>inArray = 0</code>
+时加入当前的curParam的实参列表中即可.(inArray为全局变量.)</p>
+<p>上面的还是<strong>不对</strong>....例如
+<code>f(a[1][sum(a[0])])</code>
+在sum函数中的a[0]就加入不到sum的实参列表中了，所以在RParam中加一个私有参数inArray，而不是全局！</p>
 <p><strong>测试用例：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">h</span><span class="params">()</span>&#123;;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">int</span> v[<span class="number">3</span>], i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>])]))  &#123;&#125;; <span class="comment">//e错误</span></span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>][<span class="number">1</span>])]))  &#123;&#125;; <span class="comment">//正确</span></span><br><span class="line">  f(h());<span class="comment">//e错误</span></span><br><span class="line">  f(a[i]);<span class="comment">//e错误</span></span><br><span class="line">  f(a[i][i+<span class="number">1</span>]);<span class="comment">//正确</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意在构造测试用例的时候：Decl和FuncDef是先后顺序。</p>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">f</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a)</span> &#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">h</span><span class="params">()</span>&#123;;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">int</span> v[<span class="number">3</span>], i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>])]))  &#123;&#125;; <span class="comment">//e错误</span></span><br><span class="line">  <span class="keyword">if</span>( f(a[<span class="number">1</span>][sum(a[<span class="number">0</span>][<span class="number">1</span>])]))  &#123;&#125;; <span class="comment">//正确</span></span><br><span class="line">  f(h());<span class="comment">//e错误</span></span><br><span class="line">  f(a[i]);<span class="comment">//e错误</span></span><br><span class="line">  f(a[i][i+<span class="number">1</span>]);<span class="comment">//正确</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>注意在构造测试用例的时候：Decl和FuncDef是先后顺序。</p></li>
 <li><p>对最终输出排序输出用TreeMap</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TreeMap</span> <span class="variable">sotrdMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(errMap);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对于循环嵌套，多个while需要判断是否是错误的。</p>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TreeMap</span> <span class="variable">sotrdMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;(errMap);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>对于循环嵌套，多个while需要判断是否是错误的。</p></li>
 </ol>
 
     </div>

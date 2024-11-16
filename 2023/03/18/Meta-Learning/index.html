@@ -154,7 +154,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-VS-Meta-Learning"><span class="nav-number">1.</span> <span class="nav-text">Machine Learning VS Meta Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7F%E7%9A%84%E5%A5%BD%E5%9D%8F"><span class="nav-number">2.</span> <span class="nav-text">如何评价F的好坏?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5"><span class="nav-number">3.</span> <span class="nav-text">测试阶段?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-ways-K-shots"><span class="nav-number">4.</span> <span class="nav-text">N-ways K-shots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAML"><span class="nav-number">5.</span> <span class="nav-text">MAML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%A6%82%E4%BB%A5%E4%B8%8B%E4%B8%A4%E4%B8%AA-%CF%86%E7%9A%84%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">例如以下两个 φ的初始值:</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#machine-learning-vs-meta-learning"><span class="nav-number">1.</span> <span class="nav-text">Machine Learning VS
+Meta Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7f%E7%9A%84%E5%A5%BD%E5%9D%8F"><span class="nav-number">2.</span> <span class="nav-text">如何评价F的好坏?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5"><span class="nav-number">3.</span> <span class="nav-text">测试阶段?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-ways-k-shots"><span class="nav-number">4.</span> <span class="nav-text">N-ways K-shots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maml"><span class="nav-number">5.</span> <span class="nav-text">MAML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%A6%82%E4%BB%A5%E4%B8%8B%E4%B8%A4%E4%B8%AA-%CF%86%E7%9A%84%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">例如以下两个
+φ的初始值:</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -267,7 +269,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>828</span>
+      <span>817</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -288,29 +290,57 @@
     <div class="post-body" itemprop="articleBody">
         <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1w4411872t?p=1&amp;amp;vd_source=271fe543b1f65b00e3d9cee7f5b7d39a&amp;gt">李宏毅老师-Metalearning-Video</a></p>
 <img data-src="/2023/03/18/Meta-Learning/image_Mqr_vzHE0W.png" class>
-<script type="math/tex; mode=display">
-f^{*}=F(D_{train})</script><h3 id="Machine-Learning-VS-Meta-Learning"><a href="#Machine-Learning-VS-Meta-Learning" class="headerlink" title="Machine Learning VS Meta Learning"></a><strong>Machine Learning VS Meta L</strong>earning</h3><p><strong>Machine Learning:</strong> 根据一组照片, 训练一个能够分类这张照片的<code>f</code></p>
-<p><strong>Meta Learning</strong> : 根据一组任务, 训练一个能够处理这组任务的<code>F</code></p>
-<p>如何<code>init</code>以及如何<code>Update</code>都是人工设计, 不是学出来的.</p>
+<p><span class="math display">\[
+f^{*}=F(D_{train})
+\]</span></p>
+<h3 id="machine-learning-vs-meta-learning"><strong>Machine Learning VS
+Meta L</strong>earning</h3>
+<p><strong>Machine Learning:</strong> 根据一组照片,
+训练一个能够分类这张照片的<code>f</code></p>
+<p><strong>Meta Learning</strong> : 根据一组任务,
+训练一个能够处理这组任务的<code>F</code></p>
+<p>如何<code>init</code>以及如何<code>Update</code>都是人工设计,
+不是学出来的.</p>
 <p>那么如何让机器学习出如何设计出<code>theta</code>?</p>
-<h3 id="如何评价F的好坏"><a href="#如何评价F的好坏" class="headerlink" title="如何评价F的好坏?"></a><strong>如何评价F的好坏?</strong></h3><p>相当于评价一个老师的好坏, 我们是上帝视角, 我们给老师<code>F</code>分发n个教学任务, 老师接受到任务之后要去教学生这n个任务, 最后我们再把n份任务的试卷<code>Test</code>给学生做, 最后把这个学生在这n份任务上的表现<code>loss</code>求和就可以判断这个老师<code>F</code>的好坏了.</p>
-<h3 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段?"></a>测试阶段?</h3><p>相当于给这个学生分配新的没有被教过的任务, 看看他有没有能力从之前学到的任务中汲取经验, 也能够解决这个新的任务.</p>
+<h3 id="如何评价f的好坏"><strong>如何评价F的好坏?</strong></h3>
+<p>相当于评价一个老师的好坏, 我们是上帝视角,
+我们给老师<code>F</code>分发n个教学任务,
+老师接受到任务之后要去教学生这n个任务,
+最后我们再把n份任务的试卷<code>Test</code>给学生做,
+最后把这个学生在这n份任务上的表现<code>loss</code>求和就可以判断这个老师<code>F</code>的好坏了.</p>
+<h3 id="测试阶段">测试阶段?</h3>
+<p>相当于给这个学生分配新的没有被教过的任务,
+看看他有没有能力从之前学到的任务中汲取经验, 也能够解决这个新的任务.</p>
 <img data-src="/2023/03/18/Meta-Learning/image_frT4zvt9sy.png" class>
 <p>类似few-shot.</p>
 <p><strong>定义Loss:</strong></p>
-<script type="math/tex; mode=display">
-L(F)=\sum {l^{n}}</script><script type="math/tex; mode=display">
-F^{*}=argmin L(F)</script><p>那么让L最小的F就是F *.</p>
-<h3 id="N-ways-K-shots"><a href="#N-ways-K-shots" class="headerlink" title="N-ways K-shots"></a>N-ways K-shots</h3><p>n个classes, K个examples</p>
-<h3 id="MAML"><a href="#MAML" class="headerlink" title="MAML"></a>MAML</h3><img data-src="/2023/03/18/Meta-Learning/image_VaiHVWRur0.png" class>
-<p>如何minimize L?  Gradient descent!!</p>
-<p>真的太秒了!!!!!&#x20;</p>
-<p>对于MAML中的 <code>φ</code>这个初始值,<strong>也有好坏之分</strong>!!&#x20;</p>
+<p>$$ L(F)=</p>
+<p>$$</p>
+<p><span class="math display">\[
+F^{*}=argmin L(F)
+\]</span></p>
+<p>那么让L最小的F就是F *.</p>
+<h3 id="n-ways-k-shots">N-ways K-shots</h3>
+<p>n个classes, K个examples</p>
+<h3 id="maml">MAML</h3>
+<img data-src="/2023/03/18/Meta-Learning/image_VaiHVWRur0.png" class>
+<p>如何minimize L? Gradient descent!!</p>
+<p>真的太秒了!!!!! </p>
+<p>对于MAML中的 <code>φ</code>这个初始值,<strong>也有好坏之分</strong>!!
+</p>
 <img data-src="/2023/03/18/Meta-Learning/image_uysERKDIg5.png" class>
-<h4 id="例如以下两个-φ的初始值"><a href="#例如以下两个-φ的初始值" class="headerlink" title="例如以下两个 φ的初始值:"></a>例如以下两个 <code>φ</code>的初始值:</h4><img data-src="/2023/03/18/Meta-Learning/image_teH34Q59sk.png" class>
+<h4 id="例如以下两个-φ的初始值">例如以下两个
+<code>φ</code>的初始值:</h4>
+<img data-src="/2023/03/18/Meta-Learning/image_teH34Q59sk.png" class>
 <img data-src="/2023/03/18/Meta-Learning/image_67nCMADDfm.png" class>
-<p>图一的 <code>φ</code>虽然在最开始没有图二的 <code>φ</code>在两个<code>loss</code>上的小/优, 但是经过训练之后, 第一个 <code>φ</code>可以达到的最优解明显好于第二个 <code>φ</code>可以达到的最优解.  因为第二个 <code>φ</code>的<code>loss2</code>只停留在local minimun中.</p>
-<p>所以,MAML find   <code>φ</code> achieving good performance <strong>after training</strong>, 然而 ML find  <code>φ</code> achieving good performance.</p>
+<p>图一的 <code>φ</code>虽然在最开始没有图二的
+<code>φ</code>在两个<code>loss</code>上的小/优, 但是经过训练之后, 第一个
+<code>φ</code>可以达到的最优解明显好于第二个
+<code>φ</code>可以达到的最优解. 因为第二个
+<code>φ</code>的<code>loss2</code>只停留在local minimun中.</p>
+<p>所以,MAML find <code>φ</code> achieving good performance
+<strong>after training</strong>, 然而 ML find <code>φ</code> achieving
+good performance.</p>
 <p><strong>只要UPDATE一次.</strong></p>
 <img data-src="/2023/03/18/Meta-Learning/image_Ee7jtehker.png" class>
 <p><strong>Q:没太懂,这个MAML和Model Pre-training的却比?</strong></p>

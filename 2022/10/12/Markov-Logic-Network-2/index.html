@@ -161,7 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-logic-networks"><span class="nav-number">3.</span> <span class="nav-text">Markov logic networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Definition"><span class="nav-number">3.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Assumption"><span class="nav-number">3.2.</span> <span class="nav-text">Assumption</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inference"><span class="nav-number">4.</span> <span class="nav-text">Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning"><span class="nav-number">5.</span> <span class="nav-text">Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%92%8C%E7%BB%93%E6%9E%9C%E9%83%A8%E5%88%86"><span class="nav-number">6.</span> <span class="nav-text">实验和结果部分</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-logic-networks"><span class="nav-number">3.</span> <span class="nav-text">Markov logic networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#definition"><span class="nav-number">3.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assumption"><span class="nav-number">3.2.</span> <span class="nav-text">Assumption</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inference"><span class="nav-number">4.</span> <span class="nav-text">Inference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learning"><span class="nav-number">5.</span> <span class="nav-text">Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%92%8C%E7%BB%93%E6%9E%9C%E9%83%A8%E5%88%86"><span class="nav-number">6.</span> <span class="nav-text">实验和结果部分</span></a></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -305,78 +305,88 @@
         <p><strong>Markov logic networks 论文（Mach Learn 2006）</strong></p>
 <p>以下笔记仅仅是对该论文的概况复述，少有自己的思考，尚存一些疑问，如果感兴趣可以自行下载论文阅读，还可以互相交流讨论☺</p>
 <p><a target="_blank" rel="noopener" href="https://link.springer.com/content/pdf/10.1007/s10994-006-5833-1.pdf">论文链接</a></p>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>将一阶逻辑（first-order logic）和概率图（probabilistic graphical models）模型相结合成一个representation.</p>
+<h3 id="摘要">摘要</h3>
+<p>将一阶逻辑（first-order logic）和概率图（probabilistic graphical
+models）模型相结合成一个representation.</p>
 <p>MLN的大致轮廓：</p>
-<ol>
-<li><p>就是将每个formula公式都赋以权重，weights可以通过迭代求得.</p>
-</li>
-<li><p>还有一个constant的集合用来表示域中的实体集合，相当于上一节中的论据evidence.</p>
-</li>
+<ol type="1">
+<li><p>就是将每个formula公式都赋以权重，weights可以通过迭代求得.</p></li>
+<li><p>还有一个constant的集合用来表示域中的实体集合，相当于上一节中的论据evidence.</p></li>
 </ol>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ol>
-<li><p>主要介绍了其发展历史，全文概览</p>
-</li>
-<li><p>介绍了Markov Networks，其用途主要有MCMC，Gibbs sampling，belief propagation.</p>
-</li>
-<li><p>介绍了First-order logic，其实就是离散数学1谓词逻辑相关内容，包括与或非，推出，相等，全称量词，存在量词。并介绍了一些专业术语<code>ground term</code>（不包括变量的<code>term</code>）<code>ground atom</code>值得是所有的论据都是<code>ground term</code>，<code>world</code> 指的是对于每个可能的<code>ground atom</code> 都为true.</p>
-</li>
+<h3 id="introduction">Introduction</h3>
+<ol type="1">
+<li><p>主要介绍了其发展历史，全文概览</p></li>
+<li><p>介绍了Markov Networks，其用途主要有MCMC，Gibbs sampling，belief
+propagation.</p></li>
+<li><p>介绍了First-order
+logic，其实就是离散数学1谓词逻辑相关内容，包括与或非，推出，相等，全称量词，存在量词。并介绍了一些专业术语<code>ground term</code>（不包括变量的<code>term</code>）<code>ground atom</code>值得是所有的论据都是<code>ground term</code>，<code>world</code>
+指的是对于每个可能的<code>ground atom</code> 都为true.</p></li>
 </ol>
-<h3 id="Markov-logic-networks"><a href="#Markov-logic-networks" class="headerlink" title="Markov logic networks"></a>Markov logic networks</h3><p>一个first-order的例子：</p>
+<h3 id="markov-logic-networks">Markov logic networks</h3>
+<p>一个first-order的例子：</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_-kvTCoUTOo.png" class>
-<h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><img data-src="/2022/10/12/Markov-Logic-Network-2/image_nEK0m0pAjj.png" class>
-<p>$L$指的是由一对一对的$pairs(F_i,w_i)$组成的集合，$F_i$就是一阶逻辑的公式，$w_i$是实数，代表这个公式的权重；除此之外，还有一个有限的由常量组成的集合$C={c_1,…,c_{|C|}}$，代表证据.</p>
+<h4 id="definition">Definition</h4>
+<img data-src="/2022/10/12/Markov-Logic-Network-2/image_nEK0m0pAjj.png" class>
+<p><span class="math inline">\(L\)</span>指的是由一对一对的<span class="math inline">\(pairs(F_i,w_i)\)</span>组成的集合，<span class="math inline">\(F_i\)</span>就是一阶逻辑的公式，<span class="math inline">\(w_i\)</span>是实数，代表这个公式的权重；除此之外，还有一个有限的由常量组成的集合<span class="math inline">\(C={c_1,...,c_{|C|}}\)</span>，代表证据.</p>
 <p><strong>world X概率的计算方法：</strong></p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_nds5HF2cxp.png" class>
 <p>这个上一节有讲过，此处略过：</p>
 <p>下图是Table1对应的MRF：</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_hhhsnLSgmv.png" class>
-<h4 id="Assumption"><a href="#Assumption" class="headerlink" title="Assumption"></a>Assumption</h4><p>接下来文章提出了三个假设，如下图所示：</p>
+<h4 id="assumption">Assumption</h4>
+<p>接下来文章提出了三个假设，如下图所示：</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_fg1Ty70nGY.png" class>
 <ul>
-<li><p>Unique names：一对一</p>
-</li>
-<li><p>Domain closure：闭包</p>
-</li>
-<li><p>Known functions：已知的函数值是C中的元素</p>
-</li>
+<li><p>Unique names：一对一</p></li>
+<li><p>Domain closure：闭包</p></li>
+<li><p>Known functions：已知的函数值是C中的元素</p></li>
 </ul>
 <p><strong>如何证明或者说消除上面三个假设呢?</strong></p>
 <ul>
-<li><p>第一个假设：引入equality predicate</p>
-</li>
-<li><p>第二个假设：引入对unknown but finite的u的distribution</p>
-</li>
-<li><p>第三个假设：反证法</p>
-</li>
+<li><p>第一个假设：引入equality predicate</p></li>
+<li><p>第二个假设：引入对unknown but finite的u的distribution</p></li>
+<li><p>第三个假设：反证法</p></li>
 </ul>
-<p><strong>最终结论：</strong> 假设1-3在域是有限的情况下都可以被证实.</p>
+<p><strong>最终结论：</strong>
+假设1-3在域是有限的情况下都可以被证实.</p>
 <hr>
 <p>之后证明了两个proposition：</p>
 <blockquote>
-<p>1.<em>Every probability distribution over discrete or fifinite-precision numeric<br>variables can be represented as a Markov logic network.</em></p>
+<p>1.<em>Every probability distribution over discrete or
+fifinite-precision numeric variables can be represented as a Markov
+logic network.</em></p>
 <p>2.</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_RstzyUj8OX.png" class>
 </blockquote>
 <hr>
-<h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p><strong>如何在已知F2为真值的时候推断F1?</strong></p>
+<h3 id="inference">Inference</h3>
+<p><strong>如何在已知F2为真值的时候推断F1?</strong></p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_CDfwNtmSgL.png" class>
-<p>将一个KB是否包含F公式的问题转变为$P(F|L_{KB},C_{KB,F})=1$是否成立，至于$P(x|M_{L,C})$如何计算在definition部分讲过.</p>
+<p>将一个KB是否包含F公式的问题转变为<span class="math inline">\(P(F|L_{KB},C_{KB,F})=1\)</span>是否成立，至于<span class="math inline">\(P(x|M_{L,C})\)</span>如何计算在definition部分讲过.</p>
 <p>上述等式可以通过MCMC算法估计出来，但是速度太慢.作者提出了一个不是这么general的算法，分为两个阶段：</p>
-<ol>
-<li><strong>第一个阶段返回一个M（a ground Markov network）：</strong></li>
+<ol type="1">
+<li><strong>第一个阶段返回一个M（a ground Markov
+network）：</strong></li>
 </ol>
 <p>其中的MB指的是马尔科夫毯</p>
 <blockquote>
-<p>Markov blanket （马尔科夫毯子）指某个变量，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=贝叶斯\&amp;spm=1001.2101.3001.7020" title="贝叶斯">贝叶斯</a>新年网络中的 父节点、子节点、以及节点配偶。</p>
+<p>Markov blanket （马尔科夫毯子）指某个变量，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=贝叶斯&amp;spm=1001.2101.3001.7020" title="贝叶斯">贝叶斯</a>新年网络中的 父节点、子节点、以及节点配偶。</p>
+</blockquote>
+<blockquote>
 <p>U是全社会，X是个人，则MB(X)就是这个人的生活圈里</p>
 </blockquote>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_WzWaGp2jzw.png" class>
 <p><strong>2. 第二个阶段是在M中用Gibbs sampling</strong></p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_takE09VGmq.png" class>
 <hr>
-<h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>MLN的权重的学习是通过一个或多个的相关的数据库中学习的。作者基于一个假设是如果一个<code>ground atom</code> 不在这个database里面，则它就认为是假的.如果有n个可能的<code>ground atom</code> ，那么这个数据库就可以表示成一个向量$x=(x_1,x_2,…,x_l,…,x_n)$，如果这个<code>atom</code> 出现在这个数据库中则对应的xl=1，否则为零.如果第i个公式在database x中有$n_i(x)$的几率是正确的，那么</p>
+<h3 id="learning">Learning</h3>
+<p>MLN的权重的学习是通过一个或多个的相关的数据库中学习的。作者基于一个假设是如果一个<code>ground atom</code>
+不在这个database里面，则它就认为是假的.如果有n个可能的<code>ground atom</code>
+，那么这个数据库就可以表示成一个向量<span class="math inline">\(x=(x_1,x_2,...,x_l,...,x_n)\)</span>，如果这个<code>atom</code>
+出现在这个数据库中则对应的xl=1，否则为零.如果第i个公式在database
+x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_cMQoxTPrvG.png" class>
-<p>但是很显然的是通过counting来计算$n_i(x)$是很难实现的事情。于是引述了以下的假说：</p>
+<p>但是很显然的是通过counting来计算<span class="math inline">\(n_i(x)\)</span>是很难实现的事情。于是引述了以下的假说：</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_9IM48_AYZN.png" class>
 <p><strong>什么是#P-complete？</strong></p>
 <p>也叫Sharp-P-complete问题。它和NP问题的区别就是：NP是对一个问题问有没有，#P是问有多少，因此可以看出#P比NP问题要复杂。为了在不确定数据中计算某个事件发生的概率就可能需要列出所有可能的情况，这样就会产生#P-complete问题。</p>
@@ -384,14 +394,14 @@
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_Y986LEDzSq.png" class>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_fDeYps0tbL.png" class>
 <p>主要从以下几个方面：</p>
-<ol>
-<li><p>第二个式子求和的时候可以忽略没在第i个公式里出现的预测函数.</p>
-</li>
-<li><p>对$n_i(x_{[x_l=0]})$的计算不会因为weight的改变而改变，且仅仅需要计算一次.</p>
-</li>
+<ol type="1">
+<li><p>第二个式子求和的时候可以忽略没在第i个公式里出现的预测函数.</p></li>
+<li><p>对<span class="math inline">\(n_i(x_{[x_l=0]})\)</span>的计算不会因为weight的改变而改变，且仅仅需要计算一次.</p></li>
 </ol>
-<h3 id="实验和结果部分"><a href="#实验和结果部分" class="headerlink" title="实验和结果部分"></a>实验和结果部分</h3><p>具体experiment和result可以看原论文😥</p>
-<p>作者对只有logic或者只有概率的方法进行了对比，放个<code>precision-recall</code> 的结果图：</p>
+<h3 id="实验和结果部分">实验和结果部分</h3>
+<p>具体experiment和result可以看原论文😥</p>
+<p>作者对只有logic或者只有概率的方法进行了对比，放个<code>precision-recall</code>
+的结果图：</p>
 <img data-src="/2022/10/12/Markov-Logic-Network-2/image_deZ0qGw_b2.png" class>
 <p><strong>在这里介绍一下比较基础的precision和recall：</strong></p>
 <p>precision就是在预测为真值的情况下，实际值为true的比率；</p>

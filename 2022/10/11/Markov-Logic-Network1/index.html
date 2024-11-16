@@ -154,7 +154,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">相关术语：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%92%E5%BA%A6%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">概率论角度：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E4%B8%8A%E8%BF%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E4%B8%8A%E4%B8%80%E8%8A%82%E7%9A%84Graphical-Modal%E7%9B%B8%E7%BB%93%E5%90%88%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">如何将上述的问题和上一节的Graphical Modal相结合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning"><span class="nav-number">4.</span> <span class="nav-text">Learning</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.</span> <span class="nav-text">相关术语：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%92%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">概率论角度：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E4%B8%8A%E8%BF%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E4%B8%8A%E4%B8%80%E8%8A%82%E7%9A%84graphical-modal%E7%9B%B8%E7%BB%93%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">如何将上述的问题和上一节的Graphical
+Modal相结合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learning"><span class="nav-number">4.</span> <span class="nav-text">Learning</span></a></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -276,7 +277,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>599</span>
+      <span>593</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -295,24 +296,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov Logic Network视频</a></p>
-<h3 id="相关术语："><a href="#相关术语：" class="headerlink" title="相关术语："></a>相关术语：</h3><p><strong>Grouding：</strong>replace the variables in the predicates with all possible constant（其实就是将x替换为所有可能的取值）</p>
+        <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17V411Z7w5/?p=2&amp;spm_id_from=333.1007.top_right_bar_window_history.content.click">李宏毅老师讲解Markov
+Logic Network视频</a></p>
+<h3 id="相关术语">相关术语：</h3>
+<p><strong>Grouding：</strong>replace the variables in the predicates
+with all possible constant（其实就是将x替换为所有可能的取值）</p>
 <p><strong>Formula：</strong> 一些逻辑推论</p>
 <p><strong>World：</strong> 满足所有定义的逻辑推论的结果</p>
 <p>我们要做的就是在给定一些Evidence的情况下，推导出剩余满足逻辑推论的一组结果。</p>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_2CRtdKa1-U.png" class>
-<p>但是上述情况每一个formula的结果是只有True Or False，现实世界的逻辑推论是soft的，要复杂得多。</p>
+<p>但是上述情况每一个formula的结果是只有True Or
+False，现实世界的逻辑推论是soft的，要复杂得多。</p>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_-uADwLSDWr.png" class>
-<h3 id="概率论角度："><a href="#概率论角度：" class="headerlink" title="概率论角度："></a>概率论角度：</h3><img data-src="/2022/10/11/Markov-Logic-Network1/image_ZsFAprCvoK.png" class>
+<h3 id="概率论角度">概率论角度：</h3>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_ZsFAprCvoK.png" class>
 <p>上图的意思是给定一个世界U，通过公式计算这个U有多少合乎逻辑。那么，由于这个世界是通过若干个formula组成的，所以对每个formula而言，通过count其为true的次数再乘以其对应的weight就能够算出这个U合乎这个formula(i)的程度了，最后求和就能算出这个世界U合乎所有逻辑的程度。</p>
-<p>最后通过计算每个U出现的概率求得最可能出现的这个U。&#x20;</p>
+<p>最后通过计算每个U出现的概率求得最可能出现的这个U。 </p>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_qrFDuXAyTx.png" class>
 <p>上图将所有的U都列了出来，计算其每个U出现的概率，发现Bob喜欢做研究的概率为百分之七十.</p>
-<h3 id="如何将上述的问题和上一节的Graphical-Modal相结合？"><a href="#如何将上述的问题和上一节的Graphical-Modal相结合？" class="headerlink" title="如何将上述的问题和上一节的Graphical Modal相结合？"></a><strong>如何将上述的问题和上一节的Graphical Modal</strong>相结合？</h3><img data-src="/2022/10/11/Markov-Logic-Network1/image_F4s3ZULisE.png" class>
+<h3 id="如何将上述的问题和上一节的graphical-modal相结合"><strong>如何将上述的问题和上一节的Graphical
+Modal</strong>相结合？</h3>
+<img data-src="/2022/10/11/Markov-Logic-Network1/image_F4s3ZULisE.png" class>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_9S7Rt6yRNs.png" class>
 <p><strong>结合方式：</strong></p>
 <p>每个预测都当作一个Node，每个formula都当作一个factor，最后所有f概率之和相加等于这个U的score。</p>
-<h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>通过SGD求得<code>P(U)</code> 的极值。</p>
+<h3 id="learning">Learning</h3>
+<p>通过SGD求得<code>P(U)</code> 的极值。</p>
 <img data-src="/2022/10/11/Markov-Logic-Network1/image_QCHugx4Ph2.png" class>
 
     </div>
