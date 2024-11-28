@@ -240,31 +240,6 @@ allows real-time rendering</p></li>
       </tags>
   </entry>
   <entry>
-    <title>Algorithm-hw-2</title>
-    <url>/2022/10/22/Algorithm-hw-2/</url>
-    <content><![CDATA[<p>&lt;这两天饱受算法作业折磨...,所以出现了断更...&gt;😥</p>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_00.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_01.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_02.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_03.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_04.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_05.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_06.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_07.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_08.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_09.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_10.jpg" class>
-<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_11.jpg" class>
-<p>如有错误请指出！</p>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-      </categories>
-      <tags>
-        <tag>dp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BP神经网络</title>
     <url>/2022/10/19/BP/</url>
     <content><![CDATA[<h2 id="感知机perceptron">感知机Perceptron</h2>
@@ -328,6 +303,31 @@ f(x,c_i)=e^{-\beta_i||x-c_i||^2}
       </categories>
       <tags>
         <tag>BP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm-hw-2</title>
+    <url>/2022/10/22/Algorithm-hw-2/</url>
+    <content><![CDATA[<p>&lt;这两天饱受算法作业折磨...,所以出现了断更...&gt;😥</p>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_00.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_01.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_02.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_03.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_04.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_05.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_06.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_07.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_08.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_09.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_10.jpg" class>
+<img data-src="/2022/10/22/Algorithm-hw-2/19375201+%E5%BE%90%E6%A5%9A%E9%B8%A5+%E7%AE%97%E6%B3%95%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A_11.jpg" class>
+<p>如有错误请指出！</p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -909,6 +909,56 @@ level(因为这样才能存在既有diversity又有representative的bins了),
       </tags>
   </entry>
   <entry>
+    <title>LBPH</title>
+    <url>/2022/10/18/LBPH/</url>
+    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
+<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
+<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
+<h4 id="计算lbp编码">计算LBP编码</h4>
+<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
+<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
+<h4 id="均匀化降维">均匀化降维</h4>
+<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
+<p>具体实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
+<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
+<h4 id="特征矩阵">特征矩阵</h4>
+<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
+<h4 id="直方图">直方图</h4>
+<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
+<h4 id="特征向量">特征向量</h4>
+<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
+<h4 id="人脸识别">人脸识别</h4>
+<ul>
+<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
+<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
+</ul>
+<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
+<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
+<h4 id="结果">结果</h4>
+<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
+<h3 id="难点与改进">难点与改进</h3>
+<h4 id="难点">难点</h4>
+<ol type="1">
+<li>光照问题</li>
+<li>表情姿态问题</li>
+<li>遮挡问题</li>
+<li>年龄变化</li>
+</ol>
+<h4 id="改进与尝试">改进与尝试</h4>
+<ol type="1">
+<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
+<li>尝试深度学习等卷积神经网络特征提取</li>
+<li>尝试SVM等其他分类算法</li>
+<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>Face_recognition</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>贪心算法</title>
     <url>/2022/11/09/Greedy-Algorithm/</url>
     <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
@@ -967,56 +1017,6 @@ n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量
       </tags>
   </entry>
   <entry>
-    <title>LBPH</title>
-    <url>/2022/10/18/LBPH/</url>
-    <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
-<img data-src="/2022/10/18/LBPH/9db9a31f7ac7513ffd05fe02617a2c4.jpg" class>
-<p>由于LBPH运用的是局部特征算法，所以对图像明暗度的鲁棒性较好，其次，颜色对人脸识别没有影响，所以导入之后转换为灰度图像，灰度为<code>0-256</code>。</p>
-<h4 id="计算lbp编码">计算LBP编码</h4>
-<img data-src="/2022/10/18/LBPH/e1c89d3b73c3c91dcbf72a88982a4ad.jpg" class>
-<p>有经典LBP编码和圆形LBP编码，绕周围一圈八个数，如果比中间的数大，则记为1，反之为0。最后连接之后的01字符串组成一个二进制数，这个二进制数就是这个像素点对应的LBP编码。</p>
-<h4 id="均匀化降维">均匀化降维</h4>
-<p>由于灰度有256维，这个矩阵会较为稀疏，所以需要将其降维到更小的维度。此处的实验室将其降维到59维度。实际上，降维的过程就是一个函数映射的过程：将256个二进制数映射到0-59个十进制数上。</p>
-<p>具体实现代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getHopCounter</span>(<span class="params">self, num</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    计算二进制序列是否只变化两次</span></span><br><span class="line"><span class="string">    :param num: 数字</span></span><br><span class="line"><span class="string">    :return: 01变化次数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    binNum = <span class="built_in">bin</span>(num)</span><br><span class="line">    binStr = <span class="built_in">str</span>(binNum)[<span class="number">2</span>:]</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        binStr = <span class="string">&quot;0&quot;</span> * (<span class="number">8</span> - n) + binStr</span><br><span class="line">    n = <span class="built_in">len</span>(binStr)</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> i != n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[i + <span class="number">1</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> binStr[<span class="number">0</span>] != binStr[i]:</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">createTable</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    生成均匀对应字典</span></span><br><span class="line"><span class="string">    :return: 均匀LBP特征对应字典</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    self.table = &#123;&#125;</span><br><span class="line">    temp = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line">    <span class="built_in">type</span>(temp)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        <span class="keyword">if</span> self.getHopCounter(i) &lt;= <span class="number">2</span>:</span><br><span class="line">            self.table[i] = temp</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;tmp&quot;</span>,temp)</span><br><span class="line">            temp += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.table[i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> self.table</span><br></pre></td></tr></table></figure>
-<p>最后256个二进制数就能够唯一地映射到59个数上。</p>
-<h4 id="特征矩阵">特征矩阵</h4>
-<p>特征矩阵就是LBP编码经过降维之后的矩阵。</p>
-<h4 id="直方图">直方图</h4>
-<p>实际上是一个统计的结果，即横坐标是59度的灰度，纵坐标是对应的灰度在这张图像中出现的次数，最后归一化，表示的就是这个区域的直方图。</p>
-<h4 id="特征向量">特征向量</h4>
-<p>将图像分割成一小块一小块之后计算每个小区域的直方图归一化之后，排成一排，就得到了这张图像的特征向量。</p>
-<h4 id="人脸识别">人脸识别</h4>
-<ul>
-<li>可以通过计算每张图片和测试图片的直方图的欧式距离（很慢）——所以就没跑完，待改进</li>
-<li>通过特征向量方法，将其进行KNN或者SVM分类之后得到结果</li>
-</ul>
-<h3 id="题外话用face_recognition包和knn分类实现">题外话：用face_recognition包和KNN分类实现</h3>
-<p>在<code>faces94</code>,<code>faces95</code>,<code>faces96</code>,<code>grimace</code>四个数据集上了跑了跑。这个包能够直接通过<code>face_recognition.face_encodings(image,known_face_locations=face_bounding_boxes[0])</code>得到图像编码，将这个编码进行KNN分类即可。</p>
-<h4 id="结果">结果</h4>
-<img data-src="/2022/10/18/LBPH/6a8b3451b62ada17da2091875a19612.jpg" class>
-<h3 id="难点与改进">难点与改进</h3>
-<h4 id="难点">难点</h4>
-<ol type="1">
-<li>光照问题</li>
-<li>表情姿态问题</li>
-<li>遮挡问题</li>
-<li>年龄变化</li>
-</ol>
-<h4 id="改进与尝试">改进与尝试</h4>
-<ol type="1">
-<li>尝试MBLP、SURF， HOG和FHOG 特征提取算法</li>
-<li>尝试深度学习等卷积神经网络特征提取</li>
-<li>尝试SVM等其他分类算法</li>
-<li>探究图像进行预处理（旋正，调节曝光）对结果的影响</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>Face_recognition</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LSTM-文本情感预测</title>
     <url>/2022/11/24/LSTM-%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E9%A2%84%E6%B5%8B/</url>
     <content><![CDATA[<h2 id="数据预处理">数据预处理</h2>
@@ -1061,6 +1061,53 @@ n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量
       <tags>
         <tag>python</tag>
         <tag>LSTM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MMD&amp;Adversarial Domain Adaptation</title>
+    <url>/2023/03/15/MMD-Adversarial-Domain-Adaptation/</url>
+    <content><![CDATA[<h1 id="mmd-adversarial-domain-adaptation">MMD &amp; Adversarial Domain
+Adaptation</h1>
+<h3 id="what-is-mmd"><strong>What is MMD?</strong></h3>
+<p>MMD: <strong>M</strong>aximum <strong>M</strong>ean
+<strong>D</strong>iscrepancy</p>
+<p> distance between two distributions</p>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_WJ5STdCHK-.png" class>
+<p>如何计算绿色和红色之间的distance?</p>
+<p>全部计数是不可能的,只有通过sample才可以实现.</p>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_qzHT-kaCSS.png" class>
+<h3 id="关于domain-adaptation"><strong>关于Domain
+Adaptation</strong></h3>
+<p><a href="https://www.youtube.com/watch?v=Mnk_oUrgppM" class="uri">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
+<p>domain adaptation:</p>
+<ol type="1">
+<li>target domain上只有少量的标注的数据</li>
+<li>在target domain上有很多数据,但是没有label</li>
+</ol>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_EuovheeubU.png" class>
+<p>要让target经过feature extractor之后产生的Image feature和由source
+image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
+<h4 id="如何分不出差异"><strong>如何分不出差异?</strong></h4>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
+<p>让feature extractor来骗过domain classifier</p>
+<p>妙啊!!!</p>
+<p>如果仅仅为了骗过domain classifier,那么对于feature
+extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
+<p>但是这种方法是不行的, 因为还要保证label predictor
+生成的标签是正确的!!!</p>
+<p><strong>feature extractor: ** 目的是让输出的image feature 经过label
+predictor
+预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
+<p><strong>Label predictor:</strong> 目的是能够更精准地分辨</p>
+<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好
+</p>
+<p>但是这并不是最好的做法:</p>
+<p>因为现在的目标是让source和target越接近越好,但是无论是用Ld,还是-Ld,其目的都是为了将source和target分的越来越清.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>ML</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -1178,53 +1225,6 @@ x中有<span class="math inline">\(n_i(x)\)</span>的几率是正确的，那么
       </categories>
       <tags>
         <tag>Graph Modal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MMD&amp;Adversarial Domain Adaptation</title>
-    <url>/2023/03/15/MMD-Adversarial-Domain-Adaptation/</url>
-    <content><![CDATA[<h1 id="mmd-adversarial-domain-adaptation">MMD &amp; Adversarial Domain
-Adaptation</h1>
-<h3 id="what-is-mmd"><strong>What is MMD?</strong></h3>
-<p>MMD: <strong>M</strong>aximum <strong>M</strong>ean
-<strong>D</strong>iscrepancy</p>
-<p> distance between two distributions</p>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_WJ5STdCHK-.png" class>
-<p>如何计算绿色和红色之间的distance?</p>
-<p>全部计数是不可能的,只有通过sample才可以实现.</p>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_qzHT-kaCSS.png" class>
-<h3 id="关于domain-adaptation"><strong>关于Domain
-Adaptation</strong></h3>
-<p><a href="https://www.youtube.com/watch?v=Mnk_oUrgppM" class="uri">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
-<p>domain adaptation:</p>
-<ol type="1">
-<li>target domain上只有少量的标注的数据</li>
-<li>在target domain上有很多数据,但是没有label</li>
-</ol>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_EuovheeubU.png" class>
-<p>要让target经过feature extractor之后产生的Image feature和由source
-image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
-<h4 id="如何分不出差异"><strong>如何分不出差异?</strong></h4>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
-<p>让feature extractor来骗过domain classifier</p>
-<p>妙啊!!!</p>
-<p>如果仅仅为了骗过domain classifier,那么对于feature
-extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
-<p>但是这种方法是不行的, 因为还要保证label predictor
-生成的标签是正确的!!!</p>
-<p><strong>feature extractor: ** 目的是让输出的image feature 经过label
-predictor
-预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
-<p><strong>Label predictor:</strong> 目的是能够更精准地分辨</p>
-<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好
-</p>
-<p>但是这并不是最好的做法:</p>
-<p>因为现在的目标是让source和target越接近越好,但是无论是用Ld,还是-Ld,其目的都是为了将source和target分的越来越清.</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>ML</tag>
-        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -1410,58 +1410,6 @@ Primitive</p>
       </tags>
   </entry>
   <entry>
-    <title>【OpenGL】Create a window 0</title>
-    <url>/2024/01/30/OpenGL-Create-a-window-0/</url>
-    <content><![CDATA[<h2 id="preliminary">Preliminary</h2>
-<p><strong>版本： </strong>面向OpenGL3.3</p>
-<p><strong>特性：</strong>对Extension的支持。</p>
-<p><strong>状态机（State Machine）：</strong>OpenGL是一个很大的状态机 →
-通过改变OpenGL的状态，告诉OpenGL怎么绘图，到底是画三角形还是画线段。</p>
-<p><strong>对象：
-</strong>用C语言写的。可以把对象object看作一个风格的结构体Struct</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_name</span> &#123;</span></span><br><span class="line">  xxx</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Cmake：</strong>使用预定义好的CMake脚本，根据不同IDE的工程文件，生成不同的工程文件。</p>
-<p>首先打开CMake，然后将<code>/glfw-3.3.9</code>作为源文件，将<code>/glfw-3.3.9/build</code>作为<code>build bineries</code>。这样生成的工程文件就在build。</p>
-<blockquote>
-<p>🤨什么是.sln文件？： visual studio solution file</p>
-</blockquote>
-<p><strong>编译：</strong><code>.sln</code> →
-<code>.lib</code>（库文件）</p>
-<p><strong>自定义Lib和Include文件夹：</strong>但是对于</p>
-<p><strong>Visual Studio创建一个C++空项目</strong></p>
-<p><strong>链接第三方库</strong>：</p>
-<ol type="1">
-<li>右键Demo0，然后选择VC++ Directories → 修改Library Directories 和
-Include Directories.</li>
-<li>Linker → 输入</li>
-</ol>
-<p><strong>GLAD开源库</strong></p>
-<p>下载一个GLAD，然后#include<xxx></xxx></p>
-<p>【<strong>DEBUG</strong>】<code>#include&lt;iostream&gt;</code>无法找到“源文件”
-→ https://blog.csdn.net/weixin_38592956/article/details/94668920</p>
-<p>用源代码自己编译的怎么整都不行，最后用了预编译好的二进制文件，并且最后用了上面的DEBUG。</p>
-<p><strong>ps:</strong></p>
-<ol type="1">
-<li>不要忘记把DEBUG中的x86改成x64</li>
-<li>用预编译的不是glfw3.lib，而是glfw3_mt.lib</li>
-<li>不要忘记在Linker → Input中加入opengl32.lib</li>
-</ol>
-<h2 id="code">Code</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// 注册函数 register a function</span></span><br><span class="line"><span class="comment">// 窗口改变(window) -&gt; 视口改变(viewport) : viewport is waiting for changing from window</span></span><br><span class="line"><span class="comment">// 总结：谁waiting/被动 -&gt; 谁就call_back</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 初始化glfw</span></span><br><span class="line">	<span class="built_in">glfwInit</span>();</span><br><span class="line">	<span class="comment">// 初始化版本号 -&gt; 3.3</span></span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 初始化window</span></span><br><span class="line">	GLFWwindow* window = <span class="built_in">glfwCreateWindow</span>(SCR_WIDTH, SCR_HEIGHT, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="comment">// 如果没有创建成功</span></span><br><span class="line">	<span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant create a window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="built_in">glfwTerminate</span>();</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置当前渲染上下文，其实就是告诉gl我现在要渲染的是 : window这个current context</span></span><br><span class="line">	<span class="built_in">glfwMakeContextCurrent</span>(window);</span><br><span class="line">	<span class="built_in">glfwSetFramebufferSizeCallback</span>(window, framebuffer_size_callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 初始化GLAD</span></span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">		<span class="comment">// 没有成功初始化GLAD</span></span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant initialize the GLAD&quot;</span> &lt;&lt;std::endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用一个while循环来简单渲染</span></span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) &#123;</span><br><span class="line">		<span class="comment">// 处理输入</span></span><br><span class="line">		<span class="built_in">process_input</span>(window);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 先设置清除缓存的color</span></span><br><span class="line">		<span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">		<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 颜色缓冲绘图</span></span><br><span class="line">		<span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">		<span class="comment">// 监测有没有中断事件</span></span><br><span class="line">		<span class="built_in">glfwPollEvents</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glfwTerminate</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 如果用户按了ESC按键，就关闭窗口，如果没按下就会返回GLFW_RELEASE</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;you have press esc&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="comment">// !!!不是glfwWindowshouldclose 而是 set_xxx</span></span><br><span class="line">		<span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结">总结</h1>
-<p>先要初始化glfw(引入的用于绘图的第三方库)，然后初始化window，并且在每次初始化的时候都要监测是否创建成功。</p>
-<p>最后要搞清楚，什么是主动的，什么是被动的。</p>
-<p>例如这里的glfwWindowShouldClose，就是OpenGL永远是主动的一方，而window是被动的，即放在参数里的。</p>
-]]></content>
-      <categories>
-        <category>OpenGL</category>
-      </categories>
-      <tags>
-        <tag>OpenGL</tag>
-        <tag>CPP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SVM</title>
     <url>/2022/10/13/SVM/</url>
     <content><![CDATA[<h3 id="类条件概率密度参数位置形式难以确定">类条件概率密度参数位置，形式难以确定</h3>
@@ -1520,6 +1468,58 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||
       </tags>
   </entry>
   <entry>
+    <title>【OpenGL】Create a window 0</title>
+    <url>/2024/01/30/OpenGL-Create-a-window-0/</url>
+    <content><![CDATA[<h2 id="preliminary">Preliminary</h2>
+<p><strong>版本： </strong>面向OpenGL3.3</p>
+<p><strong>特性：</strong>对Extension的支持。</p>
+<p><strong>状态机（State Machine）：</strong>OpenGL是一个很大的状态机 →
+通过改变OpenGL的状态，告诉OpenGL怎么绘图，到底是画三角形还是画线段。</p>
+<p><strong>对象：
+</strong>用C语言写的。可以把对象object看作一个风格的结构体Struct</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_name</span> &#123;</span></span><br><span class="line">  xxx</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Cmake：</strong>使用预定义好的CMake脚本，根据不同IDE的工程文件，生成不同的工程文件。</p>
+<p>首先打开CMake，然后将<code>/glfw-3.3.9</code>作为源文件，将<code>/glfw-3.3.9/build</code>作为<code>build bineries</code>。这样生成的工程文件就在build。</p>
+<blockquote>
+<p>🤨什么是.sln文件？： visual studio solution file</p>
+</blockquote>
+<p><strong>编译：</strong><code>.sln</code> →
+<code>.lib</code>（库文件）</p>
+<p><strong>自定义Lib和Include文件夹：</strong>但是对于</p>
+<p><strong>Visual Studio创建一个C++空项目</strong></p>
+<p><strong>链接第三方库</strong>：</p>
+<ol type="1">
+<li>右键Demo0，然后选择VC++ Directories → 修改Library Directories 和
+Include Directories.</li>
+<li>Linker → 输入</li>
+</ol>
+<p><strong>GLAD开源库</strong></p>
+<p>下载一个GLAD，然后#include<xxx></xxx></p>
+<p>【<strong>DEBUG</strong>】<code>#include&lt;iostream&gt;</code>无法找到“源文件”
+→ https://blog.csdn.net/weixin_38592956/article/details/94668920</p>
+<p>用源代码自己编译的怎么整都不行，最后用了预编译好的二进制文件，并且最后用了上面的DEBUG。</p>
+<p><strong>ps:</strong></p>
+<ol type="1">
+<li>不要忘记把DEBUG中的x86改成x64</li>
+<li>用预编译的不是glfw3.lib，而是glfw3_mt.lib</li>
+<li>不要忘记在Linker → Input中加入opengl32.lib</li>
+</ol>
+<h2 id="code">Code</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// 注册函数 register a function</span></span><br><span class="line"><span class="comment">// 窗口改变(window) -&gt; 视口改变(viewport) : viewport is waiting for changing from window</span></span><br><span class="line"><span class="comment">// 总结：谁waiting/被动 -&gt; 谁就call_back</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 初始化glfw</span></span><br><span class="line">	<span class="built_in">glfwInit</span>();</span><br><span class="line">	<span class="comment">// 初始化版本号 -&gt; 3.3</span></span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 初始化window</span></span><br><span class="line">	GLFWwindow* window = <span class="built_in">glfwCreateWindow</span>(SCR_WIDTH, SCR_HEIGHT, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="comment">// 如果没有创建成功</span></span><br><span class="line">	<span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant create a window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="built_in">glfwTerminate</span>();</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置当前渲染上下文，其实就是告诉gl我现在要渲染的是 : window这个current context</span></span><br><span class="line">	<span class="built_in">glfwMakeContextCurrent</span>(window);</span><br><span class="line">	<span class="built_in">glfwSetFramebufferSizeCallback</span>(window, framebuffer_size_callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 初始化GLAD</span></span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">		<span class="comment">// 没有成功初始化GLAD</span></span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant initialize the GLAD&quot;</span> &lt;&lt;std::endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用一个while循环来简单渲染</span></span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) &#123;</span><br><span class="line">		<span class="comment">// 处理输入</span></span><br><span class="line">		<span class="built_in">process_input</span>(window);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 先设置清除缓存的color</span></span><br><span class="line">		<span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">		<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 颜色缓冲绘图</span></span><br><span class="line">		<span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">		<span class="comment">// 监测有没有中断事件</span></span><br><span class="line">		<span class="built_in">glfwPollEvents</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glfwTerminate</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 如果用户按了ESC按键，就关闭窗口，如果没按下就会返回GLFW_RELEASE</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;you have press esc&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="comment">// !!!不是glfwWindowshouldclose 而是 set_xxx</span></span><br><span class="line">		<span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结">总结</h1>
+<p>先要初始化glfw(引入的用于绘图的第三方库)，然后初始化window，并且在每次初始化的时候都要监测是否创建成功。</p>
+<p>最后要搞清楚，什么是主动的，什么是被动的。</p>
+<p>例如这里的glfwWindowShouldClose，就是OpenGL永远是主动的一方，而window是被动的，即放在参数里的。</p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
+        <tag>CPP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Self-knowledge guided retrieval augmentation</title>
     <url>/2023/12/10/Self-knowledge-guided-retrieval-augmentation/</url>
     <content><![CDATA[<img data-src="/2023/12/10/Self-knowledge-guided-retrieval-augmentation/1.jpg" class>
@@ -1536,25 +1536,6 @@ f(x)=f(x_0+γ\frac{w}{||w||})=f(x_0)+f(γ\frac{w}{||w||}) -b=γ||w||
       <tags>
         <tag>AI</tag>
         <tag>NLP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Visual arithmetic</title>
-    <url>/2022/10/30/Visual-arithmetic/</url>
-    <content><![CDATA[<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_02.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_03.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_04.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_05.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_06.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_07.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_08.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_09.jpg" class>
-<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_10.jpg" class>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>NLP</tag>
-        <tag>KG</tag>
       </tags>
   </entry>
   <entry>
@@ -1769,6 +1750,25 @@ D[i,j]=min_{i \leq k &lt; j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}
       </tags>
   </entry>
   <entry>
+    <title>Visual arithmetic</title>
+    <url>/2022/10/30/Visual-arithmetic/</url>
+    <content><![CDATA[<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_02.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_03.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_04.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_05.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_06.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_07.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_08.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_09.jpg" class>
+<img data-src="/2022/10/30/Visual-arithmetic/%E7%AC%AC%E5%8D%81%E5%91%A8%E6%B1%87%E6%8A%A5_10.jpg" class>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>NLP</tag>
+        <tag>KG</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Algorithm-hw-3</title>
     <url>/2022/11/22/algorithmHw-3/</url>
     <content><![CDATA[<img data-src="/2022/11/22/algorithmHw-3/1.jpg" class>
@@ -1786,6 +1786,104 @@ D[i,j]=min_{i \leq k &lt; j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}
       <tags>
         <tag>greedy search</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>CarbonX</title>
+    <url>/2024/11/29/carbonx/</url>
+    <content><![CDATA[<img data-src="/2024/11/29/carbonx/00.jpg" class>
+<img data-src="/2024/11/29/carbonx/01.jpg" class>
+<img data-src="/2024/11/29/carbonx/02.jpg" class>
+<img data-src="/2024/11/29/carbonx/03.jpg" class>
+<img data-src="/2024/11/29/carbonx/04.jpg" class>
+<img data-src="/2024/11/29/carbonx/05.jpg" class>
+<img data-src="/2024/11/29/carbonx/06.jpg" class>
+<img data-src="/2024/11/29/carbonx/07.jpg" class>
+<img data-src="/2024/11/29/carbonx/08.jpg" class>
+<img data-src="/2024/11/29/carbonx/09.jpg" class>
+<img data-src="/2024/11/29/carbonx/10.jpg" class>
+<img data-src="/2024/11/29/carbonx/11.jpg" class>
+<img data-src="/2024/11/29/carbonx/12.jpg" class>
+<img data-src="/2024/11/29/carbonx/13.jpg" class>
+<img data-src="/2024/11/29/carbonx/14.jpg" class>
+<img data-src="/2024/11/29/carbonx/15.jpg" class>
+<img data-src="/2024/11/29/carbonx/16.jpg" class>
+<img data-src="/2024/11/29/carbonx/17.jpg" class>
+<img data-src="/2024/11/29/carbonx/18.jpg" class>
+<img data-src="/2024/11/29/carbonx/19.jpg" class>
+]]></content>
+      <categories>
+        <category>WEB3</category>
+      </categories>
+      <tags>
+        <tag>web3</tag>
+        <tag>blockchain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Compiler-词法分析-1</title>
+    <url>/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h3 id="具体要求">具体要求</h3>
+<p>对输入的<code>testfile.txt</code>
+文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_gCe5-FREvU.png" class>
+<p>输入输出要求具体如下所示：</p>
+<p><strong>输入：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>输出：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> CONSTTK <span class="type">const</span></span><br><span class="line"><span class="number">1</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">1</span> IDENFR a</span><br><span class="line"><span class="number">1</span> ASSIGN =</span><br><span class="line"><span class="number">1</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">1</span> SEMICN ;</span><br><span class="line"><span class="number">2</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">2</span> MAINTK main</span><br><span class="line"><span class="number">2</span> LPARENT (</span><br><span class="line"><span class="number">2</span> RPARENT )</span><br><span class="line"><span class="number">2</span> LBRACE &#123;</span><br><span class="line"><span class="number">3</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">3</span> IDENFR f</span><br><span class="line"><span class="number">3</span> ASSIGN =</span><br><span class="line"><span class="number">3</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">3</span> SEMICN ;</span><br><span class="line"><span class="number">4</span> RETURNTK <span class="keyword">return</span></span><br><span class="line"><span class="number">4</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">4</span> SEMICN ;</span><br><span class="line"><span class="number">5</span> RBRACE &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中第一列为行号，第二列为类别码，第三列为token.</p>
+<h3 id="实现方法">实现方法</h3>
+<p>通过有限自动机DFA实现对输入序列进行处理：</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_kFjhbTCHr4.png" class>
+<h3 id="具体实现">具体实现</h3>
+<p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code>
+程序进入<code>Morpho</code> 类中，最后<code>Morpho</code>
+能够输出对应的行号、类别码、token.</p>
+<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_C8uyeszCzM.png" class>
+<h4 id="morpho词法分析类">Morpho词法分析类：</h4>
+<ul>
+<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code>
+：存储类别码</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code>
+：存储token</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code>
+：存储每个token对应的行号</p></li>
+<li><p><code>lexer</code>：输出token的总数量</p></li>
+</ul>
+<p>（实际上是通过<code>lexer</code>同时维护上述三个hashmap，同增同减）</p>
+<ul>
+<li><p><code>int status</code> ：当前状态</p></li>
+<li><p><code>String cache</code>：缓存器</p></li>
+<li><p><code>pointer</code>：指针，用于扫描当前行</p></li>
+<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p></li>
+</ul>
+<p>以上就是对这个类的属性的解释。</p>
+<p>其中<code>PREDOUBLECHAR</code>指的是识别到<code>&amp;&amp;</code>和<code>||</code>的第一个字符时的状态。</p>
+<p><strong>方法：</strong></p>
+<ul>
+<li><code>work</code> ：用于分析主程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">work</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123; <span class="comment">//分析总程序</span></span><br><span class="line">        readFile();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, String&gt; entry : lineRawMap.entrySet()) &#123;</span><br><span class="line">            <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (status == SINGLECOMMENTS) &#123;</span><br><span class="line">                <span class="built_in">this</span>.status = INITIAL; <span class="comment">//指的是上一行的状态是单行注释，换行后单行注释失效，状态重回INITIAL</span></span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(status == MULTICOMMENTS) &#123; </span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>; <span class="comment">//指的是上一行的状态是多行注释，换行后多行注释依然有效，状态不变，但清空cache</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//用于将上一行末尾的未经激发的token通过加一个空字符串转换掉</span></span><br><span class="line">            <span class="keyword">if</span>(cache.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                transferStatus(entry.getKey() - <span class="number">1</span>,<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                status = INITIAL;</span><br><span class="line">                <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//扫描当前行，并进行状态转换</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="built_in">this</span>.pointer &lt; entry.getValue().length()) &#123;</span><br><span class="line">                transferStatus(entry.getKey(), entry.getValue().charAt(<span class="built_in">this</span>.pointer));</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(status != INITIAL) &#123;</span><br><span class="line">            transferStatus(lineRawMap.size(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        File f=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line">        f.createNewFile();</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(f);</span><br><span class="line">        <span class="type">PrintStream</span> <span class="variable">printStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(fileOutputStream);</span><br><span class="line">        System.setOut(printStream);</span><br><span class="line">        ArrayList&lt;Token&gt; tokens = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; typeMap.size();i ++) &#123;</span><br><span class="line">            System.out.println(lineMap.get(i)+<span class="string">&quot; &quot;</span>+typeMap.get(i) + <span class="string">&quot; &quot;</span> + wordMap.get(i));</span><br><span class="line">            <span class="type">Token</span> <span class="variable">token</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Token</span>(typeMap.get(i),wordMap.get(i),lineMap.get(i));</span><br><span class="line">            tokens.add(token);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>transferStatus</code>：用于状态转移</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">public <span class="type">void</span> <span class="title function_">transferStatus</span><span class="params">(Integer line, Character ch)</span> &#123; <span class="comment">//状态转移</span></span><br><span class="line">        <span class="keyword">if</span> (this.status == INITIAL) &#123;</span><br><span class="line">            <span class="comment">//输入&#x27; &#x27;用于重置当前状态</span></span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27; &#x27;</span>) this.status = INITIAL; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span>) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (SingleCharMap.containsKey(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(PreDoubleCharMap.contains(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = PREDOUBLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == IDENT) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span> || isDigit(ch)) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (reservedIdent.containsKey(cache)) &#123;</span><br><span class="line">                    <span class="comment">//保留字</span></span><br><span class="line">                    putAll(reservedIdent.get(cache), cache, line);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//标识符</span></span><br><span class="line">                    putAll(<span class="string">&quot;IDENFR&quot;</span>, cache, line);</span><br><span class="line">                &#125;</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == INTCONST) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;INTCON&quot;</span>, cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == FORMATSTRING) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch != <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;STRCON&quot;</span>, cache+ch, line);</span><br><span class="line">                clear();</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECHAR) &#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&gt;= &lt;= != ==</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache+ch).equals(<span class="string">&quot;//&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache + ch).equals(<span class="string">&quot;/*&quot;</span>)) &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(SingleCharMap.get(cache), cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == PREDOUBLECHAR)&#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&amp;&amp; ||</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECOMMENTS) &#123;</span><br><span class="line">            cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == MULTICOMMENTS) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cache.length() &gt;= <span class="number">1</span> &amp;&amp; cache.charAt(cache.length() - <span class="number">1</span>) == <span class="string">&#x27;*&#x27;</span> &amp;&amp; ch == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            this.status = INITIAL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.status = INITIAL;</span><br><span class="line">    <span class="built_in">this</span>.pointer--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putAll</span><span class="params">(String type, String word, Integer line)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.typeMap.put(lexer, type);</span><br><span class="line">    <span class="built_in">this</span>.wordMap.put(lexer, word);</span><br><span class="line">    <span class="built_in">this</span>.lineMap.put(lexer, line);</span><br><span class="line">    lexer++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意<code>clear()</code>函数<strong>出现在每次状态转换完</strong>，因为是当前字符使得当前状态结束，所以<code>pointer</code>应该回退一格，使得当前状态重新变为<code>INITIAL</code>准备好了之后，再<strong>重新处理这个字符</strong>。</p>
+<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>"</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
+<p><strong>总结一下：</strong>
+就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
+<h3 id="注意细节">注意细节</h3>
+<p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code>
+状态时，如果ch+cache在<code>DoubleCharMap</code>
+中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>
+</p>
+]]></content>
+      <categories>
+        <category>Compiler</category>
+      </categories>
   </entry>
   <entry>
     <title>Graph Modal and Gibbs Sampling</title>
@@ -1856,72 +1954,6 @@ chain的稳定分布 <strong>（条件是所有条件概率都不为零）</stro
       <tags>
         <tag>Graph Modal</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Compiler-词法分析-1</title>
-    <url>/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h3 id="具体要求">具体要求</h3>
-<p>对输入的<code>testfile.txt</code>
-文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_gCe5-FREvU.png" class>
-<p>输入输出要求具体如下所示：</p>
-<p><strong>输入：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> f = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输出：</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> CONSTTK <span class="type">const</span></span><br><span class="line"><span class="number">1</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">1</span> IDENFR a</span><br><span class="line"><span class="number">1</span> ASSIGN =</span><br><span class="line"><span class="number">1</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">1</span> SEMICN ;</span><br><span class="line"><span class="number">2</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">2</span> MAINTK main</span><br><span class="line"><span class="number">2</span> LPARENT (</span><br><span class="line"><span class="number">2</span> RPARENT )</span><br><span class="line"><span class="number">2</span> LBRACE &#123;</span><br><span class="line"><span class="number">3</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">3</span> IDENFR f</span><br><span class="line"><span class="number">3</span> ASSIGN =</span><br><span class="line"><span class="number">3</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">3</span> SEMICN ;</span><br><span class="line"><span class="number">4</span> RETURNTK <span class="keyword">return</span></span><br><span class="line"><span class="number">4</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">4</span> SEMICN ;</span><br><span class="line"><span class="number">5</span> RBRACE &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>其中第一列为行号，第二列为类别码，第三列为token.</p>
-<h3 id="实现方法">实现方法</h3>
-<p>通过有限自动机DFA实现对输入序列进行处理：</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_kFjhbTCHr4.png" class>
-<h3 id="具体实现">具体实现</h3>
-<p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code>
-程序进入<code>Morpho</code> 类中，最后<code>Morpho</code>
-能够输出对应的行号、类别码、token.</p>
-<img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_C8uyeszCzM.png" class>
-<h4 id="morpho词法分析类">Morpho词法分析类：</h4>
-<ul>
-<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code>
-：存储类别码</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code>
-：存储token</p></li>
-<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code>
-：存储每个token对应的行号</p></li>
-<li><p><code>lexer</code>：输出token的总数量</p></li>
-</ul>
-<p>（实际上是通过<code>lexer</code>同时维护上述三个hashmap，同增同减）</p>
-<ul>
-<li><p><code>int status</code> ：当前状态</p></li>
-<li><p><code>String cache</code>：缓存器</p></li>
-<li><p><code>pointer</code>：指针，用于扫描当前行</p></li>
-<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p></li>
-</ul>
-<p>以上就是对这个类的属性的解释。</p>
-<p>其中<code>PREDOUBLECHAR</code>指的是识别到<code>&amp;&amp;</code>和<code>||</code>的第一个字符时的状态。</p>
-<p><strong>方法：</strong></p>
-<ul>
-<li><code>work</code> ：用于分析主程序</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">work</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123; <span class="comment">//分析总程序</span></span><br><span class="line">        readFile();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, String&gt; entry : lineRawMap.entrySet()) &#123;</span><br><span class="line">            <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (status == SINGLECOMMENTS) &#123;</span><br><span class="line">                <span class="built_in">this</span>.status = INITIAL; <span class="comment">//指的是上一行的状态是单行注释，换行后单行注释失效，状态重回INITIAL</span></span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(status == MULTICOMMENTS) &#123; </span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>; <span class="comment">//指的是上一行的状态是多行注释，换行后多行注释依然有效，状态不变，但清空cache</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//用于将上一行末尾的未经激发的token通过加一个空字符串转换掉</span></span><br><span class="line">            <span class="keyword">if</span>(cache.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                transferStatus(entry.getKey() - <span class="number">1</span>,<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                status = INITIAL;</span><br><span class="line">                <span class="built_in">this</span>.pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//扫描当前行，并进行状态转换</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="built_in">this</span>.pointer &lt; entry.getValue().length()) &#123;</span><br><span class="line">                transferStatus(entry.getKey(), entry.getValue().charAt(<span class="built_in">this</span>.pointer));</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(status != INITIAL) &#123;</span><br><span class="line">            transferStatus(lineRawMap.size(),<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        File f=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;output.txt&quot;</span>);</span><br><span class="line">        f.createNewFile();</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(f);</span><br><span class="line">        <span class="type">PrintStream</span> <span class="variable">printStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(fileOutputStream);</span><br><span class="line">        System.setOut(printStream);</span><br><span class="line">        ArrayList&lt;Token&gt; tokens = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; typeMap.size();i ++) &#123;</span><br><span class="line">            System.out.println(lineMap.get(i)+<span class="string">&quot; &quot;</span>+typeMap.get(i) + <span class="string">&quot; &quot;</span> + wordMap.get(i));</span><br><span class="line">            <span class="type">Token</span> <span class="variable">token</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Token</span>(typeMap.get(i),wordMap.get(i),lineMap.get(i));</span><br><span class="line">            tokens.add(token);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>transferStatus</code>：用于状态转移</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">public <span class="type">void</span> <span class="title function_">transferStatus</span><span class="params">(Integer line, Character ch)</span> &#123; <span class="comment">//状态转移</span></span><br><span class="line">        <span class="keyword">if</span> (this.status == INITIAL) &#123;</span><br><span class="line">            <span class="comment">//输入&#x27; &#x27;用于重置当前状态</span></span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27; &#x27;</span>) this.status = INITIAL; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span>) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (SingleCharMap.containsKey(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(PreDoubleCharMap.contains(ch+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                this.status = PREDOUBLECHAR;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == IDENT) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isLetter(ch) || ch == <span class="string">&#x27;_&#x27;</span> || isDigit(ch)) &#123;</span><br><span class="line">                this.status = IDENT;</span><br><span class="line">                this.cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (reservedIdent.containsKey(cache)) &#123;</span><br><span class="line">                    <span class="comment">//保留字</span></span><br><span class="line">                    putAll(reservedIdent.get(cache), cache, line);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//标识符</span></span><br><span class="line">                    putAll(<span class="string">&quot;IDENFR&quot;</span>, cache, line);</span><br><span class="line">                &#125;</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == INTCONST) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                this.status = INTCONST;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;INTCON&quot;</span>, cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == FORMATSTRING) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch != <span class="string">&#x27;&quot;&#x27;</span>) &#123;</span><br><span class="line">                this.status = FORMATSTRING;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(<span class="string">&quot;STRCON&quot;</span>, cache+ch, line);</span><br><span class="line">                clear();</span><br><span class="line">                pointer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECHAR) &#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&gt;= &lt;= != ==</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache+ch).equals(<span class="string">&quot;//&quot;</span>)) &#123;</span><br><span class="line">                this.status = SINGLECOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((cache + ch).equals(<span class="string">&quot;/*&quot;</span>)) &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                putAll(SingleCharMap.get(cache), cache, line);</span><br><span class="line">                clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == PREDOUBLECHAR)&#123;</span><br><span class="line">            <span class="keyword">if</span> (DoubleCharMap.containsKey(cache + ch)) &#123; <span class="comment">//处理的是&amp;&amp; ||</span></span><br><span class="line">                putAll(DoubleCharMap.get(cache + ch), cache + ch, line);</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (this.status == SINGLECOMMENTS) &#123;</span><br><span class="line">            cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (this.status == MULTICOMMENTS) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cache.length() &gt;= <span class="number">1</span> &amp;&amp; cache.charAt(cache.length() - <span class="number">1</span>) == <span class="string">&#x27;*&#x27;</span> &amp;&amp; ch == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">                cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                this.status = INITIAL;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                this.status = MULTICOMMENTS;</span><br><span class="line">                cache += ch;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            this.status = INITIAL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.status = INITIAL;</span><br><span class="line">    <span class="built_in">this</span>.pointer--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putAll</span><span class="params">(String type, String word, Integer line)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.typeMap.put(lexer, type);</span><br><span class="line">    <span class="built_in">this</span>.wordMap.put(lexer, word);</span><br><span class="line">    <span class="built_in">this</span>.lineMap.put(lexer, line);</span><br><span class="line">    lexer++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意<code>clear()</code>函数<strong>出现在每次状态转换完</strong>，因为是当前字符使得当前状态结束，所以<code>pointer</code>应该回退一格，使得当前状态重新变为<code>INITIAL</code>准备好了之后，再<strong>重新处理这个字符</strong>。</p>
-<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>"</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
-<p><strong>总结一下：</strong>
-就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
-<h3 id="注意细节">注意细节</h3>
-<p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code>
-状态时，如果ch+cache在<code>DoubleCharMap</code>
-中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>
-</p>
-]]></content>
-      <categories>
-        <category>Compiler</category>
-      </categories>
   </entry>
   <entry>
     <title>maven+vue+springboot</title>
@@ -2035,6 +2067,19 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
+    <title>myfirst</title>
+    <url>/2022/09/06/myfirst/</url>
+    <content><![CDATA[<h3 id="test">test</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="image">image</h3>
+<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
+<p><strong>This is my first blog !😋</strong></p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue-day1</title>
     <url>/2022/11/08/vue-day1/</url>
     <content><![CDATA[<h1 id="day1">Day1</h1>
@@ -2056,19 +2101,6 @@ springboot项目</h1>
       <tags>
         <tag>vue</tag>
         <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>myfirst</title>
-    <url>/2022/09/06/myfirst/</url>
-    <content><![CDATA[<h3 id="test">test</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="image">image</h3>
-<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
-<p><strong>This is my first blog !😋</strong></p>
-]]></content>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -2179,6 +2211,123 @@ Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 <p>最终只需要用这里的任务管理器，</p>
 <p>如图，要用哪个就运行哪个。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>数据库-第四,五章作业</title>
+    <url>/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<h2 id="第四章作业">第四章作业</h2>
+<h3 id="什么是数据库安全性"><strong>1.
+什么是数据库安全性？</strong></h3>
+<p>数据库的安全性是指保护数据库以防止不合法使用所造成的数据泄露、更改或破坏。</p>
+<h3 id="试述实现数据库安全性控制的常用方法和技术"><strong>2.
+试述实现数据库安全性控制的常用方法和技术。</strong></h3>
+<p>数据库的安全性控制主要包括用户身份鉴别、多层存取控制、审计、视图和数据加密等安全技术.</p>
+<ul>
+<li>用户身份鉴别
+<ul>
+<li>静态口令鉴别</li>
+<li>动态口令鉴别</li>
+<li>生物特征鉴别</li>
+<li>智能卡鉴别</li>
+</ul></li>
+<li>存取控制
+<ul>
+<li>定义用户权限</li>
+<li>合法权限检查</li>
+</ul></li>
+</ul>
+<h3 id="什么是数据库中的自主存取控制和强制存取控制方法"><strong>3.
+什么是数据库中的自主存取控制和强制存取控制方法。</strong></h3>
+<p><strong>自主存取控制：</strong>用户对于不同的数据库对象有不同的存取权限，不同的用户对同一对象也有不用的权限，而且用户还可以将其拥有的存取权限转授给其他用户。因此自主存取十分灵活。</p>
+<p>主要通过SQL的GRANT和REVOKE与来实现。用户权限由数据库对象和操作类型组成。定义存取权限被称为授权。</p>
+<p><strong>强制存储控制：</strong>每一个数据库对象被标有一定的密级，每一个用户也被授予某一个级别的许可证。对于任意一个对象，只有具有合法证的用户才可以存取。强制存取比较严格。</p>
+<p>强制存取控制是对数据本身进行密级标记，无论
+数据如何复制，标记与数据是一个不可分的整体，只有符合密级标记要求的用户才可以操纵数据，从而提供了更高级别的安全性。</p>
+<h3 id="试述角色和用户组的定义和作用">4.试述角色和用户组的定义和作用。</h3>
+<p><strong>角色的定义：</strong>数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。</p>
+<p><strong>角色作用：</strong>数据库角色是<strong>一组权限的集合</strong>。使用角色来管理数据库权限可以简化授权的过程，使自主授权的执行更加灵活。</p>
+<p><strong>用户组的定义</strong>：用户组是一组具有相同特性用户的集合。在授权或收回权限时，可以以用户组为单位进行。</p>
+<p><strong>用户组的作用：</strong>数据库用户组由于特性相同，因为在授权和收回权限的时候能够整体进行，效率更高。</p>
+<hr>
+<h2 id="第五章作业">第五章作业</h2>
+<h3 id="什么是数据库的完整性">1.什么是数据库的完整性</h3>
+<p>数据库的完整性是指数据的<strong>正确性</strong>和<strong>相容性</strong>。</p>
+<p><strong>正确性</strong>是指数据应具有合法的类型，包括数据类型的正确和数据范围没有溢出等等。</p>
+<p><strong>相容性</strong>是指表示同一个事实的两个数据应该相同，并且符合逻辑。</p>
+<h3 id="什么是数据库的完整性约束条件">2.
+什么是数据库的完整性约束条件</h3>
+<p>​
+完整性约束条件也称为完整性规则，是数据库中的数据必须满足的语义约束条件。它表达了给定的数据模型中数据及其联系所具有的制约和依存规则，用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效和相容。</p>
+<p>​
+主要包括关系模型的<strong>实体完整性、参照完整性</strong>和<strong>用户定义完整性</strong>。</p>
+<h3 id="rdbms的完整性控制机制应具有哪些功能">3.
+RDBMS的完整性控制机制应具有哪些功能</h3>
+<ul>
+<li>定义功能：提供定义完整性约束条件的机制。</li>
+<li>检查功能，检查用户发出的操作请求是否违背了完整性约束条件。</li>
+<li>违约处理，如果发现用户的操作请求使数据违背于完整性约束条件i则采取一定的动作来保证数据的完整性。</li>
+</ul>
+<h3 id="数据库在实现参照完整性时需要考虑哪些方面">4.数据库在实现参照完整性时需要考虑哪些方面？</h3>
+<p>参照完整性往往会有一些不一致事情的发生，例如：</p>
+<p>（1）表中增加一个元组，由于该元组对应的外码的数值在表中找不到，则会引发冲突。</p>
+<p>（2）修改外码值，会对原本是这些外码值的元组造成影响。</p>
+<p>（3）删除元组，导致另一个表中的某些属性的外码在该表中找不到元组。</p>
+<p>等等。</p>
+<p>所以要采取的策略主要有：</p>
+<p>（1）拒绝执行（NOT ACTION）</p>
+<p>（2）级联执行（CASCADE）</p>
+<p>当遇到不一致的情况，就把所有不一致的情况删除。</p>
+<p>（3）设置为空值</p>
+<p>当删除或者修改参照表中的一个元组造成不一致的时候，就将不一致的元组的属性设置为空值。</p>
+<hr>
+<h2 id="实验">实验</h2>
+<h4 id="第一题">第一题</h4>
+<p>（1）创建用户王明，并授予他对学生表的SELECT权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456p&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015155443150.png" class>
+<p>（2）授予用户王明对学生表的INSERT和DELETE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（3）授予用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（4）授予用户王明创建表的权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（5）授予用户王明对学生表的所有权限，并具有转授给他人的权力</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure>
+<p>（6）撤销用户王明对学生表的INSERT和DELETE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（7）撤销用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（8）撤销用户王明创建表的权限</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>（9）使得用户王明只能查看每个班级的最高分、最低分、平均分，但不能查看每个学生所选课程的具体成绩。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(`成绩`),<span class="built_in">MIN</span>(`成绩`),<span class="built_in">AVG</span>(`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `选课表`</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> `班级`</span><br><span class="line"><span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="第二题">第二题</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#创建一个用于成绩定档的函数</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> log_bin_trust_function_creators<span class="operator">=</span><span class="literal">TRUE</span>;#不添加这一行会报错</span><br><span class="line"></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">FUNCTION</span> IF <span class="keyword">EXISTS</span> gradeLevel$$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> gradeLevel(grade <span class="type">int</span>) <span class="keyword">RETURNS</span> <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> str <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	IF (grade <span class="operator">&lt;</span> <span class="number">60</span>)  <span class="keyword">THEN</span> </span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">70</span> ) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">80</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;中等&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">90</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;良好&#x27;</span>;</span><br><span class="line">	<span class="keyword">ELSE</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line">	<span class="keyword">END</span> IF;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line"><span class="keyword">END</span> $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> `学生表`.`学号`,`学生表`.`姓名`,`课程表`.`课程名`,`选课表`.`成绩`,gradeLevel(`选课表`.`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `学生表`,`选课表`,`课程表`</span><br><span class="line"><span class="keyword">WHERE</span> `学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号`;</span><br></pre></td></tr></table></figure>
+<p>结果如图：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015173133384.png" class>
+<h4 id="第三题">第三题</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个存储过程<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> </span><br><span class="line"><span class="keyword">PROCEDURE</span> getGrade(<span class="keyword">IN</span> course <span class="type">VARCHAR</span>(<span class="number">255</span>))</span><br><span class="line">	<span class="comment">-- 存储过程体</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="comment">-- 把SQL中查询的结果通过INTO赋给变量 INTO SNO INTO sname INTO grade </span></span><br><span class="line">		<span class="keyword">SELECT</span> `学生表`.`学号`  ,`学生表`.`姓名`  ,`选课表`.`成绩` </span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">		`学生表`,`选课表`,`课程表`</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">		`学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号` <span class="keyword">AND</span> `课程表`.`课程名`<span class="operator">=</span> course;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> getGrade;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CALL</span> getGrade(<span class="string">&#x27;数据库&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>结果如下所示：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015191444849.png" class>
+<h4 id="第四题">第四题</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>创建一张教授的表<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `教授`(</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">		`money` <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">		<span class="keyword">PRIMARY</span> KEY(`name`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `教授` <span class="keyword">VALUES</span>(<span class="string">&#x27;professor&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 教授;</span><br><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个触发器<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">#注意：要对<span class="keyword">new</span>的数据进行修改和赋值，必须是BEFORE</span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> IF <span class="keyword">EXISTS</span> AgeIncrease;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> AgeIncrease </span><br><span class="line">BEFORE <span class="keyword">UPDATE</span>  <span class="keyword">ON</span> `教授`</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 	DECLARE sum int;</span></span><br><span class="line">	if new.`money` <span class="operator">&lt;</span> old.`money` <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">set</span> new.`money`<span class="operator">=</span>old.`money`;</span><br><span class="line">	<span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
+<p>当把教授的工资设置为2000时，</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `教授`</span><br><span class="line"><span class="keyword">SET</span> `money`<span class="operator">=</span><span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> `教授`.`name`<span class="operator">=</span><span class="string">&#x27;professor&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202401871.png" class>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202413947.png" class>
+<p>设置成功。</p>
+<p>如果此时把教授的工资重新改为1000，则会显示：</p>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202621973.png" class>
+<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202634218.png" class>
+<p>可见不起效果，工资只增不减。</p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
   </entry>
   <entry>
     <title>外卖系统实现</title>
@@ -3365,123 +3514,6 @@ y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库-第四,五章作业</title>
-    <url>/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<h2 id="第四章作业">第四章作业</h2>
-<h3 id="什么是数据库安全性"><strong>1.
-什么是数据库安全性？</strong></h3>
-<p>数据库的安全性是指保护数据库以防止不合法使用所造成的数据泄露、更改或破坏。</p>
-<h3 id="试述实现数据库安全性控制的常用方法和技术"><strong>2.
-试述实现数据库安全性控制的常用方法和技术。</strong></h3>
-<p>数据库的安全性控制主要包括用户身份鉴别、多层存取控制、审计、视图和数据加密等安全技术.</p>
-<ul>
-<li>用户身份鉴别
-<ul>
-<li>静态口令鉴别</li>
-<li>动态口令鉴别</li>
-<li>生物特征鉴别</li>
-<li>智能卡鉴别</li>
-</ul></li>
-<li>存取控制
-<ul>
-<li>定义用户权限</li>
-<li>合法权限检查</li>
-</ul></li>
-</ul>
-<h3 id="什么是数据库中的自主存取控制和强制存取控制方法"><strong>3.
-什么是数据库中的自主存取控制和强制存取控制方法。</strong></h3>
-<p><strong>自主存取控制：</strong>用户对于不同的数据库对象有不同的存取权限，不同的用户对同一对象也有不用的权限，而且用户还可以将其拥有的存取权限转授给其他用户。因此自主存取十分灵活。</p>
-<p>主要通过SQL的GRANT和REVOKE与来实现。用户权限由数据库对象和操作类型组成。定义存取权限被称为授权。</p>
-<p><strong>强制存储控制：</strong>每一个数据库对象被标有一定的密级，每一个用户也被授予某一个级别的许可证。对于任意一个对象，只有具有合法证的用户才可以存取。强制存取比较严格。</p>
-<p>强制存取控制是对数据本身进行密级标记，无论
-数据如何复制，标记与数据是一个不可分的整体，只有符合密级标记要求的用户才可以操纵数据，从而提供了更高级别的安全性。</p>
-<h3 id="试述角色和用户组的定义和作用">4.试述角色和用户组的定义和作用。</h3>
-<p><strong>角色的定义：</strong>数据库角色是被命名的一组与数据库操作相关的权限，角色是权限的集合。</p>
-<p><strong>角色作用：</strong>数据库角色是<strong>一组权限的集合</strong>。使用角色来管理数据库权限可以简化授权的过程，使自主授权的执行更加灵活。</p>
-<p><strong>用户组的定义</strong>：用户组是一组具有相同特性用户的集合。在授权或收回权限时，可以以用户组为单位进行。</p>
-<p><strong>用户组的作用：</strong>数据库用户组由于特性相同，因为在授权和收回权限的时候能够整体进行，效率更高。</p>
-<hr>
-<h2 id="第五章作业">第五章作业</h2>
-<h3 id="什么是数据库的完整性">1.什么是数据库的完整性</h3>
-<p>数据库的完整性是指数据的<strong>正确性</strong>和<strong>相容性</strong>。</p>
-<p><strong>正确性</strong>是指数据应具有合法的类型，包括数据类型的正确和数据范围没有溢出等等。</p>
-<p><strong>相容性</strong>是指表示同一个事实的两个数据应该相同，并且符合逻辑。</p>
-<h3 id="什么是数据库的完整性约束条件">2.
-什么是数据库的完整性约束条件</h3>
-<p>​
-完整性约束条件也称为完整性规则，是数据库中的数据必须满足的语义约束条件。它表达了给定的数据模型中数据及其联系所具有的制约和依存规则，用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效和相容。</p>
-<p>​
-主要包括关系模型的<strong>实体完整性、参照完整性</strong>和<strong>用户定义完整性</strong>。</p>
-<h3 id="rdbms的完整性控制机制应具有哪些功能">3.
-RDBMS的完整性控制机制应具有哪些功能</h3>
-<ul>
-<li>定义功能：提供定义完整性约束条件的机制。</li>
-<li>检查功能，检查用户发出的操作请求是否违背了完整性约束条件。</li>
-<li>违约处理，如果发现用户的操作请求使数据违背于完整性约束条件i则采取一定的动作来保证数据的完整性。</li>
-</ul>
-<h3 id="数据库在实现参照完整性时需要考虑哪些方面">4.数据库在实现参照完整性时需要考虑哪些方面？</h3>
-<p>参照完整性往往会有一些不一致事情的发生，例如：</p>
-<p>（1）表中增加一个元组，由于该元组对应的外码的数值在表中找不到，则会引发冲突。</p>
-<p>（2）修改外码值，会对原本是这些外码值的元组造成影响。</p>
-<p>（3）删除元组，导致另一个表中的某些属性的外码在该表中找不到元组。</p>
-<p>等等。</p>
-<p>所以要采取的策略主要有：</p>
-<p>（1）拒绝执行（NOT ACTION）</p>
-<p>（2）级联执行（CASCADE）</p>
-<p>当遇到不一致的情况，就把所有不一致的情况删除。</p>
-<p>（3）设置为空值</p>
-<p>当删除或者修改参照表中的一个元组造成不一致的时候，就将不一致的元组的属性设置为空值。</p>
-<hr>
-<h2 id="实验">实验</h2>
-<h4 id="第一题">第一题</h4>
-<p>（1）创建用户王明，并授予他对学生表的SELECT权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;123456p&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015155443150.png" class>
-<p>（2）授予用户王明对学生表的INSERT和DELETE权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（3）授予用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（4）授予用户王明创建表的权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（5）授予用户王明对学生表的所有权限，并具有转授给他人的权力</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.`学生表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure>
-<p>（6）撤销用户王明对学生表的INSERT和DELETE权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">INSERT</span>,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db1.`学生表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（7）撤销用户王明对选课表的SELECT权限和对成绩字段的UPDATE权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span>,<span class="keyword">UPDATE</span>(Grade) <span class="keyword">ON</span> db1.`选课表` <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（8）撤销用户王明创建表的权限</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> db1.<span class="operator">*</span> <span class="keyword">FROM</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>（9）使得用户王明只能查看每个班级的最高分、最低分、平均分，但不能查看每个学生所选课程的具体成绩。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(`成绩`),<span class="built_in">MIN</span>(`成绩`),<span class="built_in">AVG</span>(`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `选课表`</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> `班级`</span><br><span class="line"><span class="keyword">ON</span> db1.`选课表` <span class="keyword">TO</span> <span class="string">&#x27;王明&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="第二题">第二题</h4>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#创建一个用于成绩定档的函数</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> log_bin_trust_function_creators<span class="operator">=</span><span class="literal">TRUE</span>;#不添加这一行会报错</span><br><span class="line"></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">FUNCTION</span> IF <span class="keyword">EXISTS</span> gradeLevel$$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> gradeLevel(grade <span class="type">int</span>) <span class="keyword">RETURNS</span> <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> str <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	IF (grade <span class="operator">&lt;</span> <span class="number">60</span>)  <span class="keyword">THEN</span> </span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">70</span> ) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str<span class="operator">=</span><span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">80</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;中等&#x27;</span>;</span><br><span class="line">	ELSEIF (grade <span class="operator">&lt;</span> <span class="number">90</span>) <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;良好&#x27;</span>;</span><br><span class="line">	<span class="keyword">ELSE</span></span><br><span class="line">	<span class="keyword">set</span> str <span class="operator">=</span> <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line">	<span class="keyword">END</span> IF;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line"><span class="keyword">END</span> $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> `学生表`.`学号`,`学生表`.`姓名`,`课程表`.`课程名`,`选课表`.`成绩`,gradeLevel(`选课表`.`成绩`)</span><br><span class="line"><span class="keyword">FROM</span> `学生表`,`选课表`,`课程表`</span><br><span class="line"><span class="keyword">WHERE</span> `学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号`;</span><br></pre></td></tr></table></figure>
-<p>结果如图：</p>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015173133384.png" class>
-<h4 id="第三题">第三题</h4>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个存储过程<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> </span><br><span class="line"><span class="keyword">PROCEDURE</span> getGrade(<span class="keyword">IN</span> course <span class="type">VARCHAR</span>(<span class="number">255</span>))</span><br><span class="line">	<span class="comment">-- 存储过程体</span></span><br><span class="line">	<span class="keyword">BEGIN</span></span><br><span class="line">		<span class="comment">-- 把SQL中查询的结果通过INTO赋给变量 INTO SNO INTO sname INTO grade </span></span><br><span class="line">		<span class="keyword">SELECT</span> `学生表`.`学号`  ,`学生表`.`姓名`  ,`选课表`.`成绩` </span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">		`学生表`,`选课表`,`课程表`</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">		`学生表`.`学号` <span class="operator">=</span> `选课表`.`学号` <span class="keyword">AND</span> `课程表`.`课程号` <span class="operator">=</span> `选课表`.`课程号` <span class="keyword">AND</span> `课程表`.`课程名`<span class="operator">=</span> course;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> getGrade;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CALL</span> getGrade(<span class="string">&#x27;数据库&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>结果如下所示：</p>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015191444849.png" class>
-<h4 id="第四题">第四题</h4>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>创建一张教授的表<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `教授`(</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">		`money` <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">		<span class="keyword">PRIMARY</span> KEY(`name`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `教授` <span class="keyword">VALUES</span>(<span class="string">&#x27;professor&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 教授;</span><br><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>定义一个触发器<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">#注意：要对<span class="keyword">new</span>的数据进行修改和赋值，必须是BEFORE</span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> IF <span class="keyword">EXISTS</span> AgeIncrease;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> AgeIncrease </span><br><span class="line">BEFORE <span class="keyword">UPDATE</span>  <span class="keyword">ON</span> `教授`</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="comment">-- 	DECLARE sum int;</span></span><br><span class="line">	if new.`money` <span class="operator">&lt;</span> old.`money` <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">set</span> new.`money`<span class="operator">=</span>old.`money`;</span><br><span class="line">	<span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
-<p>当把教授的工资设置为2000时，</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `教授`</span><br><span class="line"><span class="keyword">SET</span> `money`<span class="operator">=</span><span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> `教授`.`name`<span class="operator">=</span><span class="string">&#x27;professor&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202401871.png" class>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202413947.png" class>
-<p>设置成功。</p>
-<p>如果此时把教授的工资重新改为1000，则会显示：</p>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202621973.png" class>
-<img data-src="/2022/10/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E7%AC%AC%E5%9B%9B-%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/image-20221015202634218.png" class>
-<p>可见不起效果，工资只增不减。</p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
