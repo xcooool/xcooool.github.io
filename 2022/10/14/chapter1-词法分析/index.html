@@ -149,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%A6%81%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">具体要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Morpho%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E7%B1%BB%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">Morpho词法分析类：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%BB%86%E8%8A%82"><span class="nav-number">4.</span> <span class="nav-text">注意细节</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%A6%81%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">具体要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#morpho%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">Morpho词法分析类：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%BB%86%E8%8A%82"><span class="nav-number">4.</span> <span class="nav-text">注意细节</span></a></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -165,18 +165,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -290,7 +290,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="具体要求"><a href="#具体要求" class="headerlink" title="具体要求"></a>具体要求</h3><p>对输入的<code>testfile.txt</code> 文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
+        <h3 id="具体要求">具体要求</h3>
+<p>对输入的<code>testfile.txt</code>
+文件逐行解析，并输出对应的单词名称和类别码，具体输出要求如下表所示：</p>
 <img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_gCe5-FREvU.png" class>
 <p>输入输出要求具体如下所示：</p>
 <p><strong>输入：</strong></p>
@@ -298,32 +300,31 @@
 <p><strong>输出：</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> CONSTTK <span class="type">const</span></span><br><span class="line"><span class="number">1</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">1</span> IDENFR a</span><br><span class="line"><span class="number">1</span> ASSIGN =</span><br><span class="line"><span class="number">1</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">1</span> SEMICN ;</span><br><span class="line"><span class="number">2</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">2</span> MAINTK main</span><br><span class="line"><span class="number">2</span> LPARENT (</span><br><span class="line"><span class="number">2</span> RPARENT )</span><br><span class="line"><span class="number">2</span> LBRACE &#123;</span><br><span class="line"><span class="number">3</span> INTTK <span class="type">int</span></span><br><span class="line"><span class="number">3</span> IDENFR f</span><br><span class="line"><span class="number">3</span> ASSIGN =</span><br><span class="line"><span class="number">3</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">3</span> SEMICN ;</span><br><span class="line"><span class="number">4</span> RETURNTK <span class="keyword">return</span></span><br><span class="line"><span class="number">4</span> INTCON <span class="number">0</span></span><br><span class="line"><span class="number">4</span> SEMICN ;</span><br><span class="line"><span class="number">5</span> RBRACE &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>其中第一列为行号，第二列为类别码，第三列为token.</p>
-<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>通过有限自动机DFA实现对输入序列进行处理：</p>
+<h3 id="实现方法">实现方法</h3>
+<p>通过有限自动机DFA实现对输入序列进行处理：</p>
 <img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_kFjhbTCHr4.png" class>
-<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code> 程序进入<code>Morpho</code> 类中，最后<code>Morpho</code> 能够输出对应的行号、类别码、token.</p>
+<h3 id="具体实现">具体实现</h3>
+<p>词法分析部分的类的构建我只用了一个<code>Morpho</code>，从<code>Compiler</code>
+程序进入<code>Morpho</code> 类中，最后<code>Morpho</code>
+能够输出对应的行号、类别码、token.</p>
 <img data-src="/2022/10/14/chapter1-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/image_C8uyeszCzM.png" class>
-<h4 id="Morpho词法分析类："><a href="#Morpho词法分析类：" class="headerlink" title="Morpho词法分析类："></a>Morpho词法分析类：</h4><ul>
-<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p>
-</li>
-<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code> ：存储类别码</p>
-</li>
-<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code> ：存储token</p>
-</li>
-<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code> ：存储每个token对应的行号</p>
-</li>
-<li><p><code>lexer</code>：输出token的总数量</p>
-</li>
+<h4 id="morpho词法分析类">Morpho词法分析类：</h4>
+<ul>
+<li><p><code>HashMap&lt;Integer,String&gt; lineRawMap</code>：用于存储读入文件，key为行号，value为每行的内容，通过readFile读入</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; typeMap</code>
+：存储类别码</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; wordMap</code>
+：存储token</p></li>
+<li><p><code>HashMap&lt;Integer,String&gt; lineMap</code>
+：存储每个token对应的行号</p></li>
+<li><p><code>lexer</code>：输出token的总数量</p></li>
 </ul>
 <p>（实际上是通过<code>lexer</code>同时维护上述三个hashmap，同增同减）</p>
 <ul>
-<li><p><code>int status</code> ：当前状态</p>
-</li>
-<li><p><code>String cache</code>：缓存器</p>
-</li>
-<li><p><code>pointer</code>：指针，用于扫描当前行</p>
-</li>
-<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p>
-</li>
+<li><p><code>int status</code> ：当前状态</p></li>
+<li><p><code>String cache</code>：缓存器</p></li>
+<li><p><code>pointer</code>：指针，用于扫描当前行</p></li>
+<li><p><code>INITIAL</code>,<code>IDENT</code>,<code>INTCONST</code>,<code>FORMATSTRING</code>,<code>SINGLECHAR</code>,<code>SINGLECOMMENTS</code>,<code>MULTICOMMENTS</code>,<code>PREDOUBLECHAR</code>：状态的中间形式</p></li>
 </ul>
 <p>以上就是对这个类的属性的解释。</p>
 <p>其中<code>PREDOUBLECHAR</code>指的是识别到<code>&amp;&amp;</code>和<code>||</code>的第一个字符时的状态。</p>
@@ -339,9 +340,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clear</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.cache = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">this</span>.status = INITIAL;</span><br><span class="line">    <span class="built_in">this</span>.pointer--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">putAll</span><span class="params">(String type, String word, Integer line)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.typeMap.put(lexer, type);</span><br><span class="line">    <span class="built_in">this</span>.wordMap.put(lexer, word);</span><br><span class="line">    <span class="built_in">this</span>.lineMap.put(lexer, line);</span><br><span class="line">    lexer++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意<code>clear()</code>函数<strong>出现在每次状态转换完</strong>，因为是当前字符使得当前状态结束，所以<code>pointer</code>应该回退一格，使得当前状态重新变为<code>INITIAL</code>准备好了之后，再<strong>重新处理这个字符</strong>。</p>
-<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>&quot;</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
-<p><strong>总结一下：</strong> 就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
-<h3 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h3><p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code> 状态时，如果ch+cache在<code>DoubleCharMap</code> 中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>&#x20;</p>
+<p>但是有个<strong>特殊情况</strong>FormatString，这个状态结束是遇到了<code>"</code>。所以这个双引号也要加入到输出中，所以clear之后，pointer++，否则这个双引号要重新判断一遍了。</p>
+<p><strong>总结一下：</strong>
+就是要把cache+ch都加入进去的时候，clear()完之后要让pointer++，其余状态转换之后直接clear()即可.</p>
+<h3 id="注意细节">注意细节</h3>
+<p><code>PREDOUBLECHAR</code>状态时，如果ch+cache在<code>DoubleCharMap</code>中，则放入；而且，在<code>SINGLECHAR</code>
+状态时，如果ch+cache在<code>DoubleCharMap</code>
+中，则同样也要加入（专指<code>==</code>等双字符）。所以<strong>总共有两条途径</strong>要用到<code>DoubleCharMap</code>
+</p>
 
     </div>
 
