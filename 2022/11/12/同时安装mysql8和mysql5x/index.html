@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85MYSQL8%E5%92%8CMYSQL5"><span class="nav-number">1.</span> <span class="nav-text">同时安装MYSQL8和MYSQL5</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">mysql无法启动：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E5%AF%86%E7%A0%81%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">临时密码无法登录</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5"><span class="nav-number">1.</span> <span class="nav-text">同时安装MYSQL8和MYSQL5</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.</span> <span class="nav-text">mysql无法启动：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E5%AF%86%E7%A0%81%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">临时密码无法登录</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -263,7 +263,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>611</span>
+      <span>619</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -282,18 +282,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="同时安装MYSQL8和MYSQL5"><a href="#同时安装MYSQL8和MYSQL5" class="headerlink" title="同时安装MYSQL8和MYSQL5"></a>同时安装MYSQL8和MYSQL5</h3><p>本身电脑又mysql8，但是项目需要安装mysql5。但是安装了一个下午，最开始是生成的临时密码登不上服务。后来是新建的服务都启动不了。搞了一个下午，最后通过更改注册表成功了！</p>
-<h4 id="mysql无法启动："><a href="#mysql无法启动：" class="headerlink" title="mysql无法启动："></a>mysql无法启动：</h4><p>解决方法：修改新安装的mysql的注册表。由于</p>
+        <h3 id="同时安装mysql8和mysql5">同时安装MYSQL8和MYSQL5</h3>
+<p>本身电脑又mysql8，但是项目需要安装mysql5。但是安装了一个下午，最开始是生成的临时密码登不上服务。后来是新建的服务都启动不了。搞了一个下午，最后通过更改注册表成功了！</p>
+<h4 id="mysql无法启动">mysql无法启动：</h4>
+<p>解决方法：修改新安装的mysql的注册表。由于</p>
 <img data-src="/2022/11/12/%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5x/a78678444eb62a588db3f8cc32dad05_VKcRFtdaqs.png" class>
 <img data-src="/2022/11/12/%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5x/93e79c2f5fc5be74a6c1aa643c72a1b_VCmfksDNiH.png" class>
 <img data-src="/2022/11/12/%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5x/c1ffceb64201f3e07c6cd5b8ce06c60_ocltpcFJrr.png" class>
-<p>其注册表如图所示，由于我在对应文件夹bin下<code>mysql -install MYSQL50</code>之后，<strong>MYSQL50服务对应的ImgePath竟然跑到MYSQL8的文件夹里了！！！</strong> 改掉之后就能成功运行了。</p>
+<p>其注册表如图所示，由于我在对应文件夹bin下<code>mysql -install MYSQL50</code>之后，<strong>MYSQL50服务对应的ImgePath竟然跑到MYSQL8的文件夹里了！！！</strong>
+改掉之后就能成功运行了。</p>
 <p>这个是MYSQL8的注册表：</p>
-<h4 id="临时密码无法登录"><a href="#临时密码无法登录" class="headerlink" title="临时密码无法登录"></a>临时密码无法登录</h4><p>最终解决方法：重新安装一次mysql5… …</p>
+<h4 id="临时密码无法登录">临时密码无法登录</h4>
+<p>最终解决方法：重新安装一次mysql5... ...</p>
 <p>我的<code>my.ini</code>文件如下:</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line"></span><br><span class="line">port=3306</span><br><span class="line"></span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line"># 设置为自己MYSQL的安装目录</span><br><span class="line"></span><br><span class="line">basedir=D:\\mysql-5.7.40-winx64\\</span><br><span class="line"></span><br><span class="line"># 设置为MYSQL的数据目录</span><br><span class="line"></span><br><span class="line">datadir=D:\\mysql-5.7.40-winx64\\data\\</span><br><span class="line"></span><br><span class="line">port=3306</span><br><span class="line"></span><br><span class="line">character_set_server=utf8</span><br><span class="line"></span><br><span class="line">#跳过安全检查</span><br><span class="line">#skip-grant-tables</span><br></pre></td></tr></table></figure>
 <p>如果无需密码就将最后一行放行就行了。</p>
-<p>终于搞了一个下午…想当初mysql8一下就下载运行好了…</p>
+<p>终于搞了一个下午...想当初mysql8一下就下载运行好了...</p>
 <img data-src="/2022/11/12/%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85mysql8%E5%92%8Cmysql5x/90943598dcf68bcfd8a82437dfbe680_e_hbH03NAR.png" class>
 <p>最终只需要用这里的任务管理器，</p>
 <p>如图，要用哪个就运行哪个。</p>
@@ -338,7 +342,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

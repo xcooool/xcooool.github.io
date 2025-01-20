@@ -285,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>519</span>
+      <span>541</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -304,27 +304,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="部分背包问题"><a href="#部分背包问题" class="headerlink" title="部分背包问题"></a>部分背包问题</h2><p><strong>输入：</strong> n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
-<p><strong>输出：</strong> 求解一个解决方案。$S=\{x_i|0 \leq x_i \leq n \}$，如果$x_i$只能选0或者1，则变成了完全背包问题。</p>
+        <h1 id="贪心算法">贪心算法</h1>
+<h2 id="部分背包问题">部分背包问题</h2>
+<p><strong>输入：</strong>
+n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量是C。</p>
+<p><strong>输出：</strong> 求解一个解决方案。<span class="math inline">\(S=\{x_i|0 \leq x_i \leq n \}\)</span>，如果<span class="math inline">\(x_i\)</span>只能选0或者1，则变成了完全背包问题。</p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_APjPlE8xfR.png" class>
 <p><strong>最高性价比优先</strong></p>
 <p>证明贪心策略是最优解，方法：替换法（假设另外存在一个最优解）</p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_oRBRScSpDx.png" class>
-<p>时间复杂度：$O(nlogn)$</p>
+<p>时间复杂度：<span class="math inline">\(O(nlogn)\)</span></p>
 <hr>
-<h2 id="最优前缀编码问题"><a href="#最优前缀编码问题" class="headerlink" title="最优前缀编码问题"></a>最优前缀编码问题</h2><img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
+<h2 id="最优前缀编码问题">最优前缀编码问题</h2>
+<img data-src="/2022/11/09/Greedy-Algorithm/image_KzUoqMDnq1.png" class>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_mjuaF95KcS.png" class>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_k_DKNolvPS.png" class>
-<h2 id="活动选择问题1"><a href="#活动选择问题1" class="headerlink" title="活动选择问题1"></a>活动选择问题1</h2><p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
+<h2 id="活动选择问题1">活动选择问题1</h2>
+<p><strong>问题描述：一个会场，如何安排举办最多的活动</strong></p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_gtgIT3Wd-7.png" class>
 <p><strong>策略：</strong></p>
-<ol>
-<li><p><strong>最短活动</strong>优先</p>
-</li>
-<li><p><strong>最早开始</strong>活动优先</p>
-</li>
-<li><p><strong>最早结束</strong>活动优先</p>
-</li>
+<ol type="1">
+<li><p><strong>最短活动</strong>优先</p></li>
+<li><p><strong>最早开始</strong>活动优先</p></li>
+<li><p><strong>最早结束</strong>活动优先</p></li>
 </ol>
 <p>提出贪心策略→证明贪心算法就是最优解</p>
 <p>如何证明？<strong>举反例</strong></p>
@@ -332,9 +334,11 @@
 <p><strong>正确算法：最早活动优先</strong></p>
 <p>如何证明这是最优解？替换算法</p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_WQR3nKQJKM.png" class>
-<p>时间复杂度为$O(nlogn)$，仍旧为排序算法时间复杂度。</p>
-<h2 id="活动选择问题2"><a href="#活动选择问题2" class="headerlink" title="活动选择问题2"></a>活动选择问题2</h2><p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
-<h4 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h4><p>n个活动组成的集合$S=\{a_1,a_2,…a_n\}$,每个活动有开始时间$s_i$和结束时间$f_i$和权重$w_i$。找到一个活动的子集，使得$max\sum w_i$，同时保证活动不能冲突。</p>
+<p>时间复杂度为<span class="math inline">\(O(nlogn)\)</span>，仍旧为排序算法时间复杂度。</p>
+<h2 id="活动选择问题2">活动选择问题2</h2>
+<p>在上一个问题的基础上，使得活动的<strong>出租收益最大</strong>，相当于每个活动加了个权重。</p>
+<h4 id="问题定义">问题定义</h4>
+<p>n个活动组成的集合<span class="math inline">\(S=\{a_1,a_2,...a_n\}\)</span>,每个活动有开始时间<span class="math inline">\(s_i\)</span>和结束时间<span class="math inline">\(f_i\)</span>和权重<span class="math inline">\(w_i\)</span>。找到一个活动的子集，使得<span class="math inline">\(max\sum w_i\)</span>，同时保证活动不能冲突。</p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_dfx6vuUSTy.png" class>
 <p>存在<strong>重叠子问题</strong>，使用<strong>动态规划</strong>求解。</p>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_k1GKkxPi4V.png" class>
@@ -346,7 +350,7 @@
 <img data-src="/2022/11/09/Greedy-Algorithm/image_s53HT29Iq5.png" class>
 <img data-src="/2022/11/09/Greedy-Algorithm/image_Y10aQNR_Tt.png" class>
 <p>选择活动rec[i]=1，否则为0.</p>
-<p><strong>时间复杂度：</strong>$O(nlogn)$（二分查找排序时间复杂度）</p>
+<p><strong>时间复杂度：</strong><span class="math inline">\(O(nlogn)\)</span>（二分查找排序时间复杂度）</p>
 
     </div>
 
@@ -391,7 +395,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

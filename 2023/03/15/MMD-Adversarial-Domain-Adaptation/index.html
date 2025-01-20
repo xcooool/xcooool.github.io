@@ -153,7 +153,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MMD-amp-Adversarial-Domain-Adaptation"><span class="nav-number">1.</span> <span class="nav-text">MMD &amp; Adversarial Domain Adaptation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-MMD"><span class="nav-number">1.0.1.</span> <span class="nav-text">What is MMD?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EDomain-Adaptation"><span class="nav-number">1.0.2.</span> <span class="nav-text">关于Domain Adaptation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E4%B8%8D%E5%87%BA%E5%B7%AE%E5%BC%82"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">如何分不出差异?</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mmd-adversarial-domain-adaptation"><span class="nav-number">1.</span> <span class="nav-text">MMD &amp; Adversarial Domain
+Adaptation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-mmd"><span class="nav-number">1.0.1.</span> <span class="nav-text">What is MMD?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Edomain-adaptation"><span class="nav-number">1.0.2.</span> <span class="nav-text">关于Domain
+Adaptation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E4%B8%8D%E5%87%BA%E5%B7%AE%E5%BC%82"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">如何分不出差异?</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -266,7 +268,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>795</span>
+      <span>783</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -285,28 +287,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="MMD-amp-Adversarial-Domain-Adaptation"><a href="#MMD-amp-Adversarial-Domain-Adaptation" class="headerlink" title="MMD &amp; Adversarial Domain Adaptation"></a>MMD &amp; Adversarial Domain Adaptation</h1><h3 id="What-is-MMD"><a href="#What-is-MMD" class="headerlink" title="What is MMD?"></a><strong>What is MMD?</strong></h3><p>MMD: <strong>M</strong>aximum <strong>M</strong>ean <strong>D</strong>iscrepancy</p>
-<p>&#x20;distance between two distributions</p>
+        <h1 id="mmd-adversarial-domain-adaptation">MMD &amp; Adversarial Domain
+Adaptation</h1>
+<h3 id="what-is-mmd"><strong>What is MMD?</strong></h3>
+<p>MMD: <strong>M</strong>aximum <strong>M</strong>ean
+<strong>D</strong>iscrepancy</p>
+<p> distance between two distributions</p>
 <img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_WJ5STdCHK-.png" class>
 <p>如何计算绿色和红色之间的distance?</p>
 <p>全部计数是不可能的,只有通过sample才可以实现.</p>
 <img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_qzHT-kaCSS.png" class>
-<h3 id="关于Domain-Adaptation"><a href="#关于Domain-Adaptation" class="headerlink" title="关于Domain Adaptation"></a><strong>关于Domain Adaptation</strong></h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Mnk_oUrgppM">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
+<h3 id="关于domain-adaptation"><strong>关于Domain
+Adaptation</strong></h3>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Mnk_oUrgppM" class="uri">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
 <p>domain adaptation:</p>
-<ol>
+<ol type="1">
 <li>target domain上只有少量的标注的数据</li>
 <li>在target domain上有很多数据,但是没有label</li>
 </ol>
 <img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_EuovheeubU.png" class>
-<p>要让target经过feature extractor之后产生的Image feature和由source image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
-<h4 id="如何分不出差异"><a href="#如何分不出差异" class="headerlink" title="如何分不出差异?"></a><strong>如何分不出差异?</strong></h4><img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
+<p>要让target经过feature extractor之后产生的Image feature和由source
+image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
+<h4 id="如何分不出差异"><strong>如何分不出差异?</strong></h4>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
 <p>让feature extractor来骗过domain classifier</p>
 <p>妙啊!!!</p>
-<p>如果仅仅为了骗过domain classifier,那么对于feature extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
-<p>但是这种方法是不行的, 因为还要保证label predictor 生成的标签是正确的!!!</p>
-<p><strong>feature extractor: ** 目的是让输出的image feature 经过label predictor 预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
+<p>如果仅仅为了骗过domain classifier,那么对于feature
+extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
+<p>但是这种方法是不行的, 因为还要保证label predictor
+生成的标签是正确的!!!</p>
+<p><strong>feature extractor: ** 目的是让输出的image feature 经过label
+predictor
+预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
 <p><strong>Label predictor:</strong> 目的是能够更精准地分辨</p>
-<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好&#x20;</p>
+<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好
+</p>
 <p>但是这并不是最好的做法:</p>
 <p>因为现在的目标是让source和target越接近越好,但是无论是用Ld,还是-Ld,其目的都是为了将source和target分的越来越清.</p>
 
@@ -355,7 +370,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

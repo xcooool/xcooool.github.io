@@ -165,7 +165,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Structured-Learning-and-Gibbs-Sampling-x20"><span class="nav-number">1.</span> <span class="nav-text">Structured Learning and Gibbs Sampling </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Graphical-Modal"><span class="nav-number">1.1.</span> <span class="nav-text">Graphical Modal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.1.</span> <span class="nav-text">相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MRF"><span class="nav-number">1.1.2.</span> <span class="nav-text">MRF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Training"><span class="nav-number">1.2.</span> <span class="nav-text">Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gibbs-Sampling"><span class="nav-number">1.3.</span> <span class="nav-text">Gibbs Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inference"><span class="nav-number">1.4.</span> <span class="nav-text">Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-chain%E8%A7%A3%E9%87%8A%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87Gibbs-Sampling%E6%9D%A5%E6%9B%BF%E4%BB%A3P-y-x"><span class="nav-number">1.4.1.</span> <span class="nav-text">Markov chain解释可以通过Gibbs Sampling来替代P(y|x)</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#structured-learning-and-gibbs-sampling"><span class="nav-number">1.</span> <span class="nav-text">Structured Learning and
+Gibbs Sampling </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#graphical-modal"><span class="nav-number">1.1.</span> <span class="nav-text">Graphical Modal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.1.1.</span> <span class="nav-text">相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mrf"><span class="nav-number">1.1.2.</span> <span class="nav-text">MRF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#training"><span class="nav-number">1.2.</span> <span class="nav-text">Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gibbs-sampling"><span class="nav-number">1.3.</span> <span class="nav-text">Gibbs Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inference"><span class="nav-number">1.4.</span> <span class="nav-text">Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#markov-chain%E8%A7%A3%E9%87%8A%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87gibbs-sampling%E6%9D%A5%E6%9B%BF%E4%BB%A3pyx"><span class="nav-number">1.4.1.</span> <span class="nav-text">Markov
+chain解释可以通过Gibbs Sampling来替代P(y|x)</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
         
@@ -287,7 +289,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>914</span>
+      <span>908</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -306,44 +308,65 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Structured-Learning-and-Gibbs-Sampling-x20"><a href="#Structured-Learning-and-Gibbs-Sampling-x20" class="headerlink" title="Structured Learning and Gibbs Sampling&#x20;"></a>Structured Learning and Gibbs Sampling&#x20;</h1><h2 id="Graphical-Modal"><a href="#Graphical-Modal" class="headerlink" title="Graphical Modal"></a>Graphical Modal</h2><h3 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h3><p><strong>Clique: 连通子图</strong></p>
+        <h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
+Gibbs Sampling </h1>
+<h2 id="graphical-modal">Graphical Modal</h2>
+<h3 id="相关术语">相关术语</h3>
+<p><strong>Clique: 连通子图</strong></p>
 <p><strong>Maximum Clique:最大连通子图</strong></p>
-<h3 id="MRF"><a href="#MRF" class="headerlink" title="MRF"></a>MRF</h3><p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
+<h3 id="mrf">MRF</h3>
+<p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
 <p><strong>MRF→Factor Graph</strong></p>
 <img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
 <img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
-<h2 id="Training"><a href="#Training" class="headerlink" title="Training"></a><strong>Training</strong></h2><img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
+<h2 id="training"><strong>Training</strong></h2>
+<img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
 <p><strong>如何将函数f描述为线性的？</strong></p>
 <img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
-<p>如果y是连续的…</p>
+<p>如果y是连续的...</p>
 <p>这些函数f可以通过structured SVM求得。</p>
 <img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
 <hr>
-<h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><h2 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h2><img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
+<h2 id="gibbs-sampling">Gibbs Sampling</h2>
+<h2 id="inference">Inference</h2>
+<img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
 <p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
 <img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
-<p>由于已经得到<code>P(y|x)</code> 的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code> 成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code> 是一个概率分布（横轴是x，纵轴是一组y）</p>
+<p>由于已经得到<code>P(y|x)</code>
+的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code>
+成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code>
+是一个概率分布（横轴是x，纵轴是一组y）</p>
 <img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
 <img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
-<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code> 几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code> 是未知的，其他是已知的，通过剩余的y来计算概率。</p>
-<p>&#x20;接下去手算一个Gibbs Sampling:</p>
+<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code>
+几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code>
+是未知的，其他是已知的，通过剩余的y来计算概率。</p>
+<p> 接下去手算一个Gibbs Sampling:</p>
 <img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
 <img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
-<p><strong>注意：</strong> Random sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
+<p><strong>注意：</strong> Random
+sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
 <img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
 <img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
 <p>通过迭代计算结果为：</p>
 <img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
-<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong> 所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
+<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong>
+所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
 <img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
 <hr>
-<h3 id="Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x"><a href="#Markov-chain解释可以通过Gibbs-Sampling来替代P-y-x" class="headerlink" title="Markov chain解释可以通过Gibbs Sampling来替代P(y|x)"></a>Markov chain解释可以通过Gibbs Sampling来替代P(y|x)</h3><img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
+<h3 id="markov-chain解释可以通过gibbs-sampling来替代pyx">Markov
+chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
+<img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
 <p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
 <img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
-<p>😭终于讲到markov了…</p>
-<p>如果任意一个<code>P(s|s&#39;)</code> 不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
+<p>😭终于讲到markov了...</p>
+<p>如果任意一个<code>P(s|s')</code>
+不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
 <img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
-<p>可见$z^1,z^2,…,z^T$组成一个<strong>Markov chain</strong>，因为每个$z$都只和前一个状态有关。所以只需要算这个Markov chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong> 的最大值对应的z即可。</p>
+<p>可见<span class="math inline">\(z^1,z^2,...,z^T\)</span>组成一个<strong>Markov
+chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
+chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
+的最大值对应的z即可。</p>
 
     </div>
 
@@ -388,7 +411,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
