@@ -909,25 +909,6 @@ level(因为这样才能存在既有diversity又有representative的bins了),
       </tags>
   </entry>
   <entry>
-    <title>IP</title>
-    <url>/2024/12/26/IP/</url>
-    <content><![CDATA[<img data-src="/2024/12/26/IP/0.png" class>
-<img data-src="/2024/12/26/IP/1.png" class>
-<img data-src="/2024/12/26/IP/2.png" class>
-<img data-src="/2024/12/26/IP/3.png" class>
-<img data-src="/2024/12/26/IP/4.png" class>
-<img data-src="/2024/12/26/IP/5.png" class>
-<img data-src="/2024/12/26/IP/6.png" class>
-<img data-src="/2024/12/26/IP/7.png" class>
-]]></content>
-      <categories>
-        <category>CV</category>
-      </categories>
-      <tags>
-        <tag>Research</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>贪心算法</title>
     <url>/2022/11/09/Greedy-Algorithm/</url>
     <content><![CDATA[<h1 id="贪心算法">贪心算法</h1>
@@ -986,6 +967,25 @@ n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量
       </tags>
   </entry>
   <entry>
+    <title>IP</title>
+    <url>/2024/12/26/IP/</url>
+    <content><![CDATA[<img data-src="/2024/12/26/IP/0.png" class>
+<img data-src="/2024/12/26/IP/1.png" class>
+<img data-src="/2024/12/26/IP/2.png" class>
+<img data-src="/2024/12/26/IP/3.png" class>
+<img data-src="/2024/12/26/IP/4.png" class>
+<img data-src="/2024/12/26/IP/5.png" class>
+<img data-src="/2024/12/26/IP/6.png" class>
+<img data-src="/2024/12/26/IP/7.png" class>
+]]></content>
+      <categories>
+        <category>CV</category>
+      </categories>
+      <tags>
+        <tag>Research</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LBPH</title>
     <url>/2022/10/18/LBPH/</url>
     <content><![CDATA[<h3 id="算法具体流程图">算法具体流程图：</h3>
@@ -1036,53 +1036,6 @@ n个物品，每个物品又vi和pi，分别表示体积和价格，背包容量
       </tags>
   </entry>
   <entry>
-    <title>MMD&amp;Adversarial Domain Adaptation</title>
-    <url>/2023/03/15/MMD-Adversarial-Domain-Adaptation/</url>
-    <content><![CDATA[<h1 id="mmd-adversarial-domain-adaptation">MMD &amp; Adversarial Domain
-Adaptation</h1>
-<h3 id="what-is-mmd"><strong>What is MMD?</strong></h3>
-<p>MMD: <strong>M</strong>aximum <strong>M</strong>ean
-<strong>D</strong>iscrepancy</p>
-<p> distance between two distributions</p>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_WJ5STdCHK-.png" class>
-<p>如何计算绿色和红色之间的distance?</p>
-<p>全部计数是不可能的,只有通过sample才可以实现.</p>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_qzHT-kaCSS.png" class>
-<h3 id="关于domain-adaptation"><strong>关于Domain
-Adaptation</strong></h3>
-<p><a href="https://www.youtube.com/watch?v=Mnk_oUrgppM" class="uri">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
-<p>domain adaptation:</p>
-<ol type="1">
-<li>target domain上只有少量的标注的数据</li>
-<li>在target domain上有很多数据,但是没有label</li>
-</ol>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_EuovheeubU.png" class>
-<p>要让target经过feature extractor之后产生的Image feature和由source
-image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
-<h4 id="如何分不出差异"><strong>如何分不出差异?</strong></h4>
-<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
-<p>让feature extractor来骗过domain classifier</p>
-<p>妙啊!!!</p>
-<p>如果仅仅为了骗过domain classifier,那么对于feature
-extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
-<p>但是这种方法是不行的, 因为还要保证label predictor
-生成的标签是正确的!!!</p>
-<p><strong>feature extractor: ** 目的是让输出的image feature 经过label
-predictor
-预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
-<p><strong>Label predictor:</strong> 目的是能够更精准地分辨</p>
-<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好
-</p>
-<p>但是这并不是最好的做法:</p>
-<p>因为现在的目标是让source和target越接近越好,但是无论是用Ld,还是-Ld,其目的都是为了将source和target分的越来越清.</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
-        <tag>ML</tag>
-        <tag>NLP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LSTM-文本情感预测</title>
     <url>/2022/11/24/LSTM-%E6%96%87%E6%9C%AC%E6%83%85%E6%84%9F%E9%A2%84%E6%B5%8B/</url>
     <content><![CDATA[<h2 id="数据预处理">数据预处理</h2>
@@ -1127,6 +1080,53 @@ predictor
       <tags>
         <tag>python</tag>
         <tag>LSTM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MMD&amp;Adversarial Domain Adaptation</title>
+    <url>/2023/03/15/MMD-Adversarial-Domain-Adaptation/</url>
+    <content><![CDATA[<h1 id="mmd-adversarial-domain-adaptation">MMD &amp; Adversarial Domain
+Adaptation</h1>
+<h3 id="what-is-mmd"><strong>What is MMD?</strong></h3>
+<p>MMD: <strong>M</strong>aximum <strong>M</strong>ean
+<strong>D</strong>iscrepancy</p>
+<p> distance between two distributions</p>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_WJ5STdCHK-.png" class>
+<p>如何计算绿色和红色之间的distance?</p>
+<p>全部计数是不可能的,只有通过sample才可以实现.</p>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_qzHT-kaCSS.png" class>
+<h3 id="关于domain-adaptation"><strong>关于Domain
+Adaptation</strong></h3>
+<p><a href="https://www.youtube.com/watch?v=Mnk_oUrgppM" class="uri">https://www.youtube.com/watch?v=Mnk_oUrgppM</a></p>
+<p>domain adaptation:</p>
+<ol type="1">
+<li>target domain上只有少量的标注的数据</li>
+<li>在target domain上有很多数据,但是没有label</li>
+</ol>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_EuovheeubU.png" class>
+<p>要让target经过feature extractor之后产生的Image feature和由source
+image 传入之后产生的feature分不出差异.[蓝点和红点分不出差异]</p>
+<h4 id="如何分不出差异"><strong>如何分不出差异?</strong></h4>
+<img data-src="/2023/03/15/MMD-Adversarial-Domain-Adaptation/image_4Ecg-w2Y7s.png" class>
+<p>让feature extractor来骗过domain classifier</p>
+<p>妙啊!!!</p>
+<p>如果仅仅为了骗过domain classifier,那么对于feature
+extractor来说可以输出zero,这样classifier就无法分辨到底是source还是target了.</p>
+<p>但是这种方法是不行的, 因为还要保证label predictor
+生成的标签是正确的!!!</p>
+<p><strong>feature extractor: ** 目的是让输出的image feature 经过label
+predictor
+预测越准确越好,并且让domain的分类越错误越好</strong>[即越难分辨]**</p>
+<p><strong>Label predictor:</strong> 目的是能够更精准地分辨</p>
+<p><strong>Domain Classifier:</strong> 目的是让domain的分类越正确越好
+</p>
+<p>但是这并不是最好的做法:</p>
+<p>因为现在的目标是让source和target越接近越好,但是无论是用Ld,还是-Ld,其目的都是为了将source和target分的越来越清.</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+        <tag>ML</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,58 +1350,6 @@ good performance.</p>
       </tags>
   </entry>
   <entry>
-    <title>【OpenGL】Create a window 0</title>
-    <url>/2024/01/30/OpenGL-Create-a-window-0/</url>
-    <content><![CDATA[<h2 id="preliminary">Preliminary</h2>
-<p><strong>版本： </strong>面向OpenGL3.3</p>
-<p><strong>特性：</strong>对Extension的支持。</p>
-<p><strong>状态机（State Machine）：</strong>OpenGL是一个很大的状态机 →
-通过改变OpenGL的状态，告诉OpenGL怎么绘图，到底是画三角形还是画线段。</p>
-<p><strong>对象：
-</strong>用C语言写的。可以把对象object看作一个风格的结构体Struct</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_name</span> &#123;</span></span><br><span class="line">  xxx</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Cmake：</strong>使用预定义好的CMake脚本，根据不同IDE的工程文件，生成不同的工程文件。</p>
-<p>首先打开CMake，然后将<code>/glfw-3.3.9</code>作为源文件，将<code>/glfw-3.3.9/build</code>作为<code>build bineries</code>。这样生成的工程文件就在build。</p>
-<blockquote>
-<p>🤨什么是.sln文件？： visual studio solution file</p>
-</blockquote>
-<p><strong>编译：</strong><code>.sln</code> →
-<code>.lib</code>（库文件）</p>
-<p><strong>自定义Lib和Include文件夹：</strong>但是对于</p>
-<p><strong>Visual Studio创建一个C++空项目</strong></p>
-<p><strong>链接第三方库</strong>：</p>
-<ol type="1">
-<li>右键Demo0，然后选择VC++ Directories → 修改Library Directories 和
-Include Directories.</li>
-<li>Linker → 输入</li>
-</ol>
-<p><strong>GLAD开源库</strong></p>
-<p>下载一个GLAD，然后#include<xxx></xxx></p>
-<p>【<strong>DEBUG</strong>】<code>#include&lt;iostream&gt;</code>无法找到“源文件”
-→ https://blog.csdn.net/weixin_38592956/article/details/94668920</p>
-<p>用源代码自己编译的怎么整都不行，最后用了预编译好的二进制文件，并且最后用了上面的DEBUG。</p>
-<p><strong>ps:</strong></p>
-<ol type="1">
-<li>不要忘记把DEBUG中的x86改成x64</li>
-<li>用预编译的不是glfw3.lib，而是glfw3_mt.lib</li>
-<li>不要忘记在Linker → Input中加入opengl32.lib</li>
-</ol>
-<h2 id="code">Code</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// 注册函数 register a function</span></span><br><span class="line"><span class="comment">// 窗口改变(window) -&gt; 视口改变(viewport) : viewport is waiting for changing from window</span></span><br><span class="line"><span class="comment">// 总结：谁waiting/被动 -&gt; 谁就call_back</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 初始化glfw</span></span><br><span class="line">	<span class="built_in">glfwInit</span>();</span><br><span class="line">	<span class="comment">// 初始化版本号 -&gt; 3.3</span></span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 初始化window</span></span><br><span class="line">	GLFWwindow* window = <span class="built_in">glfwCreateWindow</span>(SCR_WIDTH, SCR_HEIGHT, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="comment">// 如果没有创建成功</span></span><br><span class="line">	<span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant create a window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="built_in">glfwTerminate</span>();</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置当前渲染上下文，其实就是告诉gl我现在要渲染的是 : window这个current context</span></span><br><span class="line">	<span class="built_in">glfwMakeContextCurrent</span>(window);</span><br><span class="line">	<span class="built_in">glfwSetFramebufferSizeCallback</span>(window, framebuffer_size_callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 初始化GLAD</span></span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">		<span class="comment">// 没有成功初始化GLAD</span></span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant initialize the GLAD&quot;</span> &lt;&lt;std::endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用一个while循环来简单渲染</span></span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) &#123;</span><br><span class="line">		<span class="comment">// 处理输入</span></span><br><span class="line">		<span class="built_in">process_input</span>(window);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 先设置清除缓存的color</span></span><br><span class="line">		<span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">		<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 颜色缓冲绘图</span></span><br><span class="line">		<span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">		<span class="comment">// 监测有没有中断事件</span></span><br><span class="line">		<span class="built_in">glfwPollEvents</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glfwTerminate</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 如果用户按了ESC按键，就关闭窗口，如果没按下就会返回GLFW_RELEASE</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;you have press esc&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="comment">// !!!不是glfwWindowshouldclose 而是 set_xxx</span></span><br><span class="line">		<span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结">总结</h1>
-<p>先要初始化glfw(引入的用于绘图的第三方库)，然后初始化window，并且在每次初始化的时候都要监测是否创建成功。</p>
-<p>最后要搞清楚，什么是主动的，什么是被动的。</p>
-<p>例如这里的glfwWindowShouldClose，就是OpenGL永远是主动的一方，而window是被动的，即放在参数里的。</p>
-]]></content>
-      <categories>
-        <category>OpenGL</category>
-      </categories>
-      <tags>
-        <tag>OpenGL</tag>
-        <tag>CPP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【OpenGL】Create a triangle 1</title>
     <url>/2024/02/02/OpenGL-Create-a-triangle-1/</url>
     <content><![CDATA[<h1 id="triangle">Triangle</h1>
@@ -1471,6 +1419,58 @@ Primitive</p>
 <li>delete VAO，VBO，shaderProgram...</li>
 </ul></li>
 </ul>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
+        <tag>CPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【OpenGL】Create a window 0</title>
+    <url>/2024/01/30/OpenGL-Create-a-window-0/</url>
+    <content><![CDATA[<h2 id="preliminary">Preliminary</h2>
+<p><strong>版本： </strong>面向OpenGL3.3</p>
+<p><strong>特性：</strong>对Extension的支持。</p>
+<p><strong>状态机（State Machine）：</strong>OpenGL是一个很大的状态机 →
+通过改变OpenGL的状态，告诉OpenGL怎么绘图，到底是画三角形还是画线段。</p>
+<p><strong>对象：
+</strong>用C语言写的。可以把对象object看作一个风格的结构体Struct</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_name</span> &#123;</span></span><br><span class="line">  xxx</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Cmake：</strong>使用预定义好的CMake脚本，根据不同IDE的工程文件，生成不同的工程文件。</p>
+<p>首先打开CMake，然后将<code>/glfw-3.3.9</code>作为源文件，将<code>/glfw-3.3.9/build</code>作为<code>build bineries</code>。这样生成的工程文件就在build。</p>
+<blockquote>
+<p>🤨什么是.sln文件？： visual studio solution file</p>
+</blockquote>
+<p><strong>编译：</strong><code>.sln</code> →
+<code>.lib</code>（库文件）</p>
+<p><strong>自定义Lib和Include文件夹：</strong>但是对于</p>
+<p><strong>Visual Studio创建一个C++空项目</strong></p>
+<p><strong>链接第三方库</strong>：</p>
+<ol type="1">
+<li>右键Demo0，然后选择VC++ Directories → 修改Library Directories 和
+Include Directories.</li>
+<li>Linker → 输入</li>
+</ol>
+<p><strong>GLAD开源库</strong></p>
+<p>下载一个GLAD，然后#include<xxx></xxx></p>
+<p>【<strong>DEBUG</strong>】<code>#include&lt;iostream&gt;</code>无法找到“源文件”
+→ https://blog.csdn.net/weixin_38592956/article/details/94668920</p>
+<p>用源代码自己编译的怎么整都不行，最后用了预编译好的二进制文件，并且最后用了上面的DEBUG。</p>
+<p><strong>ps:</strong></p>
+<ol type="1">
+<li>不要忘记把DEBUG中的x86改成x64</li>
+<li>用预编译的不是glfw3.lib，而是glfw3_mt.lib</li>
+<li>不要忘记在Linker → Input中加入opengl32.lib</li>
+</ol>
+<h2 id="code">Code</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// 注册函数 register a function</span></span><br><span class="line"><span class="comment">// 窗口改变(window) -&gt; 视口改变(viewport) : viewport is waiting for changing from window</span></span><br><span class="line"><span class="comment">// 总结：谁waiting/被动 -&gt; 谁就call_back</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">unsigned</span> <span class="type">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 初始化glfw</span></span><br><span class="line">	<span class="built_in">glfwInit</span>();</span><br><span class="line">	<span class="comment">// 初始化版本号 -&gt; 3.3</span></span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 初始化window</span></span><br><span class="line">	GLFWwindow* window = <span class="built_in">glfwCreateWindow</span>(SCR_WIDTH, SCR_HEIGHT, <span class="string">&quot;LearnOpenGL&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="comment">// 如果没有创建成功</span></span><br><span class="line">	<span class="keyword">if</span> (window == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant create a window&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="built_in">glfwTerminate</span>();</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置当前渲染上下文，其实就是告诉gl我现在要渲染的是 : window这个current context</span></span><br><span class="line">	<span class="built_in">glfwMakeContextCurrent</span>(window);</span><br><span class="line">	<span class="built_in">glfwSetFramebufferSizeCallback</span>(window, framebuffer_size_callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 初始化GLAD</span></span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress)) &#123;</span><br><span class="line">		<span class="comment">// 没有成功初始化GLAD</span></span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;cant initialize the GLAD&quot;</span> &lt;&lt;std::endl;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 用一个while循环来简单渲染</span></span><br><span class="line">	<span class="keyword">while</span> (!<span class="built_in">glfwWindowShouldClose</span>(window)) &#123;</span><br><span class="line">		<span class="comment">// 处理输入</span></span><br><span class="line">		<span class="built_in">process_input</span>(window);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 先设置清除缓存的color</span></span><br><span class="line">		<span class="built_in">glClearColor</span>(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">		<span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 颜色缓冲绘图</span></span><br><span class="line">		<span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">		<span class="comment">// 监测有没有中断事件</span></span><br><span class="line">		<span class="built_in">glfwPollEvents</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">glfwTerminate</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="type">int</span> width, <span class="type">int</span> height)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process_input</span><span class="params">(GLFWwindow* window)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 如果用户按了ESC按键，就关闭窗口，如果没按下就会返回GLFW_RELEASE</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) &#123;</span><br><span class="line">		std::cout &lt;&lt; <span class="string">&quot;you have press esc&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">		<span class="comment">// !!!不是glfwWindowshouldclose 而是 set_xxx</span></span><br><span class="line">		<span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结">总结</h1>
+<p>先要初始化glfw(引入的用于绘图的第三方库)，然后初始化window，并且在每次初始化的时候都要监测是否创建成功。</p>
+<p>最后要搞清楚，什么是主动的，什么是被动的。</p>
+<p>例如这里的glfwWindowShouldClose，就是OpenGL永远是主动的一方，而window是被动的，即放在参数里的。</p>
 ]]></content>
       <categories>
         <category>OpenGL</category>
@@ -1907,76 +1907,6 @@ D[i,j]=min_{i \leq k &lt; j}\{D[i,k]+D[k+1,j]+p_{i-1}p_kp_j\}
       </categories>
   </entry>
   <entry>
-    <title>Graph Modal and Gibbs Sampling</title>
-    <url>/2022/10/10/graph-modal/</url>
-    <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
-Gibbs Sampling </h1>
-<h2 id="graphical-modal">Graphical Modal</h2>
-<h3 id="相关术语">相关术语</h3>
-<p><strong>Clique: 连通子图</strong></p>
-<p><strong>Maximum Clique:最大连通子图</strong></p>
-<h3 id="mrf">MRF</h3>
-<p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
-<p><strong>MRF→Factor Graph</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
-<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
-<h2 id="training"><strong>Training</strong></h2>
-<img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
-<p><strong>如何将函数f描述为线性的？</strong></p>
-<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
-<p>如果y是连续的...</p>
-<p>这些函数f可以通过structured SVM求得。</p>
-<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
-<hr>
-<h2 id="gibbs-sampling">Gibbs Sampling</h2>
-<h2 id="inference">Inference</h2>
-<img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
-<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
-<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
-<p>由于已经得到<code>P(y|x)</code>
-的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code>
-成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code>
-是一个概率分布（横轴是x，纵轴是一组y）</p>
-<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
-<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
-<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code>
-几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code>
-是未知的，其他是已知的，通过剩余的y来计算概率。</p>
-<p> 接下去手算一个Gibbs Sampling:</p>
-<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
-<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
-<p><strong>注意：</strong> Random
-sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
-<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
-<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
-<p>通过迭代计算结果为：</p>
-<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
-<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong>
-所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
-<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
-<hr>
-<h3 id="markov-chain解释可以通过gibbs-sampling来替代pyx">Markov
-chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
-<img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
-<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
-<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
-<p>😭终于讲到markov了...</p>
-<p>如果任意一个<code>P(s|s')</code>
-不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
-<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
-<p>可见<span class="math inline">\(z^1,z^2,...,z^T\)</span>组成一个<strong>Markov
-chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
-chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
-的最大值对应的z即可。</p>
-]]></content>
-      <categories>
-        <category>Markov Logic Network</category>
-      </categories>
-      <tags>
-        <tag>Graph Modal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>maven+vue+springboot</title>
     <url>/2022/11/13/maven-vue-springboot/</url>
     <content><![CDATA[<h1 id="运行maven-vue-springboot项目">运行maven + vue +
@@ -2064,6 +1994,76 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
+    <title>Graph Modal and Gibbs Sampling</title>
+    <url>/2022/10/10/graph-modal/</url>
+    <content><![CDATA[<h1 id="structured-learning-and-gibbs-sampling">Structured Learning and
+Gibbs Sampling </h1>
+<h2 id="graphical-modal">Graphical Modal</h2>
+<h3 id="相关术语">相关术语</h3>
+<p><strong>Clique: 连通子图</strong></p>
+<p><strong>Maximum Clique:最大连通子图</strong></p>
+<h3 id="mrf">MRF</h3>
+<p><strong>定义：每个最大连通子图都通过一个factor和另外的相连接</strong></p>
+<p><strong>MRF→Factor Graph</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_-9iFtQtux8.png" class>
+<img data-src="/2022/10/10/graph-modal/image_aqfpF1OJ6v.png" class>
+<h2 id="training"><strong>Training</strong></h2>
+<img data-src="/2022/10/10/graph-modal/image_Qm_kJ9nNyR.png" class>
+<p><strong>如何将函数f描述为线性的？</strong></p>
+<img data-src="/2022/10/10/graph-modal/image_OHIttIS9Yu.png" class>
+<p>如果y是连续的...</p>
+<p>这些函数f可以通过structured SVM求得。</p>
+<img data-src="/2022/10/10/graph-modal/image_eHfwxZpf2O.png" class>
+<hr>
+<h2 id="gibbs-sampling">Gibbs Sampling</h2>
+<h2 id="inference">Inference</h2>
+<img data-src="/2022/10/10/graph-modal/image_OY8ZHrdWwk.png" class>
+<p>定义好了factor函数之后，目标是找到一组y使得F得分之和最大。显然穷举的方法不适用。接下去是通过概率的角度考虑：</p>
+<img data-src="/2022/10/10/graph-modal/image_hswehZyFnQ.png" class>
+<p>由于已经得到<code>P(y|x)</code>
+的概率是独立于y的，即和y没有关系，只和分子<code>F(x,y)</code>
+成正比，因此目标函数可以转换为<code>argmax(P(y|x))</code>，而<code>P(y|x)</code>
+是一个概率分布（横轴是x，纵轴是一组y）</p>
+<img data-src="/2022/10/10/graph-modal/image_7-OELSPakr.png" class>
+<img data-src="/2022/10/10/graph-modal/image_8fNl-JaD52.png" class>
+<p>存在一个神奇的问题就是：<code>P(y|x)</code>和通过sampling求出的<code>y1,y2,...,yT</code>
+几乎一样。Gibbs Sampling就是假设只有一个<code>y_i</code>
+是未知的，其他是已知的，通过剩余的y来计算概率。</p>
+<p> 接下去手算一个Gibbs Sampling:</p>
+<img data-src="/2022/10/10/graph-modal/image_IWAGwGyUVL.png" class>
+<img data-src="/2022/10/10/graph-modal/image_cxEVDnVlWs.png" class>
+<p><strong>注意：</strong> Random
+sample是从一堆y中随机挑选，不一定一定挑到y2=1的，因为y2=1和y2=-1的概率差不多大。</p>
+<img data-src="/2022/10/10/graph-modal/image_DYEzbRpv6p.png" class>
+<img data-src="/2022/10/10/graph-modal/image_Cj5xYDdZPe.png" class>
+<p>通过迭代计算结果为：</p>
+<img data-src="/2022/10/10/graph-modal/image_JxEOz-idnc.png" class>
+<p><strong>初始化不会影响最终结果，只会最开始的几个sample有影响，</strong>
+所以对于最开始的几个Sample可以通过以下方法来调整概率，使得结果相差更大：</p>
+<img data-src="/2022/10/10/graph-modal/image_4TJUMh3kUB.png" class>
+<hr>
+<h3 id="markov-chain解释可以通过gibbs-sampling来替代pyx">Markov
+chain解释可以通过Gibbs Sampling来替代P(y|x)</h3>
+<img data-src="/2022/10/10/graph-modal/image_TzGGooe9fO.png" class>
+<p>可见一个人在经过10000天的旅行，他A,B,C三地的概率是稳定的，和他初始在哪个地点无关。即从在A时A→A,在B时B→A,在C时C→A的概率和等于P(A)：</p>
+<img data-src="/2022/10/10/graph-modal/image_ARY5gAHZf5.png" class>
+<p>😭终于讲到markov了...</p>
+<p>如果任意一个<code>P(s|s')</code>
+不等于零，则这个马尔科夫链存在一个稳定的概率分布，但是充分不必要条件。</p>
+<img data-src="/2022/10/10/graph-modal/image_eL3SlOBpdU.png" class>
+<p>可见<span class="math inline">\(z^1,z^2,...,z^T\)</span>组成一个<strong>Markov
+chain</strong>，因为每个<span class="math inline">\(z\)</span>都只和前一个状态有关。所以只需要算这个Markov
+chain的稳定分布 <strong>（条件是所有条件概率都不为零）</strong>
+的最大值对应的z即可。</p>
+]]></content>
+      <categories>
+        <category>Markov Logic Network</category>
+      </categories>
+      <tags>
+        <tag>Graph Modal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Multihop KG</title>
     <url>/2022/11/09/multihop/</url>
     <content><![CDATA[<img data-src="/2022/11/09/multihop/%E6%B1%87%E6%8A%A511.9_01.jpg" class>
@@ -2085,6 +2085,19 @@ springboot项目</h1>
       <tags>
         <tag>Graph Modal</tag>
         <tag>MultiHop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>myfirst</title>
+    <url>/2022/09/06/myfirst/</url>
+    <content><![CDATA[<h3 id="test">test</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="image">image</h3>
+<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
+<p><strong>This is my first blog !😋</strong></p>
+]]></content>
+      <tags>
+        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -2112,16 +2125,33 @@ springboot项目</h1>
       </tags>
   </entry>
   <entry>
-    <title>myfirst</title>
-    <url>/2022/09/06/myfirst/</url>
-    <content><![CDATA[<h3 id="test">test</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="image">image</h3>
-<img data-src="/2022/09/06/myfirst/cc.jpg" class title="This is a test image">
-<p><strong>This is my first blog !😋</strong></p>
+    <title>web3</title>
+    <url>/2025/02/17/web3/</url>
+    <content><![CDATA[<img data-src="/2025/02/17/web3/1.png" class>
+<img data-src="/2025/02/17/web3/2.png" class>
+<img data-src="/2025/02/17/web3/3.png" class>
+<img data-src="/2025/02/17/web3/4.png" class>
+<img data-src="/2025/02/17/web3/5.png" class>
+<img data-src="/2025/02/17/web3/6.png" class>
+<img data-src="/2025/02/17/web3/7.png" class>
+<img data-src="/2025/02/17/web3/8.png" class>
+<img data-src="/2025/02/17/web3/9.png" class>
+<img data-src="/2025/02/17/web3/10.png" class>
+<img data-src="/2025/02/17/web3/11.png" class>
+<img data-src="/2025/02/17/web3/12.png" class>
+<img data-src="/2025/02/17/web3/13.png" class>
+<img data-src="/2025/02/17/web3/14.png" class>
+<img data-src="/2025/02/17/web3/15.png" class>
+<img data-src="/2025/02/17/web3/16.png" class>
+<img data-src="/2025/02/17/web3/17.png" class>
+<img data-src="/2025/02/17/web3/18.png" class>
+<img data-src="/2025/02/17/web3/19.png" class>
 ]]></content>
+      <categories>
+        <category>WEB3.0</category>
+      </categories>
       <tags>
-        <tag>test</tag>
+        <tag>web3</tag>
       </tags>
   </entry>
   <entry>
@@ -2232,68 +2262,6 @@ Entropy=1-\sum_{j=1}^cp_{j}logp_{j}
 <p>最终只需要用这里的任务管理器，</p>
 <p>如图，要用哪个就运行哪个。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>常微分方程和差分方程</title>
-    <url>/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="第四章-常微分方程和差分方程">第四章-常微分方程和差分方程</h1>
-<h2 id="习题1">习题1</h2>
-<p><span class="math display">\[
-2x_{n+2}-x_{n+1}-2x_{n}=0
-\]</span></p>
-<p>并且初值为<span class="math inline">\(x_0=-2;x1=0;\)</span></p>
-<p><strong>解法一：</strong></p>
-<p>其对应的特征方程为：</p>
-<p><span class="math display">\[
-2\lambda^2-\lambda-2=0
-\]</span></p>
-<p>求解特征值可以通过一元二次方程的公式求解，也可以通过scipy直接求解。</p>
-<p>求解出的特征值有两个，不是重根，分别为<span class="math inline">\(\lambda_1,\lambda_2\)</span>，则其通解为 <span class="math display">\[
-x_n=C_1\lambda_1^n+C_2\lambda_2^n
-\]</span></p>
-<p>其中C1和C2常量由初始条件求出。</p>
-<p><strong>解法二：</strong></p>
-<p>通过迭代法求出$ x_n $对应的数值解。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过math计算特征方程的根----&quot;</span>)</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = -<span class="number">1</span></span><br><span class="line">c = -<span class="number">2</span></span><br><span class="line">d=b**<span class="number">2</span>-<span class="number">4</span>*a*c</span><br><span class="line"><span class="keyword">if</span> (d&lt;<span class="number">0</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    e = math.sqrt(d)</span><br><span class="line">    x1=((-b+e)/(<span class="number">2</span>*a))<span class="comment">#调用math模块中sqrt开平方函数</span></span><br><span class="line">    x2=((-b-e)/(<span class="number">2</span>*a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;landa1=&quot;</span>,x1,<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;landa2=&quot;</span>,x2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="comment">#solve函数可以直接求解</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过sympy计算特征方程的根和最终结果----&quot;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;t, c1, c2&#x27;</span>)</span><br><span class="line">t0 = sp.solve(<span class="number">2</span>*t**<span class="number">2</span>-t-<span class="number">2</span>)  <span class="comment">#求解特征方程</span></span><br><span class="line">eq1 = c1 + c2 + <span class="number">2</span></span><br><span class="line">eq2 = c1 * t0[<span class="number">0</span>] + c2 *t0[<span class="number">1</span>]</span><br><span class="line">s = sp.solve([eq1, eq2])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;landa1=&#x27;</span>,t0[<span class="number">0</span>],<span class="string">&#x27;\t&#x27;</span>,<span class="string">&#x27;landa2=&#x27;</span>,t0[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c1=&#x27;</span>, s[c1]); <span class="built_in">print</span>(<span class="string">&#x27;c2=&#x27;</span>, s[c2])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i,<span class="string">&quot;]=&quot;</span>,(s[c1]*<span class="built_in">pow</span>(t0[<span class="number">0</span>],i)+s[c2]*<span class="built_in">pow</span>(t0[<span class="number">1</span>],i)).evalf())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;----通过迭代计算x(n)的数值解-----&#x27;</span>)</span><br><span class="line">prev = -<span class="number">2</span>;x = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    temp = x</span><br><span class="line">    x = (x + <span class="number">2</span>*prev)/<span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i+<span class="number">1</span>,<span class="string">&quot;]=&quot;</span>,x)</span><br><span class="line">    prev = temp</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">----通过math计算特征方程的根----</span><br><span class="line">landa1= 1.2807764064044151    landa2= -0.7807764064044151</span><br><span class="line">----通过sympy计算特征方程的根和最终结果----</span><br><span class="line">landa1= 1/4 - sqrt(17)/4    landa2= 1/4 + sqrt(17)/4</span><br><span class="line">c1= -1 - sqrt(17)/17</span><br><span class="line">c2= -1 + sqrt(17)/17</span><br><span class="line">x[ 2 ]= -2.00000000000000</span><br><span class="line">x[ 3 ]= -1.00000000000000</span><br><span class="line">x[ 4 ]= -2.50000000000000</span><br><span class="line">x[ 5 ]= -2.25000000000000</span><br><span class="line">x[ 6 ]= -3.62500000000000</span><br><span class="line">x[ 7 ]= -4.06250000000000</span><br><span class="line">x[ 8 ]= -5.65625000000000</span><br><span class="line">x[ 9 ]= -6.89062500000000</span><br><span class="line">----通过迭代计算x(n)的数值解-----</span><br><span class="line">x[ 2 ]= -2.0</span><br><span class="line">x[ 3 ]= -1.0</span><br><span class="line">x[ 4 ]= -2.5</span><br><span class="line">x[ 5 ]= -2.25</span><br><span class="line">x[ 6 ]= -3.625</span><br><span class="line">x[ 7 ]= -4.0625</span><br><span class="line">x[ 8 ]= -5.65625</span><br><span class="line">x[ 9 ]= -6.890625</span><br><span class="line">x[ 10 ]= -9.1015625</span><br></pre></td></tr></table></figure>
-<p>最终其结果为</p>
-<p><span class="math display">\[
-x_n=(-1-\frac{\sqrt17}{17})*(\frac{1-\sqrt17}{4})^n+(-1+\frac{\sqrt17}{17})*(\frac{1+\sqrt17}{4})^n
-\]</span></p>
-<p>以上结果可以发现<strong>特征方程</strong>的解法和<strong>迭代解法</strong>的完全一致。</p>
-<hr>
-<h2 id="习题2">习题2</h2>
-<p>令<span class="math inline">\(x(t)=[x_1(t),x_2(t)]^T\)</span>其中，<span class="math inline">\(x_1(t)=x,x_2(t)=y\)</span>；则题目描述可以变成</p>
-<p><span class="math display">\[
-\frac{dx}{dt}=Ax,x(0)=[1,0]^T,A=\begin{bmatrix}  %中括号
-      1&amp;-2\\
-      1&amp;2
-    \end{bmatrix}
-\]</span></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> scipy.integrate <span class="keyword">import</span> odeint</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求解析解----------------</span></span><br><span class="line">sp.var(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;x1:3&#x27;</span>, cls=sp.Function) <span class="comment">#定义2个符号函数</span></span><br><span class="line">x = sp.Matrix([x1(t), x2(t)])  <span class="comment">#列向量</span></span><br><span class="line">A = sp.Matrix([[<span class="number">1</span>,-<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">eq = x.diff(t)-A@x</span><br><span class="line">s = sp.dsolve(eq, ics=&#123;x1(<span class="number">0</span>):<span class="number">1</span>, x2(<span class="number">0</span>):<span class="number">0</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解析解为:&quot;</span>,s);</span><br><span class="line">sx = sp.lambdify(t,s[<span class="number">0</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">sy = sp.lambdify(t,s[<span class="number">1</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, family=<span class="string">&#x27;SimHei&#x27;</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;axes&#x27;</span>, unicode_minus=<span class="literal">False</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>)</span><br><span class="line">plt.plot(sx(xx), sy(xx));</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求数值解--------------</span></span><br><span class="line">dx = <span class="keyword">lambda</span> x, t: [x[<span class="number">0</span>]-<span class="number">2</span>*x[<span class="number">1</span>],x[<span class="number">0</span>]+<span class="number">2</span>*x[<span class="number">1</span>]]</span><br><span class="line">t = np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>)</span><br><span class="line">s = odeint(dx, [<span class="number">1</span>,<span class="number">0</span>], t)</span><br><span class="line">plt.plot(s[:,<span class="number">0</span>], s[:,<span class="number">1</span>]);</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=============具体结果为==================&quot;</span>)</span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;t=&quot;</span>,i,<span class="string">&quot;时\n解析解求得:x(t)=&quot;</span>,sx(i),<span class="string">&quot;y(t)=&quot;</span>,sy(i),<span class="string">&quot;\n数值解求得:x(t)=&quot;</span>,s[:,<span class="number">0</span>][k],<span class="string">&quot;y(t)=&quot;</span>,s[:,<span class="number">1</span>][k])</span><br><span class="line">    k=k+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.legend([<span class="string">&#x27;解析解&#x27;</span>,<span class="string">&#x27;数值解&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>结果为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">D:\anaconda\envs\pytorch\python.exe &quot;D:/pythonMath/Deffrential Equations/homework2.py&quot;</span><br><span class="line">解析解为: [Eq(x1(t), -sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 + exp(3*t/2)*cos(sqrt(7)*t/2)), Eq(x2(t), 2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)]</span><br><span class="line">=============具体结果为==================</span><br><span class="line">t= 0.0 时</span><br><span class="line">解析解求得:x(t)= 1.0 y(t)= 0.0 </span><br><span class="line">数值解求得:x(t)= 1.0 y(t)= 0.0</span><br><span class="line">t= 0.02040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.020189876647608 y(t)= 0.021040007527822792 </span><br><span class="line">数值解求得:x(t)= 1.0201898879194644 y(t)= 0.021039997406066154</span><br><span class="line">t= 0.04081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.0399020205807203 y(t)= 0.043372287285719395 </span><br><span class="line">数值解求得:x(t)= 1.0399020271650798 y(t)= 0.043372277714182235</span><br><span class="line">t= 0.061224489795918366 时</span><br><span class="line">解析解求得:x(t)= 1.0590724075998625 y(t)= 0.0670400680081496 </span><br><span class="line">数值解求得:x(t)= 1.0590724185491094 y(t)= 0.0670400571843811</span><br><span class="line">t= 0.08163265306122448 时</span><br><span class="line">解析解求得:x(t)= 1.0776339017990748 y(t)= 0.09208701367564913 </span><br><span class="line">数值解求得:x(t)= 1.0776339148814231 y(t)= 0.09208700197578465</span><br><span class="line">t= 0.1020408163265306 时</span><br><span class="line">解析解求得:x(t)= 1.0955161744257782 y(t)= 0.11855717598964706 </span><br><span class="line">数值解求得:x(t)= 1.0955161877240351 y(t)= 0.11855716371338518</span><br><span class="line">t= 0.12244897959183673 时</span><br><span class="line">解析解求得:x(t)= 1.1126456231022948 y(t)= 0.14649494318063638 </span><br><span class="line">数值解求得:x(t)= 1.112645634783687 y(t)= 0.14649492887241075</span><br><span class="line">t= 0.14285714285714285 时</span><br><span class="line">解析解求得:x(t)= 1.1289452915706144 y(t)= 0.1759449850061317 </span><br><span class="line">数值解求得:x(t)= 1.1289452961242472 y(t)= 0.17594496400477785</span><br><span class="line">t= 0.16326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.1443347901312997 y(t)= 0.20695219379232827 </span><br><span class="line">数值解求得:x(t)= 1.1443347993093749 y(t)= 0.20695217366966792</span><br><span class="line">t= 0.18367346938775508 时</span><br><span class="line">解析解求得:x(t)= 1.158730216957037 y(t)= 0.23956162137094936 </span><br><span class="line">数值解求得:x(t)= 1.1587302335745913 y(t)= 0.23956160356463208</span><br><span class="line">t= 0.2040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.1720440804712116 y(t)= 0.27381841176044386 </span><br><span class="line">数值解求得:x(t)= 1.1720440993327175 y(t)= 0.2738183930701502</span><br><span class="line">t= 0.22448979591836732 时</span><br><span class="line">解析解求得:x(t)= 1.184185222992092 y(t)= 0.3097677294384818 </span><br><span class="line">数值解求得:x(t)= 1.1841852438829685 y(t)= 0.3097677096764967</span><br><span class="line">t= 0.24489795918367346 时</span><br><span class="line">解析解求得:x(t)= 1.1950587458536985 y(t)= 0.34745468305060684 </span><br><span class="line">数值解求得:x(t)= 1.1950587687745 y(t)= 0.34745466091234584</span><br><span class="line">t= 0.26530612244897955 时</span><br><span class="line">解析解求得:x(t)= 1.204565936225206 y(t)= 0.3869242443979466 </span><br><span class="line">数值解求得:x(t)= 1.2045659608485249 y(t)= 0.38692422094306006</span><br><span class="line">t= 0.2857142857142857 时</span><br><span class="line">解析解求得:x(t)= 1.2126041958618434 y(t)= 0.4282211625450773 </span><br><span class="line">数值解求得:x(t)= 1.2126042225958342 y(t)= 0.42822113693988506</span><br><span class="line">t= 0.3061224489795918 时</span><br><span class="line">解析解求得:x(t)= 1.219066972031623 y(t)= 0.4713898728874819 </span><br><span class="line">数值解求得:x(t)= 1.2190670009195195 y(t)= 0.4713898455557759</span><br><span class="line">t= 0.32653061224489793 时</span><br><span class="line">解析解求得:x(t)= 1.2238436908739307 y(t)= 0.5164744010165694 </span><br><span class="line">数值解求得:x(t)= 1.223843722308065 y(t)= 0.5164743714132232</span><br><span class="line">t= 0.3469387755102041 时</span><br><span class="line">解析解求得:x(t)= 1.2268196934579962 y(t)= 0.5635182612189238 </span><br><span class="line">数值解求得:x(t)= 1.2268197322675731 y(t)= 0.5635182204027751</span><br><span class="line">t= 0.36734693877551017 时</span><br><span class="line">解析解求得:x(t)= 1.227876174821546 y(t)= 0.6125643494453575 </span><br><span class="line">数值解求得:x(t)= 1.227876226781901 y(t)= 0.6125642872253357</span><br><span class="line">t= 0.3877551020408163 时</span><br><span class="line">解析解求得:x(t)= 1.2268901262825176 y(t)= 0.6636548305844675 </span><br><span class="line">数值解求得:x(t)= 1.2268901860909702 y(t)= 0.6636547583015104</span><br><span class="line">t= 0.4081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.223734281329584 y(t)= 0.716831019874726 </span><br><span class="line">数值解求得:x(t)= 1.2237343409840549 y(t)= 0.7168309556017836</span><br><span class="line">t= 0.42857142857142855 时</span><br><span class="line">解析解求得:x(t)= 1.2182770654103952 y(t)= 0.7721332582887461 </span><br><span class="line">数值解求得:x(t)= 1.218277123099709 y(t)= 0.7721332067917788</span><br><span class="line">t= 0.44897959183673464 时</span><br><span class="line">解析解求得:x(t)= 1.2103825499498861 y(t)= 0.8296007817231976 </span><br><span class="line">数值解求得:x(t)= 1.210382610633588 y(t)= 0.8296007294438116</span><br><span class="line">t= 0.4693877551020408 时</span><br><span class="line">解析解求得:x(t)= 1.1999104109447043 y(t)= 0.8892715838279832 </span><br><span class="line">数值解求得:x(t)= 1.1999104771822011 y(t)= 0.8892715275180807</span><br><span class="line">t= 0.4897959183673469 时</span><br><span class="line">解析解求得:x(t)= 1.1867158924938193 y(t)= 0.9511822723087026 </span><br><span class="line">数值解求得:x(t)= 1.1867159642423326 y(t)= 0.9511822134138961</span><br><span class="line">t= 0.5102040816326531 时</span><br><span class="line">解析解求得:x(t)= 1.1706497756396121 y(t)= 1.0153679185371705 </span><br><span class="line">数值解求得:x(t)= 1.170649853490215 y(t)= 1.0153678586747292</span><br><span class="line">t= 0.5306122448979591 时</span><br><span class="line">解析解求得:x(t)= 1.1515583529082627 y(t)= 1.0818619003058079 </span><br><span class="line">数值解求得:x(t)= 1.1515584373707495 y(t)= 1.0818618396133117</span><br><span class="line">t= 0.5510204081632653 时</span><br><span class="line">解析解求得:x(t)= 1.1292834089530053 y(t)= 1.150695737563145 </span><br><span class="line">数值解求得:x(t)= 1.129283497834692 y(t)= 1.1506956759804483</span><br><span class="line">t= 0.5714285714285714 时</span><br><span class="line">解析解求得:x(t)= 1.103662207718833 y(t)= 1.2218989209694522 </span><br><span class="line">数值解求得:x(t)= 1.1036623018061529 y(t)= 1.2218988580689951</span><br><span class="line">t= 0.5918367346938775 时</span><br><span class="line">解析解求得:x(t)= 1.0745274865624315 y(t)= 1.2954987331136845 </span><br><span class="line">数值解求得:x(t)= 1.0745275858196601 y(t)= 1.295498669179269</span><br><span class="line">t= 0.6122448979591836 时</span><br><span class="line">解析解求得:x(t)= 1.0417074577765977 y(t)= 1.3715200622355053 </span><br><span class="line">数值解求得:x(t)= 1.0417075636067084 y(t)= 1.3715199970490806</span><br><span class="line">t= 0.6326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.0050258179840106 y(t)= 1.4499852082991638 </span><br><span class="line">数值解求得:x(t)= 1.005025931367244 y(t)= 1.4499851416835472</span><br><span class="line">t= 0.6530612244897959 时</span><br><span class="line">解析解求得:x(t)= 0.9643017658810773 y(t)= 1.5309136812694661 </span><br><span class="line">数值解求得:x(t)= 0.9643018849986369 y(t)= 1.530913614053574</span><br><span class="line">t= 0.673469387755102 时</span><br><span class="line">解析解求得:x(t)= 0.9193500288285735 y(t)= 1.6143219914440199 </span><br><span class="line">数值解求得:x(t)= 0.9193501552672215 y(t)= 1.614321923290281</span><br><span class="line">t= 0.6938775510204082 时</span><br><span class="line">解析解求得:x(t)= 0.8699808988019734 y(t)= 1.7002234317003653 </span><br><span class="line">数值解求得:x(t)= 0.8699810316861855 y(t)= 1.700223363015467</span><br><span class="line">t= 0.7142857142857142 时</span><br><span class="line">解析解求得:x(t)= 0.8160002782306479 y(t)= 1.7886278515215799 </span><br><span class="line">数值解求得:x(t)= 0.816000418452806 y(t)= 1.7886277822226788</span><br><span class="line">t= 0.7346938775510203 时</span><br><span class="line">解析解求得:x(t)= 0.7572097362715636 y(t)= 1.8795414226694434 </span><br><span class="line">数值解求得:x(t)= 0.7572098846938927 y(t)= 1.8795413527037244</span><br><span class="line">t= 0.7551020408163265 时</span><br><span class="line">解析解求得:x(t)= 0.6934065760796148 y(t)= 1.972966396380324 </span><br><span class="line">数值解求得:x(t)= 0.6934067316386655 y(t)= 1.972966326317898</span><br><span class="line">t= 0.7755102040816326 时</span><br><span class="line">解析解求得:x(t)= 0.6243839136533351 y(t)= 2.0689008519656586 </span><br><span class="line">数值解求得:x(t)= 0.6243840793830152 y(t)= 2.068900781342949</span><br><span class="line">t= 0.7959183673469387 时</span><br><span class="line">解析解求得:x(t)= 0.5499307688513946 y(t)= 2.1673384367061703 </span><br><span class="line">数值解求得:x(t)= 0.5499309446566499 y(t)= 2.167338365754919</span><br><span class="line">t= 0.8163265306122448 时</span><br><span class="line">解析解求得:x(t)= 0.46983216919195314 y(t)= 2.26826809693694 </span><br><span class="line">数值解求得:x(t)= 0.4698323509298826 y(t)= 2.2682680268561617</span><br><span class="line">t= 0.836734693877551 时</span><br><span class="line">解析解求得:x(t)= 0.3838692670636703 y(t)= 2.3716738002290874 </span><br><span class="line">数值解求得:x(t)= 0.3838694532496656 y(t)= 2.3716737318902226</span><br><span class="line">t= 0.8571428571428571 时</span><br><span class="line">解析解求得:x(t)= 0.29181947099377314 y(t)= 2.477534248583156 </span><br><span class="line">数值解求得:x(t)= 0.2918196618123881 y(t)= 2.4775341820833674</span><br><span class="line">t= 0.8775510204081632 时</span><br><span class="line">解析解求得:x(t)= 0.19345659163525064 y(t)= 2.585822582559378 </span><br><span class="line">数值解求得:x(t)= 0.19345678857948362 y(t)= 2.5858225174390705</span><br><span class="line">t= 0.8979591836734693 时</span><br><span class="line">解析解求得:x(t)= 0.08855100315170672 y(t)= 2.6965060762808264 </span><br><span class="line">数值解求得:x(t)= 0.08855120520166707 y(t)= 2.6965060133744223</span><br><span class="line">t= 0.9183673469387754 时</span><br><span class="line">解析解求得:x(t)= -0.02313017930517547 y(t)= 2.8095458232571393 </span><br><span class="line">数值解求得:x(t)= -0.02312997178555415 y(t)= 2.8095457627403286</span><br><span class="line">t= 0.9387755102040816 时</span><br><span class="line">解析解求得:x(t)= -0.14182290531437092 y(t)= 2.924896412988897 </span><br><span class="line">数值解求得:x(t)= -0.1418226909606244 y(t)= 2.9248963546723097</span><br><span class="line">t= 0.9591836734693877 时</span><br><span class="line">解析解求得:x(t)= -0.26776597737325014 y(t)= 3.04250559832613 </span><br><span class="line">数值解求得:x(t)= -0.26776575610194187 y(t)= 3.042505542867204</span><br><span class="line">t= 0.9795918367346939 时</span><br><span class="line">解析解求得:x(t)= -0.40120082081129205 y(t)= 3.1623139535685887 </span><br><span class="line">数值解求得:x(t)= -0.4012005926051197 y(t)= 3.162313901033337</span><br><span class="line">t= 1.0 时</span><br><span class="line">解析解求得:x(t)= -0.5423712346712355 y(t)= 3.2842545233105325 </span><br><span class="line">数值解求得:x(t)= -0.5423709994286192 y(t)= 3.2842544735529384</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>因此其<strong>解析解</strong>为：</p>
-<p><span class="math display">\[
-x(t)=-sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 +
-exp(3*t/2)*cos(sqrt(7)*t/2)
-\]</span></p>
-<p><span class="math display">\[
-y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
-\]</span></p>
-<p>解析解和数值解由于十分相似，在画图时不容易分辨，于是我将数值解的步长设置为0.2，解析解的步长为0.02时，其结果为：</p>
-<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
-<p>当解析解与数值解的步长相等，均为0.02时，结果如下图：</p>
-<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_h2ZS9n8oNb.png" class>
-<p>可见二者几乎完全重合。</p>
-]]></content>
-      <categories>
-        <category>math</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
   </entry>
   <entry>
     <title>外卖系统实现</title>
@@ -3418,6 +3386,68 @@ where限定ID，时间，商家，顾客等多个属性进行筛选；</p>
         <tag>JS</tag>
         <tag>Java</tag>
         <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常微分方程和差分方程</title>
+    <url>/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="第四章-常微分方程和差分方程">第四章-常微分方程和差分方程</h1>
+<h2 id="习题1">习题1</h2>
+<p><span class="math display">\[
+2x_{n+2}-x_{n+1}-2x_{n}=0
+\]</span></p>
+<p>并且初值为<span class="math inline">\(x_0=-2;x1=0;\)</span></p>
+<p><strong>解法一：</strong></p>
+<p>其对应的特征方程为：</p>
+<p><span class="math display">\[
+2\lambda^2-\lambda-2=0
+\]</span></p>
+<p>求解特征值可以通过一元二次方程的公式求解，也可以通过scipy直接求解。</p>
+<p>求解出的特征值有两个，不是重根，分别为<span class="math inline">\(\lambda_1,\lambda_2\)</span>，则其通解为 <span class="math display">\[
+x_n=C_1\lambda_1^n+C_2\lambda_2^n
+\]</span></p>
+<p>其中C1和C2常量由初始条件求出。</p>
+<p><strong>解法二：</strong></p>
+<p>通过迭代法求出$ x_n $对应的数值解。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过math计算特征方程的根----&quot;</span>)</span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = -<span class="number">1</span></span><br><span class="line">c = -<span class="number">2</span></span><br><span class="line">d=b**<span class="number">2</span>-<span class="number">4</span>*a*c</span><br><span class="line"><span class="keyword">if</span> (d&lt;<span class="number">0</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;无解&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    e = math.sqrt(d)</span><br><span class="line">    x1=((-b+e)/(<span class="number">2</span>*a))<span class="comment">#调用math模块中sqrt开平方函数</span></span><br><span class="line">    x2=((-b-e)/(<span class="number">2</span>*a))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;landa1=&quot;</span>,x1,<span class="string">&quot;\t&quot;</span>,<span class="string">&quot;landa2=&quot;</span>,x2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="comment">#solve函数可以直接求解</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----通过sympy计算特征方程的根和最终结果----&quot;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;t, c1, c2&#x27;</span>)</span><br><span class="line">t0 = sp.solve(<span class="number">2</span>*t**<span class="number">2</span>-t-<span class="number">2</span>)  <span class="comment">#求解特征方程</span></span><br><span class="line">eq1 = c1 + c2 + <span class="number">2</span></span><br><span class="line">eq2 = c1 * t0[<span class="number">0</span>] + c2 *t0[<span class="number">1</span>]</span><br><span class="line">s = sp.solve([eq1, eq2])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;landa1=&#x27;</span>,t0[<span class="number">0</span>],<span class="string">&#x27;\t&#x27;</span>,<span class="string">&#x27;landa2=&#x27;</span>,t0[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c1=&#x27;</span>, s[c1]); <span class="built_in">print</span>(<span class="string">&#x27;c2=&#x27;</span>, s[c2])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i,<span class="string">&quot;]=&quot;</span>,(s[c1]*<span class="built_in">pow</span>(t0[<span class="number">0</span>],i)+s[c2]*<span class="built_in">pow</span>(t0[<span class="number">1</span>],i)).evalf())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;----通过迭代计算x(n)的数值解-----&#x27;</span>)</span><br><span class="line">prev = -<span class="number">2</span>;x = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    temp = x</span><br><span class="line">    x = (x + <span class="number">2</span>*prev)/<span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x[&quot;</span>,i+<span class="number">1</span>,<span class="string">&quot;]=&quot;</span>,x)</span><br><span class="line">    prev = temp</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">----通过math计算特征方程的根----</span><br><span class="line">landa1= 1.2807764064044151    landa2= -0.7807764064044151</span><br><span class="line">----通过sympy计算特征方程的根和最终结果----</span><br><span class="line">landa1= 1/4 - sqrt(17)/4    landa2= 1/4 + sqrt(17)/4</span><br><span class="line">c1= -1 - sqrt(17)/17</span><br><span class="line">c2= -1 + sqrt(17)/17</span><br><span class="line">x[ 2 ]= -2.00000000000000</span><br><span class="line">x[ 3 ]= -1.00000000000000</span><br><span class="line">x[ 4 ]= -2.50000000000000</span><br><span class="line">x[ 5 ]= -2.25000000000000</span><br><span class="line">x[ 6 ]= -3.62500000000000</span><br><span class="line">x[ 7 ]= -4.06250000000000</span><br><span class="line">x[ 8 ]= -5.65625000000000</span><br><span class="line">x[ 9 ]= -6.89062500000000</span><br><span class="line">----通过迭代计算x(n)的数值解-----</span><br><span class="line">x[ 2 ]= -2.0</span><br><span class="line">x[ 3 ]= -1.0</span><br><span class="line">x[ 4 ]= -2.5</span><br><span class="line">x[ 5 ]= -2.25</span><br><span class="line">x[ 6 ]= -3.625</span><br><span class="line">x[ 7 ]= -4.0625</span><br><span class="line">x[ 8 ]= -5.65625</span><br><span class="line">x[ 9 ]= -6.890625</span><br><span class="line">x[ 10 ]= -9.1015625</span><br></pre></td></tr></table></figure>
+<p>最终其结果为</p>
+<p><span class="math display">\[
+x_n=(-1-\frac{\sqrt17}{17})*(\frac{1-\sqrt17}{4})^n+(-1+\frac{\sqrt17}{17})*(\frac{1+\sqrt17}{4})^n
+\]</span></p>
+<p>以上结果可以发现<strong>特征方程</strong>的解法和<strong>迭代解法</strong>的完全一致。</p>
+<hr>
+<h2 id="习题2">习题2</h2>
+<p>令<span class="math inline">\(x(t)=[x_1(t),x_2(t)]^T\)</span>其中，<span class="math inline">\(x_1(t)=x,x_2(t)=y\)</span>；则题目描述可以变成</p>
+<p><span class="math display">\[
+\frac{dx}{dt}=Ax,x(0)=[1,0]^T,A=\begin{bmatrix}  %中括号
+      1&amp;-2\\
+      1&amp;2
+    \end{bmatrix}
+\]</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> scipy.integrate <span class="keyword">import</span> odeint</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求解析解----------------</span></span><br><span class="line">sp.var(<span class="string">&#x27;t&#x27;</span>)</span><br><span class="line">sp.var(<span class="string">&#x27;x1:3&#x27;</span>, cls=sp.Function) <span class="comment">#定义2个符号函数</span></span><br><span class="line">x = sp.Matrix([x1(t), x2(t)])  <span class="comment">#列向量</span></span><br><span class="line">A = sp.Matrix([[<span class="number">1</span>,-<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">eq = x.diff(t)-A@x</span><br><span class="line">s = sp.dsolve(eq, ics=&#123;x1(<span class="number">0</span>):<span class="number">1</span>, x2(<span class="number">0</span>):<span class="number">0</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解析解为:&quot;</span>,s);</span><br><span class="line">sx = sp.lambdify(t,s[<span class="number">0</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">sy = sp.lambdify(t,s[<span class="number">1</span>].args[<span class="number">1</span>],<span class="string">&#x27;numpy&#x27;</span>)  <span class="comment">#符号函数转匿名函数</span></span><br><span class="line">xx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, family=<span class="string">&#x27;SimHei&#x27;</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;axes&#x27;</span>, unicode_minus=<span class="literal">False</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;font&#x27;</span>, size=<span class="number">16</span>)</span><br><span class="line">plt.plot(sx(xx), sy(xx));</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#-------------求数值解--------------</span></span><br><span class="line">dx = <span class="keyword">lambda</span> x, t: [x[<span class="number">0</span>]-<span class="number">2</span>*x[<span class="number">1</span>],x[<span class="number">0</span>]+<span class="number">2</span>*x[<span class="number">1</span>]]</span><br><span class="line">t = np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">50</span>)</span><br><span class="line">s = odeint(dx, [<span class="number">1</span>,<span class="number">0</span>], t)</span><br><span class="line">plt.plot(s[:,<span class="number">0</span>], s[:,<span class="number">1</span>]);</span><br><span class="line">plt.xlabel(<span class="string">&#x27;$x$&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;$y$&#x27;</span>,rotation=<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=============具体结果为==================&quot;</span>)</span><br><span class="line">k = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;t=&quot;</span>,i,<span class="string">&quot;时\n解析解求得:x(t)=&quot;</span>,sx(i),<span class="string">&quot;y(t)=&quot;</span>,sy(i),<span class="string">&quot;\n数值解求得:x(t)=&quot;</span>,s[:,<span class="number">0</span>][k],<span class="string">&quot;y(t)=&quot;</span>,s[:,<span class="number">1</span>][k])</span><br><span class="line">    k=k+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.legend([<span class="string">&#x27;解析解&#x27;</span>,<span class="string">&#x27;数值解&#x27;</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">D:\anaconda\envs\pytorch\python.exe &quot;D:/pythonMath/Deffrential Equations/homework2.py&quot;</span><br><span class="line">解析解为: [Eq(x1(t), -sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 + exp(3*t/2)*cos(sqrt(7)*t/2)), Eq(x2(t), 2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)]</span><br><span class="line">=============具体结果为==================</span><br><span class="line">t= 0.0 时</span><br><span class="line">解析解求得:x(t)= 1.0 y(t)= 0.0 </span><br><span class="line">数值解求得:x(t)= 1.0 y(t)= 0.0</span><br><span class="line">t= 0.02040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.020189876647608 y(t)= 0.021040007527822792 </span><br><span class="line">数值解求得:x(t)= 1.0201898879194644 y(t)= 0.021039997406066154</span><br><span class="line">t= 0.04081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.0399020205807203 y(t)= 0.043372287285719395 </span><br><span class="line">数值解求得:x(t)= 1.0399020271650798 y(t)= 0.043372277714182235</span><br><span class="line">t= 0.061224489795918366 时</span><br><span class="line">解析解求得:x(t)= 1.0590724075998625 y(t)= 0.0670400680081496 </span><br><span class="line">数值解求得:x(t)= 1.0590724185491094 y(t)= 0.0670400571843811</span><br><span class="line">t= 0.08163265306122448 时</span><br><span class="line">解析解求得:x(t)= 1.0776339017990748 y(t)= 0.09208701367564913 </span><br><span class="line">数值解求得:x(t)= 1.0776339148814231 y(t)= 0.09208700197578465</span><br><span class="line">t= 0.1020408163265306 时</span><br><span class="line">解析解求得:x(t)= 1.0955161744257782 y(t)= 0.11855717598964706 </span><br><span class="line">数值解求得:x(t)= 1.0955161877240351 y(t)= 0.11855716371338518</span><br><span class="line">t= 0.12244897959183673 时</span><br><span class="line">解析解求得:x(t)= 1.1126456231022948 y(t)= 0.14649494318063638 </span><br><span class="line">数值解求得:x(t)= 1.112645634783687 y(t)= 0.14649492887241075</span><br><span class="line">t= 0.14285714285714285 时</span><br><span class="line">解析解求得:x(t)= 1.1289452915706144 y(t)= 0.1759449850061317 </span><br><span class="line">数值解求得:x(t)= 1.1289452961242472 y(t)= 0.17594496400477785</span><br><span class="line">t= 0.16326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.1443347901312997 y(t)= 0.20695219379232827 </span><br><span class="line">数值解求得:x(t)= 1.1443347993093749 y(t)= 0.20695217366966792</span><br><span class="line">t= 0.18367346938775508 时</span><br><span class="line">解析解求得:x(t)= 1.158730216957037 y(t)= 0.23956162137094936 </span><br><span class="line">数值解求得:x(t)= 1.1587302335745913 y(t)= 0.23956160356463208</span><br><span class="line">t= 0.2040816326530612 时</span><br><span class="line">解析解求得:x(t)= 1.1720440804712116 y(t)= 0.27381841176044386 </span><br><span class="line">数值解求得:x(t)= 1.1720440993327175 y(t)= 0.2738183930701502</span><br><span class="line">t= 0.22448979591836732 时</span><br><span class="line">解析解求得:x(t)= 1.184185222992092 y(t)= 0.3097677294384818 </span><br><span class="line">数值解求得:x(t)= 1.1841852438829685 y(t)= 0.3097677096764967</span><br><span class="line">t= 0.24489795918367346 时</span><br><span class="line">解析解求得:x(t)= 1.1950587458536985 y(t)= 0.34745468305060684 </span><br><span class="line">数值解求得:x(t)= 1.1950587687745 y(t)= 0.34745466091234584</span><br><span class="line">t= 0.26530612244897955 时</span><br><span class="line">解析解求得:x(t)= 1.204565936225206 y(t)= 0.3869242443979466 </span><br><span class="line">数值解求得:x(t)= 1.2045659608485249 y(t)= 0.38692422094306006</span><br><span class="line">t= 0.2857142857142857 时</span><br><span class="line">解析解求得:x(t)= 1.2126041958618434 y(t)= 0.4282211625450773 </span><br><span class="line">数值解求得:x(t)= 1.2126042225958342 y(t)= 0.42822113693988506</span><br><span class="line">t= 0.3061224489795918 时</span><br><span class="line">解析解求得:x(t)= 1.219066972031623 y(t)= 0.4713898728874819 </span><br><span class="line">数值解求得:x(t)= 1.2190670009195195 y(t)= 0.4713898455557759</span><br><span class="line">t= 0.32653061224489793 时</span><br><span class="line">解析解求得:x(t)= 1.2238436908739307 y(t)= 0.5164744010165694 </span><br><span class="line">数值解求得:x(t)= 1.223843722308065 y(t)= 0.5164743714132232</span><br><span class="line">t= 0.3469387755102041 时</span><br><span class="line">解析解求得:x(t)= 1.2268196934579962 y(t)= 0.5635182612189238 </span><br><span class="line">数值解求得:x(t)= 1.2268197322675731 y(t)= 0.5635182204027751</span><br><span class="line">t= 0.36734693877551017 时</span><br><span class="line">解析解求得:x(t)= 1.227876174821546 y(t)= 0.6125643494453575 </span><br><span class="line">数值解求得:x(t)= 1.227876226781901 y(t)= 0.6125642872253357</span><br><span class="line">t= 0.3877551020408163 时</span><br><span class="line">解析解求得:x(t)= 1.2268901262825176 y(t)= 0.6636548305844675 </span><br><span class="line">数值解求得:x(t)= 1.2268901860909702 y(t)= 0.6636547583015104</span><br><span class="line">t= 0.4081632653061224 时</span><br><span class="line">解析解求得:x(t)= 1.223734281329584 y(t)= 0.716831019874726 </span><br><span class="line">数值解求得:x(t)= 1.2237343409840549 y(t)= 0.7168309556017836</span><br><span class="line">t= 0.42857142857142855 时</span><br><span class="line">解析解求得:x(t)= 1.2182770654103952 y(t)= 0.7721332582887461 </span><br><span class="line">数值解求得:x(t)= 1.218277123099709 y(t)= 0.7721332067917788</span><br><span class="line">t= 0.44897959183673464 时</span><br><span class="line">解析解求得:x(t)= 1.2103825499498861 y(t)= 0.8296007817231976 </span><br><span class="line">数值解求得:x(t)= 1.210382610633588 y(t)= 0.8296007294438116</span><br><span class="line">t= 0.4693877551020408 时</span><br><span class="line">解析解求得:x(t)= 1.1999104109447043 y(t)= 0.8892715838279832 </span><br><span class="line">数值解求得:x(t)= 1.1999104771822011 y(t)= 0.8892715275180807</span><br><span class="line">t= 0.4897959183673469 时</span><br><span class="line">解析解求得:x(t)= 1.1867158924938193 y(t)= 0.9511822723087026 </span><br><span class="line">数值解求得:x(t)= 1.1867159642423326 y(t)= 0.9511822134138961</span><br><span class="line">t= 0.5102040816326531 时</span><br><span class="line">解析解求得:x(t)= 1.1706497756396121 y(t)= 1.0153679185371705 </span><br><span class="line">数值解求得:x(t)= 1.170649853490215 y(t)= 1.0153678586747292</span><br><span class="line">t= 0.5306122448979591 时</span><br><span class="line">解析解求得:x(t)= 1.1515583529082627 y(t)= 1.0818619003058079 </span><br><span class="line">数值解求得:x(t)= 1.1515584373707495 y(t)= 1.0818618396133117</span><br><span class="line">t= 0.5510204081632653 时</span><br><span class="line">解析解求得:x(t)= 1.1292834089530053 y(t)= 1.150695737563145 </span><br><span class="line">数值解求得:x(t)= 1.129283497834692 y(t)= 1.1506956759804483</span><br><span class="line">t= 0.5714285714285714 时</span><br><span class="line">解析解求得:x(t)= 1.103662207718833 y(t)= 1.2218989209694522 </span><br><span class="line">数值解求得:x(t)= 1.1036623018061529 y(t)= 1.2218988580689951</span><br><span class="line">t= 0.5918367346938775 时</span><br><span class="line">解析解求得:x(t)= 1.0745274865624315 y(t)= 1.2954987331136845 </span><br><span class="line">数值解求得:x(t)= 1.0745275858196601 y(t)= 1.295498669179269</span><br><span class="line">t= 0.6122448979591836 时</span><br><span class="line">解析解求得:x(t)= 1.0417074577765977 y(t)= 1.3715200622355053 </span><br><span class="line">数值解求得:x(t)= 1.0417075636067084 y(t)= 1.3715199970490806</span><br><span class="line">t= 0.6326530612244897 时</span><br><span class="line">解析解求得:x(t)= 1.0050258179840106 y(t)= 1.4499852082991638 </span><br><span class="line">数值解求得:x(t)= 1.005025931367244 y(t)= 1.4499851416835472</span><br><span class="line">t= 0.6530612244897959 时</span><br><span class="line">解析解求得:x(t)= 0.9643017658810773 y(t)= 1.5309136812694661 </span><br><span class="line">数值解求得:x(t)= 0.9643018849986369 y(t)= 1.530913614053574</span><br><span class="line">t= 0.673469387755102 时</span><br><span class="line">解析解求得:x(t)= 0.9193500288285735 y(t)= 1.6143219914440199 </span><br><span class="line">数值解求得:x(t)= 0.9193501552672215 y(t)= 1.614321923290281</span><br><span class="line">t= 0.6938775510204082 时</span><br><span class="line">解析解求得:x(t)= 0.8699808988019734 y(t)= 1.7002234317003653 </span><br><span class="line">数值解求得:x(t)= 0.8699810316861855 y(t)= 1.700223363015467</span><br><span class="line">t= 0.7142857142857142 时</span><br><span class="line">解析解求得:x(t)= 0.8160002782306479 y(t)= 1.7886278515215799 </span><br><span class="line">数值解求得:x(t)= 0.816000418452806 y(t)= 1.7886277822226788</span><br><span class="line">t= 0.7346938775510203 时</span><br><span class="line">解析解求得:x(t)= 0.7572097362715636 y(t)= 1.8795414226694434 </span><br><span class="line">数值解求得:x(t)= 0.7572098846938927 y(t)= 1.8795413527037244</span><br><span class="line">t= 0.7551020408163265 时</span><br><span class="line">解析解求得:x(t)= 0.6934065760796148 y(t)= 1.972966396380324 </span><br><span class="line">数值解求得:x(t)= 0.6934067316386655 y(t)= 1.972966326317898</span><br><span class="line">t= 0.7755102040816326 时</span><br><span class="line">解析解求得:x(t)= 0.6243839136533351 y(t)= 2.0689008519656586 </span><br><span class="line">数值解求得:x(t)= 0.6243840793830152 y(t)= 2.068900781342949</span><br><span class="line">t= 0.7959183673469387 时</span><br><span class="line">解析解求得:x(t)= 0.5499307688513946 y(t)= 2.1673384367061703 </span><br><span class="line">数值解求得:x(t)= 0.5499309446566499 y(t)= 2.167338365754919</span><br><span class="line">t= 0.8163265306122448 时</span><br><span class="line">解析解求得:x(t)= 0.46983216919195314 y(t)= 2.26826809693694 </span><br><span class="line">数值解求得:x(t)= 0.4698323509298826 y(t)= 2.2682680268561617</span><br><span class="line">t= 0.836734693877551 时</span><br><span class="line">解析解求得:x(t)= 0.3838692670636703 y(t)= 2.3716738002290874 </span><br><span class="line">数值解求得:x(t)= 0.3838694532496656 y(t)= 2.3716737318902226</span><br><span class="line">t= 0.8571428571428571 时</span><br><span class="line">解析解求得:x(t)= 0.29181947099377314 y(t)= 2.477534248583156 </span><br><span class="line">数值解求得:x(t)= 0.2918196618123881 y(t)= 2.4775341820833674</span><br><span class="line">t= 0.8775510204081632 时</span><br><span class="line">解析解求得:x(t)= 0.19345659163525064 y(t)= 2.585822582559378 </span><br><span class="line">数值解求得:x(t)= 0.19345678857948362 y(t)= 2.5858225174390705</span><br><span class="line">t= 0.8979591836734693 时</span><br><span class="line">解析解求得:x(t)= 0.08855100315170672 y(t)= 2.6965060762808264 </span><br><span class="line">数值解求得:x(t)= 0.08855120520166707 y(t)= 2.6965060133744223</span><br><span class="line">t= 0.9183673469387754 时</span><br><span class="line">解析解求得:x(t)= -0.02313017930517547 y(t)= 2.8095458232571393 </span><br><span class="line">数值解求得:x(t)= -0.02312997178555415 y(t)= 2.8095457627403286</span><br><span class="line">t= 0.9387755102040816 时</span><br><span class="line">解析解求得:x(t)= -0.14182290531437092 y(t)= 2.924896412988897 </span><br><span class="line">数值解求得:x(t)= -0.1418226909606244 y(t)= 2.9248963546723097</span><br><span class="line">t= 0.9591836734693877 时</span><br><span class="line">解析解求得:x(t)= -0.26776597737325014 y(t)= 3.04250559832613 </span><br><span class="line">数值解求得:x(t)= -0.26776575610194187 y(t)= 3.042505542867204</span><br><span class="line">t= 0.9795918367346939 时</span><br><span class="line">解析解求得:x(t)= -0.40120082081129205 y(t)= 3.1623139535685887 </span><br><span class="line">数值解求得:x(t)= -0.4012005926051197 y(t)= 3.162313901033337</span><br><span class="line">t= 1.0 时</span><br><span class="line">解析解求得:x(t)= -0.5423712346712355 y(t)= 3.2842545233105325 </span><br><span class="line">数值解求得:x(t)= -0.5423709994286192 y(t)= 3.2842544735529384</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>因此其<strong>解析解</strong>为：</p>
+<p><span class="math display">\[
+x(t)=-sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7 +
+exp(3*t/2)*cos(sqrt(7)*t/2)
+\]</span></p>
+<p><span class="math display">\[
+y(t)=2*sqrt(7)*exp(3*t/2)*sin(sqrt(7)*t/2)/7)
+\]</span></p>
+<p>解析解和数值解由于十分相似，在画图时不容易分辨，于是我将数值解的步长设置为0.2，解析解的步长为0.02时，其结果为：</p>
+<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_c916K47SOh.png" class>
+<p>当解析解与数值解的步长相等，均为0.02时，结果如下图：</p>
+<img data-src="/2022/10/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%92%8C%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B/image_h2ZS9n8oNb.png" class>
+<p>可见二者几乎完全重合。</p>
+]]></content>
+      <categories>
+        <category>math</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
